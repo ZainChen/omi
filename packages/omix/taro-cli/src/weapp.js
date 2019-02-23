@@ -3,7 +3,8 @@ const os = require('os')
 const path = require('path')
 const chalk = require('chalk')
 const chokidar = require('chokidar')
-const wxTransformer = require('@tarojs/transformer-wx')
+//@fix - 为了本地调试
+const wxTransformer = require('../../taro-transformer-wx/lib/src/index.js').default
 const babel = require('babel-core')
 const traverse = require('babel-traverse').default
 const t = require('babel-types')
@@ -103,6 +104,7 @@ let constantsReplaceList = Object.assign({}, Util.generateEnvList(projectConfig.
 
 function getExactedNpmFilePath (npmName, filePath) {
   try {
+    //里面会递归 require 进行拷贝到 npm 目录
     const npmInfo = resolveNpmFilesPath(npmName, isProduction, weappNpmConfig, buildAdapter, appPath, compileInclude)
     const npmInfoMainPath = npmInfo.main
     let outputNpmPath
@@ -747,8 +749,9 @@ function parseAst (type, ast, depComponents, sourceFilePath, filePath, npmSkip =
         const node = astPath.node
         const exportVariableName = exportTaroReduxConnected || componentClassName
         if (needExportDefault) {
-          const exportDefault = template(`export default ${exportVariableName}`, babylonConfig)()
-          node.body.push(exportDefault)
+          //@fix 注释掉用来解决小程序报错
+          //const exportDefault = template(`export default ${exportVariableName}`, babylonConfig)()
+          //node.body.push(exportDefault)
         }
         const taroMiniAppFrameworkPath = !npmSkip ? getExactedNpmFilePath(taroMiniAppFramework, filePath) : taroMiniAppFramework
         switch (type) {
@@ -759,12 +762,29 @@ function parseAst (type, ast, depComponents, sourceFilePath, filePath, npmSkip =
             if (projectConfig.hasOwnProperty(DEVICE_RATIO)) {
               pxTransformConfig[DEVICE_RATIO] = projectConfig.deviceRatio
             }
-            node.body.push(template(`App(require('${taroMiniAppFrameworkPath}').default.createApp(${exportVariableName}))`, babylonConfig)())
-            node.body.push(template(`Taro.initPxTransform(${JSON.stringify(pxTransformConfig)})`, babylonConfig)())
+            //@fix 注释掉用来解决小程序报错
+            node.body[node.body.length-2].expression.callee.name = 'global.Omi.defineApp'
+            //node.body.push(template(`App(require('${taroMiniAppFrameworkPath}').default.createApp(${exportVariableName}))`, babylonConfig)())
+            //node.body.push(template(`Taro.initPxTransform(${JSON.stringify(pxTransformConfig)})`, babylonConfig)())
+            //@fix Please do not call Page constructor in files that not listed in "pages" section of app.json or plugin.json     
+            node.body.forEach((item, index) => {
+              if (item.type === 'ImportDeclaration' && item.source.value.indexOf('./pages/') === 0) {
+                node.body[index] = null
+              }
+            })
             break
           case PARSE_AST_TYPE.PAGE:
             if (buildAdapter === Util.BUILD_TYPES.WEAPP) {
-              node.body.push(template(`Component(require('${taroMiniAppFrameworkPath}').default.createComponent(${exportVariableName}, true))`, babylonConfig)())
+              //@fix 注释掉用来解决小程序报错
+              const arr = sourceFilePath.split('/')
+              const path = arr[arr.length - 3] + '/' + arr[arr.length - 2] + '/' + arr[arr.length-1].split('.')[0]      
+              const obj = JSON.parse(JSON.stringify(node.body[node.body.length-1].expression.arguments[0]))
+              obj.value = path
+              //给 define 增加第三个参数
+              node.body[node.body.length-1].expression.arguments.push(obj)
+              node.body[node.body.length-1].expression.callee.name = 'global.Omi.definePage'
+              node.body.push(template(`global.create.Page(global.getOptions('${path}'))`, babylonConfig)())
+              //node.body.push(template(`Component(require('${taroMiniAppFrameworkPath}').default.createComponent(${exportVariableName}, true))`, babylonConfig)())
             } else {
               node.body.push(template(`Page(require('${taroMiniAppFrameworkPath}').default.createComponent(${exportVariableName}, true))`, babylonConfig)())
             }

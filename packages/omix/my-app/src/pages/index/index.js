@@ -1,29 +1,35 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+
+import { WeElement, define } from 'omi'
+
+//兼容 omi 下划线？
 import './index.css'
 
-export default class Index extends Component {
-
-  config = {
-    navigationBarTitleText: '首页'
+define('my-counter', class extends WeElement {
+  data = {
+    count: 1
   }
 
-  componentWillMount () { }
+  css = `span{
+        color: red;
+      }`
 
-  componentDidMount () { }
+  sub = () => {
+    this.data.count--
+    this.update()
+  }
 
-  componentWillUnmount () { }
+  add = () => {
+    this.data.count++
+    this.update()
+  }
 
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
+  render() {
     return (
-      <View className='index'>
-        <Text>Hello world!</Text>
-      </View>
+      <view>
+        <button onClick={this.sub}>-</button>
+        <text>{this.data.count}</text>
+        <button onClick={this.add}>+</button>
+      </view>
     )
   }
-}
-
+})
