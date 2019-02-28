@@ -14,52 +14,68 @@ define('my-content', class extends WeElement {
     this.initCodeStyle()
   }
 
-  touchEnd = ()=> {
+  touchEnd = () => {
     this.store.hideSidebar()
   }
 
   initCodeStyle() {
     let codes = document.querySelectorAll('code')
+
     let codesArr = Array.prototype.slice.call(codes);
     let codeHlNumArr = []
     codesArr.forEach(code => {
-      hljs.highlightBlock(code)
       let arr = code.className.match(/{[\S\s]*}/)
-      let hllNums = null
-      if (arr) {
-        let numArr = arr[0].replace(/[{|}]/g, '').split(',')
-        hllNums = this._arrToNumber(numArr)
-      }
-      codeHlNumArr.push(hllNums)
-    })
-
-    codesArr.forEach((code, index) => {
-      let newP = document.createElement('div')
-      newP.className = '_code-ctn'
       let pre = code.parentNode
-      let ctn = pre.parentNode
-      if (pre.nodeName === 'PRE') {
-        ctn.insertBefore(newP, pre)
-
-        let hl = document.createElement('div')
-        hl.className = '_hl'
-        newP.appendChild(hl)
-        newP.appendChild(pre)
-        let nums = codeHlNumArr[index]
-
-        let max = Math.max.apply(null, nums)
-
-        let inner = ''
-        for (let i = 0; i <= max; i++) {
-          if (nums.indexOf(i) == -1) {
-            inner += '<br />'
-          } else {
-            inner += '<div class="_hll"></div>'
-          }
+      //bug!
+      //pre.setAttribute('data-line', '1,3-4')
+      if (code.className) {
+        pre.className = code.className
+     
+        const temp = code.className.match(/language-\w*/g)[0]
+        if (temp) {
+          code.innerHTML = Prism.highlight(code.innerText, Prism.languages[temp.split('-')[1]], temp.split('-')[1])
         }
-        hl.innerHTML = inner
+      } else {
+        let pre = code.parentNode
+        code.className = 'language-markup'
+        pre.className = 'language-markup'
+        code.innerHTML = Prism.highlight(code.innerText, Prism.languages.markup, 'markup')
       }
+      // let hllNums = null
+      // if (arr) {
+      //   let numArr = arr[0].replace(/[{|}]/g, '').split(',')
+      //   hllNums = this._arrToNumber(numArr)
+      // }
+      //codeHlNumArr.push(hllNums)
     })
+
+    // codesArr.forEach((code, index) => {
+    //   let newP = document.createElement('div')
+    //   newP.className = '_code-ctn'
+    //   let pre = code.parentNode
+    //   let ctn = pre.parentNode
+    //   if (pre.nodeName === 'PRE') {
+    //     ctn.insertBefore(newP, pre)
+
+    //     let hl = document.createElement('div')
+    //     hl.className = '_hl'
+    //     newP.appendChild(hl)
+    //     newP.appendChild(pre)
+    //     let nums = codeHlNumArr[index]
+
+    //     let max = Math.max.apply(null, nums)
+
+    //     let inner = ''
+    //     for (let i = 0; i <= max; i++) {
+    //       if (nums.indexOf(i) == -1) {
+    //         inner += '<br />'
+    //       } else {
+    //         inner += '<div class="_hll"></div>'
+    //       }
+    //     }
+    //     hl.innerHTML = inner
+    //   }
+    // })
   }
 
   _arrToNumber(numArr) {
