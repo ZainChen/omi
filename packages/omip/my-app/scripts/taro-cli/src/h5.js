@@ -18,7 +18,9 @@ const CONFIG = require('./config')
 const { source: toAst, getObjKey } = require('./util/ast_convert')
 
 const appPath = process.cwd()
-const projectConfig = require(path.join(appPath, Util.PROJECT_CONFIG))(_.merge)
+//@fix
+const projectConfig = require(path.join(appPath, Util.PROJECT_CONFIG_H5))(_.merge)
+
 const h5Config = projectConfig.h5 || {}
 const routerConfig = h5Config.router || {}
 const routerMode = routerConfig.mode === 'browser' ? 'browser' : 'hash'
@@ -199,8 +201,8 @@ function processEntry (code, filePath) {
               isIndex: k === 0
             })
           })
-
-          funcBody = `<Router
+          //@fix
+          funcBody = `<o-router
             mode={${JSON.stringify(routerMode)}}
             publicPath={${JSON.stringify(routerMode === 'hash' ? '/' : publicPath)}}
             routes={[${routes.join(',')}]}
@@ -295,11 +297,12 @@ function processEntry (code, filePath) {
             'method', t.identifier('componentWillUnmount'), [],
             t.blockStatement([]), false, false))
         }
-        if (!hasConstructor) {
-          astPath.pushContainer('body', t.classMethod(
-            'method', t.identifier('constructor'), [t.identifier('props'), t.identifier('context')],
-            t.blockStatement([toAst('super(props, context)'), additionalConstructorNode]), false, false))
-        }
+        //@fix
+        // if (!hasConstructor) {
+        //   astPath.pushContainer('body', t.classMethod(
+        //     'method', t.identifier('constructor'), [t.identifier('props'), t.identifier('context')],
+        //     t.blockStatement([toAst('super(props, context)'), additionalConstructorNode]), false, false))
+        // }
         if (tabBar) {
           if (!hasComponentWillMount) {
             astPath.pushContainer('body', t.classMethod(
@@ -402,9 +405,10 @@ function processEntry (code, filePath) {
             specifier.local.name = nervJsImportDefaultName
           } else if (!hasAddNervJsImportDefaultName) {
             hasAddNervJsImportDefaultName = true
-            node.specifiers.unshift(
-              t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
-            )
+            //@fix
+            // node.specifiers.unshift(
+            //   t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
+            // )
           }
           const taroApisSpecifiers = []
           const deletedIdx = []
@@ -512,20 +516,26 @@ function processEntry (code, filePath) {
       exit (astPath) {
         const importNervjsNode = t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
         const importRouterNode = toAst(`import { Router } from '${PACKAGES['@tarojs/router']}'`)
+        //@fix
+        const importMpNode = toAst(`import './libs/mp'`)
         const importTaroH5Node = toAst(`import ${taroImportDefaultName} from '${PACKAGES['@tarojs/taro-h5']}'`)
         const importComponentNode = toAst(`import { View, ${tabBarComponentName}, ${tabBarContainerComponentName}, ${tabBarPanelComponentName}} from '${PACKAGES['@tarojs/components']}'`)
         const lastImportIndex = _.findLastIndex(astPath.node.body, t.isImportDeclaration)
         const lastImportNode = astPath.get(`body.${lastImportIndex > -1 ? lastImportIndex : 0}`)
         const extraNodes = [
-          importTaroH5Node,
+          //@fix
+          //importTaroH5Node,
+          importMpNode,
           importRouterNode,
-          initPxTransformNode
+          //@fix
+          //initPxTransformNode
         ]
 
         astPath.traverse(programExitVisitor)
 
         if (hasJSX && !hasAddNervJsImportDefaultName) {
-          extraNodes.unshift(importNervjsNode)
+          //@fix
+          //extraNodes.unshift(importNervjsNode)
         }
         if (tabBar) {
           extraNodes.unshift(importComponentNode)
@@ -664,10 +674,11 @@ function processOthers (code, filePath, fileType) {
             taroImportDefaultName = specifier.local.name
             specifier.local.name = nervJsImportDefaultName
           } else if (!hasAddNervJsImportDefaultName) {
-            hasAddNervJsImportDefaultName = true
-            node.specifiers.unshift(
-              t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
-            )
+            //@fix
+            //hasAddNervJsImportDefaultName = true
+            // node.specifiers.unshift(
+            //   t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
+            // )
           }
           const taroApisSpecifiers = []
           const deletedIdx = []
@@ -705,11 +716,12 @@ function processOthers (code, filePath, fileType) {
         }
         const node = astPath.node
         if (hasJSX && !hasAddNervJsImportDefaultName) {
-          node.body.unshift(
-            t.importDeclaration([
-              t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
-            ], t.stringLiteral(PACKAGES['nervjs']))
-          )
+          //@fix
+          // node.body.unshift(
+          //   t.importDeclaration([
+          //     t.importDefaultSpecifier(t.identifier(nervJsImportDefaultName))
+          //   ], t.stringLiteral(PACKAGES['nervjs']))
+          // )
         }
         if (taroImportDefaultName) {
           const importTaro = toAst(`import ${taroImportDefaultName} from '${PACKAGES['@tarojs/taro-h5']}'`)
