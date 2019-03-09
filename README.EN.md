@@ -3,14 +3,14 @@ English | [简体中文](./README.md) | [한국어](./README.KR.md)
 <p align="right">Omi <strong>v5.0.24</strong></p>
 <p align="right">Omio <strong>v1.3.8</strong></p>
 <p align="center"><img src="./assets/omi-logo2019.svg" alt="omi" width="300"/></p>
-<h2 align="center">Omi - Next generation front end framework using web components with omio(IE8+) and omip(小程序) fallback in tiny js.</h2>
+<h2 align="center">Omi - Next front end framework using web components with omio(IE8+) and omip(小程序) fallback in tiny js.</h2>
 
 ## Ecosystem of Omi
 
 | **Project**                         | **Description**                           |
 | ------------------------------- | ----------------------------------- |
 | [omi-docs](https://github.com/Tencent/omi/blob/master/docs/main-concepts.md)| Omi official documents |
-| [omip![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omip)| 直接使用 Omi 开发小程序！！！|
+| [omip![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omip)| 直接使用 Omi 开发小程序或 H5 SPA！！！|
 | [omio![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omio)| Omi for old browsers(IE8+ and mobile browsers).|
 | [omiu![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png)](https://tencent.github.io/omi/packages/omiu/examples/build/index.html)| Omi official UI|
 | [omix![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omix)| Tiny size mini programe framework.|
@@ -38,6 +38,7 @@ English | [简体中文](./README.md) | [한국어](./README.KR.md)
 
 ## Why Omi?
 
+- One framework. Mobile & desktop & mini program.
 - Tiny size
 - Supports TypeScript
 - Reactive data-binding
@@ -98,7 +99,6 @@ Omi uses Shadow DOM based style isolation and semantic structure.
   - [TodoApp](#todoapp)
   - [Store](#store)
   - [Mitt](#mitt)
-  - [Observe](#observe)
   - [Lifecycle](#lifecycle)
 - [Debugging](#debugging)
 - [React to Omi](#react-to-omi)
@@ -733,35 +733,6 @@ If you don't want to use store's data system, you can also use publish subscribe
 
 * [cross-component-communication](https://github.com/Tencent/omi/blob/master/packages/omi-30-seconds/README.md#cross-component-communication)
 
-## Observe
-
-### Omi Observe
-
-You can also use observe to create response views for element who no need `store`, such as:
-
-```js
-import { define, WeElement } from "omi"
-
-define("my-app", class extends WeElement {
-  static observe = true
-
-  install() {
-    this.data.name = "omi"
-  }
-
-  onClick = () => {
-    this.data.name = "Omi V4.0"
-  }
-
-  render(props, data) {
-    return (
-      <div onClick={this.onClick}>
-        <h1>Welcome to {data.name}</h1>
-      </div>
-    )
-  }
-})
-```
 <!-- 
 If you want to be compatible with IE11, please use the `omi-mobx` instead of omi's own observe.
 
