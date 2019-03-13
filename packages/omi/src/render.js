@@ -1,5 +1,6 @@
 import { diff } from './vdom/diff'
 import JSONProxy from './proxy'
+import { getUse } from './util'
 
 export function render(vnode, parent, store) {
   parent = typeof parent === 'string' ? document.querySelector(parent) : parent
@@ -48,6 +49,8 @@ function extendStoreUpate(store) {
           (instance.constructor.updatePath &&
             needUpdate(patch, instance.constructor.updatePath))
         ) {
+          //update this.use
+          instance.use = getUse(store.data, instance.constructor.use)
           instance.update()
         }
       })

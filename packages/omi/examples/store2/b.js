@@ -151,29 +151,6 @@
     return result;
   }
 
-  function getUse(data, paths) {
-    var obj = {};
-    paths.forEach(function (path, index) {
-      var isPath = typeof path === 'string';
-      if (isPath) {
-        obj[index] = getTargetByPath(data, path);
-      } else {
-        var val = getTargetByPath(data, path.path);
-        obj[index] = path.computed ? path.computed(val) : val;
-      }
-    });
-    return obj;
-  }
-
-  function getTargetByPath(origin, path) {
-    var arr = path.replace(/]/g, '').replace(/\[/g, '.').split('.');
-    var current = origin;
-    for (var i = 0, len = arr.length; i < len; i++) {
-      current = current[arr[i]];
-    }
-    return current;
-  }
-
   // render modes
 
   var ATTR_KEY = '__omiattr_';
@@ -1093,20 +1070,21 @@
 
       _this.props = Object.assign(nProps(_this.constructor.props), _this.constructor.defaultProps);
       _this.elementId = id++;
-      _this.data = {};
+      _this.data = _this.constructor.data || {};
       return _this;
     }
 
     WeElement.prototype.connectedCallback = function connectedCallback() {
-      var p = this.parentNode;
-      while (p && !this.store) {
-        this.store = p.store;
-        p = p.parentNode || p.host;
+      if (!this.constructor.pure) {
+        var p = this.parentNode;
+        while (p && !this.store) {
+          this.store = p.store;
+          p = p.parentNode || p.host;
+        }
+        if (this.store) {
+          this.store.instances.push(this);
+        }
       }
-      if (this.store) {
-        this.store.instances.push(this);
-      }
-      this.use = getUse(this.store.data, this.constructor.use);
       this.beforeInstall();
       !this._isInstalled && this.install();
       this.afterInstall();
@@ -1247,8 +1225,6 @@
       if (Object.keys(patch).length > 0) {
         this.instances.forEach(function (instance) {
           if (updateAll || _this.updateAll || instance.constructor.updatePath && needUpdate(patch, instance.constructor.updatePath)) {
-            //update this.use
-            instance.use = getUse(store.data, instance.constructor.use);
             instance.update();
           }
         });
@@ -1354,10 +1330,7 @@
   function define(name, ctor) {
     if (ctor.is === 'WeElement') {
       customElements.define(name, ctor);
-      if (ctor.use) {
-        ctor.updatePath = getPath(ctor.use);
-      } else if (ctor.data) {
-        //Compatible with older versions
+      if (ctor.data && !ctor.pure) {
         ctor.updatePath = getUpdatePath(ctor.data);
       }
     } else {
@@ -1428,23 +1401,6 @@
       }(WeElement);
 
       customElements.define(name, Element);
-    }
-  }
-
-  function getPath(obj) {
-
-    if (Object.prototype.toString.call(obj) === '[object Array]') {
-      var result = {};
-      obj.forEach(function (item) {
-        if (typeof item === 'string') {
-          result[item] = true;
-        } else {
-          result[item.path] = item;
-        }
-      });
-      return result;
-    } else {
-      return getUpdatePath(obj);
     }
   }
 
@@ -1668,12 +1624,36 @@
         return _this.store.sub();
       }, _this.add = function () {
         return _this.store.add();
-      }, _this.rename = function () {
-        return _this.store.rename('dnt');
-      }, _this.changeMotto = function () {
-        return _this.store.changeMotto('Hello omi!');
       }, _temp), _possibleConstructorReturn$3(_this, _ret);
     }
+    // using = {
+    //   a: null,
+    //   b: null,
+    //   c: { d: [] },
+    //   e: []
+    // }
+
+    // using = [
+    //   'a.b',
+    //   'c[1]'
+    // ]
+    // //this.using[0]
+    // //this.using[1]
+
+    // using = [
+    //   { path: 'a.b', alias: 'ab' },
+    //   'c[1]'
+    // ]
+    // //this.using.ab 或者 this.using[0]
+    // //this.using[1]
+
+    // using = [
+    //   { path: 'a.b', alias: 'ab', computed:(target) ={} },
+    //   'c[1]'
+    // ]
+    // //this.using.ab 或者 this.using[0]
+    // //this.using[1]
+
 
     _class.prototype.render = function render$$1() {
       return Omi.h(
@@ -1687,62 +1667,27 @@
         Omi.h(
           'span',
           null,
-          this.use[0]
+          this.store.data.count
         ),
         Omi.h(
           'button',
           { onClick: this.add },
           '+'
-        ),
-        Omi.h(
-          'span',
-          null,
-          this.use[1]
-        ),
-        Omi.h(
-          'button',
-          { onClick: this.rename },
-          'rename'
-        ),
-        Omi.h('br', null),
-        Omi.h(
-          'div',
-          null,
-          this.use[2]
-        ),
-        Omi.h(
-          'button',
-          { onClick: this.changeMotto },
-          'change motto'
         )
       );
     };
 
     return _class;
-  }(WeElement), _class$2.use = ['count', 'arr[0]', {
-    path: 'motto',
-    computed: function computed(target) {
-      return target.split('').reverse().join('');
-    }
-  }], _temp2));
+  }(WeElement), _class$2.data = {
+    count: null }, _temp2));
 
   render(Omi.h('my-counter', null), 'body', {
-    data: {
-      count: 0,
-      arr: ['dntzhang'],
-      motto: 'I love omi.'
-    },
+    data: { count: 0 },
     sub: function sub() {
       this.data.count--;
     },
     add: function add() {
       this.data.count++;
-    },
-    rename: function rename(newName) {
-      this.data.arr[0] = newName;
-    },
-    changeMotto: function changeMotto(motto) {
-      this.data.motto = motto;
     }
   });
 
