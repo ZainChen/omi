@@ -71,14 +71,22 @@ export function define(name, ctor) {
 }
 
 function getPath(obj) {
-
   if (Object.prototype.toString.call(obj) === '[object Array]') {
     const result = {}
     obj.forEach(item => {
       if (typeof item === 'string') {
         result[item] = true
       } else {
-        result[item.path] = item
+        const tempPath = item[Object.keys(item)[0]]
+        if (typeof tempPath === 'string') {
+          result[tempPath] = true
+        } else {
+          if(typeof tempPath[0] === 'string'){
+            result[tempPath[0]] = true
+          }else{
+            tempPath[0].forEach(path => result[path] = true)
+          }
+        }
       }
     })
     return result

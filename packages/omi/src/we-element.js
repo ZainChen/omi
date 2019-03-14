@@ -27,7 +27,7 @@ export default class WeElement extends HTMLElement {
     if (this.store) {
       this.store.instances.push(this)
     }
-    this.use = getUse(this.store.data, this.constructor.use)
+    this.constructor.use && (this.use = getUse(this.store.data, this.constructor.use))
     this.beforeInstall()
     !this._isInstalled && this.install()
     this.afterInstall()
@@ -100,7 +100,6 @@ export default class WeElement extends HTMLElement {
       this.shadowRoot
     )
     this._willUpdate = false
-    this.afterUpdate()
     this.updated()
   }
 
@@ -119,8 +118,6 @@ export default class WeElement extends HTMLElement {
   uninstall() {}
 
   beforeUpdate() {}
-
-  afterUpdate() {} //deprecated, please use updated
 
   updated() {}
 
