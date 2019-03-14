@@ -1,6 +1,10 @@
 ## Icon 
 
-SVG 制作的 Icon.
+简介：SVG 制作的 Icon.
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/icon?index=1&subIndex=1 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/icon?index=1&subIndex=1 "官网链接")
+
+---
 
 ## 使用
 
@@ -22,12 +26,14 @@ SVG 制作的 Icon.
 }]} />
 ```
 
+---
+
 ## API
 
 ### Props
 
 |  **Name**  | **Type**        | **Defaults**  | **Details**  |
-| ------------- |:-------------:|:-----:|:-------------:|
+| :------------- |:-------------|:-----|:-------------|
 | paths  | json array |--  | 传入 paths ， path 不用传入  |
 | path  | string|--  ||
 | scale | number   |   2 | |
@@ -39,3 +45,8 @@ SVG 制作的 Icon.
 * [→ 你可以直接使用 antd 的海量 svg path 作为 icon 的 path](https://ant.design/components/icon-cn/),你可以通过开发者工具查看对应 icon 的 path
 * [→ 也可以直接上 antd github 获取 svg path](https://github.com/ant-design/ant-design-icons/tree/master/packages/icons/svg)
 
+---
+
+## 样例
+
+![icon](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/icon1.png "icon1")
