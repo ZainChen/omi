@@ -21,13 +21,12 @@
 | type  | string| primary |Options: primary, default, warn, vcode|
 | size | string   |   normal |Options: normal, small|
 | disabled | bool| false ||
+| plain | |  ||
+
 
 ---
 
 ## 样例
 
-![button](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/button1.png "button")
+![button](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/button.png "button")
 
-![button](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/button2.png "button")
-
-![button](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/button3.png "button")

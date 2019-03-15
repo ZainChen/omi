@@ -1,6 +1,7 @@
 import { define, WeElement } from 'omi'
 import css from './_index.css'
 import logo from './omi-logo2019.svg'
+import "../../../public/repl/libs/omiu"
 
 define('my-head', class extends WeElement {
   toggleMenus = evt => {
@@ -38,6 +39,10 @@ define('my-head', class extends WeElement {
             )}
           </li>
         </ul>
+        <o-button type="vcode">zain</o-button>
+        <o-button type="warn" disabled="false" size="normal">zain</o-button>
+        <o-button type="primary">zain</o-button>
+        <o-button type="default" disabled="false" plain>zain</o-button>
       </div>
     )
   }
