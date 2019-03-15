@@ -1,7 +1,7 @@
-<p align="center"><img src="https://github.com/Tencent/omi/raw/master/assets/omi-logo2019.svg?sanitize=true" alt="omi" width="300"/></p>
+<!-- <p align="center"><img src="https://github.com/Tencent/omi/raw/master/assets/omi-logo2019.svg?sanitize=true" alt="omi" width="300"/></p>
 <h2 align="center">Omi - 下一代前端框架，去万物糟粕，合精华为一点点 JS</h2>
 <p align="center"><b>基于 Web Components 并支持 IE8+(omio) 和 小程序(omip)</b></p>
-
+ -->
 
 ## Omi 是什么？
 
@@ -69,12 +69,11 @@ Omi (读音 /ˈomɪ/，类似于 欧米) 是下一代前端框架，基于 Web C
 ```
 
 * [点击这里看执行结果](https://tencent.github.io/omi/assets/omi.html)
-* [Omi.js CDN](https://unpkg.com/omi)
 
-上面使用的是 hyperscript 的方式来书写 HTML 结构，你可以使用 JSX 来替代它。
+上面使用的是 hyperscript 的方式来书写 HTML 结构，用 ES5 书写 JS ，你可以使用 JSX 和 ES2015+ 来替代它们。
 
 
-```js {9-12}
+```jsx {8-11}
 import { render, WeElement, define } from 'omi'
 
 define('my-counter', class extends WeElement {

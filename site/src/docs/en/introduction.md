@@ -1,55 +1,117 @@
-## Omiu 
+## What's Omi ？
 
-Omiu is the official UI component library of Omi, based on Omio(IE8+) and compatible with Omi, using the design style of Wechat 7.0.
+Omi (pronounced /ˈomɪ/) is next front end framework base on Web Component. One framework. Mobile & desktop & mini program.
 
-## Colors
+## Add Omi in One Minute
 
-|  **Color**  | **Meaning**  |
-| ------------- |:-------------:|
-| #07C160  | Noble Vigorous Green | 
-| #171717  | Steady Elegant Black |   
-| #FEFEFE  | Transcendent White |   
-| #F95050  | Temperament Eye-catching Red |   
-| #ECECEC  | Lost Indifferent Gray |   
+This page demonstrates using Omi **with no build tooling**:
 
+```html
+<script src="https://unpkg.com/omi"></script>
+<script>
+  const { define, WeElement, h, render } = Omi
 
-## Use it immediately
+  define('my-counter', class extends WeElement {
+    install() {
+      this.data.count = 1
+      this.sub = this.sub.bind(this)
+      this.add = this.add.bind(this)
+    }
 
+    sub() {
+      this.data.count--
+      this.update()
+    }
+
+    add() {
+      this.data.count++
+      this.update()
+    }
+
+    render() {
+      return h(
+        'div',
+        null,
+        h(
+          'button',
+          { onClick: this.sub },
+          '-'
+        ),
+        h(
+          'span',
+          null,
+          this.data.count
+        ),
+        h(
+          'button',
+          { onClick: this.add },
+          '+'
+        )
+      )
+    }
+  })
+
+  render(h('my-counter'), 'body')
+</script>
 ```
-npm i omi-cli -g             
-omi init my-app   
-cd my-app           
-npm start                     
-npm run build    
+
+You can also use `like-button` tag directly in HTML：
+
+```jsx
+<body>
+  <my-counter></my-counter>
+</body>
 ```
 
-> `npx omi-cli init my-app` is also supported(npm v5.2.0+).
+- [Online Demo!](https://tencent.github.io/omi/assets/omi.html)
 
-## Use it in existing project
+The HTML structure is written in hyperscript and JS is written in ES5. You can use JSX and ES2015 + instead.
 
-```js
-npm i omiu
-```
 
-```js
-import { WeElement, define, render } from 'omi'
-//written by E6+,  you need to set JS under node modules to run normally after Babel or TS compilation
-import 'omiu/button'
-//or import all, published by ES5
-//import 'omiu'
+```jsx {8-11}
+import { render, WeElement, define } from 'omi'
 
-define('my-app', class extends WeElement {
-  onClick = () => {
-    console.log('Hello omiu!');
+define('my-counter', class extends WeElement {
+  data = {
+    count: 1
+  }
+
+  static css = `
+    span{
+        color: red;
+    }`
+
+  sub = () => {
+    this.data.count--
+    this.update()
+  }
+
+  add = () => {
+    this.data.count++
+    this.update()
   }
 
   render() {
     return (
-      <o-button onClick={this.onClick}>I am button.</o-button>
+      <div>
+        <button onClick={this.sub}>-</button>
+        <span>{this.data.count}</span>
+        <button onClick={this.add}>+</button>
+      </div>
     )
   }
 })
 
-render(<my-app />, 'body')
+render(<my-counter />, 'body')
 ```
 
+Looking at the highlighted part above, you can style the components. For example, the scope of the span above is only within the components, and it does not pollute other components. So far you have successfully started Omi! You learned:
+
+* Add ** structure ** for components, such as JSX writing structure above
+* Add ** behavior ** to the component, such as the `onClick'binding event above
+* Add ** style ** to the component, such as `static css'above`
+* Rendering components to body, of course, can also render components to any other component
+
+
+
+Congratulations!
