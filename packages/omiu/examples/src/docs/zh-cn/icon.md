@@ -43,10 +43,12 @@
 | type  | string| -- | 不推荐，建议用 path |
 
 * [→ 你可以直接使用 antd 的海量 svg path 作为 icon 的 path](https://ant.design/components/icon-cn/),你可以通过开发者工具查看对应 icon 的 path
+
 * [→ 也可以直接上 antd github 获取 svg path](https://github.com/ant-design/ant-design-icons/tree/master/packages/icons/svg)
 
 ---
 
 ## 样例
 
-![icon](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/icon1.png "icon1")
+![icon](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/icon.png "icon")
+

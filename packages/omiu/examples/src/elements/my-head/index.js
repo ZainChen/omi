@@ -39,10 +39,14 @@ define('my-head', class extends WeElement {
             )}
           </li>
         </ul>
-        <o-button type="vcode">zain</o-button>
-        <o-button type="warn" disabled="false" size="normal">zain</o-button>
-        <o-button type="primary">zain</o-button>
-        <o-button type="default" disabled="false" plain>zain</o-button>
+        <div class="zain-test">
+        <o-pagination
+          total={25}
+          currentPage={1}
+          pageSize={5}
+          onChange={this.onChange}
+        />
+        </div>
       </div>
     )
   }
