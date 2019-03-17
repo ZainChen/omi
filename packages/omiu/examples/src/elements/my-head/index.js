@@ -40,12 +40,10 @@ define('my-head', class extends WeElement {
           </li>
         </ul>
         <div class="zain-test">
-        <o-pagination
-          total={25}
-          currentPage={1}
-          pageSize={5}
-          onChange={this.onChange}
-        />
+          <o-pagination
+            onChange={this.onChange}
+            
+          />
         </div>
       </div>
     )
