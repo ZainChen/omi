@@ -1,19 +1,21 @@
 import { define, WeElement } from 'omi'
-import css from './_index.css'
 import logo from './omi-logo2019.svg'
 
 define('my-head', class extends WeElement {
+  static css = require('./_index.css')
+
   toggleMenus = evt => {
     this.store.toogleSidebar()
+    evt.stopPropagation()
   }
 
-  css() {
-    return css
+  hideSidebar = evt => {
+    this.store.hideSidebar()
   }
 
   render() {
     return (
-      <div class="head bord-btm">
+      <div class="head bord-btm" onClick={this.hideSidebar}>
         <div class="m_menu" onClick={this.toggleMenus}>
           <img src={require('./menu.png')} alt="" />
         </div>
@@ -31,7 +33,7 @@ define('my-head', class extends WeElement {
           </li>
           <li style='color:#aaa;'>|</li>
           <li class="github_li m_show">
-            {this.store.lan === 'en' ? (
+            {this.store.data.lan === 'en' ? (
               <a href="cn.html">中文</a>
             ) : (
               <a href="index.html">English</a>

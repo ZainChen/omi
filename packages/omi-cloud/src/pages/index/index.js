@@ -7,10 +7,11 @@ const app = getApp()
 
 define('page-index', class extends WeElement {
   data = {
-    motto: 'Hello Omip',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    todo: [],
+    inputText: ''
   }
 
   //事件处理函数
@@ -26,23 +27,68 @@ define('page-index', class extends WeElement {
     })
   }
 
-  onGetOpenid = () => {
-    // 调用云函数
-    wx.cloud.callFunction({
+  textInput = (evt) => {
+    console.log(evt.detail.value)
+    this.data.inputText = evt.detail.value
+  }
+
+  newTodo = () => {
+    wx.showLoading({
+      title: '加载中'
+    })
+    app.globalData.db.collection('todo').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+        text: this.data.inputText,
+        done: false,
+        createTime: app.globalData.db.serverDate()
+      },
+      success: (res) => {
+        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        console.log(res)
+        this.data.inputText = ''
+        this.query()
+      },
+      fail: err => {
+        wx.hideLoading()
+      }
+    })
+  }
+
+  installed = () => {
+    wx.showLoading({
+      title: '加载中'
+    })
+    this.query()
+  }
+
+  query(){
+     // 调用云函数
+     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
+        app.globalData.db.collection('todo').where({
+          _openid: app.globalData.openid
+          //done: false
+        }).get({
+          success: (res) => {
+            // res.data 是包含以上定义的两条记录的数组
+            res.data.sort((a, b) => {
+              return b.createTime - a.createTime
+            })
+            this.data.todo = res.data
+            this.update()
+            wx.hideLoading()
+          }
         })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
+        wx.hideLoading()
       }
     })
   }
@@ -82,29 +128,39 @@ define('page-index', class extends WeElement {
   }
 
   render() {
-    const { hasUserInfo, canIUse, userInfo, motto } = this.data
+    const { inputText, todo } = this.data
     return (
       <view class="container">
-        <view class="userinfo">
+        <view class="title">todos</view>
+        <view class="form">
+          <input class="new-todo" bindinput={this.textInput} value={inputText} placeholder="What needs to be done?" autofocus=""></input>
+          <button class="add-btn" bindtap={this.newTodo}>确定</button>
+        </view>
+
+        {/* <view class="userinfo">
           {(!hasUserInfo && canIUse) ? (
             <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
           ) : (
               <block>
                 <image bindtap={this.bindViewTap} class="userinfo-avatar" src={userInfo.avatarUrl} mode="cover"></image>
                 <text class="userinfo-nickname">{userInfo.nickName}</text>
-                <view >
-                  <button bindtap={this.onGetOpenid}>获取 openid</button>
-                </view>
               </block>
             )}
-        </view>
-        <view class="usermotto">
-          <text class="user-motto">{motto}</text>
+        </view> */}
+
+        <view class="todo-list">
+          {todo.map((item, index) => (
+            <view class="todo-item">
+              <view class="toggle"></view>
+              <text >{index + 1}. {item.text}</text>
+              <view class="delete"></view>
+            </view>
+          ))}
         </view>
 
-        <view >
-          <button bindtap={this.gotoFilms}>点击打开 Omip 复杂案例</button>
-        </view>
+
+
+
       </view>
     )
   }

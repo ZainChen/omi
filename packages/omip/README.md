@@ -7,7 +7,7 @@
 * Write Once, Run Anywhere
 * Learn Once, Write Anywhere
 
-![](../../assets/omip.png)
+![](https://github.com/Tencent/omi/raw/master/assets/omip-pv.png)
 
 ## Omip 特性
 
@@ -121,6 +121,48 @@ this.update({
 this.update(() => {
   console.log('更新完成')
 })
+```
+
+## 注意事项
+
+在 JSX 或者一些要使用图片资源的 API，需要使用 import 或者 require 先导入图片再使用，不能直接使用相对地址！
+
+如：
+
+```js
+ onShareAppMessage(){
+		return {
+      title: '分享标题',
+      path: '/pages/index/index?id=123',
+      imageUrl: require('./share.jpg'),
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
+  }
+```
+
+再比如:
+
+```jsx
+import src from './my-image.png'
+...
+...
+
+
+  render() {
+    return (
+      <view>
+        <image src={src}></image>
+      </view>
+    )
+  }
+...
+...
+
 ```
 
 ## 获取最新的 omip 版本

@@ -15,7 +15,7 @@ define('my-app', class extends WeElement {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: 'Omi Cloud 备忘录',
       navigationBarTextStyle: 'black'
     }
   }
@@ -62,6 +62,9 @@ define('my-app', class extends WeElement {
     } else {
       wx.cloud.init({
         traceUser: true,
+      })
+      this.globalData.db = wx.cloud.database({
+          env: 'test-06eb2e'
       })
     }
   }
