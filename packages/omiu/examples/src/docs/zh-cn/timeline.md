@@ -1,6 +1,10 @@
 ## Timeline 
 
-时间线.
+简介：时间线.
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/timeline?index=3&subIndex=1 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/timeline?index=3&subIndex=1 "官网链接")
+
+---
 
 ## 使用
 
@@ -13,10 +17,19 @@
 ]} />
 ```
 
+---
+
 ## API
 
 ### Props
 
 |  **Name**  | **Type**        | **Defaults**  | **Details**  |
 | ------------- |:-------------:|:-----:|:-------------|
-| data         | json array|    --       |  数组项的结构: <br> { <br>　msgA: '2018.11.11',<br>　msgB: '15:22:09', <br>　msgC: 'create project',<br>　msgD: '[sub msg]' <br>}     |　
+| data         | json array|    --       |  数组项的结构: <br> { <br>　msgA: '2018.11.11',<br>　msgB: '15:22:09', <br>　msgC: 'create project',<br>　msgD: '[sub msg]' <br>}     |
+
+---
+
+## 样例
+
+![timeline](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/timeline.png "timeline")
+

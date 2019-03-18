@@ -1,6 +1,10 @@
 ## Table  
 
-表格的形式展现和处理数据。
+简介：表格的形式展现和处理数据。
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/table?index=6&subIndex=0 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/table?index=6&subIndex=0 "官网链接")
+
+---
 
 ## 使用
 
@@ -67,6 +71,8 @@ define('my-app', class extends WeElement {
 })
 ```
 
+---
+
 ## API
 
 ### Props
@@ -75,3 +81,10 @@ define('my-app', class extends WeElement {
 | ------------- |:-------------:|:-----:|:-------------:|
 | dataSource  | json array |   --    |           |
 | columns  | json array |   --    |           |
+
+---
+
+## 样例
+
+![table](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/table.png "table")
+

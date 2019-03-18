@@ -1,6 +1,10 @@
 ## InputNumber 
 
-可以调整的数字输入框。
+简介：可以调整的数字输入框。
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/input-number?index=5&subIndex=1 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/input-number?index=5&subIndex=1 "官网链接")
+
+---
 
 ## 使用
 
@@ -15,6 +19,8 @@
 />
 ```
 
+---
+
 ## API
 
 ### Props
@@ -28,4 +34,9 @@
 | label | string| -- ||
 | onChange | function| -- ||
 
+---
+
+## 样例
+
+![input-number](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/input-number.png "input-number")
 

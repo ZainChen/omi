@@ -1,6 +1,10 @@
 ## Dropdown  
 
-下拉框。
+简介：下拉框。
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/dropdown?index=5&subIndex=4 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/dropdown?index=5&subIndex=4 "官网链接")
+
+---
 
 ## 使用
 
@@ -15,6 +19,8 @@
 </o-dropdown>
 ```
 
+---
+
 ## API
 
 ### Props
@@ -26,3 +32,10 @@
 | children  | json array|       |           |
 | onToggle  | function|       |           |
 | onSelect  | function|       |           |
+
+---
+
+## 样例
+
+![dropdown](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/dropdown.png "dropdown")
+

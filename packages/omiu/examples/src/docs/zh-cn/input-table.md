@@ -1,6 +1,10 @@
 ## InputTable  
 
-可编辑的表格。
+简介：可编辑的表格。
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/input-table?index=6&subIndex=1 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/input-table?index=6&subIndex=1 "官网链接")
+
+---
 
 ## 使用
 
@@ -56,6 +60,8 @@ define('my-app', class extends WeElement {
 })
 ```
 
+---
+
 ## API
 
 ### Props
@@ -64,3 +70,10 @@ define('my-app', class extends WeElement {
 | ------------- |:-------------:|:-----:|:-------------:|
 | dataSource  | json array |   --    |           |
 | columns  | json array |   --    |           |
+
+---
+
+## 样例
+
+![input-table](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/input-table.png "input-table")
+

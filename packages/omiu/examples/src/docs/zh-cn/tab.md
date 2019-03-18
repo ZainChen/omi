@@ -1,6 +1,10 @@
 ## Tab 
 
-选项卡。
+简介：选项卡。
+
+组件链接：[简体中文](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html#/tab?index=3&subIndex=3 "官网链接") | [English](https://tencent.github.io/omi/packages/omiu/examples/build/index.html#/tab?index=3&subIndex=3 "官网链接")
+
+---
 
 ## 使用
 
@@ -11,6 +15,8 @@
 </o-tab>
 ```
 
+---
+
 ## API
 
 ### Props
@@ -19,3 +25,10 @@
 | ------------- |:-------------:|:-----:|:-------------|
 | onChange         |   function  |    --   |             |　
 | children         |    json array  |    --   |             |　
+
+---
+
+## 样例
+
+![tab](https://raw.githubusercontent.com/ZainChen/omi-vscode/master/assets/omiu/tab.png "tab")
+
