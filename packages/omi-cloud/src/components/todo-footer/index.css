@@ -10,7 +10,7 @@ button:after {
 
 .todo-count {
   position: absolute;
-  left: 10rpx;
+  left: 20rpx;
   top: 20rpx;
 }
 
@@ -44,4 +44,8 @@ button:after {
 
 .selected{
   border: 1px solid rgba(175, 47, 47, 0.3);
+}
+
+.strong{
+  font-weight: 500; 
 }

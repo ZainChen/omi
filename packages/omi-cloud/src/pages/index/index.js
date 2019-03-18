@@ -8,9 +8,6 @@ const app = getApp()
 
 define('page-index', class extends WeElement {
   data = {
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     todo: [],
     inputText: '',
     left: 0,
@@ -47,7 +44,7 @@ define('page-index', class extends WeElement {
     }
   }
 
-  computeLeft(){
+  computeLeft() {
     this.data.left = 0
     for (let i = 0, len = this.data.todo.length; i < len; i++) {
       !(this.data.todo[i].done) && this.data.left++
@@ -71,7 +68,7 @@ define('page-index', class extends WeElement {
         this.data.todo.splice(i, 1)
         this.computeLeft()
         this.update()
-        this.removeDb(item._id, { done: item.done })
+        this.removeDb(item._id)
         break
       }
     }
@@ -159,38 +156,49 @@ define('page-index', class extends WeElement {
     })
   }
 
-  install() {
-    if (app.globalData.userInfo) {
-      this.data.userInfo = app.globalData.userInfo
-      this.data.hasUserInfo = true
-      this.update()
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.data.userInfo = res.userInfo
-        this.data.hasUserInfo = true
-        this.update()
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.data.userInfo = res.userInfo
-          this.data.hasUserInfo = true
-          this.update()
-        }
-      })
-    }
+  filter = (evt) => {
+    this.data.type = evt.detail
+    this.update()
   }
 
-  getUserInfo = (e) => {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.data.userInfo = e.detail.userInfo
-    this.data.hasUserInfo = true
-    this.update()
+  clear = (evt) => {
+    wx.showModal({
+      title: '提示',
+      content: '确定清空已完成任务？',
+      success: (res) => {
+        if (res.confirm) {
+          for (let i = 0, len = this.data.todo.length; i < len; i++) {
+            const item = this.data.todo[i]
+            if (item.done) {
+              this.data.todo.splice(i, 1)
+              len--
+              i--
+              this.removeDb(item._id)
+            }
+          }
+          this.data.left = 0
+          this.update()
+
+          wx.cloud.callFunction({
+            // 云函数名称
+            name: 'remove',
+            success(res) {
+              console.log(res.result.sum) // 3
+            },
+            fail: console.error
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  }
+
+  gotoAbout = () => {
+    wx.navigateTo({
+      url: '../about/index'
+    })
   }
 
   render() {
@@ -198,25 +206,15 @@ define('page-index', class extends WeElement {
     return (
       <view class="container">
         <view class="title">todos</view>
+        <image class="github" bindtap={this.gotoAbout} src={require('./github-logo.png')}></image>
         <view class="form">
           <input class="new-todo" bindinput={this.textInput} value={inputText} placeholder="What needs to be done?" autofocus=""></input>
           <button class="add-btn" bindtap={this.newTodo}>确定</button>
         </view>
 
-        {/* <view class="userinfo">
-          {(!hasUserInfo && canIUse) ? (
-            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-          ) : (
-              <block>
-                <image bindtap={this.bindViewTap} class="userinfo-avatar" src={userInfo.avatarUrl} mode="cover"></image>
-                <text class="userinfo-nickname">{userInfo.nickName}</text>
-              </block>
-            )}
-        </view> */}
-
         <view class="todo-list">
-          {todo.map((item, index) => (
-            <view class={`todo-item${item.done ? ' done' : ''}`}>
+          {todo.map(item => (
+            (type === 'all' || (type === 'active' && !item.done) || (type === 'done' && item.done)) && <view class={`todo-item${item.done ? ' done' : ''}`}>
               <view class="toggle" data-id={item._id} bindtap={this.toggle}></view>
               <text >{item.text}</text>
               <view class="delete" data-id={item._id} bindtap={this.delete}></view>
@@ -224,7 +222,7 @@ define('page-index', class extends WeElement {
           ))}
         </view>
 
-        <todo-footer left={left} type={type} ></todo-footer>
+        <todo-footer onFilter={this.filter} onClear={this.clear} left={left} type={type} ></todo-footer>
       </view>
     )
   }
