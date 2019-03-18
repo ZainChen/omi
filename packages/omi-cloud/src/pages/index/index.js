@@ -1,6 +1,7 @@
 
 import { WeElement, define } from 'omi'
 import './index.css'
+import '../../components/todo-footer'
 
 //获取应用实例
 const app = getApp()
@@ -11,7 +12,9 @@ define('page-index', class extends WeElement {
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     todo: [],
-    inputText: ''
+    inputText: '',
+    left: 0,
+    type: 'all'
   }
 
   //事件处理函数
@@ -28,11 +31,73 @@ define('page-index', class extends WeElement {
   }
 
   textInput = (evt) => {
-    console.log(evt.detail.value)
     this.data.inputText = evt.detail.value
   }
 
+  toggle = (evt) => {
+    for (let i = 0, len = this.data.todo.length; i < len; i++) {
+      const item = this.data.todo[i]
+      if (item._id === evt.target.dataset.id) {
+        item.done = !item.done
+        this.computeLeft()
+        this.update()
+        this.updateDb(item._id, { done: item.done })
+        break
+      }
+    }
+  }
+
+  computeLeft(){
+    this.data.left = 0
+    for (let i = 0, len = this.data.todo.length; i < len; i++) {
+      !(this.data.todo[i].done) && this.data.left++
+    }
+  }
+
+  updateDb(id, json) {
+    app.globalData.db.collection('todo').doc(id).update({
+      // data 传入需要局部更新的数据
+      data: json,
+      success(res) {
+        console.log(res)
+      }
+    })
+  }
+
+  delete = (evt) => {
+    for (let i = 0, len = this.data.todo.length; i < len; i++) {
+      const item = this.data.todo[i]
+      if (item._id === evt.target.dataset.id) {
+        this.data.todo.splice(i, 1)
+        this.computeLeft()
+        this.update()
+        this.removeDb(item._id, { done: item.done })
+        break
+      }
+    }
+  }
+
+  removeDb(id) {
+    app.globalData.db.collection('todo').doc(id).remove({
+      success(res) {
+        console.log(res)
+      }
+    })
+  }
+
   newTodo = () => {
+
+    if (this.data.inputText.trim() === '') {
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+
+      return
+    }
+
+
     wx.showLoading({
       title: '加载中'
     })
@@ -63,9 +128,9 @@ define('page-index', class extends WeElement {
     this.query()
   }
 
-  query(){
-     // 调用云函数
-     wx.cloud.callFunction({
+  query() {
+    // 调用云函数
+    wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
@@ -81,6 +146,7 @@ define('page-index', class extends WeElement {
               return b.createTime - a.createTime
             })
             this.data.todo = res.data
+            this.computeLeft()
             this.update()
             wx.hideLoading()
           }
@@ -128,7 +194,7 @@ define('page-index', class extends WeElement {
   }
 
   render() {
-    const { inputText, todo } = this.data
+    const { inputText, todo, left, type } = this.data
     return (
       <view class="container">
         <view class="title">todos</view>
@@ -150,17 +216,15 @@ define('page-index', class extends WeElement {
 
         <view class="todo-list">
           {todo.map((item, index) => (
-            <view class="todo-item">
-              <view class="toggle"></view>
-              <text >{index + 1}. {item.text}</text>
-              <view class="delete"></view>
+            <view class={`todo-item${item.done ? ' done' : ''}`}>
+              <view class="toggle" data-id={item._id} bindtap={this.toggle}></view>
+              <text >{item.text}</text>
+              <view class="delete" data-id={item._id} bindtap={this.delete}></view>
             </view>
           ))}
         </view>
 
-
-
-
+        <todo-footer left={left} type={type} ></todo-footer>
       </view>
     )
   }
