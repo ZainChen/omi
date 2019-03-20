@@ -1,5 +1,5 @@
 /**
- * omi v2.0.3  http://omijs.org
+ * omi v2.0.6  http://omijs.org
  * Omi === Preact + Scoped CSS + Store System + Native Support in 3kb javascript.
  * By dntzhang https://github.com/dntzhang
  * Github: https://github.com/Tencent/omi
@@ -63,8 +63,6 @@ var options = {
 
 var stack = [];
 
-var EMPTY_CHILDREN = [];
-
 /**
  * JSX/hyperscript reviver.
  * @see http://jasonformat.com/wtf-is-jsx
@@ -94,7 +92,7 @@ var EMPTY_CHILDREN = [];
  * @public
  */
 function h(nodeName, attributes) {
-  var children = EMPTY_CHILDREN,
+  var children = [],
       lastSimple,
       child,
       simple,
@@ -120,7 +118,7 @@ function h(nodeName, attributes) {
 
       if (simple && lastSimple) {
         children[children.length - 1] += child;
-      } else if (children === EMPTY_CHILDREN) {
+      } else if (children.length === 0) {
         children = [child];
       } else {
         children.push(child);
@@ -1617,7 +1615,7 @@ function unmountComponent(component) {
 
   if (component.uninstall) component.uninstall();
 
-  if (component.store) {
+  if (component.store && component.store.instances) {
     for (var i = 0, len = component.store.instances.length; i < len; i++) {
       if (component.store.instances[i] === component) {
         component.store.instances.splice(i, 1);
@@ -2030,8 +2028,21 @@ function styleObjToCss(s) {
   return str || undefined;
 }
 
+function renderToString(vnode, opts, store, isSvgMode) {
+  store = store || {};
+  opts = Object.assign({
+    scopedCSS: true
+  }, opts);
+  var css = {};
+  var html = _renderToString(vnode, opts, store, isSvgMode, css);
+  return {
+    css: Object.values(css),
+    html: html
+  };
+}
+
 /** The default export is an alias of `render()`. */
-function renderToString(vnode, opts, store, isSvgMode, css) {
+function _renderToString(vnode, opts, store, isSvgMode, css) {
   if (vnode == null || typeof vnode === 'boolean') {
     return '';
   }
@@ -2039,10 +2050,6 @@ function renderToString(vnode, opts, store, isSvgMode, css) {
   var nodeName = vnode.nodeName,
       attributes = vnode.attributes,
       isComponent = false;
-  store = store || {};
-  opts = Object.assign({
-    scopedCSS: true
-  }, opts);
 
   var pretty = true && opts.pretty,
       indentChar = pretty && typeof pretty === 'string' ? pretty : '\t';
@@ -2068,16 +2075,14 @@ function renderToString(vnode, opts, store, isSvgMode, css) {
     if (c.install) c.install();
     if (c.beforeRender) c.beforeRender();
     rendered = c.render(c.props, c.data, c.store);
-    var tempCss;
+
     if (opts.scopedCSS) {
 
       if (c.constructor.css || c.css) {
 
         var cssStr = c.constructor.css ? c.constructor.css : typeof c.css === 'function' ? c.css() : c.css;
         var cssAttr = '_s' + getCtorName(c.constructor);
-
-        tempCss = '<style type="text/css" id="' + cssAttr + '">' + scoper(cssStr, cssAttr) + '</style>';
-
+        css[cssAttr] = '<style type="text/css" id="' + cssAttr + '">' + scoper(cssStr, cssAttr) + '</style>';
         addScopedAttrStatic(rendered, '_s' + getCtorName(c.constructor));
       }
 
@@ -2085,7 +2090,7 @@ function renderToString(vnode, opts, store, isSvgMode, css) {
       scopeHost(rendered, c.scopedCSSAttr);
     }
 
-    return renderToString(rendered, opts, store, false, tempCss);
+    return _renderToString(rendered, opts, store, false, css);
   }
 
   // render JSX to HTML
@@ -2165,7 +2170,7 @@ function renderToString(vnode, opts, store, isSvgMode, css) {
       var child = vnode.children[i];
       if (child != null && child !== false) {
         var childSvgMode = nodeName === 'svg' ? true : nodeName === 'foreignObject' ? false : isSvgMode,
-            ret = renderToString(child, opts, store, childSvgMode);
+            ret = _renderToString(child, opts, store, childSvgMode, css);
         if (pretty && !hasLarge && isLargeString(ret)) hasLarge = true;
         if (ret) pieces.push(ret);
       }
@@ -2188,7 +2193,6 @@ function renderToString(vnode, opts, store, isSvgMode, css) {
     s += '</' + nodeName + '>';
   }
 
-  if (css) return css + s;
   return s;
 }
 
@@ -2240,7 +2244,7 @@ options.root.Omi = {
   renderToString: renderToString
 };
 options.root.omi = options.root.Omi;
-options.root.Omi.version = 'omio-2.0.3';
+options.root.Omi.version = 'omio-2.0.6';
 
 var omi = {
   h: h,

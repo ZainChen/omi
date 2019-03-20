@@ -10,7 +10,7 @@ Store 是 Omi 内置的中心化数据仓库，他解决和提供了下面问题
 ## 一段代码完全上手 Store
 
 ```jsx
-import { render, WeElement, define } from '../../src/omi'
+import { render, WeElement, define } from 'omi'
 
 define('my-counter', class extends WeElement {
   static use = [
@@ -157,7 +157,7 @@ render() {
 
 总结： 只要注入组件的 path 等于 use 里声明 或者在 use 里声明的其中 path 子节点下就会进行更新！
 
-### 快速赋值
+### 解构赋值
 
 ```jsx
 import { define, WeElement } from 'omi'
