@@ -17,8 +17,6 @@ export function define(name, ctor) {
     }
   })
 
-  config.data = ins._createData()
-
   config.created = function () {
     ins._weappRef = this
     config.$$refs.forEach(ref => {
@@ -30,16 +28,33 @@ export function define(name, ctor) {
         }
       }
     })
-    ins.install()
-    ins.beforeRender && ins.beforeRender()
+    ins.props = this.properties
+    
+   
   }
 
+  config.properties = ctor.properties
+
+  Object.keys(ctor.properties).forEach(key => {
+    ctor.properties[key].observer = function (newVal, oldVal, changedPath) {
+      ins.props[key] = newVal
+      ins.beforeRender && ins.beforeRender.call(ins)
+      ins._createData()
+      //自定过滤 undefined
+      this.setData(JSON.parse(JSON.stringify(ins.data)))
+    }
+  })
+
   config.attached = function () {
-    
+    ins.props = this.properties
+    ins.install.call(ins)
+    ins.beforeRender && ins.beforeRender.call(ins)
+    ins._createData()
+    this.setData(ins.data)
   }
 
   config.moved = function () {
-    
+
   }
 
   config.ready = function () {
@@ -50,11 +65,7 @@ export function define(name, ctor) {
     ins.uninstall()
   }
 
-  config.$usedState && config.$usedState.forEach(prop => {
-    if(!config.data || (config.data && !config.data.hasOwnProperty(prop))){
-      config.properties[prop] = null
-    }
-  })
-  
+  config.data = ins._createData()
+
   Component(config)
 }
