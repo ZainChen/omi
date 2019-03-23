@@ -39,15 +39,15 @@ export function classNames() {
 export function extractClass() {
   const [props, ...args] = Array.prototype.slice.call(arguments, 0)
   if (props) {
-    if (props.class) {
-      args.unshift(props.class)
-      delete props.class
+    if (props['class']) {
+      args.unshift(props['class'])
+      delete props['class']
     } else if (props.className) {
       args.unshift(props.className)
       delete props.className
     }
   }
   if (args.length > 0) {
-    return { class: classNames.apply(null, args) }
+    return { 'class': classNames.apply(null, args) }
   }
 }
