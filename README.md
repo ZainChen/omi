@@ -1,7 +1,7 @@
 [English](./README.EN.md) | 简体中文 | [한국어](./README.KR.md)
 
-<p align="right">Omi <strong>v6.0.2</strong></p>
-<p align="right">Omio <strong>v2.0.6</strong></p>
+<p align="right">Omi <strong>v6.0.3</strong></p>
+<p align="right">Omio <strong>v2.0.8</strong></p>
 <p align="center"><img src="./assets/omi-logo2019.svg" alt="omi" width="300"/></p>
 <h2 align="center">Omi - 下一代前端框架，去万物糟粕，合精华为一点点 JS</h2>
 <p align="center"><b>基于 Web Components 并支持 IE8+(omio) 和 小程序(omip)</b></p>
@@ -14,6 +14,7 @@
 | ------------------------------- | ----------------------------------- |
 | [omi-docs](https://tencent.github.io/omi/site/docs/cn.html)| Omi 官方文档 |
 | [omip![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omip)| 直接使用 Omi 开发小程序或 H5 SPA！！！|
+| [omi-cloud![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omi-cloud)| 小程序•云开发|
 | [omio![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omio)| 兼容老浏览器的 Omi 版本(支持到IE8+和移动端浏览器)。|
 | [omiu![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png)](https://tencent.github.io/omi/packages/omiu/examples/build/zh-cn.html)| Omi 官方 UI。|
 | [omix![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omix)| 极小却精巧的小程序框架。|
@@ -106,11 +107,9 @@
   - [Hello Element](#hello-element)
   - [TodoApp](#todoapp)
   - [Store](#store)
-  - [Mitt](#mitt)
   - [生命周期](#生命周期)
 - [调试工具](#调试工具)
 - [浏览器兼容](#浏览器兼容)
-- [React 组件转成 Omi](#react-组件转成-omi)
 - [相关链接](#相关链接)
 - [贡献者们](#贡献者们)
 - [维护者](#维护者)
@@ -334,11 +333,11 @@ const [count, setCount] = this.useData(0)
 ### 安装
 
 ```bash
-$ npm i omi-cli -g               # install cli
-$ omi init my-app     # init project, you can also exec 'omi init' in an empty folder
-$ cd my-app           # please ignore this command if you executed 'omi init' in an empty folder
-$ npm start                      # develop
-$ npm run build                  # release
+$ npm i omi-cli -g    # install cli
+$ omi init my-app     # 初始化项目，也可以在空目录里执行 'omi init'
+$ cd my-app           # 如果在空目录里执行 'omi init' 忽略这条命令
+$ npm start           # 开发
+$ npm run build       # 编译发布
 ```
 
 > `npx omi-cli init my-app` 也支持(要求 npm v5.2.0+)
@@ -746,12 +745,12 @@ render(<todo-app></todo-app>, 'body', store)
 * 组件和页面的 data 用来列出依赖的 store.data 的属性 (omi会记录path)，按需更新
 * 如果页面简单组件很少，可以 updateAll 设置成 true，并且组件和页面不需要声明 data，也就不会按需更新
 * globalData 里声明的 path，只要修改了对应 path 的值，就会刷新所有页面和组件，globalData 可以用来列出所有页面或大部分公共的属性 Path -->
-
+<!-- 
 ## Mitt
 
 如果不想使用 store 的 data 体系，也可以使用发布订阅模式。比如在 Omi 中使用 [mitt](https://github.com/developit/mitt) 跨组件通讯:
 
-* [cross-component-communication](https://github.com/Tencent/omi/blob/master/packages/omi-30-seconds/README.md#cross-component-communication)
+* [cross-component-communication](https://github.com/Tencent/omi/blob/master/packages/omi-30-seconds/README.md#cross-component-communication) -->
 
 <!-- 
 如果你想要兼容 IE11,请使用 `omi-mobx` 代替 omi 自带的 observe，往下看..
@@ -802,7 +801,7 @@ class MyApp extends WeElement {
 既然  Omi 使用了 Web Components 和 Shadow-DOM, 所以不需要像 React 一样安装其他元素面板，只需要使用 Chrome 自带的 **Elements' sidebar** 便可，它和 React 开发者工具一样强大。
 
 ![Omi DevTools](https://github.com/f/omi-devtools/raw/master/omi-devtools.gif)
-
+<!-- 
 ## React 组件转成 Omi
 
 举个例子，下面是吧 weui react 的 button 转成 weui omi 的 button 的例子 :
@@ -812,7 +811,7 @@ class MyApp extends WeElement {
 * [Diff Split](https://github.com/Tencent/omi/commit/9790fadaaf20cfede80bcf9213756a83fc8c3949?diff=split)
 * [Diff Unified](https://github.com/Tencent/omi/commit/9790fadaaf20cfede80bcf9213756a83fc8c3949?diff=unified)
 * [Before](https://github.com/Tencent/omi/blob/c8af654f1d5865dc557c0b4b8ad524f702a69be5/packages/omi-weui/src/omi-weui/elements/button/button.js)
-* [After](https://github.com/Tencent/omi/blob/9790fadaaf20cfede80bcf9213756a83fc8c3949/packages/omi-weui/src/omi-weui/elements/button/button.js)
+* [After](https://github.com/Tencent/omi/blob/9790fadaaf20cfede80bcf9213756a83fc8c3949/packages/omi-weui/src/omi-weui/elements/button/button.js) -->
 
 ## 浏览器兼容
 
