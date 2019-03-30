@@ -20,6 +20,8 @@
 * 超轻量的依赖包，顺从小程序标签和组件的设计
 * 支持[→ 小程序•云开发](https://github.com/Tencent/omi/tree/master/packages/omi-cloud)
 
+![](../../assets/omi-cloud.jpg)
+
 ## 快速开始
 
 ```js
@@ -164,6 +166,12 @@ import src from './my-image.png'
 ...
 ...
 
+```
+
+## 访问原生小程序里的 this
+
+```js
+this.$scope
 ```
 
 ## 获取最新的 omip 版本

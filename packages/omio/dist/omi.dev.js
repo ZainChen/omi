@@ -1,5 +1,5 @@
 /**
- * omi v2.0.8  http://omijs.org
+ * omi v2.1.0  http://omijs.org
  * Omi === Preact + Scoped CSS + Store System + Native Support in 3kb javascript.
  * By dntzhang https://github.com/dntzhang
  * Github: https://github.com/Tencent/omi
@@ -1699,6 +1699,22 @@
    */
   function render(vnode, parent, store, empty, merge) {
     parent = typeof parent === 'string' ? document.querySelector(parent) : parent;
+    obsStore(store);
+
+    if (empty) {
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      }
+    }
+
+    if (merge) {
+      merge = typeof merge === 'string' ? document.querySelector(merge) : merge;
+    }
+
+    return diff(merge, vnode, store, false, parent, false);
+  }
+
+  function obsStore(store) {
     if (store && store.data) {
       store.instances = [];
       extendStoreUpate(store);
@@ -1714,18 +1730,14 @@
         }, 0);
       });
     }
+  }
 
-    if (empty) {
-      while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-      }
-    }
+  function merge(vnode, merge, store) {
+    obsStore(store);
 
-    if (merge) {
-      merge = typeof merge === 'string' ? document.querySelector(merge) : merge;
-    }
+    merge = typeof merge === 'string' ? document.querySelector(merge) : merge;
 
-    return diff(merge, vnode, store, false, parent, false);
+    return diff(merge, vnode, store);
   }
 
   function extendStoreUpate(store) {
@@ -1887,6 +1899,12 @@
     return str.replace(/([1-9]\d*|0)(\.\d*)*rpx/g, function (a, b) {
       return window.innerWidth * Number(b) / 750 + 'px';
     });
+  }
+
+  function tag(name) {
+    return function (target) {
+      define(name, target);
+    };
   }
 
   function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2085,8 +2103,11 @@
 
           var cssStr = c.constructor.css ? c.constructor.css : typeof c.css === 'function' ? c.css() : c.css;
           var cssAttr = '_s' + getCtorName(c.constructor);
-          css[cssAttr] = '<style type="text/css" id="' + cssAttr + '">' + scoper(cssStr, cssAttr) + '</style>';
-          addScopedAttrStatic(rendered, '_s' + getCtorName(c.constructor));
+          css[cssAttr] = {
+            id: cssAttr,
+            css: scoper(cssStr, cssAttr)
+          };
+          addScopedAttrStatic(rendered, cssAttr);
         }
 
         c.scopedCSSAttr = vnode.css;
@@ -2244,10 +2265,12 @@
     classNames: classNames,
     extractClass: extractClass,
     getHost: getHost,
-    renderToString: renderToString
+    renderToString: renderToString,
+    tag: tag,
+    merge: merge
   };
   options.root.omi = options.root.Omi;
-  options.root.Omi.version = 'omio-2.0.8';
+  options.root.Omi.version = 'omio-2.1.0';
 
   var Omi = {
     h: h,
@@ -2266,7 +2289,9 @@
     classNames: classNames,
     extractClass: extractClass,
     getHost: getHost,
-    renderToString: renderToString
+    renderToString: renderToString,
+    tag: tag,
+    merge: merge
   };
 
   if (typeof module != 'undefined') module.exports = Omi;else self.Omi = Omi;
