@@ -19,7 +19,6 @@
   position: fixed;
   left: 50%;
   margin-left: -40%;
-  top: 20%;
   border-radius: 4px;
 }
 
@@ -38,8 +37,10 @@
 
 ._title {
   position: absolute;
-  left: 10px;
+  left: 20px;
   top: 20px;
+  font-weight: bold; 
+  font-size: 16px;
 }
 
 ._main {
