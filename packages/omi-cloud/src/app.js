@@ -9,6 +9,7 @@ define('my-app', class extends WeElement {
     pages: [
       'pages/list/index',
       'pages/detail/index',
+      'pages/mp/index',
       'pages/import/index',
       'pages/index/index',
       'pages/about/index',
@@ -19,6 +20,32 @@ define('my-app', class extends WeElement {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'Omi Cloud',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: "#575656",
+      selectedColor: "white",
+      borderStyle: "black",
+      backgroundColor: "black",
+      list: [
+        {
+          pagePath: "pages/list/index",
+          text: "首页",
+          iconPath: "images/home-unslt.png",
+          "selectedIconPath": "images/home.png"
+        },
+        {
+          pagePath: "pages/mp/index",
+          text: "小程序",
+          iconPath: "images/mp-unslt.png",
+          selectedIconPath: "images/mp.png"
+        },
+        {
+          pagePath: "pages/about/index",
+          text: "omijs.org",
+          iconPath: "images/omi-unslt.png",
+          selectedIconPath: "images/omi.png"
+        }
+      ]
     }
   }
 
@@ -66,7 +93,7 @@ define('my-app', class extends WeElement {
         traceUser: true,
       })
       this.globalData.db = wx.cloud.database({
-          env: 'test-06eb2e'
+        env: 'test-06eb2e'
       })
     }
   }

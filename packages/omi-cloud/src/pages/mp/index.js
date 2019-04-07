@@ -9,7 +9,7 @@ define('page-about', class extends WeElement {
   config = {
     navigationBarBackgroundColor: '#24292e',
     navigationBarTextStyle: 'white',
-    navigationBarTitleText: 'Omi',
+    navigationBarTitleText: '小程序',
     backgroundColor: '#ccc',
     backgroundTextStyle: 'light'
   }

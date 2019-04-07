@@ -1,39 +1,28 @@
 import Shape from './shape'
 
 class Polygon extends Shape {
-  constructor (vertex, options) {
+  constructor (points, option) {
     super()
-
-    this.vertex = vertex || []
-    this.options = options || {}
-    this.strokeColor = this.options.strokeColor
-    this.fillColor = this.options.fillColor
+    this.option = option || {}
+    this.points = points
   }
 
   draw () {
-    this.clear().beginPath()
-    this.strokeStyle(this.strokeColor)
-    this.moveTo(this.vertex[0][0], this.vertex[0][1])
+  
+    this.moveTo(this.points[0], this.points[1])
 
-    for (let i = 1, len = this.vertex.length; i < len; i++) {
-      this.lineTo(this.vertex[i][0], this.vertex[i][1])
+    for (let i = 2, len = this.points.length; i < len; i += 2) {
+      this.lineTo(this.points[i], this.points[i + 1])
     }
     this.closePath()
     // 路径闭合
-    //  if (this.options.strokeStyle) {
+    //  if (this.option.strokeStyle) {
     //    this.strokeStyle = strokeStyle;
-    // this.lineWidth(this.options.width);
+    // this.lineWidth(this.option.width);
     // this.lineJoin('round');
     // this.stroke();
     //  }
-    if (this.strokeColor) {
-      this.strokeStyle(this.strokeColor)
-      this.stroke()
-    }
-    if (this.fillColor) {
-      this.fillStyle(this.fillColor)
-      this.fill()
-    }
+
   }
 }
 
