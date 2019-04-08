@@ -1,6 +1,6 @@
 ## mps
 
-> 原生小程序插上 JSX 和 Less 的翅膀
+> 原生小程序插上 JSX、Less 和 Cloud 的翅膀
 
 mps 是什么？为什么需要 mps？先列举几个现状:
 
@@ -47,6 +47,20 @@ $ omi init-mps-ts my-app
 其他命令一样。
 
 > `npx omi-cli init-mps-ts my-app` 也支持(npm v5.2.0+)
+
+## mps-cloud
+
+mps 也支持云开发：
+
+```bash
+$ npm i omi-cli -g              
+$ omi init-mps-cloud my-app    
+$ cd my-app/miniprogram  
+$ npm install    
+$ npm start               
+```
+
+使用云开发没有 dist 目录，直接把当前的 my-app 设置为微信开发者工具的目录。
 
 ## JSX vs WXML
 
