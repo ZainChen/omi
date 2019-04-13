@@ -1,11 +1,20 @@
 
-import { WeElement, define } from 'omi'
+import { WeElement } from 'omi'
 import './index.css'
+import { Page } from '../../decorator'
 
 //获取应用实例
 const app = getApp()
 
-define('page-index', class extends WeElement {
+@Page
+class PageIndex extends WeElement {
+  config = {
+    // 定义需要引入的第三方组件
+    usingComponents: {
+      'pure-ele-test': '../../components/pure-ele-test/index' // 书写第三方组件的相对路径
+    }
+  }
+
   data = {
     motto: 'Hello Omip',
     userInfo: {},
@@ -81,7 +90,9 @@ define('page-index', class extends WeElement {
         <view >
           <button bindtap={this.gotoFilms}>点击打开 Omip 复杂案例</button>
         </view>
+
+        <pure-ele-test></pure-ele-test>
       </view>
     )
   }
-})
+}

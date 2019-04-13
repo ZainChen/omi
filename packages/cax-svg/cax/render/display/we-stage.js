@@ -13,7 +13,7 @@ class WeStage extends Group {
       height
     })
     component.stage = this
-    const canvasId = component.getCaxCanvasId()
+    const canvasId = component.data.id
 
     const ctx = wx.createCanvasContext(canvasId, component)
     const hitCtx = wx.createCanvasContext(canvasId + 'Hit', component)
@@ -24,6 +24,7 @@ class WeStage extends Group {
     this.hitAABB = true
     this.width = width
     this.height = height
+    this.___instanceof = 'Stage'
   }
 
   touchStartHandler (evt) {
@@ -116,9 +117,9 @@ class WeStage extends Group {
   }
 
   _getObjectUnderPoint (evt, cb) {
-    const list = this.renderer.getHitRenderList(this)
+    //const list = this.renderer.getHitRenderList(this)
     if (this.hitAABB) {
-      return this._hitRender.hitAABB(list, evt, cb)
+      return this._hitRender.hitAABB(this, evt, cb)
     } else {
       this._hitRender.clear()
       this._hitRender.hit(list, evt, cb, list.length - 1)
