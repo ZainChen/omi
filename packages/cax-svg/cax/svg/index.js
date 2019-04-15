@@ -15,13 +15,20 @@ class SVG extends Group {
     super()
     this.vdom = vdom
 
-    const root = new Group()
-    const options = Object.assign({
-      x: 0,
-      y: 0
-    }, vdom.props)
+    if (Object.prototype.toString.call(this.vdom) === '[object Array]') {
+      this.vdom = this.vdom.filter(item => typeof item !== 'string')[0]
+    }
 
-    this.vdom.children.forEach(vdomChild => {
+    const root = new Group()
+    const options = Object.assign(
+      {
+        x: 0,
+        y: 0
+      },
+      vdom.props
+    )
+
+    this.vdom.children && this.vdom.children.forEach(vdomChild => {
       this.generate(root, vdomChild)
     })
 
@@ -29,7 +36,6 @@ class SVG extends Group {
     root.y = Number(options.y)
 
     this.add(root)
-
   }
 
   generate(parent, vdomChild) {
@@ -61,7 +67,11 @@ class SVG extends Group {
       case 'path':
         const obj = path(vdomChild.props)
         parent.add(obj)
-        if(vdomChild.children && vdomChild.children[0] && vdomChild.children[0].type === 'animate'){
+        if (
+        vdomChild.children &&
+          vdomChild.children[0] &&
+          vdomChild.children[0].type === 'animate'
+      ) {
           animate(obj, vdomChild.children[0].props)
         }
         break

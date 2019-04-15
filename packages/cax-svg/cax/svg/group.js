@@ -3,21 +3,22 @@ import { transform } from './parse-transform'
 import { parseEvent } from './parse-event'
 
 export function group(props) {
-
-  const options = Object.assign({
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0
-  }, props)
+  const options = Object.assign(
+    {
+      width: 0,
+      height: 0,
+      x: 0,
+      y: 0
+    },
+    props
+  )
 
   const obj = new Group()
-  obj.x = Number(options.x)
-  obj.y = Number(options.y)
+  // obj.x = Number(options.x)
+  // obj.y = Number(options.y)
 
-  transform(props, obj)
+  transform(props, obj, Number(options.x), Number(options.y))
   parseEvent(props, obj)
-  
-  return obj
 
+  return obj
 }
