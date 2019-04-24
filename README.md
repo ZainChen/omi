@@ -1,9 +1,9 @@
 English | [简体中文](./README.CN.md) | [한국어](./README.KR.md)
 
-<p align="right">Omi <strong>v6.0.3</strong></p>
-<p align="right">Omio <strong>v2.1.0</strong></p>
-<p align="center"><img src="./assets/omi-logo2019.svg" alt="omi" width="300"/></p>
-<h2 align="center">Omi - Next front end framework using web components with omio(IE8+) and omip(小程序) fallback in tiny js.</h2>
+<p align="right">Omi <strong>v6.1.1</strong></p>
+<p align="right">Omio <strong>v2.2.1</strong></p>
+<p align="center"><img src="https://tencent.github.io/omi/assets/omi-logo2019.svg" alt="omi" width="300"/></p>
+<h2 align="center">Omi - Next front end framework using web components with omio(IE8+), omip(小程序) and reomio(react) fallback in tiny js.</h2>
 
 ## Ecosystem of Omi
 
@@ -12,7 +12,7 @@ English | [简体中文](./README.CN.md) | [한국어](./README.KR.md)
 | **Project**                         | **Description**                           |
 | ------------------------------- | ----------------------------------- |
 | [omi-docs](https://tencent.github.io/omi/site/docs/index.html)| Omi official documents |
-| [omio![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omio)| Omi for old browsers(IE8+ and mobile browsers).|
+| [omio![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omio)| Omi for old browsers with same api(IE8+ and mobile browsers).|
 | [omis![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omis)| Server-side rendering(support omio only). |
 | [omi-router](https://github.com/Tencent/omi/tree/master/packages/omi-router) |Omi official router in 1KB js. [→ DEMO](https://tencent.github.io/omi/packages/omi-router/examples/spa/build/) |
 | [omi-cli](https://github.com/Tencent/omi/tree/master/packages/omi-cli)| Project scaffolding |
@@ -76,9 +76,42 @@ Compare TodoApp by Omi and React, Omi and React rendering DOM structure:
 
 | **Omi**                         | **React**                           |
 | ------------------------------- | ----------------------------------- |
-| ![Omi](./assets/omi-render.jpg) | ![React](./assets/react-render.jpg) |
+| ![Omi](https://tencent.github.io/omi/assets/omi-render.jpg) | ![React](https://tencent.github.io/omi/assets/react-render.jpg) |
 
 Omi uses Shadow DOM based style isolation and semantic structure.
+
+### TypeScript Auto Complete
+
+```jsx
+import { h, WeElement, tag, classNames } from 'omi';
+import * as styles from './_index.less';
+
+interface ButtonProps {
+  href?: string,
+  disabled?: boolean,
+  type?: 'default' | 'primary' | 'danger',
+  htmltype?: 'submit' | 'button' | 'reset',
+  onClick?: (e: any) => void
+}
+
+const TAG = 'o-button'
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [TAG]: Omi.CustomElementBaseAttributes & ButtonProps
+    }
+  }
+}
+
+@tag(TAG)
+export default class oButton extends WeElement<ButtonProps, {}> {
+...
+...
+...
+```
+
+<img src="./assets/ts.png" alt="omi" width="427"/>
 
 ## Useful Resources
 
@@ -125,10 +158,59 @@ Omi uses Shadow DOM based style isolation and semantic structure.
 
 ## Add Omi in One Minute
 
-This page demonstrates using Omi **with no build tooling**.
+This page demonstrates using Omi **with no build tooling**,  directly run in the browser.
 
-- [Online Demo!](https://tencent.github.io/omi/assets/)
-- [Omi.js CDN](https://unpkg.com/omi)
+- [→ Online Demo!](https://tencent.github.io/omi/packages/omi/examples/no-transpiler/)
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Omi demo without transpiler</title>
+</head>
+
+<body>
+  <script src="https://tencent.github.io/omi/packages/omi/dist/omi.js"></script>
+  <script>
+    const { define, WeElement, html, render } = Omi
+
+    define('my-counter', class extends WeElement {
+
+      install() {
+        this.data.count = 1
+        this.sub = this.sub.bind(this)
+        this.add = this.add.bind(this)
+      }
+
+      sub() {
+        this.data.count--
+        this.update()
+      }
+
+      add() {
+        this.data.count++
+        this.update()
+      }
+
+      render() {
+        return html`
+          <div>
+            <button onClick=${this.sub}>-</button>
+            <span>${this.data.count}</span>
+            <button onClick=${this.add}>+</button>
+          </div>
+          `}
+    })
+
+    render(html`<my-counter />`, 'body')
+  </script>
+</body>
+
+</html>
+```
+
+### Using store system
 
 ```html
 <!DOCTYPE html>
@@ -136,39 +218,49 @@ This page demonstrates using Omi **with no build tooling**.
 
 <head>
   <meta charset="UTF-8" />
-  <title>Add Omi in One Minute</title>
+  <title>Omi demo without transpiler</title>
 </head>
 
 <body>
-  <script src="https://unpkg.com/omi"></script>
+  <script src="https://tencent.github.io/omi/packages/omi/dist/omi.js"></script>
   <script>
-    const { WeElement, h, render, define } = Omi
+    const { define, WeElement, html, render } = Omi
 
-    define('like-button', class extends WeElement {
-        install() {
-          this.data = { liked: false }
-        }
+    define('my-counter', class extends WeElement {
+      initUse() {
+        return ['count']
+      }
 
-        render() {
-          if (this.data.liked) {
-            return 'You liked this.'
-          }
+      install() {
+        this.sub = this.sub.bind(this)
+        this.add = this.add.bind(this)
+      }
 
-          return h(
-            'button',
-            {
-              onClick: () => {
-                this.data.liked = true
-                this.update()
-              }
-            },
-            'Like'
-          )
-        }
-      })
+      sub() {
+        this.store.data.count--
+      }
 
-    render(h('like-button'), 'body')
+      add() {
+        this.store.data.count++
+      }
+
+      render() {
+        return html`
+          <div>
+            <button onClick=${this.sub}>-</button>
+            <span>${this.store.data.count}</span>
+            <button onClick=${this.add}>+</button>
+          </div>
+          `}
+    })
+
+    render(html`<my-counter />`, 'body', {
+      data: {
+        count: 1
+      }
+    })
   </script>
+
 </body>
 
 </html>
@@ -225,45 +317,6 @@ You will find that the `MyCounter` class name defined above is never used. So yo
 import { render, WeElement, define } from 'omi'
 
 define('my-counter', class extends WeElement {
-    static observe = true
-    
-    data = {
-      count: 1
-    }
-
-    static css = `
-      span{
-          color: red;
-      }`
-
-    sub = () => {
-      this.data.count--
-    }
-
-    add = () => {
-      this.data.count++
-    }
-
-    render() {
-      return (
-        <div>
-          <button onClick={this.sub}>-</button>
-          <span>{this.data.count}</span>
-          <button onClick={this.add}>+</button>
-        </div>
-      )
-    }
-  })
-
-render(<my-counter />, 'body')
-```
-
-You can also update the view manually then you can choose the best time to update.
-
-```js
-import { render, WeElement, define } from 'omi'
-
-define('my-counter', class extends WeElement {
   data = {
     count: 1
   }
@@ -296,7 +349,6 @@ define('my-counter', class extends WeElement {
 
 render(<my-counter />, 'body')
 ```
-
 
 [→ counter demo](https://tencent.github.io/omi/packages/omi/examples/counter/)
 
@@ -338,11 +390,11 @@ const [count, setCount] = this.useData(0)
 ### Install
 
 ```bash
-$ npm i omi-cli -g               # install cli
-$ omi init my-app     # init project, you can also exec 'omi init' in an empty folder
-$ cd my-app           # please ignore this command if you executed 'omi init' in an empty folder
-$ npm start                      # develop
-$ npm run build                  # release
+$ npm i omi-cli -g    # install cli
+$ omi init my-app     # init project
+$ cd my-app           
+$ npm start           # develop
+$ npm run build       # release
 ```
 
 > `npx omi-cli init my-app` is also supported(npm v5.2.0+).

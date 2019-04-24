@@ -1,6 +1,6 @@
 {
   "name": "omi",
-  "version": "6.0.4",
+  "version": "6.1.1",
   "description": "Next generation web framework.",
   "main": "dist/omi.js",
   "jsnext:main": "dist/omi.esm.js",
@@ -30,6 +30,7 @@
     "template": "rollup -c config/rollup.example.js --watch",
     "children": "rollup -c config/rollup.example.js --watch",
     "timer": "rollup -c config/rollup.example.js --watch",
+    "react-style": "rollup -c config/rollup.example.js --watch",
     "store-old": "rollup -c config/rollup.example.js --watch",
     "store-counter": "rollup -c config/rollup.example.js --watch",
     "store-todo": "rollup -c config/rollup.example.js --watch",
@@ -115,6 +116,7 @@
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.67.1",
     "gzip-size-cli": "^2.0.0",
+    "htm": "^2.1.1",
     "istanbul-instrumenter-loader": "^3.0.0",
     "jest": "^23.6.0",
     "jscodeshift": "^0.5.0",

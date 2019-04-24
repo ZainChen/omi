@@ -1,5 +1,5 @@
 /**
- * omi v2.1.1  http://omijs.org
+ * omi v2.2.1  http://omijs.org
  * Omi === Preact + Scoped CSS + Store System + Native Support in 3kb javascript.
  * By dntzhang https://github.com/dntzhang
  * Github: https://github.com/Tencent/omi
@@ -1083,6 +1083,87 @@
     }
   }
 
+  function define(name, ctor) {
+    options.mapping[name] = ctor;
+    if (ctor.use) {
+      ctor.updatePath = getPath(ctor.use);
+    } else if (ctor.data) {
+      //Compatible with older versions
+      ctor.updatePath = getUpdatePath(ctor.data);
+    }
+  }
+
+  function getPath(obj) {
+    if (Object.prototype.toString.call(obj) === '[object Array]') {
+      var result = {};
+      obj.forEach(function (item) {
+        if (typeof item === 'string') {
+          result[item] = true;
+        } else {
+          var tempPath = item[Object.keys(item)[0]];
+          if (typeof tempPath === 'string') {
+            result[tempPath] = true;
+          } else {
+            if (typeof tempPath[0] === 'string') {
+              result[tempPath[0]] = true;
+            } else {
+              tempPath[0].forEach(function (path) {
+                return result[path] = true;
+              });
+            }
+          }
+        }
+      });
+      return result;
+    } else {
+      return getUpdatePath(obj);
+    }
+  }
+
+  function getUpdatePath(data) {
+    var result = {};
+    dataToPath(data, result);
+    return result;
+  }
+
+  function dataToPath(data, result) {
+    Object.keys(data).forEach(function (key) {
+      result[key] = true;
+      var type = Object.prototype.toString.call(data[key]);
+      if (type === '[object Object]') {
+        _objToPath(data[key], key, result);
+      } else if (type === '[object Array]') {
+        _arrayToPath(data[key], key, result);
+      }
+    });
+  }
+
+  function _objToPath(data, path, result) {
+    Object.keys(data).forEach(function (key) {
+      result[path + '.' + key] = true;
+      delete result[path];
+      var type = Object.prototype.toString.call(data[key]);
+      if (type === '[object Object]') {
+        _objToPath(data[key], path + '.' + key, result);
+      } else if (type === '[object Array]') {
+        _arrayToPath(data[key], path + '.' + key, result);
+      }
+    });
+  }
+
+  function _arrayToPath(data, path, result) {
+    data.forEach(function (item, index) {
+      result[path + '[' + index + ']'] = true;
+      delete result[path];
+      var type = Object.prototype.toString.call(item);
+      if (type === '[object Object]') {
+        _objToPath(item, path + '[' + index + ']', result);
+      } else if (type === '[object Array]') {
+        _arrayToPath(item, path + '[' + index + ']', result);
+      }
+    });
+  }
+
   /** Retains a pool of Components for re-use, keyed on component name.
    *	Note: since component names are not unique or even necessarily available, these are primarily a form of sharding.
    *	@private
@@ -1109,9 +1190,16 @@
     }
     vnode && (inst.scopedCssAttr = vnode.css);
 
-    if (inst.constructor.use && inst.store && inst.store.data) {
-      inst.store.instances.push(inst);
-      inst.use = getUse(inst.store.data, inst.constructor.use);
+    if (inst.store && inst.store.data) {
+      if (inst.constructor.use) {
+        inst.use = getUse(inst.store.data, inst.constructor.use);
+        inst.store.instances.push(inst);
+      } else if (inst.initUse) {
+        var use = inst.initUse();
+        inst._updatePath = getPath(use);
+        inst.use = getUse(inst.store.data, use);
+        inst.store.instances.push(inst);
+      }
     }
 
     if (list) {
@@ -1743,9 +1831,14 @@
       var updateAll = matchGlobalData(this.globalData, patch);
       if (Object.keys(patch).length > 0) {
         this.instances.forEach(function (instance) {
-          if (updateAll || _this.updateAll || instance.constructor.updatePath && needUpdate(patch, instance.constructor.updatePath)) {
+          if (updateAll || _this.updateAll || instance.constructor.updatePath && needUpdate(patch, instance.constructor.updatePath) || instance._updatePath && needUpdate(patch, instance._updatePath)) {
             //update this.use
-            instance.use = getUse(store.data, instance.constructor.use);
+            if (instance.constructor.use) {
+              instance.use = getUse(store.data, instance.constructor.use);
+            } else if (instance.initUse) {
+              instance.use = getUse(store.data, instance.initUse());
+            }
+
             instance.update();
           }
         });
@@ -1808,87 +1901,6 @@
       }
     });
     return mpPath;
-  }
-
-  function define(name, ctor) {
-    options.mapping[name] = ctor;
-    if (ctor.use) {
-      ctor.updatePath = getPath(ctor.use);
-    } else if (ctor.data) {
-      //Compatible with older versions
-      ctor.updatePath = getUpdatePath(ctor.data);
-    }
-  }
-
-  function getPath(obj) {
-    if (Object.prototype.toString.call(obj) === '[object Array]') {
-      var result = {};
-      obj.forEach(function (item) {
-        if (typeof item === 'string') {
-          result[item] = true;
-        } else {
-          var tempPath = item[Object.keys(item)[0]];
-          if (typeof tempPath === 'string') {
-            result[tempPath] = true;
-          } else {
-            if (typeof tempPath[0] === 'string') {
-              result[tempPath[0]] = true;
-            } else {
-              tempPath[0].forEach(function (path) {
-                return result[path] = true;
-              });
-            }
-          }
-        }
-      });
-      return result;
-    } else {
-      return getUpdatePath(obj);
-    }
-  }
-
-  function getUpdatePath(data) {
-    var result = {};
-    dataToPath(data, result);
-    return result;
-  }
-
-  function dataToPath(data, result) {
-    Object.keys(data).forEach(function (key) {
-      result[key] = true;
-      var type = Object.prototype.toString.call(data[key]);
-      if (type === '[object Object]') {
-        _objToPath(data[key], key, result);
-      } else if (type === '[object Array]') {
-        _arrayToPath(data[key], key, result);
-      }
-    });
-  }
-
-  function _objToPath(data, path, result) {
-    Object.keys(data).forEach(function (key) {
-      result[path + '.' + key] = true;
-      delete result[path];
-      var type = Object.prototype.toString.call(data[key]);
-      if (type === '[object Object]') {
-        _objToPath(data[key], path + '.' + key, result);
-      } else if (type === '[object Array]') {
-        _arrayToPath(data[key], path + '.' + key, result);
-      }
-    });
-  }
-
-  function _arrayToPath(data, path, result) {
-    data.forEach(function (item, index) {
-      result[path + '[' + index + ']'] = true;
-      delete result[path];
-      var type = Object.prototype.toString.call(item);
-      if (type === '[object Object]') {
-        _objToPath(item, path + '[' + index + ']', result);
-      } else if (type === '[object Array]') {
-        _arrayToPath(item, path + '[' + index + ']', result);
-      }
-    });
   }
 
   function rpx(str) {
@@ -2238,6 +2250,10 @@
     return props;
   }
 
+  var n=function(t,r,u,e){for(var p=1;p<r.length;p++){var s=r[p++],a="number"==typeof s?u[s]:s;1===r[p]?e[0]=a:2===r[p]?(e[1]=e[1]||{})[r[++p]]=a:3===r[p]?e[1]=Object.assign(e[1]||{},a):e.push(r[p]?t.apply(null,n(t,a,u,["",null])):a);}return e},t=function(n){for(var t,r,u=1,e="",p="",s=[0],a=function(n){1===u&&(n||(e=e.replace(/^\s*\n\s*|\s*\n\s*$/g,"")))?s.push(n||e,0):3===u&&(n||e)?(s.push(n||e,1), u=2):2===u&&"..."===e&&n?s.push(n,3):2===u&&e&&!n?s.push(!0,2,e):4===u&&r&&(s.push(n||e,2,r), r=""), e="";},f=0;f<n.length;f++){f&&(1===u&&a(), a(f));for(var h=0;h<n[f].length;h++)t=n[f][h], 1===u?"<"===t?(a(), s=[s], u=3):e+=t:p?t===p?p="":e+=t:'"'===t||"'"===t?p=t:">"===t?(a(), u=1):u&&("="===t?(u=4, r=e, e=""):"/"===t?(a(), 3===u&&(s=s[0]), u=s, (s=s[0]).push(u,4), u=0):" "===t||"\t"===t||"\n"===t||"\r"===t?(a(), u=2):e+=t);}return a(), s},r="function"==typeof Map,u=r?new Map:{},e=r?function(n){var r=u.get(n);return r||u.set(n,r=t(n)), r}:function(n){for(var r="",e=0;e<n.length;e++)r+=n[e].length+"-"+n[e];return u[r]||(u[r]=t(n))};function htm(t){var r=n(this,e(t),arguments,[]);return r.length>1?r:r[0]}
+
+  var html = htm.bind(h);
+
   var WeElement = Component;
   var defineElement = define;
   function createRef() {
@@ -2263,10 +2279,12 @@
     getHost: getHost,
     renderToString: renderToString,
     tag: tag,
-    merge: merge
+    merge: merge,
+    html: html,
+    htm: htm
   };
   options.root.omi = options.root.Omi;
-  options.root.Omi.version = 'omio-2.1.1';
+  options.root.Omi.version = 'omio-2.2.1';
 
   var Omi = {
     h: h,
@@ -2287,7 +2305,9 @@
     getHost: getHost,
     renderToString: renderToString,
     tag: tag,
-    merge: merge
+    merge: merge,
+    html: html,
+    htm: htm
   };
 
   if (typeof module != 'undefined') module.exports = Omi;else self.Omi = Omi;

@@ -1,5 +1,6 @@
 import WeElement from './we-element'
 import { cssToDom } from './util'
+import options from './options'
 
 const OBJECTTYPE = '[object Object]'
 const ARRAYTYPE = '[object Array]'
@@ -7,6 +8,7 @@ const ARRAYTYPE = '[object Array]'
 export function define(name, ctor) {
   if (ctor.is === 'WeElement') {
     customElements.define(name, ctor)
+    options.mapping[name] = ctor
     if (ctor.use) {
       ctor.updatePath = getPath(ctor.use)
     } else if (ctor.data) { //Compatible with older versions
@@ -70,7 +72,7 @@ export function define(name, ctor) {
   }
 }
 
-function getPath(obj) {
+export function getPath(obj) {
   if (Object.prototype.toString.call(obj) === '[object Array]') {
     const result = {}
     obj.forEach(item => {

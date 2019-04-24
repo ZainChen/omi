@@ -429,6 +429,52 @@
         for (name in old) if ((!attrs || null == attrs[name]) && null != old[name]) setAccessor(dom, name, old[name], old[name] = void 0, isSvgMode);
         for (name in attrs) if (!('children' === name || 'innerHTML' === name || name in old && attrs[name] === ('value' === name || 'checked' === name ? dom[name] : old[name]))) setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
     }
+    function define(name, ctor) {
+        options.mapping[name] = ctor;
+        if (ctor.use) ctor.updatePath = getPath(ctor.use); else if (ctor.data) ctor.updatePath = getUpdatePath(ctor.data);
+    }
+    function getPath(obj) {
+        if ('[object Array]' === Object.prototype.toString.call(obj)) {
+            var result = {};
+            obj.forEach(function(item) {
+                if ('string' == typeof item) result[item] = !0; else {
+                    var tempPath = item[Object.keys(item)[0]];
+                    if ('string' == typeof tempPath) result[tempPath] = !0; else if ('string' == typeof tempPath[0]) result[tempPath[0]] = !0; else tempPath[0].forEach(function(path) {
+                        return result[path] = !0;
+                    });
+                }
+            });
+            return result;
+        } else return getUpdatePath(obj);
+    }
+    function getUpdatePath(data) {
+        var result = {};
+        dataToPath(data, result);
+        return result;
+    }
+    function dataToPath(data, result) {
+        Object.keys(data).forEach(function(key) {
+            result[key] = !0;
+            var type = Object.prototype.toString.call(data[key]);
+            if ('[object Object]' === type) _objToPath(data[key], key, result); else if ('[object Array]' === type) _arrayToPath(data[key], key, result);
+        });
+    }
+    function _objToPath(data, path, result) {
+        Object.keys(data).forEach(function(key) {
+            result[path + '.' + key] = !0;
+            delete result[path];
+            var type = Object.prototype.toString.call(data[key]);
+            if ('[object Object]' === type) _objToPath(data[key], path + '.' + key, result); else if ('[object Array]' === type) _arrayToPath(data[key], path + '.' + key, result);
+        });
+    }
+    function _arrayToPath(data, path, result) {
+        data.forEach(function(item, index) {
+            result[path + '[' + index + ']'] = !0;
+            delete result[path];
+            var type = Object.prototype.toString.call(item);
+            if ('[object Object]' === type) _objToPath(item, path + '[' + index + ']', result); else if ('[object Array]' === type) _arrayToPath(item, path + '[' + index + ']', result);
+        });
+    }
     function collectComponent(component) {
         var name = component.constructor.name;
         (components[name] || (components[name] = [])).push(component);
@@ -444,9 +490,14 @@
             inst.render = doRender;
         }
         vnode && (inst.scopedCssAttr = vnode.css);
-        if (inst.constructor.use && inst.store && inst.store.data) {
-            inst.store.instances.push(inst);
+        if (inst.store && inst.store.data) if (inst.constructor.use) {
             inst.use = getUse(inst.store.data, inst.constructor.use);
+            inst.store.instances.push(inst);
+        } else if (inst.initUse) {
+            var use = inst.initUse();
+            inst.H = getPath(use);
+            inst.use = getUse(inst.store.data, use);
+            inst.store.instances.push(inst);
         }
         if (list) for (var i = list.length; i--; ) if (list[i].constructor === Ctor) {
             inst.__b = list[i].__b;
@@ -662,8 +713,8 @@
             var updateAll = matchGlobalData(this.globalData, patch);
             if (Object.keys(patch).length > 0) {
                 this.instances.forEach(function(instance) {
-                    if (updateAll || _this.updateAll || instance.constructor.updatePath && needUpdate(patch, instance.constructor.updatePath)) {
-                        instance.use = getUse(store.data, instance.constructor.use);
+                    if (updateAll || _this.updateAll || instance.constructor.updatePath && needUpdate(patch, instance.constructor.updatePath) || instance.H && needUpdate(patch, instance.H)) {
+                        if (instance.constructor.use) instance.use = getUse(store.data, instance.constructor.use); else if (instance.initUse) instance.use = getUse(store.data, instance.initUse());
                         instance.update();
                     }
                 });
@@ -700,52 +751,6 @@
             if (index) if (isNaN(Number(item))) mpPath += '.' + item; else mpPath += '[' + item + ']'; else mpPath += item;
         });
         return mpPath;
-    }
-    function define(name, ctor) {
-        options.mapping[name] = ctor;
-        if (ctor.use) ctor.updatePath = getPath(ctor.use); else if (ctor.data) ctor.updatePath = getUpdatePath(ctor.data);
-    }
-    function getPath(obj) {
-        if ('[object Array]' === Object.prototype.toString.call(obj)) {
-            var result = {};
-            obj.forEach(function(item) {
-                if ('string' == typeof item) result[item] = !0; else {
-                    var tempPath = item[Object.keys(item)[0]];
-                    if ('string' == typeof tempPath) result[tempPath] = !0; else if ('string' == typeof tempPath[0]) result[tempPath[0]] = !0; else tempPath[0].forEach(function(path) {
-                        return result[path] = !0;
-                    });
-                }
-            });
-            return result;
-        } else return getUpdatePath(obj);
-    }
-    function getUpdatePath(data) {
-        var result = {};
-        dataToPath(data, result);
-        return result;
-    }
-    function dataToPath(data, result) {
-        Object.keys(data).forEach(function(key) {
-            result[key] = !0;
-            var type = Object.prototype.toString.call(data[key]);
-            if ('[object Object]' === type) _objToPath(data[key], key, result); else if ('[object Array]' === type) _arrayToPath(data[key], key, result);
-        });
-    }
-    function _objToPath(data, path, result) {
-        Object.keys(data).forEach(function(key) {
-            result[path + '.' + key] = !0;
-            delete result[path];
-            var type = Object.prototype.toString.call(data[key]);
-            if ('[object Object]' === type) _objToPath(data[key], path + '.' + key, result); else if ('[object Array]' === type) _arrayToPath(data[key], path + '.' + key, result);
-        });
-    }
-    function _arrayToPath(data, path, result) {
-        data.forEach(function(item, index) {
-            result[path + '[' + index + ']'] = !0;
-            delete result[path];
-            var type = Object.prototype.toString.call(item);
-            if ('[object Object]' === type) _objToPath(item, path + '[' + index + ']', result); else if ('[object Array]' === type) _arrayToPath(item, path + '[' + index + ']', result);
-        });
     }
     function rpx(str) {
         return str.replace(/([1-9]\d*|0)(\.\d*)*rpx/g, function(a, b) {
@@ -935,6 +940,10 @@
         if (void 0 !== defaultProps) for (var i in defaultProps) if (void 0 === props[i]) props[i] = defaultProps[i];
         return props;
     }
+    function htm(t) {
+        var r = n(this, e(t), arguments, []);
+        return r.length > 1 ? r : r[0];
+    }
     function createRef() {
         return {};
     }
@@ -1096,7 +1105,18 @@
                 if ('$observeProps' !== prop && '$observer' !== prop) if (!obaa.isFunction(target[prop])) {
                     if (!target.$observeProps) target.$observeProps = {};
                     if (void 0 !== path) target.$observeProps.$observerPath = path; else target.$observeProps.$observerPath = '#';
+                    var self = this;
                     var currentValue = target.$observeProps[prop] = target[prop];
+                    Object.defineProperty(target, prop, {
+                        get: function() {
+                            return this.$observeProps[prop];
+                        },
+                        set: function(value) {
+                            var old = this.$observeProps[prop];
+                            this.$observeProps[prop] = value;
+                            self.onPropertyChanged(prop, value, old, this, target.$observeProps.$observerPath);
+                        }
+                    });
                     if ('object' == typeof currentValue) {
                         if (obaa.isArray(currentValue)) {
                             this.mock(currentValue);
@@ -1204,6 +1224,32 @@
         return String(s).length > (length || 40) || !ignoreLines && -1 !== String(s).indexOf('\n') || -1 !== String(s).indexOf('<');
     };
     var JS_TO_CSS = {};
+    var n = function(t, r, u, e) {
+        for (var p = 1; p < r.length; p++) {
+            var s = r[p++], a = "number" == typeof s ? u[s] : s;
+            1 === r[p] ? e[0] = a : 2 === r[p] ? (e[1] = e[1] || {})[r[++p]] = a : 3 === r[p] ? e[1] = Object.assign(e[1] || {}, a) : e.push(r[p] ? t.apply(null, n(t, a, u, [ "", null ])) : a);
+        }
+        return e;
+    }, t = function(n) {
+        for (var t, r, u = 1, e = "", p = "", s = [ 0 ], a = function(n) {
+            1 === u && (n || (e = e.replace(/^\s*\n\s*|\s*\n\s*$/g, ""))) ? s.push(n || e, 0) : 3 === u && (n || e) ? (s.push(n || e, 1), 
+            u = 2) : 2 === u && "..." === e && n ? s.push(n, 3) : 2 === u && e && !n ? s.push(!0, 2, e) : 4 === u && r && (s.push(n || e, 2, r), 
+            r = ""), e = "";
+        }, f = 0; f < n.length; f++) {
+            f && (1 === u && a(), a(f));
+            for (var h = 0; h < n[f].length; h++) t = n[f][h], 1 === u ? "<" === t ? (a(), s = [ s ], u = 3) : e += t : p ? t === p ? p = "" : e += t : '"' === t || "'" === t ? p = t : ">" === t ? (a(), 
+            u = 1) : u && ("=" === t ? (u = 4, r = e, e = "") : "/" === t ? (a(), 3 === u && (s = s[0]), u = s, (s = s[0]).push(u, 4), 
+            u = 0) : " " === t || "\t" === t || "\n" === t || "\r" === t ? (a(), u = 2) : e += t);
+        }
+        return a(), s;
+    }, r = "function" == typeof Map, u = r ? new Map() : {}, e = r ? function(n) {
+        var r = u.get(n);
+        return r || u.set(n, r = t(n)), r;
+    } : function(n) {
+        for (var r = "", e = 0; e < n.length; e++) r += n[e].length + "-" + n[e];
+        return u[r] || (u[r] = t(n));
+    };
+    var html = htm.bind(h);
     var WeElement = Component;
     var defineElement = define;
     options.root.Omi = {
@@ -1225,10 +1271,12 @@
         getHost: getHost,
         renderToString: renderToString,
         tag: tag,
-        merge: merge
+        merge: merge,
+        html: html,
+        htm: htm
     };
     options.root.omi = options.root.Omi;
-    options.root.Omi.version = 'omio-2.1.1';
+    options.root.Omi.version = 'omio-2.2.1';
     var Omi = {
         h: h,
         createElement: h,
@@ -1248,7 +1296,9 @@
         getHost: getHost,
         renderToString: renderToString,
         tag: tag,
-        merge: merge
+        merge: merge,
+        html: html,
+        htm: htm
     };
     if ('undefined' != typeof module) module.exports = Omi; else self.Omi = Omi;
 }();

@@ -97,10 +97,10 @@ function h(type, props, ...children) {
 
 > 使用小程序内置的 Canvas 渲染器， 在 Cax 中实现 SVG 标准的子集，使用 JSX 或者 HTM 描述 SVG 结构行为表现
 
-直接看在小程序种使用案例:
+直接看在小程序中使用案例:
 
 ```js
-import { html, renderSVG } from '../../cax/svg'
+import { html, renderSVG } from '../../cax/cax'
 
 Page({
   onLoad: function () {
@@ -140,11 +140,20 @@ Page({
 }
 ```
 
-小程序种显示效果:
+小程序中显示效果:
 
 <img src="https://github.com/Tencent/omi/blob/master/assets/cax-rect.jpg" width="400" />
 
-在来一个复杂的例子，用 SVG 绘制 Omi 的 logo:
+
+可以使用 `width`，`height`，`bounds-x` 和 `bounds-y` 设置绑定事件的范围，比如:
+
+```jsx
+<path width="100" height="100" bounds-x="50" bounds-y="50" />
+```
+
+需要注意的是，元素的事件触发的包围盒受自身或者父节点的 transform 影响，所以不是绝对坐标的 rect 触发区域。
+
+再来一个复杂的例子，用 SVG 绘制 Omi 的 logo:
 
 ```js
 renderSVG(html`
@@ -157,7 +166,7 @@ renderSVG(html`
 </svg>`, 'svg-a', this)
 ```
 
-小程序种显示效果:
+小程序中显示效果:
 
 
 <img src="https://github.com/Tencent/omi/blob/master/assets/cax-omi.jpg" width="400" />
@@ -206,10 +215,37 @@ Page({
 })
 ```
 
+比如 test.svg ：
+
+```html
+<svg width="300" height="300">
+  <rect bindtap="tapHandler" x="0" y="0" height="110" width="110"
+         style="stroke:#ff0000; fill: #0000ff" />
+</svg>
+```
+
+会被 mps 编译成：
+
+```js
+const h = (type, props, ...children) => ({ type, props, children });
+export default h(
+  "svg",
+  { width: "300", height: "300" },
+  h("rect", {
+    bindtap: "tapHandler",
+    x: "0",
+    y: "0",
+    height: "110",
+    width: "110",
+    style: "stroke:#ff0000; fill: #0000ff"
+  })
+);
+```
+
 所以总结一下:
 
 * 你可以在 mps 中直接使用 import 的 SVG 文件的方式使用 SVG
-* 你可以直接在 omip 中使用 JSX 的使用使用 SVG
+* 你可以直接在 omip 中使用 JSX 的使用 SVG
 * 你可以直接在原生小程序当中使用 htm 的方式使用 SVG
 
 这就完了？远没有，看 cax 在小程序中的这个例子：
@@ -265,6 +301,10 @@ Page({
 ```
 
 pasiton 提供了两个 path 和 颜色 相互切换的能力，最常见的场景比如 menu 按钮和 close 按钮点击后 path 的变形。
+
+举个例子，看颜色和 path 同时变化：
+
+![](https://github.com/Tencent/omi/blob/master/assets/pk.gif)
 
 ## 线性运动
 

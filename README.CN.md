@@ -1,10 +1,10 @@
 [English](./README.md) | 简体中文 | [한국어](./README.KR.md)
 
-<p align="right">Omi <strong>v6.0.3</strong></p>
-<p align="right">Omio <strong>v2.1.0</strong></p>
-<p align="center"><img src="./assets/omi-logo2019.svg" alt="omi" width="300"/></p>
+<p align="right">Omi <strong>v6.1.1</strong></p>
+<p align="right">Omio <strong>v2.2.1</strong></p>
+<p align="center"><img src="https://tencent.github.io/omi/assets/omi-logo2019.svg" alt="omi" width="300"/></p>
 <h2 align="center">Omi - 下一代前端框架，去万物糟粕，合精华为一点点 JS</h2>
-<p align="center"><b>基于 Web Components 并支持 IE8+(omio) 和 小程序(omip)</b></p>
+<p align="center"><b>基于 Web Components 并支持 IE8+(omio)，小程序(omip) 和 React语法(reomio)</b></p>
 
 ## Omi 生态
 
@@ -85,6 +85,40 @@
 |-|-|
 | ![Omi](./assets/omi-render.jpg) | ![React](./assets/react-render.jpg) |
 
+
+### TypeScript 智能提示
+
+```jsx
+import { h, WeElement, tag, classNames } from 'omi';
+import * as styles from './_index.less';
+
+interface ButtonProps {
+  href?: string,
+  disabled?: boolean,
+  type?: 'default' | 'primary' | 'danger',
+  htmltype?: 'submit' | 'button' | 'reset',
+  onClick?: (e: any) => void
+}
+
+const TAG = 'o-button'
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [TAG]: Omi.CustomElementBaseAttributes & ButtonProps
+    }
+  }
+}
+
+@tag(TAG)
+export default class oButton extends WeElement<ButtonProps, {}> {
+...
+...
+...
+```
+
+<img src="./assets/ts.png" alt="omi" width="427"/>
+
 ## 必须收藏的资源
 
 * [Comi 原理揭秘](https://github.com/Tencent/omi/blob/master/tutorial/comi-principle.md)
@@ -139,8 +173,57 @@
 
 下面这个页面不需要任何构建工具就可以执行
 
-* [点击这里看执行结果](https://tencent.github.io/omi/assets/)
-* [Omi.js CDN](https://unpkg.com/omi)
+* [→ 点击这里看执行结果](https://tencent.github.io/omi/packages/omi/examples/no-transpiler/)
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Omi demo without transpiler</title>
+</head>
+
+<body>
+  <script src="https://tencent.github.io/omi/packages/omi/dist/omi.js"></script>
+  <script>
+    const { define, WeElement, html, render } = Omi
+
+    define('my-counter', class extends WeElement {
+
+      install() {
+        this.data.count = 1
+        this.sub = this.sub.bind(this)
+        this.add = this.add.bind(this)
+      }
+
+      sub() {
+        this.data.count--
+        this.update()
+      }
+
+      add() {
+        this.data.count++
+        this.update()
+      }
+
+      render() {
+        return html`
+          <div>
+            <button onClick=${this.sub}>-</button>
+            <span>${this.data.count}</span>
+            <button onClick=${this.add}>+</button>
+          </div>
+          `}
+    })
+
+    render(html`<my-counter />`, 'body')
+  </script>
+</body>
+
+</html>
+```
+
+### 使用 store 
 
 ```html
 <!DOCTYPE html>
@@ -148,39 +231,49 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Add Omi in One Minute</title>
+  <title>Omi demo without transpiler</title>
 </head>
 
 <body>
-  <script src="https://unpkg.com/omi"></script>
+  <script src="https://tencent.github.io/omi/packages/omi/dist/omi.js"></script>
   <script>
-    const { WeElement, h, render, define } = Omi
+    const { define, WeElement, html, render } = Omi
 
-    define('like-button', class extends WeElement {
-        install() {
-          this.data = { liked: false }
-        }
+    define('my-counter', class extends WeElement {
+      initUse() {
+        return ['count']
+      }
 
-        render() {
-          if (this.data.liked) {
-            return 'You liked this.'
-          }
+      install() {
+        this.sub = this.sub.bind(this)
+        this.add = this.add.bind(this)
+      }
 
-          return h(
-            'button',
-            {
-              onClick: () => {
-                this.data.liked = true
-                this.update()
-              }
-            },
-            'Like'
-          )
-        }
-      })
+      sub() {
+        this.store.data.count--
+      }
 
-    render(h('like-button'), 'body')
+      add() {
+        this.store.data.count++
+      }
+
+      render() {
+        return html`
+          <div>
+            <button onClick=${this.sub}>-</button>
+            <span>${this.store.data.count}</span>
+            <button onClick=${this.add}>+</button>
+          </div>
+          `}
+    })
+
+    render(html`<my-counter />`, 'body', {
+      data: {
+        count: 1
+      }
+    })
   </script>
+
 </body>
 
 </html>
@@ -233,46 +326,6 @@ render(<my-counter />, "body")
 
 
 你会发现 `MyCounter` 从未使用过，所以你可以使用下面代码达到同样效果并且避免 Eslint 提示错误: -->
-
-```js
-import { render, WeElement, define } from 'omi'
-
-define('my-counter', class extends WeElement {
-    static observe = true
-    
-    //也支持不加 static ，直接 css = ..
-    static css = `
-      span{
-          color: red;
-      }`
-
-    data = {
-      count: 1
-    }
-
-    sub = () => {
-      this.data.count--
-    }
-
-    add = () => {
-      this.data.count++
-    }
-
-    render() {
-      return (
-        <div>
-          <button onClick={this.sub}>-</button>
-          <span>{this.data.count}</span>
-          <button onClick={this.add}>+</button>
-        </div>
-      )
-    }
-  })
-
-render(<my-counter />, 'body')
-```
-
-也可以手动调用 `this.update`，这样你就可以选择最佳的时机进行更新， 比如:
 
 ```js
 import { render, WeElement, define } from 'omi'
