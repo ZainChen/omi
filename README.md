@@ -3,7 +3,7 @@ English | [简体中文](./README.CN.md) | [한국어](./README.KR.md)
 <p align="right">Omi <strong>v6.1.1</strong></p>
 <p align="right">Omio <strong>v2.2.1</strong></p>
 <p align="center"><img src="https://tencent.github.io/omi/assets/omi-logo2019.svg" alt="omi" width="300"/></p>
-<h2 align="center">Omi - Next front end framework using web components with omio(IE8+), omip(小程序) and reomio(react) fallback in tiny js.</h2>
+<h2 align="center">Omi - Next front end framework using web components with omio(IE8+), omip(小程序) and reomi(react) fallback in tiny js.</h2>
 
 ## Ecosystem of Omi
 
@@ -61,6 +61,7 @@ English | [简体中文](./README.CN.md) | [한국어](./README.KR.md)
 - Reactive data-binding
 - Having official UI components - [omiu](https://tencent.github.io/omi/packages/omiu/examples/build/index.html)
 - Excellent compatibility(IE8+) with [omio](https://github.com/Tencent/omi/tree/master/packages/omio)
+- Supporting both grammars of omi and react with [reomi](https://github.com/Tencent/omi/tree/master/packages/reomi)
 - Real [MVVM](https://github.com/Tencent/omi/blob/master/tutorial/omi-mvvm.md) with [mappingjs](https://github.com/Tencent/omi/tree/master/packages/mappingjs) strong support
 - Enhanced CSS, [rpx unit support](https://github.com/Tencent/omi/releases/tag/v4.0.26) base on **750** screen width
 - Compliance with browser trend and API design
@@ -433,16 +434,24 @@ You can set up the PUBLIC_URL, such as：
 ...
 ```
 
-#### Switch omi and omio
+#### Switch omi, omio and reomi
 
 Add or remove the alias config in package.json to switch omi and omio：
 
 ```js
- ...
- "alias": {
-    "omi": "omio"
-  }
-  ...
+"alias": {
+  "omi": "omio"
+}
+```
+
+Using reomi:
+
+```js
+"alias": {
+  "omi": "reomi",
+  "react": "reomi",
+  "react-dom": "reomi"
+}
 ```
     
 <!-- About compiled website URL：
@@ -892,9 +901,9 @@ Please contact us for any questions. Also, Add [Omi QQ Group](https://github.com
 ## Thanks
 
 * [preact](https://github.com/developit/preact)
-* [JSONPatcherProxy](https://github.com/Palindrom/JSONPatcherProxy)
 * [create-react-app](https://github.com/facebook/create-react-app)
 * [JSX](https://github.com/facebook/jsx)
+* [JSONPatcherProxy](https://github.com/Palindrom/JSONPatcherProxy)
 
 ## License
 
