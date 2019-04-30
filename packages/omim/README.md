@@ -1,8 +1,18 @@
-```
-npm install webpack webpack-cli webpack-dev-server -g
+# Omim
+
+Material Design for Omi.
+
+## CMD
+
+Build component:
+
+```bash
+npm run build -- component-name
 ```
 
+Build demo:
+
+```bash
+npm start demo-name
 ```
-npm run start or yarn start
-npm run build or yarn build
-```
+
