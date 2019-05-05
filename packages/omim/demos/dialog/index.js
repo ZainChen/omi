@@ -2,12 +2,24 @@ import '../../src/button/index.tsx'
 import '../../src/dialog/index.tsx'
 import { render, h } from 'omi'
 
+let alertShow = false;
+
+function showAlert() {
+  alertShow = true;
+  console.log(alertShow);
+}
+
 function clickHandler() {
   console.log(1)
 }
 render(
   <div>
-    <m-dialog show>fdsgdsafsfdsafsdaff</m-dialog>
+
+    <m-button onClick={showAlert} ripple>Alert</m-button>
+    <m-dialog show={alertShow}>fdsgdsafsfdsafsdaff</m-dialog>
+
+
+
     <h3>Text Button</h3>
     <m-button onClick={clickHandler} ripple>Default</m-button>
 

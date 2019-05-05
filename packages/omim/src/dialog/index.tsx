@@ -1,5 +1,6 @@
 import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
+import { MDCRipple } from '@material/ripple'
 
 interface Props {
   show: boolean,
@@ -26,7 +27,8 @@ export default class Dialog extends WeElement<Props, Data>{
   }
 
   installed() {
-    
+    new MDCRipple(this.shadowRoot.querySelector('.mdc-button-cancel'))
+    new MDCRipple(this.shadowRoot.querySelector('.mdc-button-ok'))
   }
 
   render(props) {
@@ -34,15 +36,17 @@ export default class Dialog extends WeElement<Props, Data>{
       <div {...extractClass(props, 'mdc-dialog', {
         'mdc-dialog--open': props.show
       })}>
+        <div class='mdc-dialog__scrim'></div>
         <div class='mdc-dialog__container'>
           <div class='mdc-dialog__surface'>
             <h2 class='mdc-dialog__title'>Phone ringtone</h2>
-            <div class='mdc-dialog__content'>
               <section class='mdc-dialog__content'>
                 fdsafsda
               </section>
-              <footer class='mdc-dialog__actions'></footer>
-            </div>
+              <footer class='mdc-dialog__actions'>
+                <button class='mdc-button mdc-button-cancel mdc-dialog__button'>Cancel</button>
+                <button class='mdc-button mdc-button-ok mdc-dialog__button'>OK</button>
+              </footer>
           </div>
         </div>
       </div>
