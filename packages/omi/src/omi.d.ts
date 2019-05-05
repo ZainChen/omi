@@ -10,6 +10,7 @@ declare namespace Omi {
 
 	interface Attributes {
 		key?: string | number | any;
+		css?: string
 	}
 
 	interface ClassAttributes<T> extends Attributes {
@@ -37,7 +38,7 @@ declare namespace Omi {
 	 * }
 	 */
 	interface CustomElementBaseAttributes extends ClassAttributes<any>, OmiDOMAttributes {}
-
+	interface Props extends ClassAttributes<any>, OmiDOMAttributes {}
 	/**
 	 * Define the contract for a virtual node in omi.
 	 *
@@ -56,7 +57,7 @@ declare namespace Omi {
 		P & Attributes & { children?: ComponentChildren; ref?: Ref<RefType> }
 	>;
 
-	interface WeElement<P, D> {
+	interface WeElement<P, D> extends HTMLElement {
 		install?(): void;
 		installed?(): void;
 		uninstall?(): void;
@@ -65,6 +66,7 @@ declare namespace Omi {
 		updated?(): void;
 		beforeRender?(): void;
 		receiveProps?(): void;
+		attrsToProps(): void;
 	}
 
 	interface ModelView<P, D> {
@@ -78,7 +80,7 @@ declare namespace Omi {
 		receiveProps?(): void;
 	}
 
-	interface Component<P, D> {
+	interface Component<P, D> extends HTMLElement {
 		install?(): void;
 		installed?(): void;
 		uninstall?(): void;
@@ -87,6 +89,7 @@ declare namespace Omi {
 		updated?(): void;
 		beforeRender?(): void;
 		receiveProps?(): void;
+		attrsToProps(): void;
 	}
 
 	abstract class WeElement<P = {}, D = {}> {
@@ -177,6 +180,7 @@ declare namespace Omi {
 	function render(vnode: ComponentChild, parent: string | Element | Document | ShadowRoot | DocumentFragment, store?: object): void;
 
 	function define(name: string, ctor: WeElementConstructor): void;
+	function defineElement(name: string, ctor: WeElementConstructor): void;
 	function tag(name: string, pure?: boolean): (ctor: WeElementConstructor) => void;
 	function tick(callback: Callback, scope?: any): void;
 	function nextTick(callback: Callback, scope?: any): void;

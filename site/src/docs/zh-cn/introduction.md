@@ -21,7 +21,7 @@ Omi (读音 /ˈomɪ/，类似于 欧米) 是下一代前端框架，基于 Web C
 ```html
 <script src="https://unpkg.com/omi"></script>
 <script>
-  const { define, WeElement, h, render } = Omi
+  const { define, WeElement, html, render } = Omi
 
   define('my-counter', class extends WeElement {
     install() {
@@ -41,29 +41,16 @@ Omi (读音 /ˈomɪ/，类似于 欧米) 是下一代前端框架，基于 Web C
     }
 
     render() {
-      return h(
-        'div',
-        null,
-        h(
-          'button',
-          { onClick: this.sub },
-          '-'
-        ),
-        h(
-          'span',
-          null,
-          this.data.count
-        ),
-        h(
-          'button',
-          { onClick: this.add },
-          '+'
-        )
-      )
-    }
+      return html`
+        <div>
+          <button onClick=${this.sub}>-</button>
+          <span>${this.data.count}</span>
+          <button onClick=${this.add}>+</button>
+        </div>
+        `}
   })
 
-  render(h('my-counter'), 'body')
+  render(html`<my-counter />`, 'body')
 </script>
 ```
 
@@ -77,7 +64,7 @@ Omi (读音 /ˈomɪ/，类似于 欧米) 是下一代前端框架，基于 Web C
 
 * [点击这里看执行结果](https://tencent.github.io/omi/assets/omi.html)
 
-上面使用的是 hyperscript 的方式来书写 HTML 结构，用 ES5 书写 JS ，你可以使用 JSX 和 ES2015+ 来替代它们。
+你可以使用 JSX 和 ES2015+ 来书写自定义元素:
 
 
 ```jsx {8-11}
