@@ -1,51 +1,51 @@
 import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
-import { MDCRipple } from '@material/ripple'
-import '../icon'
 
 interface Props {
-  ripple: boolean,
-  raised: boolean,
-  dense: boolean,
-  unelevated: boolean,
-  outlined: boolean,
-  icon: object
+  show: boolean,
+  title: string,
+  msg: string,
+  cancelText: string,
+  confirmText: string
 }
 
 interface Data {
 
 }
 
-@tag('m-button')
-export default class Button extends WeElement<Props, Data>{
+@tag('m-dialog')
+export default class Dialog extends WeElement<Props, Data>{
   static css = css
 
   static propTypes = {
-    ripple: Boolean,
-    raised: Boolean,
-    dense: Boolean,
-    unelevated: Boolean,
-    outlined: Boolean,
-    icon: Object
+    show: Boolean,
+    title: String,
+    msg: String,
+    cancelText: String,
+    confirmText: String
   }
 
   installed() {
-    if (this.props.ripple) {
-      new MDCRipple(this.shadowRoot.querySelector('.mdc-button'))
-    }
+    
   }
 
   render(props) {
     return (
-      <button {...extractClass(props, 'mdc-button', {
-        'mdc-button--dense': props.dense,
-        'mdc-button--raised': props.raised,
-        'mdc-button--unelevated': props.unelevated,
-        'mdc-button--outlined': props.outlined
+      <div {...extractClass(props, 'mdc-dialog', {
+        'mdc-dialog--open': props.show
       })}>
-        {(props.icon) && <m-icon class='m-icon' {...props.icon}></m-icon>}
-        <span class="mdc-button__label"><slot></slot></span>
-      </button>
+        <div class='mdc-dialog__container'>
+          <div class='mdc-dialog__surface'>
+            <h2 class='mdc-dialog__title'>Phone ringtone</h2>
+            <div class='mdc-dialog__content'>
+              <section class='mdc-dialog__content'>
+                fdsafsda
+              </section>
+              <footer class='mdc-dialog__actions'></footer>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }

@@ -1,24 +1,22 @@
 import { WeElement } from 'omi';
 import '../icon';
 interface Props {
-    ripple: boolean;
-    raised: boolean;
-    dense: boolean;
-    unelevated: boolean;
-    outlined: boolean;
-    icon: object;
+    show: boolean;
+    title: string;
+    msg: string;
+    cancelText: string;
+    confirmText: string;
 }
 interface Data {
 }
-export default class Button extends WeElement<Props, Data> {
+export default class Dialog extends WeElement<Props, Data> {
     static css: any;
     static propTypes: {
-        ripple: BooleanConstructor;
-        raised: BooleanConstructor;
-        dense: BooleanConstructor;
-        unelevated: BooleanConstructor;
-        outlined: BooleanConstructor;
-        icon: ObjectConstructor;
+        show: BooleanConstructor;
+        title: StringConstructor;
+        msg: StringConstructor;
+        cancelText: StringConstructor;
+        confirmText: StringConstructor;
     };
     installed(): void;
     render(props: any): JSX.Element;

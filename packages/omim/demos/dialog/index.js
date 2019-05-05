@@ -1,4 +1,5 @@
 import '../../src/button/index.tsx'
+import '../../src/dialog/index.tsx'
 import { render, h } from 'omi'
 
 function clickHandler() {
@@ -6,6 +7,7 @@ function clickHandler() {
 }
 render(
   <div>
+    <m-dialog show>fdsgdsafsfdsafsdaff</m-dialog>
     <h3>Text Button</h3>
     <m-button onClick={clickHandler} ripple>Default</m-button>
 
@@ -69,7 +71,6 @@ render(
     }} css={`
         .mdc-button{ border-radius: 18px;}
      `}>ICON</m-button>
-
 
   </div>
   , 'body')
