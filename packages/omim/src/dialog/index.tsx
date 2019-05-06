@@ -7,8 +7,8 @@ interface Props {
   show: boolean,
   title: string,
   msg: string,
-  cancelText: string,
-  confirmText: string
+  cancelButton: object,
+  confirmButton: object
 }
 
 interface Data {
@@ -23,8 +23,8 @@ export default class Dialog extends WeElement<Props, Data>{
     show: Boolean,
     title: String,
     msg: String,
-    cancelText: String,
-    confirmText: String
+    cancelButton: Object,
+    confirmButton: Object
   }
 
   installed() {
@@ -44,10 +44,8 @@ export default class Dialog extends WeElement<Props, Data>{
                 fdsafsda
               </section>
               <footer class='mdc-dialog__actions'>
-                {(props.cancelText) && <m-button ripple>{...props.cancelText}</m-button>}
-                <m-button ripple>OK</m-button>
-                {/* <button class='mdc-button mdc-button-cancel mdc-dialog__button'>Cancel</button>
-                <button class='mdc-button mdc-button-ok mdc-dialog__button'>OK</button> */}
+                {(props.cancelButton) && <m-button class='m-button__margin-right' ripple {...props.cancelButton}>{props.cancelButton.text}</m-button>}
+                {(props.confirmButton) && <m-button ripple {...props.confirmButton}>{props.confirmButton.text}</m-button>}
               </footer>
           </div>
         </div>
