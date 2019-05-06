@@ -6,7 +6,7 @@ import '../button'
 
 interface Props {
   show: boolean,
-  scrimClose: boolean,
+  scrollable: boolean,
   title: string,
   message: string,
   cancelButton: object,
@@ -23,35 +23,24 @@ export default class Dialog extends WeElement<Props, Data>{
 
   static propTypes = {
     show: Boolean,
-    scrimClose: Boolean,
+    scrollable: Boolean,
     title: String,
     message: String,
     cancelButton: Object,
     confirmButton: Object
   }
 
-  data = {
-    showDialog: true
-  }
-  
-  
   installed() {
     
   }
   
-  onScrimClose = (e) => {  //多个diglog会冲突
-    this.data.showDialog = false
-    this.update()
-    this.data.showDialog = true
-  }
-
   render(props) {
     return (
       <div id='confirmation-dialog' {...extractClass(props, 'mdc-dialog', {
-        'mdc-dialog--open': props.show && this.data.showDialog
+        'mdc-dialog--open': props.show,
+        'mdc-dialog--scrollable': props.scrollable
       })}>
-        {console.log(props.show+'---'+this.data.showDialog)}
-        {(props.scrimClose) ? <div class='mdc-dialog__scrim' onClick={this.onScrimClose}></div> : <div class='mdc-dialog__scrim'></div>}
+        <div class='mdc-dialog__scrim'></div>
         <div class='mdc-dialog__container'>
           <div class='mdc-dialog__surface'>
             {(props.title) && <h2 class='mdc-dialog__title'>{props.title}</h2>}

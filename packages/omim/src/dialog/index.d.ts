@@ -1,11 +1,11 @@
 import { WeElement } from 'omi';
-import { MDCDialogAdapter } from '@material/dialog/adapter';
 import '../icon';
 import '../button';
 interface Props {
     show: boolean;
+    scrollable: boolean;
     title: string;
-    msg: string;
+    message: string;
     cancelButton: object;
     confirmButton: object;
 }
@@ -15,15 +15,13 @@ export default class Dialog extends WeElement<Props, Data> {
     static css: any;
     static propTypes: {
         show: BooleanConstructor;
+        scrollable: BooleanConstructor;
         title: StringConstructor;
-        msg: StringConstructor;
+        message: StringConstructor;
         cancelButton: ObjectConstructor;
         confirmButton: ObjectConstructor;
     };
-    a: MDCDialogAdapter;
     installed(): void;
-    showDialog: boolean;
-    onClose: (e: any) => void;
     render(props: any): JSX.Element;
 }
 export {};

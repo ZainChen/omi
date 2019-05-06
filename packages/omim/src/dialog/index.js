@@ -1962,34 +1962,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/dialog/index.scss");
+// import { MDCDialogAdapter } from '@material/dialog'
 __webpack_require__(/*! ../icon */ "../icon");
 __webpack_require__(/*! ../button */ "./src/button/index.js");
 var Dialog = /** @class */ (function (_super) {
     __extends(Dialog, _super);
     function Dialog() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.showDialog = true;
-        _this.onClose = function (e) {
-            _this.showDialog = false;
-            _this.update();
-            _this.showDialog = true;
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Dialog.prototype.installed = function () {
-        this.a.notifyOpening();
     };
     Dialog.prototype.render = function (props) {
         return (omi_1.h("div", __assign({ id: 'confirmation-dialog' }, omi_1.extractClass(props, 'mdc-dialog', {
-            // 'mdc-dialog--opening': this.showDialog && props.show,
-            // 'mdc-dialog--closing': this.showDialog && props.show,
-            'mdc-dialog--open': this.showDialog && props.show
+            'mdc-dialog--open': props.show,
+            'mdc-dialog--scrollable': props.scrollable
         })),
-            omi_1.h("div", { class: 'mdc-dialog__scrim', onClick: this.onClose }),
+            omi_1.h("div", { class: 'mdc-dialog__scrim' }),
             omi_1.h("div", { class: 'mdc-dialog__container' },
                 omi_1.h("div", { class: 'mdc-dialog__surface' },
-                    omi_1.h("h2", { class: 'mdc-dialog__title' }, "Phone ringtone"),
-                    omi_1.h("section", { class: 'mdc-dialog__content' }, "fdsafsda"),
+                    (props.title) && omi_1.h("h2", { class: 'mdc-dialog__title' }, props.title),
+                    omi_1.h("section", { class: 'mdc-dialog__content' }, props.message),
                     omi_1.h("footer", { class: 'mdc-dialog__actions' },
                         (props.cancelButton) && omi_1.h("m-button", __assign({ ripple: true }, props.cancelButton), props.cancelButton.text),
                         (props.confirmButton) && omi_1.h("m-button", __assign({ ripple: true }, props.confirmButton), props.confirmButton.text))))));
@@ -1997,8 +1989,9 @@ var Dialog = /** @class */ (function (_super) {
     Dialog.css = css;
     Dialog.propTypes = {
         show: Boolean,
+        scrollable: Boolean,
         title: String,
-        msg: String,
+        message: String,
         cancelButton: Object,
         confirmButton: Object
     };
