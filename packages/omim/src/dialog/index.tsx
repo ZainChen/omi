@@ -1,5 +1,6 @@
 import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
+import { MDCDialogAdapter } from '@material/dialog'
 import '../icon'
 import '../button'
 
@@ -26,27 +27,42 @@ export default class Dialog extends WeElement<Props, Data>{
     cancelButton: Object,
     confirmButton: Object
   }
-
+  
+  showDialog = true
+  
+  
+  
   installed() {
     
   }
 
+  
+  
+  
+  onClose = (e) => {
+    this.showDialog = false
+    this.update()
+    this.showDialog = true
+  }
+
   render(props) {
     return (
-      <div {...extractClass(props, 'mdc-dialog', {
-        'mdc-dialog--open': props.show
+      <div id='confirmation-dialog' {...extractClass(props, 'mdc-dialog', {
+        // 'mdc-dialog--opening': this.showDialog && props.show,
+        // 'mdc-dialog--closing': this.showDialog && props.show,
+        'mdc-dialog--open': this.showDialog && props.show
       })}>
-        <div class='mdc-dialog__scrim'></div>
+        <div class='mdc-dialog__scrim' onClick={this.onClose}></div>
         <div class='mdc-dialog__container'>
           <div class='mdc-dialog__surface'>
-            <h2 class='mdc-dialog__title'>Phone ringtone</h2>
-              <section class='mdc-dialog__content'>
-                fdsafsda
-              </section>
-              <footer class='mdc-dialog__actions'>
-                {(props.cancelButton) && <m-button class='m-button__margin-right' ripple {...props.cancelButton}>{props.cancelButton.text}</m-button>}
-                {(props.confirmButton) && <m-button ripple {...props.confirmButton}>{props.confirmButton.text}</m-button>}
-              </footer>
+            {(props.title) && <h2 class='mdc-dialog__title'>{props.title}</h2>}
+            <section class='mdc-dialog__content'>
+              fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>fd<br/>
+            </section>
+            <footer class='mdc-dialog__actions'>
+              {(props.cancelButton) && <m-button ripple {...props.cancelButton}>{props.cancelButton.text}</m-button>}
+              {(props.confirmButton) && <m-button ripple {...props.confirmButton}>{props.confirmButton.text}</m-button>}
+            </footer>
           </div>
         </div>
       </div>
