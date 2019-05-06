@@ -1,4 +1,4 @@
-import '../../src/button/index.tsx'
+// import '../../src/button/index.tsx'
 import '../../src/dialog/index.tsx'
 import { render, h } from 'omi'
 
@@ -16,7 +16,7 @@ render(
   <div>
 
     <m-button onClick={showAlert} ripple>Alert</m-button>
-    <m-dialog show={alertShow}>fdsgdsafsfdsafsdaff</m-dialog>
+    <m-dialog show={true}>fdsgdsafsfdsafsdaff</m-dialog>
 
 
 

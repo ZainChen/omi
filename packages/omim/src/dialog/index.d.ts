@@ -1,4 +1,6 @@
 import { WeElement } from 'omi';
+import '../icon';
+import '../button';
 interface Props {
     show: boolean;
     title: string;

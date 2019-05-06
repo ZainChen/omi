@@ -1,7 +1,7 @@
 import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
-import { MDCRipple } from '@material/ripple'
-// import '../button'
+import '../icon'
+import '../button'
 
 interface Props {
   show: boolean,
@@ -28,8 +28,7 @@ export default class Dialog extends WeElement<Props, Data>{
   }
 
   installed() {
-    new MDCRipple(this.shadowRoot.querySelector('.mdc-button-cancel'))
-    new MDCRipple(this.shadowRoot.querySelector('.mdc-button-ok'))
+    
   }
 
   render(props) {
@@ -45,8 +44,10 @@ export default class Dialog extends WeElement<Props, Data>{
                 fdsafsda
               </section>
               <footer class='mdc-dialog__actions'>
-                <button class='mdc-button mdc-button-cancel mdc-dialog__button'>Cancel</button>
-                <button class='mdc-button mdc-button-ok mdc-dialog__button'>OK</button>
+                {(props.cancelText) && <m-button ripple>{...props.cancelText}</m-button>}
+                <m-button ripple>OK</m-button>
+                {/* <button class='mdc-button mdc-button-cancel mdc-dialog__button'>Cancel</button>
+                <button class='mdc-button mdc-button-ok mdc-dialog__button'>OK</button> */}
               </footer>
           </div>
         </div>
