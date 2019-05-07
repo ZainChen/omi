@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@omim/icon"), require("omi"));
+		module.exports = factory(require("omi"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@omim/icon", "omi"], factory);
+		define(["omi"], factory);
 	else if(typeof exports === 'object')
-		exports["MTextField"] = factory(require("@omim/icon"), require("omi"));
+		exports["MTextField"] = factory(require("omi"));
 	else
-		root["MTextField"] = factory(root["MIcon"], root["Omi"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__icon__, __WEBPACK_EXTERNAL_MODULE_omi__) {
+		root["MTextField"] = factory(root["Omi"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE_omi__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -95,17 +95,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "../icon":
-/*!*****************************************************************************************************!*\
-  !*** external {"commonjs":"@omim/icon","commonjs2":"@omim/icon","amd":"@omim/icon","root":"MIcon"} ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__icon__;
-
-/***/ }),
 
 /***/ "./node_modules/@material/base/component.js":
 /*!**************************************************!*\
@@ -1912,6 +1901,7 @@ var MDCTextField = /** @class */ (function (_super) {
             deregisterValidationAttributeChangeHandler: function (observer) { return observer.disconnect(); },
         };
         // tslint:enable:object-literal-sort-keys
+<<<<<<< HEAD
     };
     MDCTextField.prototype.getInputAdapterMethods_ = function () {
         var _this = this;
@@ -1986,6 +1976,82 @@ var MDCTextField = /** @class */ (function (_super) {
         // tslint:enable:object-literal-sort-keys
         return rippleFactory(this.root_, new _material_ripple_foundation__WEBPACK_IMPORTED_MODULE_7__["MDCRippleFoundation"](adapter));
     };
+=======
+    };
+    MDCTextField.prototype.getInputAdapterMethods_ = function () {
+        var _this = this;
+        // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+        return {
+            getNativeInput: function () { return _this.input_; },
+            isFocused: function () { return document.activeElement === _this.input_; },
+            registerInputInteractionHandler: function (evtType, handler) { return _this.input_.addEventListener(evtType, handler); },
+            deregisterInputInteractionHandler: function (evtType, handler) { return _this.input_.removeEventListener(evtType, handler); },
+        };
+        // tslint:enable:object-literal-sort-keys
+    };
+    MDCTextField.prototype.getLabelAdapterMethods_ = function () {
+        var _this = this;
+        return {
+            floatLabel: function (shouldFloat) { return _this.label_ && _this.label_.float(shouldFloat); },
+            getLabelWidth: function () { return _this.label_ ? _this.label_.getWidth() : 0; },
+            hasLabel: function () { return Boolean(_this.label_); },
+            shakeLabel: function (shouldShake) { return _this.label_ && _this.label_.shake(shouldShake); },
+        };
+    };
+    MDCTextField.prototype.getLineRippleAdapterMethods_ = function () {
+        var _this = this;
+        return {
+            activateLineRipple: function () {
+                if (_this.lineRipple_) {
+                    _this.lineRipple_.activate();
+                }
+            },
+            deactivateLineRipple: function () {
+                if (_this.lineRipple_) {
+                    _this.lineRipple_.deactivate();
+                }
+            },
+            setLineRippleTransformOrigin: function (normalizedX) {
+                if (_this.lineRipple_) {
+                    _this.lineRipple_.setRippleCenter(normalizedX);
+                }
+            },
+        };
+    };
+    MDCTextField.prototype.getOutlineAdapterMethods_ = function () {
+        var _this = this;
+        return {
+            closeOutline: function () { return _this.outline_ && _this.outline_.closeNotch(); },
+            hasOutline: function () { return Boolean(_this.outline_); },
+            notchOutline: function (labelWidth) { return _this.outline_ && _this.outline_.notch(labelWidth); },
+        };
+    };
+    /**
+     * @return A map of all subcomponents to subfoundations.
+     */
+    MDCTextField.prototype.getFoundationMap_ = function () {
+        return {
+            characterCounter: this.characterCounter_ ? this.characterCounter_.foundation : undefined,
+            helperText: this.helperText_ ? this.helperText_.foundation : undefined,
+            leadingIcon: this.leadingIcon_ ? this.leadingIcon_.foundation : undefined,
+            trailingIcon: this.trailingIcon_ ? this.trailingIcon_.foundation : undefined,
+        };
+    };
+    MDCTextField.prototype.createRipple_ = function (rippleFactory) {
+        var _this = this;
+        var isTextArea = this.root_.classList.contains(_constants__WEBPACK_IMPORTED_MODULE_9__["cssClasses"].TEXTAREA);
+        var isOutlined = this.root_.classList.contains(_constants__WEBPACK_IMPORTED_MODULE_9__["cssClasses"].OUTLINED);
+        if (isTextArea || isOutlined) {
+            return null;
+        }
+        // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+        // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+        // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+        var adapter = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, _material_ripple_component__WEBPACK_IMPORTED_MODULE_6__["MDCRipple"].createAdapter(this), { isSurfaceActive: function () { return _material_dom_ponyfill__WEBPACK_IMPORTED_MODULE_2__["matches"](_this.input_, ':active'); }, registerInteractionHandler: function (evtType, handler) { return _this.input_.addEventListener(evtType, handler); }, deregisterInteractionHandler: function (evtType, handler) { return _this.input_.removeEventListener(evtType, handler); } });
+        // tslint:enable:object-literal-sort-keys
+        return rippleFactory(this.root_, new _material_ripple_foundation__WEBPACK_IMPORTED_MODULE_7__["MDCRippleFoundation"](adapter));
+    };
+>>>>>>> omim-dialog
     return MDCTextField;
 }(_material_base_component__WEBPACK_IMPORTED_MODULE_1__["MDCComponent"]));
 
@@ -2395,6 +2461,7 @@ var MDCTextFieldFoundation = /** @class */ (function (_super) {
      */
     MDCTextFieldFoundation.prototype.setUseNativeValidation = function (useNativeValidation) {
         this.useNativeValidation_ = useNativeValidation;
+<<<<<<< HEAD
     };
     MDCTextFieldFoundation.prototype.isDisabled = function () {
         return this.getNativeInput_().disabled;
@@ -2439,6 +2506,52 @@ var MDCTextFieldFoundation = /** @class */ (function (_super) {
         }
     };
     /**
+=======
+    };
+    MDCTextFieldFoundation.prototype.isDisabled = function () {
+        return this.getNativeInput_().disabled;
+    };
+    /**
+     * @param disabled Sets the text-field disabled or enabled.
+     */
+    MDCTextFieldFoundation.prototype.setDisabled = function (disabled) {
+        this.getNativeInput_().disabled = disabled;
+        this.styleDisabled_(disabled);
+    };
+    /**
+     * @param content Sets the content of the helper text.
+     */
+    MDCTextFieldFoundation.prototype.setHelperTextContent = function (content) {
+        if (this.helperText_) {
+            this.helperText_.setContent(content);
+        }
+    };
+    /**
+     * Sets the aria label of the leading icon.
+     */
+    MDCTextFieldFoundation.prototype.setLeadingIconAriaLabel = function (label) {
+        if (this.leadingIcon_) {
+            this.leadingIcon_.setAriaLabel(label);
+        }
+    };
+    /**
+     * Sets the text content of the leading icon.
+     */
+    MDCTextFieldFoundation.prototype.setLeadingIconContent = function (content) {
+        if (this.leadingIcon_) {
+            this.leadingIcon_.setContent(content);
+        }
+    };
+    /**
+     * Sets the aria label of the trailing icon.
+     */
+    MDCTextFieldFoundation.prototype.setTrailingIconAriaLabel = function (label) {
+        if (this.trailingIcon_) {
+            this.trailingIcon_.setAriaLabel(label);
+        }
+    };
+    /**
+>>>>>>> omim-dialog
      * Sets the text content of the trailing icon.
      */
     MDCTextFieldFoundation.prototype.setTrailingIconContent = function (content) {
@@ -2748,6 +2861,7 @@ var MDCTextFieldHelperTextFoundation = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+<<<<<<< HEAD
     /**
      * Sets the content of the helper text field.
      */
@@ -2800,10 +2914,168 @@ var MDCTextFieldHelperTextFoundation = /** @class */ (function (_super) {
         }
     };
     /**
+=======
+    /**
+     * Sets the content of the helper text field.
+     */
+    MDCTextFieldHelperTextFoundation.prototype.setContent = function (content) {
+        this.adapter_.setContent(content);
+    };
+    /**
+     * @param isPersistent Sets the persistency of the helper text.
+     */
+    MDCTextFieldHelperTextFoundation.prototype.setPersistent = function (isPersistent) {
+        if (isPersistent) {
+            this.adapter_.addClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_PERSISTENT);
+        }
+        else {
+            this.adapter_.removeClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_PERSISTENT);
+        }
+    };
+    /**
+     * @param isValidation True to make the helper text act as an error validation message.
+     */
+    MDCTextFieldHelperTextFoundation.prototype.setValidation = function (isValidation) {
+        if (isValidation) {
+            this.adapter_.addClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_VALIDATION_MSG);
+        }
+        else {
+            this.adapter_.removeClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_VALIDATION_MSG);
+        }
+    };
+    /**
+     * Makes the helper text visible to the screen reader.
+     */
+    MDCTextFieldHelperTextFoundation.prototype.showToScreenReader = function () {
+        this.adapter_.removeAttr(_constants__WEBPACK_IMPORTED_MODULE_2__["strings"].ARIA_HIDDEN);
+    };
+    /**
+     * Sets the validity of the helper text based on the input validity.
+     */
+    MDCTextFieldHelperTextFoundation.prototype.setValidity = function (inputIsValid) {
+        var helperTextIsPersistent = this.adapter_.hasClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_PERSISTENT);
+        var helperTextIsValidationMsg = this.adapter_.hasClass(_constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"].HELPER_TEXT_VALIDATION_MSG);
+        var validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
+        if (validationMsgNeedsDisplay) {
+            this.adapter_.setAttr(_constants__WEBPACK_IMPORTED_MODULE_2__["strings"].ROLE, 'alert');
+        }
+        else {
+            this.adapter_.removeAttr(_constants__WEBPACK_IMPORTED_MODULE_2__["strings"].ROLE);
+        }
+        if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
+            this.hide_();
+        }
+    };
+    /**
+>>>>>>> omim-dialog
      * Hides the help text from screen readers.
      */
     MDCTextFieldHelperTextFoundation.prototype.hide_ = function () {
         this.adapter_.setAttr(_constants__WEBPACK_IMPORTED_MODULE_2__["strings"].ARIA_HIDDEN, 'true');
+<<<<<<< HEAD
+    };
+    return MDCTextFieldHelperTextFoundation;
+}(_material_base_foundation__WEBPACK_IMPORTED_MODULE_1__["MDCFoundation"]));
+
+// tslint:disable-next-line:no-default-export Needed for backward compatibility with MDC Web v0.44.0 and earlier.
+/* harmony default export */ __webpack_exports__["default"] = (MDCTextFieldHelperTextFoundation);
+//# sourceMappingURL=foundation.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@material/textfield/helper-text/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material/textfield/helper-text/index.js ***!
+  \***************************************************************/
+/*! exports provided: MDCTextFieldHelperText, MDCTextFieldHelperTextFoundation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./node_modules/@material/textfield/helper-text/component.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCTextFieldHelperText", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["MDCTextFieldHelperText"]; });
+
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/@material/textfield/helper-text/foundation.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCTextFieldHelperTextFoundation", function() { return _foundation__WEBPACK_IMPORTED_MODULE_1__["MDCTextFieldHelperTextFoundation"]; });
+
+/**
+ * @license
+ * Copyright 2019 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@material/textfield/icon/component.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material/textfield/icon/component.js ***!
+  \************************************************************/
+/*! exports provided: MDCTextFieldIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTextFieldIcon", function() { return MDCTextFieldIcon; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/@material/base/component.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation */ "./node_modules/@material/textfield/icon/foundation.js");
+/**
+ * @license
+ * Copyright 2017 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+var MDCTextFieldIcon = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MDCTextFieldIcon, _super);
+    function MDCTextFieldIcon() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MDCTextFieldIcon.attachTo = function (root) {
+        return new MDCTextFieldIcon(root);
+    };
+    Object.defineProperty(MDCTextFieldIcon.prototype, "foundation", {
+        get: function () {
+            return this.foundation_;
+=======
     };
     return MDCTextFieldHelperTextFoundation;
 }(_material_base_foundation__WEBPACK_IMPORTED_MODULE_1__["MDCFoundation"]));
@@ -3027,6 +3299,129 @@ var MDCTextFieldIconFoundation = /** @class */ (function (_super) {
     Object.defineProperty(MDCTextFieldIconFoundation, "strings", {
         get: function () {
             return _constants__WEBPACK_IMPORTED_MODULE_2__["strings"];
+>>>>>>> omim-dialog
+        },
+        enumerable: true,
+        configurable: true
+    });
+<<<<<<< HEAD
+    MDCTextFieldIcon.prototype.getDefaultFoundation = function () {
+        var _this = this;
+        // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+        // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+        // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+        var adapter = {
+            getAttr: function (attr) { return _this.root_.getAttribute(attr); },
+            setAttr: function (attr, value) { return _this.root_.setAttribute(attr, value); },
+            removeAttr: function (attr) { return _this.root_.removeAttribute(attr); },
+            setContent: function (content) {
+                _this.root_.textContent = content;
+            },
+            registerInteractionHandler: function (evtType, handler) { return _this.listen(evtType, handler); },
+            deregisterInteractionHandler: function (evtType, handler) { return _this.unlisten(evtType, handler); },
+            notifyIconAction: function () { return _this.emit(_foundation__WEBPACK_IMPORTED_MODULE_2__["MDCTextFieldIconFoundation"].strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */); },
+        };
+        // tslint:enable:object-literal-sort-keys
+        return new _foundation__WEBPACK_IMPORTED_MODULE_2__["MDCTextFieldIconFoundation"](adapter);
+    };
+    return MDCTextFieldIcon;
+}(_material_base_component__WEBPACK_IMPORTED_MODULE_1__["MDCComponent"]));
+
+//# sourceMappingURL=component.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@material/textfield/icon/constants.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material/textfield/icon/constants.js ***!
+  \************************************************************/
+/*! exports provided: strings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "strings", function() { return strings; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+var strings = {
+    ICON_EVENT: 'MDCTextField:icon',
+    ICON_ROLE: 'button',
+};
+
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@material/textfield/icon/foundation.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material/textfield/icon/foundation.js ***!
+  \*************************************************************/
+/*! exports provided: MDCTextFieldIconFoundation, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTextFieldIconFoundation", function() { return MDCTextFieldIconFoundation; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/@material/base/foundation.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/@material/textfield/icon/constants.js");
+/**
+ * @license
+ * Copyright 2017 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+var INTERACTION_EVENTS = ['click', 'keydown'];
+var MDCTextFieldIconFoundation = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MDCTextFieldIconFoundation, _super);
+    function MDCTextFieldIconFoundation(adapter) {
+        var _this = _super.call(this, tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, MDCTextFieldIconFoundation.defaultAdapter, adapter)) || this;
+        _this.savedTabIndex_ = null;
+        _this.interactionHandler_ = function (evt) { return _this.handleInteraction(evt); };
+        return _this;
+    }
+    Object.defineProperty(MDCTextFieldIconFoundation, "strings", {
+        get: function () {
+            return _constants__WEBPACK_IMPORTED_MODULE_2__["strings"];
         },
         enumerable: true,
         configurable: true
@@ -3064,6 +3459,41 @@ var MDCTextFieldIconFoundation = /** @class */ (function (_super) {
             _this.adapter_.deregisterInteractionHandler(evtType, _this.interactionHandler_);
         });
     };
+=======
+    Object.defineProperty(MDCTextFieldIconFoundation, "defaultAdapter", {
+        /**
+         * See {@link MDCTextFieldIconAdapter} for typing information on parameters and return types.
+         */
+        get: function () {
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            return {
+                getAttr: function () { return null; },
+                setAttr: function () { return undefined; },
+                removeAttr: function () { return undefined; },
+                setContent: function () { return undefined; },
+                registerInteractionHandler: function () { return undefined; },
+                deregisterInteractionHandler: function () { return undefined; },
+                notifyIconAction: function () { return undefined; },
+            };
+            // tslint:enable:object-literal-sort-keys
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MDCTextFieldIconFoundation.prototype.init = function () {
+        var _this = this;
+        this.savedTabIndex_ = this.adapter_.getAttr('tabindex');
+        INTERACTION_EVENTS.forEach(function (evtType) {
+            _this.adapter_.registerInteractionHandler(evtType, _this.interactionHandler_);
+        });
+    };
+    MDCTextFieldIconFoundation.prototype.destroy = function () {
+        var _this = this;
+        INTERACTION_EVENTS.forEach(function (evtType) {
+            _this.adapter_.deregisterInteractionHandler(evtType, _this.interactionHandler_);
+        });
+    };
+>>>>>>> omim-dialog
     MDCTextFieldIconFoundation.prototype.setDisabled = function (disabled) {
         if (!this.savedTabIndex_) {
             return;
@@ -3287,6 +3717,7 @@ var MDCRipple = /** @class */ (function (_super) {
             removeClass: function (className) { return instance.root_.classList.remove(className); },
             updateCssVariable: function (varName, value) { return instance.root_.style.setProperty(varName, value); },
         };
+<<<<<<< HEAD
     };
     Object.defineProperty(MDCRipple.prototype, "unbounded", {
         get: function () {
@@ -3302,6 +3733,23 @@ var MDCRipple = /** @class */ (function (_super) {
     MDCRipple.prototype.activate = function () {
         this.foundation_.activate();
     };
+=======
+    };
+    Object.defineProperty(MDCRipple.prototype, "unbounded", {
+        get: function () {
+            return Boolean(this.unbounded_);
+        },
+        set: function (unbounded) {
+            this.unbounded_ = Boolean(unbounded);
+            this.setUnbounded_();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MDCRipple.prototype.activate = function () {
+        this.foundation_.activate();
+    };
+>>>>>>> omim-dialog
     MDCRipple.prototype.deactivate = function () {
         this.foundation_.deactivate();
     };
@@ -3725,6 +4173,7 @@ var MDCRippleFoundation = /** @class */ (function (_super) {
     };
     MDCRippleFoundation.prototype.checkElementMadeActive_ = function (evt) {
         return (evt !== undefined && evt.type === 'keydown') ? this.adapter_.isSurfaceActive() : true;
+<<<<<<< HEAD
     };
     MDCRippleFoundation.prototype.animateActivation_ = function () {
         var _this = this;
@@ -3774,6 +4223,57 @@ var MDCRippleFoundation = /** @class */ (function (_super) {
         };
         return { startPoint: startPoint, endPoint: endPoint };
     };
+=======
+    };
+    MDCRippleFoundation.prototype.animateActivation_ = function () {
+        var _this = this;
+        var _a = MDCRippleFoundation.strings, VAR_FG_TRANSLATE_START = _a.VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END = _a.VAR_FG_TRANSLATE_END;
+        var _b = MDCRippleFoundation.cssClasses, FG_DEACTIVATION = _b.FG_DEACTIVATION, FG_ACTIVATION = _b.FG_ACTIVATION;
+        var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
+        this.layoutInternal_();
+        var translateStart = '';
+        var translateEnd = '';
+        if (!this.adapter_.isUnbounded()) {
+            var _c = this.getFgTranslationCoordinates_(), startPoint = _c.startPoint, endPoint = _c.endPoint;
+            translateStart = startPoint.x + "px, " + startPoint.y + "px";
+            translateEnd = endPoint.x + "px, " + endPoint.y + "px";
+        }
+        this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+        this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+        // Cancel any ongoing activation/deactivation animations
+        clearTimeout(this.activationTimer_);
+        clearTimeout(this.fgDeactivationRemovalTimer_);
+        this.rmBoundedActivationClasses_();
+        this.adapter_.removeClass(FG_DEACTIVATION);
+        // Force layout in order to re-trigger the animation.
+        this.adapter_.computeBoundingRect();
+        this.adapter_.addClass(FG_ACTIVATION);
+        this.activationTimer_ = setTimeout(function () { return _this.activationTimerCallback_(); }, DEACTIVATION_TIMEOUT_MS);
+    };
+    MDCRippleFoundation.prototype.getFgTranslationCoordinates_ = function () {
+        var _a = this.activationState_, activationEvent = _a.activationEvent, wasActivatedByPointer = _a.wasActivatedByPointer;
+        var startPoint;
+        if (wasActivatedByPointer) {
+            startPoint = Object(_util__WEBPACK_IMPORTED_MODULE_3__["getNormalizedEventCoords"])(activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
+        }
+        else {
+            startPoint = {
+                x: this.frame_.width / 2,
+                y: this.frame_.height / 2,
+            };
+        }
+        // Center the element around the start point.
+        startPoint = {
+            x: startPoint.x - (this.initialSize_ / 2),
+            y: startPoint.y - (this.initialSize_ / 2),
+        };
+        var endPoint = {
+            x: (this.frame_.width / 2) - (this.initialSize_ / 2),
+            y: (this.frame_.height / 2) - (this.initialSize_ / 2),
+        };
+        return { startPoint: startPoint, endPoint: endPoint };
+    };
+>>>>>>> omim-dialog
     MDCRippleFoundation.prototype.runDeactivationUXLogicIfReady_ = function () {
         var _this = this;
         // This method is called both when a pointing device is released, and when the activation animation ends.
@@ -4310,6 +4810,315 @@ function __importDefault(mod) {
 
 /***/ }),
 
+/***/ "./src/icon/index.js":
+/*!***************************!*\
+  !*** ./src/icon/index.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+    if (true)
+        module.exports = factory(__webpack_require__(/*! omi */ "omi"));
+    else {}
+})(window, function (__WEBPACK_EXTERNAL_MODULE_omi__) {
+    return /******/ (function (modules) {
+        /******/ // The module cache
+        /******/ var installedModules = {};
+        /******/
+        /******/ // The require function
+        /******/ function __webpack_require__(moduleId) {
+            /******/
+            /******/ // Check if module is in cache
+            /******/ if (installedModules[moduleId]) {
+                /******/ return installedModules[moduleId].exports;
+                /******/ }
+            /******/ // Create a new module (and put it into the cache)
+            /******/ var module = installedModules[moduleId] = {
+                /******/ i: moduleId,
+                /******/ l: false,
+                /******/ exports: {}
+                /******/ 
+            };
+            /******/
+            /******/ // Execute the module function
+            /******/ modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+            /******/
+            /******/ // Flag the module as loaded
+            /******/ module.l = true;
+            /******/
+            /******/ // Return the exports of the module
+            /******/ return module.exports;
+            /******/ 
+        }
+        /******/
+        /******/
+        /******/ // expose the modules object (__webpack_modules__)
+        /******/ __webpack_require__.m = modules;
+        /******/
+        /******/ // expose the module cache
+        /******/ __webpack_require__.c = installedModules;
+        /******/
+        /******/ // define getter function for harmony exports
+        /******/ __webpack_require__.d = function (exports, name, getter) {
+            /******/ if (!__webpack_require__.o(exports, name)) {
+                /******/ Object.defineProperty(exports, name, { enumerable: true, get: getter });
+                /******/ }
+            /******/ 
+        };
+        /******/
+        /******/ // define __esModule on exports
+        /******/ __webpack_require__.r = function (exports) {
+            /******/ if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+                /******/ Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+                /******/ }
+            /******/ Object.defineProperty(exports, '__esModule', { value: true });
+            /******/ 
+        };
+        /******/
+        /******/ // create a fake namespace object
+        /******/ // mode & 1: value is a module id, require it
+        /******/ // mode & 2: merge all properties of value into the ns
+        /******/ // mode & 4: return value when already ns object
+        /******/ // mode & 8|1: behave like require
+        /******/ __webpack_require__.t = function (value, mode) {
+            /******/ if (mode & 1)
+                value = __webpack_require__(value);
+            /******/ if (mode & 8)
+                return value;
+            /******/ if ((mode & 4) && typeof value === 'object' && value && value.__esModule)
+                return value;
+            /******/ var ns = Object.create(null);
+            /******/ __webpack_require__.r(ns);
+            /******/ Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+            /******/ if (mode & 2 && typeof value != 'string')
+                for (var key in value)
+                    __webpack_require__.d(ns, key, function (key) { return value[key]; }.bind(null, key));
+            /******/ return ns;
+            /******/ 
+        };
+        /******/
+        /******/ // getDefaultExport function for compatibility with non-harmony modules
+        /******/ __webpack_require__.n = function (module) {
+            /******/ var getter = module && module.__esModule ?
+                /******/ function getDefault() { return module['default']; } :
+                /******/ function getModuleExports() { return module; };
+            /******/ __webpack_require__.d(getter, 'a', getter);
+            /******/ return getter;
+            /******/ 
+        };
+        /******/
+        /******/ // Object.prototype.hasOwnProperty.call
+        /******/ __webpack_require__.o = function (object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+        /******/
+        /******/ // __webpack_public_path__
+        /******/ __webpack_require__.p = "";
+        /******/
+        /******/
+        /******/ // Load entry module and return exports
+        /******/ return __webpack_require__(__webpack_require__.s = "./src/icon/index.tsx");
+        /******/ 
+    })({
+        /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/icon/index.scss": 
+        /*!**********************************************************************************************************!*\
+          !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js??ref--4-2!./src/icon/index.scss ***!
+          \**********************************************************************************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports, __webpack_require__) {
+            exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+            // imports
+            // module
+            exports.push([module.i, ".m-icon {\n  text-align: center;\n  display: inline-block; }\n\n.m-icon svg {\n  display: inline-block;\n  vertical-align: top; }\n\n.rotate {\n  display: inline-block;\n  -webkit-animation: rotate 1s infinite linear;\n  animation: rotate 1s infinite linear; }\n\ni div {\n  font-style: normal; }\n\n@-webkit-keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n@keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n", ""]);
+            // exports
+            /***/ 
+        }),
+        /***/ "./node_modules/css-loader/lib/css-base.js": 
+        /*!*************************************************!*\
+          !*** ./node_modules/css-loader/lib/css-base.js ***!
+          \*************************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+            /*
+                MIT License http://www.opensource.org/licenses/mit-license.php
+                Author Tobias Koppers @sokra
+            */
+            // css base code, injected by the css-loader
+            module.exports = function (useSourceMap) {
+                var list = [];
+                // return the list of modules as css string
+                list.toString = function toString() {
+                    return this.map(function (item) {
+                        var content = cssWithMappingToString(item, useSourceMap);
+                        if (item[2]) {
+                            return "@media " + item[2] + "{" + content + "}";
+                        }
+                        else {
+                            return content;
+                        }
+                    }).join("");
+                };
+                // import a list of modules into the list
+                list.i = function (modules, mediaQuery) {
+                    if (typeof modules === "string")
+                        modules = [[null, modules, ""]];
+                    var alreadyImportedModules = {};
+                    for (var i = 0; i < this.length; i++) {
+                        var id = this[i][0];
+                        if (typeof id === "number")
+                            alreadyImportedModules[id] = true;
+                    }
+                    for (i = 0; i < modules.length; i++) {
+                        var item = modules[i];
+                        // skip already imported module
+                        // this implementation is not 100% perfect for weird media query combinations
+                        //  when a module is imported multiple times with different media queries.
+                        //  I hope this will never occur (Hey this way we have smaller bundles)
+                        if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+                            if (mediaQuery && !item[2]) {
+                                item[2] = mediaQuery;
+                            }
+                            else if (mediaQuery) {
+                                item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+                            }
+                            list.push(item);
+                        }
+                    }
+                };
+                return list;
+            };
+            function cssWithMappingToString(item, useSourceMap) {
+                var content = item[1] || '';
+                var cssMapping = item[3];
+                if (!cssMapping) {
+                    return content;
+                }
+                if (useSourceMap && typeof btoa === 'function') {
+                    var sourceMapping = toComment(cssMapping);
+                    var sourceURLs = cssMapping.sources.map(function (source) {
+                        return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
+                    });
+                    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+                }
+                return [content].join('\n');
+            }
+            // Adapted from convert-source-map (MIT)
+            function toComment(sourceMap) {
+                // eslint-disable-next-line no-undef
+                var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+                var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+                return '/*# ' + data + ' */';
+            }
+            /***/ 
+        }),
+        /***/ "./src/icon/index.scss": 
+        /*!*****************************!*\
+          !*** ./src/icon/index.scss ***!
+          \*****************************/
+        /*! no static exports found */
+        /***/ (function (module, exports, __webpack_require__) {
+            var result = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/icon/index.scss");
+            if (typeof result === "string") {
+                module.exports = result;
+            }
+            else {
+                module.exports = result.toString();
+            }
+            /***/ 
+        }),
+        /***/ "./src/icon/index.tsx": 
+        /*!****************************!*\
+          !*** ./src/icon/index.tsx ***!
+          \****************************/
+        /*! no static exports found */
+        /***/ (function (module, exports, __webpack_require__) {
+            "use strict";
+            var __extends = (this && this.__extends) || (function () {
+                var extendStatics = function (d, b) {
+                    extendStatics = Object.setPrototypeOf ||
+                        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                        function (d, b) { for (var p in b)
+                            if (b.hasOwnProperty(p))
+                                d[p] = b[p]; };
+                    return extendStatics(d, b);
+                };
+                return function (d, b) {
+                    extendStatics(d, b);
+                    function __() { this.constructor = d; }
+                    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                };
+            })();
+            var __assign = (this && this.__assign) || function () {
+                __assign = Object.assign || function (t) {
+                    for (var s, i = 1, n = arguments.length; i < n; i++) {
+                        s = arguments[i];
+                        for (var p in s)
+                            if (Object.prototype.hasOwnProperty.call(s, p))
+                                t[p] = s[p];
+                    }
+                    return t;
+                };
+                return __assign.apply(this, arguments);
+            };
+            var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+                    r = Reflect.decorate(decorators, target, key, desc);
+                else
+                    for (var i = decorators.length - 1; i >= 0; i--)
+                        if (d = decorators[i])
+                            r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                return c > 3 && r && Object.defineProperty(target, key, r), r;
+            };
+            Object.defineProperty(exports, "__esModule", { value: true });
+            var omi_1 = __webpack_require__(/*! omi */ "omi");
+            var css = __webpack_require__(/*! ./index.scss */ "./src/icon/index.scss");
+            var Icon = /** @class */ (function (_super) {
+                __extends(Icon, _super);
+                function Icon() {
+                    return _super !== null && _super.apply(this, arguments) || this;
+                }
+                Icon.prototype.render = function (props) {
+                    return (omi_1.h("i", __assign({}, omi_1.extractClass(props, 'm-icon')), omi_1.h("svg", { viewBox: "0 0 1024 1024", class: omi_1.classNames({ rotate: props.rotate }), width: props.scale + 'em', height: props.scale + 'em', fill: props.color, "aria-hidden": "true" }, props.paths ? (props.paths.map(function (item) {
+                        var attrs = { d: item.path, fill: props.color || 'black' };
+                        if (item.color)
+                            attrs.fill = item.color;
+                        return omi_1.h("path", __assign({}, attrs));
+                    })) : omi_1.h("path", { d: props.path })), props.children && (omi_1.h("div", { style: "color:" + (props.color || 'black') + ";" }, props.children[0]))));
+                };
+                Icon.css = css;
+                Icon.defaultProps = {
+                    scale: 2
+                };
+                Icon.propTypes = {
+                    path: String,
+                    paths: Object,
+                    scale: Number
+                };
+                Icon = __decorate([
+                    omi_1.tag('m-icon')
+                ], Icon);
+                return Icon;
+            }(omi_1.WeElement));
+            exports.default = Icon;
+            /***/ 
+        }),
+        /***/ "omi": 
+        /*!******************************************************************************!*\
+          !*** external {"commonjs":"omi","commonjs2":"omi","amd":"omi","root":"Omi"} ***!
+          \******************************************************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE_omi__;
+            /***/ 
+        })
+        /******/ 
+    });
+});
+//# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
 /***/ "./src/text-field/index.scss":
 /*!***********************************!*\
   !*** ./src/text-field/index.scss ***!
@@ -4337,6 +5146,7 @@ function __importDefault(mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4480,6 +5290,151 @@ var TextField = /** @class */ (function (_super) {
     return TextField;
 }(omi_1.WeElement));
 exports.default = TextField;
+=======
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var css = __webpack_require__(/*! ./index.scss */ "./src/text-field/index.scss");
+var omi_1 = __webpack_require__(/*! omi */ "omi");
+var index_1 = __webpack_require__(/*! @material/textfield/index */ "./node_modules/@material/textfield/index.js");
+__webpack_require__(/*! ../icon */ "./src/icon/index.js");
+function extract(from, props) {
+    var to = {};
+    props.forEach(function (prop) {
+        if (from[prop] !== undefined) {
+            to[prop] = from[prop];
+        }
+    });
+    return to;
+}
+var TextField = /** @class */ (function (_super) {
+    __extends(TextField, _super);
+    function TextField() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.focus = function () {
+            _this.mdc.focus();
+        };
+        _this.layout = function () {
+            _this.mdc.layout();
+        };
+        _this.refIt = function (e) { _this.root = e; };
+        return _this;
+    }
+    TextField.prototype.installed = function () {
+        this.mdc = new index_1.MDCTextField(this.root);
+    };
+    TextField.prototype.uninstall = function () {
+        this.mdc.destroy();
+    };
+    TextField.prototype.render = function (props) {
+        var cls = omi_1.extractClass(props, 'mdc-text-field', {
+            'mdc-text-field--outlined': props.outlined,
+            'mdc-text-field--fullwidth': props.fullWidth,
+            'mdc-text-field--textarea': props.textarea,
+            'mdc-text-field--disabled': props.disabled,
+            'mdc-text-field--with-leading-icon': (props.path || props.paths) && !props.iconRight,
+            'mdc-text-field--with-trailing-icon': (props.path || props.paths) && props.iconRight
+        });
+        var inputProps = extract(props, ['disabled', 'required', 'pattern', 'value', 'minLength', 'maxLength', 'min', 'max', 'step']);
+        if (props.fullWidth && !props.outlined) {
+            inputProps.placeholder = props.label;
+            props.label = null;
+        }
+        var vd = [
+            omi_1.h("div", __assign({ ref: this.refIt }, cls),
+                (props.path || props.paths) && !props.iconRight && omi_1.h("m-icon", __assign({ class: 'icon' }, extract(props, ['path', 'paths']))),
+                props.counter && props.textarea && omi_1.h("div", { class: "mdc-text-field-character-counter" }),
+                props.textarea ?
+                    omi_1.h("textarea", __assign({ id: "my-text-field", class: "mdc-text-field__input", rows: props.rows, cols: props.cols }, inputProps)) :
+                    omi_1.h("input", __assign({ type: "text", id: "my-text-field", class: "mdc-text-field__input" }, inputProps)),
+                props.outlined ?
+                    omi_1.h("div", { class: "mdc-notched-outline" },
+                        omi_1.h("div", { class: "mdc-notched-outline__leading" }),
+                        omi_1.h("div", { class: "mdc-notched-outline__notch" }, props.label === undefined || !props.noLabel && omi_1.h("label", { for: "tf-outlined", class: "mdc-floating-label" }, props.label)),
+                        omi_1.h("div", { class: "mdc-notched-outline__trailing" })) :
+                    (props.label === undefined || !props.noLabel && omi_1.h("label", { class: "mdc-floating-label", for: "my-text-field" }, props.label)),
+                (props.path || props.paths) && props.iconRight && omi_1.h("m-icon", __assign({ class: 'icon' }, extract(props, ['path', 'paths']))),
+                !props.outlined && omi_1.h("div", { class: "mdc-line-ripple" }))
+        ];
+        if (props.helperText || (props.counter && !props.textarea)) {
+            vd.push(omi_1.h("div", { class: "mdc-text-field-helper-line" },
+                props.helperText && omi_1.h("div", { class: "mdc-text-field-helper-text" + (props.showHelper ? ' mdc-text-field-helper-text--persistent' : '') }, props.helperText),
+                props.counter && !props.textarea && omi_1.h("div", { class: "mdc-text-field-helper-line" },
+                    omi_1.h("div", { class: "mdc-text-field-character-counter" }))));
+        }
+        return vd;
+    };
+    TextField.defaultProps = {
+        showHelper: true
+    };
+    TextField.propTypes = {
+        fullWidth: Boolean,
+        textarea: Boolean,
+        outlined: Boolean,
+        noLabel: Boolean,
+        showHelper: Boolean,
+        helperText: String,
+        iconRight: Boolean,
+        counter: Boolean,
+        //Multi-line Text Field (Textarea) with Character Counter  (textarea+counter)
+        label: String,
+        required: Boolean,
+        pattern: String,
+        minLength: Number,
+        maxLength: Number,
+        min: Number,
+        max: Number,
+        step: Number,
+        rows: Number,
+        cols: Number,
+        value: String,
+        disabled: Boolean,
+        useNativeValidation: Boolean,
+        valid: Boolean,
+        helperTextContent: String,
+        //ripple: MDCRipple,
+        leadingIconAriaLabel: String,
+        trailingIconAriaLabel: String,
+        leadingIconContent: String,
+        trailingIconContent: String
+    };
+    TextField.css = css;
+    TextField = __decorate([
+        omi_1.tag('m-text-field')
+    ], TextField);
+    return TextField;
+}(omi_1.WeElement));
+exports.default = TextField;
+>>>>>>> omim-dialog
 
 
 /***/ }),

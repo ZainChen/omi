@@ -21,6 +21,12 @@ export default class Dialog extends WeElement<Props, Data> {
         confirmbutton: ObjectConstructor;
     };
     installed(): void;
+<<<<<<< HEAD
+=======
+    onScrim: (evt: any) => void;
+    onCancel: (evt: any) => void;
+    onConfirm: (evt: any) => void;
+>>>>>>> omim-dialog
     render(props: any): JSX.Element;
 }
 export {};
