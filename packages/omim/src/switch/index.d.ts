@@ -1,21 +1,29 @@
 import { WeElement } from 'omi';
+import { MDCSwitch, MDCSwitchFoundation } from '@material/switch';
 interface Props {
     label?: string;
-    disabled?: boolean;
-    checked?: boolean;
-    value: string;
+    disabled?: boolean | string;
+    checked?: boolean | string;
+    value?: string;
 }
 interface Data {
 }
 export default class Switch extends WeElement<Props, Data> {
-    static css: any;
+    static css: string;
+    static resetTheme(): void;
     static propTypes: {
         label: StringConstructor;
         disabled: BooleanConstructor;
         checked: BooleanConstructor;
         value: StringConstructor;
     };
+    static defaultProps: {};
+    switchControl: MDCSwitch;
+    switchFoundation: MDCSwitchFoundation;
+    updated(): void;
     installed(): void;
+    initSwitch(): void;
+    onInput: (evt: any) => void;
     render(props: any): JSX.Element[];
 }
 export {};

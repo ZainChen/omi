@@ -6,16 +6,13 @@ interface Props {
 interface Data {
 }
 export default class Select extends WeElement<Props, Data> {
-    static css: any;
-    static defaultProps: {
-        scale: number;
-    };
+    static css: string;
+    static resetTheme(): void;
     static propTypes: {
         label: StringConstructor;
         menu: ObjectConstructor;
     };
     installed(): void;
-    install(): void;
     render(props: any): JSX.Element;
 }
 export {};

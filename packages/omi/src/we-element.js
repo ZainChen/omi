@@ -35,7 +35,8 @@ export default class WeElement extends HTMLElement {
       this.use = getUse(this.store.data, use)
     } else {
       this.constructor.use && (this.use = getUse(this.store.data, this.constructor.use))
-    }
+		}
+		this.attrsToProps()
     this.beforeInstall()
     !this._isInstalled && this.install()
     this.afterInstall()
@@ -63,7 +64,7 @@ export default class WeElement extends HTMLElement {
       proxyUpdate(this)
       this.observed()
     }
-    this.attrsToProps()
+
     this._host = diff(
       null,
       this.render(this.props, this.data, this.store),
@@ -131,7 +132,11 @@ export default class WeElement extends HTMLElement {
   }
 
   setAttribute(key, val) {
-    super.setAttribute(key, val)
+    if (val && typeof val === 'object') {
+      super.setAttribute(key, JSON.stringify(val))
+    } else {
+      super.setAttribute(key, val)
+    }
     this.update()
   }
 
@@ -162,12 +167,23 @@ export default class WeElement extends HTMLElement {
             break
           case Boolean:
             ele.props[key] = true
-            break
+						break
+					case Array:
           case Object:
-            ele.props[key] = JSON.parse(val.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4').replace(/'([\s\S]*?)'/g, '"$1"'))
+            ele.props[key] = JSON.parse(val
+              .replace(/(['"])?([a-zA-Z0-9_-]+)(['"])?:([^\/])/g, '"$2":$4')
+              .replace(/'([\s\S]*?)'/g, '"$1"')
+              .replace(/,(\s*})/g, '$1')
+              )
             break
         }
-      }
+      } else {
+        if (ele.constructor.defaultProps && ele.constructor.defaultProps.hasOwnProperty(key)) {
+          ele.props[key] = ele.constructor.defaultProps[key]
+        } else {
+					ele.props[key] = null
+				}
+			}
     })
   }
 

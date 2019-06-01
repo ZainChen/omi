@@ -11,6 +11,7 @@ import { rpx } from './rpx'
 import { tick, nextTick } from './tick'
 import ModelView from './model-view'
 import { classNames, extractClass } from './class'
+import { o } from './o'
 import htm from 'htm'
 
 const html = htm.bind(h)
@@ -21,6 +22,7 @@ function createRef() {
 
 const Component = WeElement
 const defineElement = define
+const elements = options.mapping
 
 const omi = {
   tag,
@@ -43,12 +45,14 @@ const omi = {
   extractClass,
   createRef,
   html,
-  htm
+  htm,
+  o,
+  elements
 }
 
 options.root.Omi = omi
 options.root.omi = omi
-options.root.Omi.version = '6.3.4'
+options.root.Omi.version = '6.3.17'
 
 export default omi
 
@@ -73,5 +77,7 @@ export {
   extractClass,
   createRef,
   html,
-  htm
+  htm,
+  o,
+  elements
 }

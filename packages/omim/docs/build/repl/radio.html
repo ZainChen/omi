@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Omiu REPL</title>
-  <link rel="shortcut icon" href="https://tencent.github.io/omi/assets/md2site/favicon.ico">
+  <link rel="shortcut icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="./libs/normalize.css" />
   <link rel="stylesheet" type="text/css" href="./libs/codemirror.css" />
   <style>
@@ -78,19 +78,15 @@
     </div>
     <div class="playground">
       <div class="editor">
-        <textarea id="editor">define('my-app', class extends WeElement {
+<textarea id="editor">
+<m-radio id='r1' value="1" label='Label' checked name="abc"> </m-radio>
+<m-radio id='r2' value="2" label='Label' name="abc"> </m-radio>
+<br />
 
-	render() {
-		return (
-			<div>
-				<o-radio checked name='group' label='groupA'></o-radio>
-				<o-radio name='group' label='groupB'></o-radio>
-			</div>
-		)
-	}
-})
+<m-radio checked label='checked'> </m-radio>
+<br />
 
-render(<my-app />, 'body')</textarea>
+<m-radio disabled label='disabled'> </m-radio></textarea>
       </div>
       <div class="preview">
         <iframe class="frame" id="frame"></iframe>
@@ -103,19 +99,19 @@ render(<my-app />, 'body')</textarea>
     </div>
   </div>
 
-  <script src="./libs/babel.min.js"></script>
+
   <script src="./libs/codemirror.js"></script>
   <script src="./libs/xml.js"></script>
-  <script src="./libs/javascript.js"></script>
+
 
   <script>
     var style, lastTimer, lastCode, lastScript, queryString = getQueryString(),
       sourceFromQueryString = queryString.code, backgroundColor = queryString.bgColor, editorTheme = queryString.theme || "dark", notification = document.getElementById("notification"), notificationContent = document.getElementById("notification-content"), frame = document.getElementById("frame"),
       storageKey = "alloyrender_playground_source",
       myTextarea = document.getElementById("editor"),
-      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "javascript" }), lastStorageSource = localStorage.getItem(storageKey),
+      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "text/html" }), lastStorageSource = localStorage.getItem(storageKey),
       source = sourceFromQueryString || lastStorageSource || editor.getValue();
-    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./preview.html";
+    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./radio-preview.html";
 
     function getQueryString() { for (var d, a = {}, b = location.search.slice(1), c = /([^&=]+)=([^&]*)/g; d = c.exec(b);)a[decodeURIComponent(d[1])] = decodeURIComponent(d[2]); return a }
     function hideNotify() { notification.classList.add("hide") }
@@ -131,6 +127,8 @@ render(<my-app />, 'body')</textarea>
     }
 
     function compile(a, b) {
+      window._sourceCode = a
+      return a
       var c, d; a = a || "", lastCode = a, hideNotify(), c = "/* @jsx createElement */\n"; try { d = Babel.transform(c + a, { presets: ["react", "es2015", "stage-1"] }).code } catch (e) { return console.error(e), showNotify(e), void 0 }
       window._sourceCode = d
       return d;

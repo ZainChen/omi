@@ -10,7 +10,8 @@
   "types": "dist/omim.d.ts",
   "scripts": {
     "start": "webpack -w --config ./scripts/webpack.demo.js &&",
-    "build": "node ./scripts/webpack.build.js"
+    "build": "node ./scripts/webpack.build.js",
+    "build-all": "npm run build -- action-sheet && npm run build -- avatar && npm run build -- button  && npm run build -- badge && npm run build -- card && npm run build -- checkbox && npm run build -- chips && npm run build -- dialog && npm run build -- drawer && npm run build -- elevation && npm run build -- fab && npm run build -- icon && npm run build -- icon-button && npm run build -- image-list && npm run build -- layout-grid && npm run build -- linear-progress && npm run build -- list  && npm run build -- menu && npm run build -- nav && npm run build -- radio && npm run build -- select && npm run build -- slider && npm run build -- snackbar && npm run build -- switch && npm run build -- tab && npm run build -- table && npm run build -- tag   && npm run build -- text-field && npm run build -- top-app-bar && npm run build -- tree && npm run build -- typography && npm run build -- row && npm run build -- chart"
   },
   "eslintConfig": {
     "extends": "./config/eslint-config.js"
@@ -60,9 +61,10 @@
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.12.0",
-    "omi": "^6.3.4",
+    "omi": "^6.3.17",
     "omio": "latest",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "resolve-url-loader": "^3.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "to-string-loader": "^1.1.5",
@@ -98,12 +100,18 @@
     "useTabs": false
   },
   "dependencies": {
+    "moment": "^2.24.0",
+    "draggabilly": "^2.2.0",
     "@material/button": "^2.0.0",
+    "@material/card": "^2.1.1",
     "@material/checkbox": "^2.1.0",
+    "@material/chips": "^2.1.0",
     "@material/dialog": "^2.0.0",
-    "@material/drawer": "^2.0.0",
+    "@material/drawer": "^2.1.1",
     "@material/elevation": "^1.1.0",
+    "@material/fab": "^2.1.1",
     "@material/form-field": "^2.0.0",
+    "@material/icon-button": "^2.1.1",
     "@material/image-list": "^1.1.1",
     "@material/layout-grid": "^0.41.0",
     "@material/linear-progress": "^1.1.0",
@@ -116,7 +124,10 @@
     "@material/slider": "^1.1.0",
     "@material/snackbar": "^2.0.0",
     "@material/switch": "^2.0.0",
+    "@material/tab-bar": "^2.1.0",
     "@material/textfield": "^1.1.1",
-    "@material/typography": "^1.0.0"
+    "@material/top-app-bar": "^2.1.0",
+    "@material/typography": "^1.0.0",
+    "chart.js": "^2.8.0"
   }
 }

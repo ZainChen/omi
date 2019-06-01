@@ -6,19 +6,25 @@ interface Props {
     dense: boolean;
     unelevated: boolean;
     outlined: boolean;
-    icon: object;
+    svgIcon: object;
+    icon: string;
 }
 interface Data {
 }
 export default class Button extends WeElement<Props, Data> {
-    static css: any;
+    static css: string;
+    static resetTheme(): void;
+    static defaultProps: {
+        ripple: boolean;
+    };
     static propTypes: {
         ripple: BooleanConstructor;
         raised: BooleanConstructor;
         dense: BooleanConstructor;
         unelevated: BooleanConstructor;
         outlined: BooleanConstructor;
-        icon: ObjectConstructor;
+        svgIcon: ObjectConstructor;
+        icon: StringConstructor;
     };
     installed(): void;
     render(props: any): JSX.Element;

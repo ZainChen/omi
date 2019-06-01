@@ -2,6 +2,8 @@ import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
 import { MDCRipple } from '@material/ripple'
 import '../icon'
+//@ts-ignore
+import { theme } from '../theme.ts'
 
 interface Props {
   ripple: boolean,
@@ -9,7 +11,8 @@ interface Props {
   dense: boolean,
   unelevated: boolean,
   outlined: boolean,
-  icon: object
+  svgIcon: object,
+  icon: string
 }
 
 interface Data {
@@ -18,7 +21,15 @@ interface Data {
 
 @tag('m-button')
 export default class Button extends WeElement<Props, Data>{
-  static css = css
+  static css = theme() + css
+
+  static resetTheme() {
+    this.css = theme() + css
+  }
+
+  static defaultProps = {
+    ripple: true
+  }
 
   static propTypes = {
     ripple: Boolean,
@@ -26,7 +37,8 @@ export default class Button extends WeElement<Props, Data>{
     dense: Boolean,
     unelevated: Boolean,
     outlined: Boolean,
-    icon: Object
+    svgIcon: Object,
+    icon: String
   }
 
   installed() {
@@ -43,7 +55,8 @@ export default class Button extends WeElement<Props, Data>{
         'mdc-button--unelevated': props.unelevated,
         'mdc-button--outlined': props.outlined
       })}>
-        {(props.icon) && <m-icon class='m-icon' {...props.icon}></m-icon>}
+        {(props.icon) && <i class="material-icons mdc-button__icon">{props.icon}</i>}
+        {(props.svgIcon) && <m-icon class='m-icon' {...props.svgIcon}></m-icon>}
         <span class="mdc-button__label"><slot></slot></span>
       </button>
     )

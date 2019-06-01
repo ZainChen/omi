@@ -1,18 +1,18 @@
 import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
-// import { MDCDialogAdapter } from '@material/dialog'
+import { MDCDialog } from '@material/dialog'
+
 import '../button'
 
-// @ts-ignore
-import { htmlToVdom } from '../util.ts'
+//@ts-ignore
+import { theme } from '../theme.ts'
 
 interface Props {
-  show: boolean,
-  scrollable: boolean,
-  title: string,
-  message: string,
-  cancelbutton: object,
-  confirmbutton: object
+  show?: boolean,
+  scrollable?: boolean,
+  title?: string,
+  cancelButton?: object,
+  confirmButton?: object
 }
 
 interface Data {
@@ -21,56 +21,59 @@ interface Data {
 
 @tag('m-dialog')
 export default class Dialog extends WeElement<Props, Data>{
-  static css = css
+  static css = theme() + css
 
+  static resetTheme() {
+    this.css = theme() + css
+  }
+  
   static propTypes = {
     show: Boolean,
     scrollable: Boolean,
     title: String,
-    message: String,
-    cancelbutton: Object,
-    confirmbutton: Object
+    cancelButton: Object,
+    confirmButton: Object
+  }
+
+  dialog: MDCDialog
+
+  updated() {
+    this.props.show ? this.dialog.open() : this.dialog.close()
   }
 
   installed() {
-    
+    this.dialog = new MDCDialog(this.shadowRoot.querySelector('.mdc-dialog'))
+
+    this.props.show ? this.dialog.open() : this.dialog.close()
+
+    this.dialog.listen('MDCDialog:opening', (e) => { this.fire('opening', e) })
+    this.dialog.listen('MDCDialog:opened', (e) => { this.fire('opened', e) })
+    this.dialog.listen('MDCDialog:closing', (e) => { this.fire('closing', e) })
+    this.dialog.listen('MDCDialog:closed', (e) => { this.fire('closed', e) })
   }
 
-  onScrim = evt  => {
-    this.fire('scrim')
-    evt.stopPropagation()
-  }
+  onScrim = (e)  => {this.fire('scrim', e)}
+  onCancel = (e) => {this.fire('cancel', e)}
+  onConfirm = (e) => {this.fire('confirm', e)}
 
-  onCancel = evt => {
-    this.fire('cancel')
-    evt.stopPropagation()
-  }
-
-  onConfirm = evt => {
-    this.fire('confirm')
-    evt.stopPropagation()
-  }
-  
   render(props) {
     return (
       <div {...extractClass(props, 'mdc-dialog', {
-        'mdc-dialog--open': props.show,
         'mdc-dialog--scrollable': props.scrollable
       })}>
         <div class='mdc-dialog__scrim' onClick={this.onScrim}></div>
         <div class='mdc-dialog__container'>
           <div class='mdc-dialog__surface'>
-            {(props.title) && <h2 class='mdc-dialog__title'>{props.title}</h2>}
+            {props.title && <h2 class='mdc-dialog__title'>{props.title}</h2>}
             <section class='mdc-dialog__content'>
-              {typeof props.message === 'string' ? htmlToVdom(props.message) : props.message}
+              <a class='m-dialog-content-focus' href="#"></a>  {/* solve the problem that the content focus is empty */}
+              <slot></slot>
             </section>
-            {
-              ((props.cancelbutton) || (props.confirmbutton)) &&
-              <footer class='mdc-dialog__actions'>
-                {(props.cancelbutton) && <m-button onClick={this.onCancel} ripple {...props.cancelbutton}>{props.cancelbutton.text}</m-button>}
-                {(props.confirmbutton) && <m-button onClick={this.onConfirm} ripple {...props.confirmbutton}>{props.confirmbutton.text}</m-button>}
-              </footer>
-            }
+            {(props.cancelButton || props.confirmButton) &&
+            <footer class='mdc-dialog__actions'>
+              {props.cancelButton && <m-button onClick={this.onCancel} ripple {...props.cancelButton}>{props.cancelButton.text}</m-button>}
+              {props.confirmButton && <m-button onClick={this.onConfirm} ripple {...props.confirmButton}>{props.confirmButton.text}</m-button>}
+            </footer>}
           </div>
         </div>
       </div>

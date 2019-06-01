@@ -96,14 +96,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/image-list/index.scss":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js??ref--4-2!./src/image-list/index.scss ***!
-  \****************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/image-list/index.scss":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/image-list/index.scss ***!
+  \*****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js */ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -115,10 +115,10 @@ exports.push([module.i, ".mdc-image-list {\n  display: flex;\n  flex-wrap: wrap;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/*!*************************************************!*\
-  !*** ./node_modules/css-loader/lib/css-base.js ***!
-  \*************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -210,7 +210,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/image-list/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/image-list/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -263,11 +263,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/image-list/index.scss");
+//@ts-ignore
+var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var ImageList = /** @class */ (function (_super) {
     __extends(ImageList, _super);
     function ImageList() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    ImageList.resetTheme = function () {
+        this.css = theme_ts_1.theme() + css;
+    };
     ImageList.prototype.render = function (props) {
         return (omi_1.h("ul", __assign({}, omi_1.extractClass(props, 'mdc-image-list', {
             'mdc-image-list--masonry': props.masonry
@@ -279,7 +284,7 @@ var ImageList = /** @class */ (function (_super) {
             omi_1.h("div", { class: "mdc-image-list__supporting" },
                 omi_1.h("span", { class: "mdc-image-list__label" }, item.label))); })));
     };
-    ImageList.css = css;
+    ImageList.css = theme_ts_1.theme() + css;
     ImageList.defaultProps = {};
     ImageList.propTypes = {
         masonry: Boolean,
@@ -295,6 +300,41 @@ exports.default = ImageList;
 
 /***/ }),
 
+/***/ "./src/theme.ts":
+/*!**********************!*\
+  !*** ./src/theme.ts ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+if (typeof window === 'object') {
+    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
+    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
+    window.OmimThemeError = window.OmimThemeError || '#f5222d';
+    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
+    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
+    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
+    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
+    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
+    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
+    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
+    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
+    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
+    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
+}
+function theme() {
+    if (typeof window === 'object') {
+        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    }
+}
+exports.theme = theme;
+
+
+/***/ }),
+
 /***/ "omi":
 /*!******************************************************************************!*\
   !*** external {"commonjs":"omi","commonjs2":"omi","amd":"omi","root":"Omi"} ***!
@@ -306,6 +346,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_omi__;
 
 /***/ })
 
-/******/ });
+/******/ })["default"];
 });
 //# sourceMappingURL=index.js.map

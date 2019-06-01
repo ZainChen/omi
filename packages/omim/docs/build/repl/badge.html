@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Omiu REPL</title>
-  <link rel="shortcut icon" href="https://tencent.github.io/omi/assets/md2site/favicon.ico">
+  <link rel="shortcut icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="./libs/normalize.css" />
   <link rel="stylesheet" type="text/css" href="./libs/codemirror.css" />
   <style>
@@ -16,7 +16,7 @@
     .editor{
             overflow: hidden;
         }
-        
+
     .tool-bar{
         height: 40px;
         line-height: 40px;
@@ -42,7 +42,7 @@
       background-color: #555;
     }
 
-    @media screen and (max-width: 768px) {  
+    @media screen and (max-width: 768px) {
           .playground {
             display: block;
           }
@@ -52,7 +52,7 @@
           top: 40%;
           width: 100%;
           height: 60%;
-          
+
         }
 
         .playground .preview{
@@ -78,27 +78,40 @@
     </div>
     <div class="playground">
       <div class="editor">
-        <textarea id="editor">define('my-app', class extends WeElement {
-  render() {
-    return (
-      <o-equal-space>
-        <o-badge content={8}>
-          <o-icon type="chat" isFill color="#07C160" />
-        </o-badge>
+<textarea id="editor"><div>
+  
+  <m-badge dot x="-10" y="10">
+    <m-icon-button icon='wifi'></m-icon-button>
+  </m-badge>
 
-        <o-badge content={99}>
-          <o-icon type="pay" isFill color="#07C160" />
-        </o-badge>
+  <m-badge content="99" x="-10" y="10">
+    <m-icon-button icon='favorite'></m-icon-button>
+  </m-badge>
+  <br /><br /><br />
 
-        <o-badge content="new">
-          <o-icon type="github" isFill color="black" />
-        </o-badge>
-      </o-equal-space>
-    )
-  }
-})
+  <m-badge content="8">
+    <m-icon path="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" color="#07C160" />
+  </m-badge>
 
-render(<my-app />, 'body')</textarea>
+  <br /><br /><br />
+  <m-badge content="99">
+    <m-icon path="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" color="red" />
+  </m-badge>
+
+  <br /><br /><br />
+
+  <m-badge content="new">
+    <m-icon path="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" color="black" />
+  </m-badge>
+
+
+  <br /><br /><br />
+  <m-badge dot>
+    <m-icon path="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" color="black" />
+  </m-badge>
+
+
+</div></textarea>
       </div>
       <div class="preview">
         <iframe class="frame" id="frame"></iframe>
@@ -111,19 +124,18 @@ render(<my-app />, 'body')</textarea>
     </div>
   </div>
 
-  <script src="./libs/babel.min.js"></script>
   <script src="./libs/codemirror.js"></script>
   <script src="./libs/xml.js"></script>
-  <script src="./libs/javascript.js"></script>
+
 
   <script>
     var style, lastTimer, lastCode, lastScript, queryString = getQueryString(),
       sourceFromQueryString = queryString.code, backgroundColor = queryString.bgColor, editorTheme = queryString.theme || "dark", notification = document.getElementById("notification"), notificationContent = document.getElementById("notification-content"), frame = document.getElementById("frame"),
       storageKey = "alloyrender_playground_source",
       myTextarea = document.getElementById("editor"),
-      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "javascript" }), lastStorageSource = localStorage.getItem(storageKey),
+      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "text/html" }), lastStorageSource = localStorage.getItem(storageKey),
       source = sourceFromQueryString || lastStorageSource || editor.getValue();
-    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./preview.html";
+    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./badge-preview.html";
 
     function getQueryString() { for (var d, a = {}, b = location.search.slice(1), c = /([^&=]+)=([^&]*)/g; d = c.exec(b);)a[decodeURIComponent(d[1])] = decodeURIComponent(d[2]); return a }
     function hideNotify() { notification.classList.add("hide") }
@@ -138,11 +150,9 @@ render(<my-app />, 'body')</textarea>
       b.appendChild(c)
     }
 
-    function compile(a, b) {
-      var c, d; a = a || "", lastCode = a, hideNotify(), c = "/* @jsx createElement */\n"; try { d = Babel.transform(c + a, { presets: ["react", "es2015", "stage-1"] }).code } catch (e) { return console.error(e), showNotify(e), void 0 }
-      window._sourceCode = d
-      return d;
-      //return isReady?(runCompiled(d),void 0):(!b&&showNotify("Preview.html is not ready!",3e3),void 0)
+		function compile(a, b) {
+			window._sourceCode = a
+      return a
     }
 
     function run() {

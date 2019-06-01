@@ -133,7 +133,7 @@
                 }
             }
             (node.__l || (node.__l = {}))[name] = value;
-        } else if ('list' !== name && 'type' !== name && !isSvg && name in node && '' != value) {
+        } else if ('list' !== name && 'type' !== name && 'css' !== name && !isSvg && name in node && '' != value) {
             try {
                 node[name] = null == value ? '' : value;
             } catch (e) {}
@@ -308,10 +308,7 @@
                 update = !0;
             }
         }
-        if (isWeElement && dom.parentNode) if (update || children.length > 0 || dom.store) {
-            dom.receiveProps(dom.props, dom.data, oldClone);
-            dom.update();
-        }
+        if (isWeElement && dom.parentNode) if (update || children.length > 0 || dom.store && !dom.store.data) if (!1 !== dom.receiveProps(dom.props, dom.data, oldClone)) dom.update();
     }
     function tick(fn, scope) {
         callbacks.push({
@@ -373,6 +370,7 @@
     }
     function define(name, ctor) {
         if ('WeElement' === ctor.is) {
+            if (options.mapping[name]) return;
             customElements.define(name, ctor);
             options.mapping[name] = ctor;
             if (ctor.use) ctor.updatePath = getPath(ctor.use); else if (ctor.data) ctor.updatePath = getUpdatePath(ctor.data);
@@ -641,6 +639,9 @@
             class: classNames.apply(null, args)
         };
     }
+    function o(obj) {
+        return JSON.stringify(obj);
+    }
     function htm(t) {
         var r = n(this, e(t), arguments, []);
         return r.length > 1 ? r : r[0];
@@ -896,6 +897,7 @@
                 this.M = getPath(use);
                 this.use = getUse(this.store.data, use);
             } else this.constructor.use && (this.use = getUse(this.store.data, this.constructor.use));
+            this.attrsToProps();
             this.beforeInstall();
             !this.B && this.install();
             this.afterInstall();
@@ -915,7 +917,6 @@
                 proxyUpdate(this);
                 this.observed();
             }
-            this.attrsToProps();
             this.L = diff(null, this.render(this.props, this.data, this.store), {}, !1, null, !1);
             this.rendered();
             if (this.props.css) {
@@ -955,7 +956,7 @@
             this.update();
         };
         WeElement.prototype.setAttribute = function(key, val) {
-            _HTMLElement.prototype.setAttribute.call(this, key, val);
+            if (val && 'object' == typeof val) _HTMLElement.prototype.setAttribute.call(this, key, JSON.stringify(val)); else _HTMLElement.prototype.setAttribute.call(this, key, val);
             this.update();
         };
         WeElement.prototype.pureRemoveAttribute = function(key) {
@@ -985,9 +986,10 @@
                         ele.props[key] = !0;
                         break;
 
+                      case Array:
                       case Object:
-                        ele.props[key] = JSON.parse(val.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4').replace(/'([\s\S]*?)'/g, '"$1"'));
-                    }
+                        ele.props[key] = JSON.parse(val.replace(/(['"])?([a-zA-Z0-9_-]+)(['"])?:([^\/])/g, '"$2":$4').replace(/'([\s\S]*?)'/g, '"$1"').replace(/,(\s*})/g, '$1'));
+                    } else if (ele.constructor.defaultProps && ele.constructor.defaultProps.hasOwnProperty(key)) ele.props[key] = ele.constructor.defaultProps[key]; else ele.props[key] = null;
                 });
             }
         };
@@ -1056,6 +1058,7 @@
     var html = htm.bind(h);
     var Component = WeElement;
     var defineElement = define;
+    var elements = options.mapping;
     var omi = {
         tag: tag,
         WeElement: WeElement,
@@ -1077,11 +1080,13 @@
         extractClass: extractClass,
         createRef: createRef,
         html: html,
-        htm: htm
+        htm: htm,
+        o: o,
+        elements: elements
     };
     options.root.Omi = omi;
     options.root.omi = omi;
-    options.root.Omi.version = '6.3.4';
+    options.root.Omi.version = '6.3.17';
     if ('undefined' != typeof module) module.exports = omi; else self.Omi = omi;
 }();
 //# sourceMappingURL=omi.js.map

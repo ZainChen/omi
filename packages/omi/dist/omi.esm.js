@@ -1,5 +1,5 @@
 /**
- * omi v6.3.4  http://omijs.org
+ * omi v6.3.17  http://omijs.org
  * Omi === Preact + Scoped CSS + Store System + Native Support in 3kb javascript.
  * By dntzhang https://github.com/dntzhang
  * Github: https://github.com/Tencent/omi
@@ -313,7 +313,7 @@ function setAccessor(node, name, old, value, isSvg) {
       }
     }
 (node._listeners || (node._listeners = {}))[name] = value;
-  } else if (name !== 'list' && name !== 'type' && !isSvg && name in node && value != '') {
+  } else if (name !== 'list' && name !== 'type' && name !== 'css' && !isSvg && name in node && value != '') {
     //value != '' fix for selected, disabled, checked
     // Attempt to set a DOM property to the given value.
     // IE & FF throw for certain property-value combinations.
@@ -701,9 +701,10 @@ function diffAttributes(dom, attrs, old, children) {
   }
 
   if (isWeElement && dom.parentNode) {
-    if (update || children.length > 0 || dom.store) {
-      dom.receiveProps(dom.props, dom.data, oldClone);
-      dom.update();
+    if (update || children.length > 0 || dom.store && !dom.store.data) {
+      if (dom.receiveProps(dom.props, dom.data, oldClone) !== false) {
+        dom.update();
+      }
     }
   }
 }
@@ -1120,6 +1121,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function define(name, ctor) {
   if (ctor.is === 'WeElement') {
+    if (options.mapping[name]) {
+      // if(options.mapping[name] === ctor){
+      //   console.warn(`You redefine custom elements named [${name}], redundant JS files may be referenced.`)
+      // } else {
+      //   console.warn(`This custom elements name [${name}] has already been used, please rename it.`)
+      // }
+      return;
+    }
     customElements.define(name, ctor);
     options.mapping[name] = ctor;
     if (ctor.use) {
@@ -1309,6 +1318,7 @@ var WeElement = function (_HTMLElement) {
     } else {
       this.constructor.use && (this.use = getUse(this.store.data, this.constructor.use));
     }
+    this.attrsToProps();
     this.beforeInstall();
     !this._isInstalled && this.install();
     this.afterInstall();
@@ -1336,7 +1346,7 @@ var WeElement = function (_HTMLElement) {
       proxyUpdate(this);
       this.observed();
     }
-    this.attrsToProps();
+
     this._host = diff(null, this.render(this.props, this.data, this.store), {}, false, null, false);
     this.rendered();
 
@@ -1391,7 +1401,11 @@ var WeElement = function (_HTMLElement) {
   };
 
   WeElement.prototype.setAttribute = function setAttribute(key, val) {
-    _HTMLElement.prototype.setAttribute.call(this, key, val);
+    if (val && typeof val === 'object') {
+      _HTMLElement.prototype.setAttribute.call(this, key, JSON.stringify(val));
+    } else {
+      _HTMLElement.prototype.setAttribute.call(this, key, val);
+    }
     this.update();
   };
 
@@ -1423,9 +1437,16 @@ var WeElement = function (_HTMLElement) {
           case Boolean:
             ele.props[key] = true;
             break;
+          case Array:
           case Object:
-            ele.props[key] = JSON.parse(val.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4').replace(/'([\s\S]*?)'/g, '"$1"'));
+            ele.props[key] = JSON.parse(val.replace(/(['"])?([a-zA-Z0-9_-]+)(['"])?:([^\/])/g, '"$2":$4').replace(/'([\s\S]*?)'/g, '"$1"').replace(/,(\s*})/g, '$1'));
             break;
+        }
+      } else {
+        if (ele.constructor.defaultProps && ele.constructor.defaultProps.hasOwnProperty(key)) {
+          ele.props[key] = ele.constructor.defaultProps[key];
+        } else {
+          ele.props[key] = null;
         }
       }
     });
@@ -1723,6 +1744,10 @@ function extractClass() {
   }
 }
 
+function o(obj) {
+  return JSON.stringify(obj);
+}
+
 var n=function(t,r,u,e){for(var p=1;p<r.length;p++){var s=r[p++],a="number"==typeof s?u[s]:s;1===r[p]?e[0]=a:2===r[p]?(e[1]=e[1]||{})[r[++p]]=a:3===r[p]?e[1]=Object.assign(e[1]||{},a):e.push(r[p]?t.apply(null,n(t,a,u,["",null])):a);}return e},t=function(n){for(var t,r,u=1,e="",p="",s=[0],a=function(n){1===u&&(n||(e=e.replace(/^\s*\n\s*|\s*\n\s*$/g,"")))?s.push(n||e,0):3===u&&(n||e)?(s.push(n||e,1), u=2):2===u&&"..."===e&&n?s.push(n,3):2===u&&e&&!n?s.push(!0,2,e):4===u&&r&&(s.push(n||e,2,r), r=""), e="";},f=0;f<n.length;f++){f&&(1===u&&a(), a(f));for(var h=0;h<n[f].length;h++)t=n[f][h], 1===u?"<"===t?(a(), s=[s], u=3):e+=t:p?t===p?p="":e+=t:'"'===t||"'"===t?p=t:">"===t?(a(), u=1):u&&("="===t?(u=4, r=e, e=""):"/"===t?(a(), 3===u&&(s=s[0]), u=s, (s=s[0]).push(u,4), u=0):" "===t||"\t"===t||"\n"===t||"\r"===t?(a(), u=2):e+=t);}return a(), s},r="function"==typeof Map,u=r?new Map:{},e=r?function(n){var r=u.get(n);return r||u.set(n,r=t(n)), r}:function(n){for(var r="",e=0;e<n.length;e++)r+=n[e].length+"-"+n[e];return u[r]||(u[r]=t(n))};function htm(t){var r=n(this,e(t),arguments,[]);return r.length>1?r:r[0]}
 
 var html = htm.bind(h);
@@ -1733,6 +1758,7 @@ function createRef() {
 
 var Component = WeElement;
 var defineElement = define;
+var elements = options.mapping;
 
 var omi = {
   tag: tag,
@@ -1755,13 +1781,15 @@ var omi = {
   extractClass: extractClass,
   createRef: createRef,
   html: html,
-  htm: htm
+  htm: htm,
+  o: o,
+  elements: elements
 };
 
 options.root.Omi = omi;
 options.root.omi = omi;
-options.root.Omi.version = '6.3.4';
+options.root.Omi.version = '6.3.17';
 
 export default omi;
-export { tag, WeElement, Component, render, h, h as createElement, options, define, observe, cloneElement, getHost, rpx, tick, nextTick, ModelView, defineElement, classNames, extractClass, createRef, html, htm };
+export { tag, WeElement, Component, render, h, h as createElement, options, define, observe, cloneElement, getHost, rpx, tick, nextTick, ModelView, defineElement, classNames, extractClass, createRef, html, htm, o, elements };
 //# sourceMappingURL=omi.esm.js.map

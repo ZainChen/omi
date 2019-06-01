@@ -30,7 +30,7 @@ declare namespace Omi {
 	 * declare global {
 	 *     namespace JSX {
 	 * 	       interface IntrinsicElements {
-	 *             'hello-element': CustomElementBaseAttributes & {
+	 *             'hello-element': Props & {
 	 *                 propFromParent: string;
 	 *             }
 	 *         }
@@ -65,8 +65,9 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(): void;
+		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
 		attrsToProps(): void;
+		setAttribute(name: string, value: any): void;
 	}
 
 	interface ModelView<P, D> {
@@ -77,7 +78,9 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(): void;
+		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
+		attrsToProps(): void;
+		setAttribute(name: string, value: any): void;
 	}
 
 	interface Component<P, D> extends HTMLElement {
@@ -88,8 +91,9 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(): void;
+		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
 		attrsToProps(): void;
+		setAttribute(name: string, value: any): void;
 	}
 
 	abstract class WeElement<P = {}, D = {}> {
@@ -107,6 +111,7 @@ declare namespace Omi {
 		data?: D;
 		host?: HTMLElement;
 		normalizedNodeName?: string;
+		elementId: number;
 	
 		update?(): void;
 		fire?(name: string, data?: object): void;
@@ -159,6 +164,7 @@ declare namespace Omi {
 		data?: D;
 		host?: HTMLElement;
 		normalizedNodeName?: string;
+		elementId: number;
 	
 		update?(): void;
 		fire?(name: string, data?: object): void;
@@ -190,11 +196,14 @@ declare namespace Omi {
 	function getHost(element: WeElement): WeElement;
 	function classNames(...args: any[]): string;
 	function extractClass(...args: any[]): object;
+	function o(obj: any): string;
 
 	var options: {
 		vnode?: (vnode: VNode<any>) => void;
 		event?: (event: Event) => Event;
-  };
+	};
+	
+	var elements: object
 }
 
 
@@ -686,10 +695,14 @@ declare global {
 			// Standard HTML Attributes
 			accept?: string;
 			acceptCharset?: string;
+			acceptcharset?: string;
 			accessKey?: string;
+			accesskey?: string;
 			action?: string;
 			allowFullScreen?: boolean;
+			allowfullscreen?: boolean;
 			allowTransparency?: boolean;
+			allowtransparency?: boolean;
 			alt?: string;
 			async?: boolean;
 			autocomplete?: string;
@@ -697,23 +710,31 @@ declare global {
 			autoPlay?: boolean;
 			capture?: boolean;
 			cellPadding?: number | string;
+			cellpadding?: number | string;
 			cellSpacing?: number | string;
+			cellspacing?: number | string;
 			charSet?: string;
 			challenge?: string;
 			checked?: boolean;
 			class?: string;
 			className?: string;
-			cols?: number;
-			colSpan?: number;
+			cols?: number | string;
+			colSpan?: number | string;
+			colspan?: number | string;
 			content?: string;
 			contentEditable?: boolean;
+			contenteditable?: boolean;
 			contextMenu?: string;
+			contextmenu?: string;
 			controls?: boolean;
 			controlsList?: string;
+			controlslist?: string;
 			coords?: string;
 			crossOrigin?: string;
+			crossorigin?: string;
 			data?: string;
 			dateTime?: string;
+			datetime?: string;
 			default?: boolean;
 			defer?: boolean;
 			dir?: string;
@@ -721,62 +742,84 @@ declare global {
 			download?: any;
 			draggable?: boolean;
 			encType?: string;
+			enctype?: string;
 			form?: string;
 			formAction?: string;
+			formaction?: string;
 			formEncType?: string;
+			formenctype?: string;
 			formMethod?: string;
+			formmethod?: string;
 			formNoValidate?: boolean;
+			formnovalidate?: boolean;
 			formTarget?: string;
+			formtarget?: string;
 			frameBorder?: number | string;
+			frameborder?: number | string;
 			headers?: string;
 			height?: number | string;
 			hidden?: boolean;
-			high?: number;
+			high?: number | string;
 			href?: string;
 			hrefLang?: string;
+			hreflang?: string;
 			for?: string;
 			httpEquiv?: string;
+			httpequiv?: string;
 			icon?: string;
 			id?: string;
 			inputMode?: string;
+			inputmode?: string;
 			integrity?: string;
 			is?: string;
 			keyParams?: string;
+			keyparams?: string;
 			keyType?: string;
+			keytype?: string;
 			kind?: string;
 			label?: string;
 			lang?: string;
 			list?: string;
 			loop?: boolean;
-			low?: number;
+			low?: number | string;
 			manifest?: string;
-			marginHeight?: number;
-			marginWidth?: number;
+			marginHeight?: number | string;
+			marginheight?: number | string;
+			marginWidth?: number | string;
+			marginwidth?: number | string;
 			max?: number | string;
-			maxLength?: number;
+			maxLength?: number | string;
+			maxlength?: number | string;
 			media?: string;
 			mediaGroup?: string;
+			mediagroup?: string;
 			method?: string;
 			min?: number | string;
-			minLength?: number;
+			minLength?: number | string;
+			minlength?: number | string;
 			multiple?: boolean;
 			muted?: boolean;
 			name?: string;
 			noValidate?: boolean;
+			novalidate?: boolean;
 			open?: boolean;
-			optimum?: number;
+			optimum?: number | string;
 			pattern?: string;
 			placeholder?: string;
 			playsInline?: boolean;
+			playsinline?: boolean;
 			poster?: string;
 			preload?: string;
 			radioGroup?: string;
+			radiogroup?: string;
 			readOnly?: boolean;
+			readonly?: boolean;
 			rel?: string;
 			required?: boolean;
 			role?: string;
-			rows?: number;
-			rowSpan?: number;
+			rows?: number | string;
+			rowSpan?: number | string;
+			rowspan?: number | string;
 			sandbox?: string;
 			scope?: string;
 			scoped?: boolean;
@@ -784,25 +827,29 @@ declare global {
 			seamless?: boolean;
 			selected?: boolean;
 			shape?: string;
-			size?: number;
+			size?: number | string;
 			sizes?: string;
 			slot?: string;
-			span?: number;
+			span?: number | string;
 			spellcheck?: boolean;
 			src?: string;
 			srcset?: string;
 			srcDoc?: string;
+			srcdoc?: string;
 			srcLang?: string;
+			srclang?: string;
 			srcSet?: string;
-			start?: number;
+			start?: number | string;
 			step?: number | string;
 			style?: any;
 			summary?: string;
-			tabIndex?: number;
+			tabIndex?: number | string;
+			tabindex?: number | string;
 			target?: string;
 			title?: string;
 			type?: string;
 			useMap?: string;
+			usemap?: string;
 			value?: string | string[] | number;
 			width?: number | string;
 			wmode?: string;

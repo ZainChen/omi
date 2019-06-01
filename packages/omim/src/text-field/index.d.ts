@@ -2,6 +2,7 @@ import { WeElement } from 'omi';
 import { MDCTextField } from '@material/textfield/index';
 import '../icon';
 interface Props {
+    type: 'date' | 'time' | 'color' | 'datetime-local';
     fullWidth: boolean;
     textarea: boolean;
     outlined: boolean;
@@ -10,6 +11,8 @@ interface Props {
     helperText: string;
     iconRight: boolean;
     counter: boolean;
+    path: string;
+    paths: string;
     label: string;
     required: boolean;
     pattern: string;
@@ -35,6 +38,7 @@ interface Data {
 export default class TextField extends WeElement<Props, Data> {
     static defaultProps: {
         showHelper: boolean;
+        type: string;
     };
     static propTypes: {
         fullWidth: BooleanConstructor;
@@ -45,6 +49,8 @@ export default class TextField extends WeElement<Props, Data> {
         helperText: StringConstructor;
         iconRight: BooleanConstructor;
         counter: BooleanConstructor;
+        path: StringConstructor;
+        paths: StringConstructor;
         label: StringConstructor;
         required: BooleanConstructor;
         pattern: StringConstructor;
@@ -64,8 +70,11 @@ export default class TextField extends WeElement<Props, Data> {
         trailingIconAriaLabel: StringConstructor;
         leadingIconContent: StringConstructor;
         trailingIconContent: StringConstructor;
+        leftIcon: StringConstructor;
+        rightIcon: StringConstructor;
     };
-    static css: any;
+    static css: string;
+    static resetTheme(): void;
     mdc: MDCTextField;
     root: HTMLElement;
     installed(): void;

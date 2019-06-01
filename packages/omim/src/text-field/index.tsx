@@ -5,7 +5,11 @@ import { MDCTextField } from '@material/textfield/index'
 import '../icon'
 //import { MDCRipple } from '@material/ripple/index'
 
+//@ts-ignore
+import { theme } from '../theme.ts'
+
 interface Props {
+	type: 'date' | 'time' | 'color' | 'datetime-local',
   fullWidth: boolean,
   textarea: boolean,
   outlined: boolean,
@@ -15,6 +19,9 @@ interface Props {
   iconRight: boolean,
   //counter: number[],
   counter: boolean,
+
+  path: string,
+  paths: string,
   //Multi-line Text Field (Textarea) with Character Counter  (textarea+counter)
 
   label: string,
@@ -31,7 +38,7 @@ interface Props {
   cols: number,
 
   value: string,
-  disabled: boolean, //also add style class 
+  disabled: boolean, //also add style class
   useNativeValidation: boolean,
   valid: boolean,
   helperTextContent: string,
@@ -59,7 +66,8 @@ function extract(from, props):any {
 @tag('m-text-field')
 export default class TextField extends WeElement<Props, Data>{
   static defaultProps = {
-    showHelper: true
+		showHelper: true,
+		type: 'text'
   }
 
   static propTypes = {
@@ -71,6 +79,9 @@ export default class TextField extends WeElement<Props, Data>{
     helperText: String,
     iconRight: Boolean,
     counter: Boolean,
+
+    path: String,
+    paths: String,
 
     //Multi-line Text Field (Textarea) with Character Counter  (textarea+counter)
 
@@ -88,7 +99,7 @@ export default class TextField extends WeElement<Props, Data>{
     cols: Number,
 
     value: String,
-    disabled: Boolean, //also add style class 
+    disabled: Boolean, //also add style class
     useNativeValidation: Boolean,
     valid: Boolean,
     helperTextContent: String,
@@ -96,10 +107,17 @@ export default class TextField extends WeElement<Props, Data>{
     leadingIconAriaLabel: String,
     trailingIconAriaLabel: String,
     leadingIconContent: String,
-    trailingIconContent: String
+		trailingIconContent: String,
+
+		leftIcon: String,
+		rightIcon: String
   }
 
-  static css = css
+  static css = theme() + css
+
+  static resetTheme() {
+    this.css = theme() + css
+  }
 
   mdc: MDCTextField
   root: HTMLElement
@@ -128,8 +146,8 @@ export default class TextField extends WeElement<Props, Data>{
       'mdc-text-field--fullwidth': props.fullWidth,
       'mdc-text-field--textarea': props.textarea,
       'mdc-text-field--disabled': props.disabled,
-      'mdc-text-field--with-leading-icon': (props.path || props.paths) && !props.iconRight,
-      'mdc-text-field--with-trailing-icon': (props.path || props.paths) && props.iconRight
+      'mdc-text-field--with-leading-icon': props.leftIcon || ((props.path || props.paths) && !props.iconRight),
+      'mdc-text-field--with-trailing-icon': props.rightIcon ||((props.path || props.paths) && props.iconRight)
     })
 
     const inputProps = extract(props, ['disabled', 'required', 'pattern', 'value', 'minLength', 'maxLength', 'min', 'max', 'step'])
@@ -141,12 +159,13 @@ export default class TextField extends WeElement<Props, Data>{
 
     const vd = [
       <div ref={this.refIt} {...cls}>
-        {(props.path || props.paths) && !props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
+				{(props.path || props.paths) && !props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
+				{props.leftIcon && <i class="material-icons mdc-text-field__icon">{props.leftIcon}</i>}
         {props.counter && props.textarea && <div class="mdc-text-field-character-counter"></div>}
         {
           props.textarea ?
             <textarea id="my-text-field" class="mdc-text-field__input" rows={props.rows} cols={props.cols} {...inputProps}></textarea> :
-            <input type="text" id="my-text-field" class="mdc-text-field__input" {...inputProps} />
+            <input type={props.type} id="my-text-field" class="mdc-text-field__input" {...inputProps} />
         }
         {
           props.outlined ?
@@ -159,7 +178,8 @@ export default class TextField extends WeElement<Props, Data>{
             </div> :
             (props.label === undefined || !props.noLabel && <label class="mdc-floating-label" for="my-text-field">{props.label}</label>)
         }
-        {(props.path || props.paths) && props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
+				{(props.path || props.paths) && props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
+				{props.rightIcon && <i class="material-icons mdc-text-field__icon">{props.rightIcon}</i>}
         {!props.outlined && <div class="mdc-line-ripple"></div>}
       </div>
     ]

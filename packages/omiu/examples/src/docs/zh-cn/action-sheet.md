@@ -39,7 +39,6 @@
 | ------------- |:-------------:|:-----:|:-------------:|
 | menus  | json array|--  ||
 | actions  | json array| -- ||
-| scale | number   |   2 | |
 | show | bool| false ||
 | type | string| ios | options: ios, android|
 | onClose | function| -- ||

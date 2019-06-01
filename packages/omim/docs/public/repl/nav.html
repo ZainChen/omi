@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Omiu REPL</title>
-  <link rel="shortcut icon" href="https://tencent.github.io/omi/assets/md2site/favicon.ico">
+  <link rel="shortcut icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="./libs/normalize.css" />
   <link rel="stylesheet" type="text/css" href="./libs/codemirror.css" />
   <style>
@@ -16,7 +16,7 @@
     .editor{
             overflow: hidden;
         }
-        
+
     .tool-bar{
         height: 40px;
         line-height: 40px;
@@ -42,7 +42,7 @@
       background-color: #555;
     }
 
-    @media screen and (max-width: 768px) {  
+    @media screen and (max-width: 768px) {
           .playground {
             display: block;
           }
@@ -52,7 +52,7 @@
           top: 40%;
           width: 100%;
           height: 60%;
-          
+
         }
 
         .playground .preview{
@@ -78,26 +78,50 @@
     </div>
     <div class="playground">
       <div class="editor">
-        <textarea id="editor">define('my-app', class extends WeElement {
+<textarea id="editor"><div>
+	<m-nav id='myNav' nodes="[{
+		title: 'p-0',
+		id: 1,
+		icon: 'account_balance_wallet',
+		children: [
+			{
+				title: 'p-1',
+				id: 2,
+				icon: 'assignment_ind',
+				children: [
+					{ title: 'p-2', id: 3, icon: 'chrome_reader_mode', checked: true },
+					{ title: 'p-2.5', id: 13, icon: 'chrome_reader_mode' }
+				]
+			},
+			{
+				title: 'p-4',
+				id: 4,
+				icon: 'extension',
 
-  navIndex = 0
+				children: [
+					{
+						title: 'p-5', id: 5, selected: true, icon: 'dashboard', checked: true,
+						disabled: true
+					},
+					{ title: '项目六', id: 6, icon: 'favorite' },
+					{ title: '项目7', id: 7 }
+				]
+			}
+		]
+	},
+	{
+		title: 'p-11',
+		id: 14,
+		icon: 'group_work',
 
-  navChange = index => {
-    this.navIndex = index
-    this.update()
-  }
-
-  render() {
-    return (
-      <o-nav onChange={this.navChange}>
-        <item active={this.navIndex === 0}>我的项目</item>
-        <item active={this.navIndex === 1}>所有项目</item>
-      </o-nav>
-    )
-  }
-})
-
-render(<my-app />, 'body')</textarea>
+		children: [
+			{
+				title: 'p-12', id: 12, icon: 'fingerprint', checked: true
+			}
+		]
+	}]">
+	</m-nav>
+</div></textarea>
       </div>
       <div class="preview">
         <iframe class="frame" id="frame"></iframe>
@@ -110,19 +134,18 @@ render(<my-app />, 'body')</textarea>
     </div>
   </div>
 
-  <script src="./libs/babel.min.js"></script>
   <script src="./libs/codemirror.js"></script>
   <script src="./libs/xml.js"></script>
-  <script src="./libs/javascript.js"></script>
+
 
   <script>
     var style, lastTimer, lastCode, lastScript, queryString = getQueryString(),
       sourceFromQueryString = queryString.code, backgroundColor = queryString.bgColor, editorTheme = queryString.theme || "dark", notification = document.getElementById("notification"), notificationContent = document.getElementById("notification-content"), frame = document.getElementById("frame"),
       storageKey = "alloyrender_playground_source",
       myTextarea = document.getElementById("editor"),
-      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "javascript" }), lastStorageSource = localStorage.getItem(storageKey),
+      editor = CodeMirror.fromTextArea(myTextarea, { lineNumbers: !0, theme: editorTheme, tabSize: 2, mode: "text/html" }), lastStorageSource = localStorage.getItem(storageKey),
       source = sourceFromQueryString || lastStorageSource || editor.getValue();
-    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./preview.html";
+    "dark" === editorTheme && (style = document.createElement("style"), style.innerHTML = ".container {background-color: #1e1d23}", document.body.appendChild(style)), source && (editor.setValue(source), compile(source, !0)), frame.src = "./nav-preview.html";
 
     function getQueryString() { for (var d, a = {}, b = location.search.slice(1), c = /([^&=]+)=([^&]*)/g; d = c.exec(b);)a[decodeURIComponent(d[1])] = decodeURIComponent(d[2]); return a }
     function hideNotify() { notification.classList.add("hide") }
@@ -138,10 +161,8 @@ render(<my-app />, 'body')</textarea>
     }
 
     function compile(a, b) {
-      var c, d; a = a || "", lastCode = a, hideNotify(), c = "/* @jsx createElement */\n"; try { d = Babel.transform(c + a, { presets: ["react", "es2015", "stage-1"] }).code } catch (e) { return console.error(e), showNotify(e), void 0 }
-      window._sourceCode = d
-      return d;
-      //return isReady?(runCompiled(d),void 0):(!b&&showNotify("Preview.html is not ready!",3e3),void 0)
+			window._sourceCode = a
+      return a
     }
 
     function run() {
