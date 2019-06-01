@@ -69,7 +69,8 @@ define('o-router', class extends WeElement {
 
 export function routeUpdate(vnode, selector, byNative, root) {
   root.childNodes.forEach(child => {
-    if (child.style.display !== 'none') {
+    // console.log(child.style) //zain
+    if (child && child.style && child.style.display !== 'none') {
       child.style.display = 'none'
       child.onHide && child.onHide()
       child._component && child._component.onHide && child._component.onHide()

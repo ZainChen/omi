@@ -291,7 +291,7 @@
             children: vnode
         };
         ret = idiff(dom, vnode, context, mountAll, componentRoot);
-        if (parent && ret.parentNode !== parent) parent.appendChild(ret);
+        if (parent && ret && ret.parentNode !== parent) parent.appendChild(ret);
         if (!--diffLevel) {
             hydrating = !1;
             if (!componentRoot) flushMounts();

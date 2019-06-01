@@ -822,8 +822,9 @@ function diff(dom, vnode, context, mountAll, parent, componentRoot) {
   }
 
   ret = idiff(dom, vnode, context, mountAll, componentRoot);
+  // console.log(ret.parentNode)
   // append the element if its a new parent
-  if (parent && ret.parentNode !== parent) parent.appendChild(ret);
+  if (parent && ret && ret.parentNode !== parent) parent.appendChild(ret);
 
   // diffLevel being reduced to 0 means we're exiting the diff
   if (! --diffLevel) {
@@ -1075,6 +1076,7 @@ function diffAttributes(dom, attrs, old) {
   // add new & update changed attributes
   for (name in attrs) {
     if (name !== 'children' && name !== 'innerHTML' && (!(name in old) || attrs[name] !== (name === 'value' || name === 'checked' ? dom[name] : old[name]))) {
+      // console.log(name)
       setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
     }
   }
@@ -1496,6 +1498,7 @@ function renderComponent(component, opts, mountAll, isChild) {
       if (initialBase || opts === 1) {
         if (cbase) cbase._component = null;
         base = diff(cbase, rendered, context, mountAll || !isUpdate, initialBase && initialBase.parentNode, true);
+        // console.log(base)
       }
     }
 
