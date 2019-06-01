@@ -8,6 +8,7 @@ import '@omim/core/dialog'
 import '@omim/core/switch'
 import '@omim/core/radio'
 import '@omim/core/tree'
+import '@omim/core/select'
 
 //获取应用实例
 const app = getApp()
@@ -86,6 +87,7 @@ define('page-index', class extends WeElement {
   }
 
   install() {
+    console.log(Omi.version)
     if (app.globalData.userInfo) {
       this.data.userInfo = app.globalData.userInfo
       this.data.hasUserInfo = true
@@ -130,13 +132,26 @@ define('page-index', class extends WeElement {
         color: '#0052d9',
         scale: 1.3
       }}>zain</m-button>
-      {/* <m-dialog show={true}><h1>jane</h1></m-dialog> */}
+      <m-dialog show={true}><h1>jane</h1></m-dialog>
       {/* <m-switch label='LabelA' value='omim A' ></m-switch> */}
       <m-radio checked label='checked'> </m-radio>
       {/* <m-tree
 				checkbox
 				node={this.node}>
-			</m-tree> */}
+      </m-tree> */}
+      <m-select onchange="changeA(event)" label="Choose One Item">
+        <option value="" disabled selected></option>
+        <option value="grains">
+          Bread, Cereal, Rice, and Pasta
+        </option>
+        <option value="vegetables">
+          Vegetables
+        </option>
+        <option value="fruit">
+          Fruit
+        </option>
+      </m-select>
+
       <image src={png}></image>
         <view class="userinfo">
           {(!this.data.hasUserInfo && this.data.canIUse) ? (
