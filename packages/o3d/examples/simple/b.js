@@ -982,7 +982,7 @@
 			this.x = (e[0] * x + e[4] * y + e[8] * z + e[12]) * w;
 			this.y = (e[1] * x + e[5] * y + e[9] * z + e[13]) * w;
 			this.z = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
-
+			this.w = w;
 			return this;
 		},
 
@@ -1401,6 +1401,93 @@
 			console.error('THREE.Matrix4: the constructor no longer reads arguments. use .set() instead.');
 		}
 	}
+
+	Matrix4.getProjection = function (angle, a, zMin, zMax) {
+		var ang = Math.tan(angle * .5 * Math.PI / 180); //angle*.5
+		return new Matrix4().set(0.5 / ang, 0, 0, 0, 0, 0.5 * a / ang, 0, 0, 0, 0, -(zMax + zMin) / (zMax - zMin), -2 * zMax * zMin / (zMax - zMin), 0, 0, -1, 0);
+	};
+
+	Matrix4.lookAt = function (out, eye, center, up) {
+		var x0,
+		    x1,
+		    x2,
+		    y0,
+		    y1,
+		    y2,
+		    z0,
+		    z1,
+		    z2,
+		    len,
+		    eyex = eye[0],
+		    eyey = eye[1],
+		    eyez = eye[2],
+		    upx = up[0],
+		    upy = up[1],
+		    upz = up[2],
+		    centerx = center[0],
+		    centery = center[1],
+		    centerz = center[2];
+
+		z0 = eyex - centerx;
+		z1 = eyey - centery;
+		z2 = eyez - centerz;
+
+		len = 1 / Math.sqrt(z0 * z0 + z1 * z1 + z2 * z2);
+		z0 *= len;
+		z1 *= len;
+		z2 *= len;
+
+		x0 = upy * z2 - upz * z1;
+		x1 = upz * z0 - upx * z2;
+		x2 = upx * z1 - upy * z0;
+		len = Math.sqrt(x0 * x0 + x1 * x1 + x2 * x2);
+		if (!len) {
+			x0 = 0;
+			x1 = 0;
+			x2 = 0;
+		} else {
+			len = 1 / len;
+			x0 *= len;
+			x1 *= len;
+			x2 *= len;
+		}
+
+		y0 = z1 * x2 - z2 * x1;
+		y1 = z2 * x0 - z0 * x2;
+		y2 = z0 * x1 - z1 * x0;
+
+		len = Math.sqrt(y0 * y0 + y1 * y1 + y2 * y2);
+		if (!len) {
+			y0 = 0;
+			y1 = 0;
+			y2 = 0;
+		} else {
+			len = 1 / len;
+			y0 *= len;
+			y1 *= len;
+			y2 *= len;
+		}
+
+		out[0] = x0;
+		out[1] = y0;
+		out[2] = z0;
+		out[3] = 0;
+		out[4] = x1;
+		out[5] = y1;
+		out[6] = z1;
+		out[7] = 0;
+		out[8] = x2;
+		out[9] = y2;
+		out[10] = z2;
+		out[11] = 0;
+		out[12] = -(x0 * eyex + x1 * eyey + x2 * eyez);
+		out[13] = -(y0 * eyex + y1 * eyey + y2 * eyez);
+		out[14] = -(z0 * eyex + z1 * eyey + z2 * eyez);
+		out[15] = 1;
+
+		// return out;
+		return new Matrix4().set(out[0], out[4], out[8], out[12], out[1], out[5], out[9], out[13], out[2], out[6], out[10], out[14], out[3], out[7], out[11], out[15]);
+	};
 
 	Object.assign(Matrix4.prototype, {
 
@@ -2248,7 +2335,214 @@
 
 	});
 
-	console.log(Vector3, Matrix4);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Group = function () {
+	  function Group() {
+	    _classCallCheck(this, Group);
+
+	    this.children = [];
+	  }
+
+	  Group.prototype.add = function add(child) {
+	    this.children.push(child);
+	  };
+
+	  Group.prototype.render = function render(ctx) {
+	    var list = this.children.slice();
+	    for (var i = 0, l = list.length; i < l; i++) {
+	      var child = list[i];
+	      if (!child.isVisible()) {
+	        continue;
+	      }
+
+	      // draw the child:
+	      ctx.save();
+	      child.updateContext(ctx);
+	      child.render(ctx);
+	      ctx.restore();
+	    }
+	    return true;
+	  };
+
+	  return Group;
+	}();
+
+	function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Stage = function (_Group) {
+	  _inherits(Stage, _Group);
+
+	  function Stage(option) {
+	    _classCallCheck$1(this, Stage);
+
+	    var _this = _possibleConstructorReturn(this, _Group.call(this));
+
+	    _this.renderTo = typeof option.renderTo === 'string' ? document.querySelector(option.renderTo) : option.renderTo;
+	    _this.canvas = document.createElement('canvas');
+	    _this.canvas.width = option.width;
+	    _this.canvas.height = option.height;
+	    _this.ctx = _this.canvas.getContext('2d');
+
+	    _this.camera = option.camera;
+	    return _this;
+	  }
+
+	  Stage.prototype.update = function update() {
+	    var _this2 = this;
+
+	    this.children.forEach(function (child) {
+	      child.render(_this2.ctx, _this2.camera);
+	    });
+	  };
+
+	  return Stage;
+	}(Group);
+
+	function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Cube = function () {
+	  function Cube(position, length, width, height) {
+	    _classCallCheck$2(this, Cube);
+
+	    this.position = position;
+	    this.length = length;
+	    this.width = width;
+	    this.height = height;
+
+	    this.rotation = {
+	      x: 0,
+	      y: 0,
+	      z: 0
+	      //w 0.001694915254237288 10
+	      //w 0.0018181818181818182 50
+	      //w0.002               100
+	      //w0.0033333333333333335  300
+	      //w 0.01  500
+	    };this.testP = new Vector3(100, 100, 500);
+
+	    this.pv = new Matrix4();
+	  }
+
+	  Cube.prototype.render = function render(ctx, camera) {
+	    this.pv.multiplyMatrices(camera.p_matrix, camera.v_matrix);
+	    //p*v*m
+	    //face z-sort !!! w-sort !!
+	    //render
+	    this.testP.applyMatrix4(this.pv);
+
+	    console.log(this.testP.w);
+	  };
+
+	  return Cube;
+	}();
+
+	function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Camera = function () {
+	  function Camera(option) {
+	    _classCallCheck$3(this, Camera);
+
+	    //http://blog.csdn.net/lyx2007825/article/details/8792475
+	    //http://www.cnblogs.com/yiyezhai/archive/2012/09/12/2677902.html
+	    this._createProp('x', option.x, this._update);
+	    this._createProp('y', option.y, this._update);
+	    this._createProp('z', option.z, this._update);
+
+	    //(vertical field of view(FOV))
+	    this.fov = option.fov || 75;
+	    this.ratio = option.ratio || 1920 / 1080;
+	    this.front = option.front || 1;
+	    this.back = option.back || 10000;
+	    this.target = [0, 0, 0];
+	    this._update();
+	  }
+
+	  Camera.prototype._update = function _update() {
+	    //http://webglfactory.blogspot.com/2011/06/how-to-create-view-matrix.html
+	    //http://4.bp.blogspot.com/_ltmZpULxXtI/TSn3hwEQuZI/AAAAAAAAAes/H93UF8OT1sE/s1600/gimballock_camera.png
+	    this.v_matrix = Matrix4.lookAt([], [this.x, this.y, this.z], this.target, [0, 1, 0]);
+	    this.p_matrix = Matrix4.getProjection(this.fov, this.ratio, this.front, this.back);
+	    this.un_p_matrix = new Matrix4().getInverse(this.p_matrix);
+	    this.un_v_matrix = new Matrix4().getInverse(this.v_matrix);
+	  };
+
+	  Camera.prototype.lookAt = function lookAt(target) {
+	    this.target = target;
+	    this._update();
+	  };
+
+	  Camera.prototype.createRay = function createRay(rotioX, ratioY) {
+	    var v3 = Vector3;
+
+	    var pl = [this.x, this.y, this.z];
+	    var m = new Matrix4().multiplyMatrices(this.un_v_matrix, this.un_p_matrix);
+
+	    var p2 = v3.applyProjection([rotioX, ratioY, 0], m);
+
+	    var v = v3.sub([], p2, pl);
+	    return {
+	      dir: v3.normalize(v, v),
+	      pt: pl
+	    };
+	  };
+
+	  Camera.prototype._createProp = function _createProp(name, defaultValue, setterCallback) {
+	    this['_' + name] = defaultValue;
+	    Object.defineProperty(this, name, {
+	      get: function get() {
+	        return this['_' + name];
+	      },
+	      set: function set(value) {
+	        this['_' + name] = value;
+	        setterCallback.call(this, value);
+	      }
+	    });
+	  };
+
+	  return Camera;
+	}();
+
+	var stage = new Stage({
+	  camera: new Camera({
+	    x: 0,
+	    y: 0,
+	    z: 600,
+	    rotateX: 0,
+	    rotateY: 0,
+	    fov: 60,
+	    ratio: 600 / 600,
+	    front: 1,
+	    back: 1000
+	  }),
+	  renderTo: '#root',
+	  width: 600,
+	  height: 400,
+	  renderer: 'canvas'
+	});
+
+	var cube = new Cube({
+	  x: 0,
+	  y: 0,
+	  z: 0
+	}, 100, 100, 100);
+
+	stage.add(cube);
+
+	stage.update();
+
+	//animate();
+
+	// function animate() {
+	//   requestAnimationFrame(animate);
+	//   cube.rotation.x += 0.01;
+	//   cube.rotation.y += 0.02;
+	//   stage.update()
+	// }
 
 }());
 //# sourceMappingURL=b.js.map
