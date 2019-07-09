@@ -1,7 +1,6 @@
 import { WeElement } from 'omi';
 import { MDCTopAppBar } from '@material/top-app-bar';
-import '../icon';
-import '../icon-button';
+import '../theme.ts';
 interface Props {
     heading?: string;
     short?: boolean;
@@ -10,18 +9,16 @@ interface Props {
     dense?: boolean;
     fixed?: boolean;
     adjust?: boolean;
-    navigation?: object;
-    navigationElement?: object;
+    bottom: boolean;
+    navigations?: object;
     actionItems?: object;
-    actionElements?: object;
     scrollTarget?: EventTarget;
-    scrollTargetDrawer?: boolean;
+    scrollTargetId?: string;
 }
 interface Data {
 }
 export default class topAppBar extends WeElement<Props, Data> {
-    static css: string;
-    static resetTheme(): void;
+    static css: any;
     static propTypes: {
         heading: StringConstructor;
         short: BooleanConstructor;
@@ -30,23 +27,25 @@ export default class topAppBar extends WeElement<Props, Data> {
         dense: BooleanConstructor;
         fixed: BooleanConstructor;
         adjust: BooleanConstructor;
-        navigation: ObjectConstructor;
-        navigationElement: ObjectConstructor;
+        bottom: BooleanConstructor;
+        navigations: ObjectConstructor;
         actionItems: ObjectConstructor;
-        actionElements: ObjectConstructor;
         scrollTarget: {
             new (): EventTarget;
             prototype: EventTarget;
         };
-        scrollTargetDrawer: BooleanConstructor;
+        scrollTargetId: StringConstructor;
     };
-    static defaultProps: {};
     topAppBar: MDCTopAppBar;
+    tagNum: Object;
+    other: boolean;
+    beforeUpdate(): void;
     updated(): void;
     installed(): void;
-    isArray(value: any): boolean;
-    onNavigation: (evt: Event) => void;
+    _setChildrenAttribute(): void;
+    onNavigation: (evt: any) => void;
     onAction: (evt: any) => void;
-    render(props: any): JSX.Element;
+    _findPathAccessKey(evt: any): any;
+    render(props: any): JSX.Element[];
 }
 export {};

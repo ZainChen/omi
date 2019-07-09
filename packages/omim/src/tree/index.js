@@ -96,10 +96,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tree/index.scss":
-/*!***********************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/tree/index.scss ***!
-  \***********************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tree/index.scss":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/tree/index.scss ***!
+  \***********************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108,7 +108,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, ".material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 24px;\n  height: 24px;\n  max-width: 24px;\n  overflow: hidden; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\nli {\n  list-style: none;\n  margin: 0;\n  padding: 4px 0px;\n  white-space: nowrap; }\n\nul {\n  margin: 0;\n  padding: 0 0 0 18px; }\n\n.children {\n  transition: all .4s ease;\n  overflow: hidden; }\n\n.tree-item {\n  vertical-align: top; }\n\n.tree-item li {\n  margin-left: 10px; }\n\n.arrow {\n  vertical-align: top;\n  cursor: pointer;\n  height: 24px;\n  line-height: 24px;\n  display: inline-block; }\n\n.close > .arrow {\n  transform: rotate(-90deg); }\n\n.mdc-tree-title {\n  padding: 0 10px;\n  border-radius: 3px;\n  cursor: pointer;\n  height: 24px;\n  line-height: 24px;\n  display: inline-block;\n  vertical-align: top; }\n\n.text {\n  display: inline-block;\n  line-height: 24px;\n  height: 24px; }\n\n.mdc-tree-title:hover {\n  background-color: #cbebfc; }\n\n.mdc-tree-title.selected {\n  background-color: #bae7ff; }\n\n.tree-item,\n.arrow {\n  transition: all .4s ease; }\n\n.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner::after {\n  position: absolute;\n  display: table;\n  border: 2px solid #fff;\n  border-top: 0;\n  border-left: 0;\n  -webkit-transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  -ms-transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  opacity: 1;\n  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;\n  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;\n  content: ' '; }\n\n.mdc-tree-checkbox-inner::after {\n  position: absolute;\n  top: 50%;\n  left: 21%;\n  display: table;\n  width: 5.71428571px;\n  height: 9.14285714px;\n  border: 2px solid #fff;\n  border-top: 0;\n  border-left: 0;\n  -webkit-transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  -ms-transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  opacity: 0;\n  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;\n  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;\n  content: ' '; }\n\n.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner {\n  background-color: #1890ff;\n  border-color: #1890ff; }\n\n.mdc-tree-checkbox-inner {\n  position: relative;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 16px;\n  height: 16px;\n  background-color: #fff;\n  border: 1px solid #d9d9d9;\n  border-radius: 2px;\n  border-collapse: separate;\n  -webkit-transition: all .3s;\n  transition: all .3s; }\n\n.mdc-tree-checkbox {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  color: rgba(0, 0, 0, 0.65);\n  font-size: 14px;\n  font-variant: tabular-nums;\n  line-height: 1.5;\n  list-style: none;\n  -webkit-font-feature-settings: 'tnum';\n  font-feature-settings: 'tnum';\n  position: relative;\n  top: -0.09em;\n  display: inline-block;\n  line-height: 1;\n  white-space: nowrap;\n  vertical-align: middle;\n  outline: none;\n  cursor: pointer;\n  margin: 0 4px; }\n\n.mdc-tree-checkbox-disabled .mdc-tree-checkbox-inner {\n  background-color: #f5f5f5;\n  border-color: #d9d9d9 !important;\n  cursor: not-allowed; }\n\n.mdc-tree-checkbox-disabled.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner::after {\n  border-color: rgba(0, 0, 0, 0.25);\n  -webkit-animation-name: none;\n  animation-name: none; }\n\n.mdc-tree-checkbox-indeterminate .mdc-tree-checkbox-inner::after {\n  top: 50%;\n  left: 50%;\n  width: 8px;\n  height: 8px;\n  background-color: #1890ff;\n  border: 0;\n  -webkit-transform: translate(-50%, -50%) scale(1);\n  -ms-transform: translate(-50%, -50%) scale(1);\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n  content: ' '; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 24px;\n  height: 24px;\n  max-width: 24px;\n  overflow: hidden; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\nli {\n  list-style: none;\n  margin: 0;\n  padding: 4px 0px;\n  white-space: nowrap; }\n\nul {\n  margin: 0;\n  padding: 0 0 0 18px; }\n\n.children {\n  transition: all .4s ease;\n  overflow: hidden; }\n\n.tree-item {\n  vertical-align: top; }\n\n.tree-item li {\n  margin-left: 10px; }\n\n.arrow {\n  vertical-align: top;\n  cursor: pointer;\n  height: 24px;\n  line-height: 24px;\n  display: inline-block; }\n\n.close > .arrow {\n  transform: rotate(-90deg); }\n\n.mdc-tree-title {\n  padding: 0 10px;\n  border-radius: 3px;\n  cursor: pointer;\n  height: 24px;\n  line-height: 24px;\n  display: inline-block;\n  vertical-align: top; }\n\n.text {\n  display: inline-block;\n  line-height: 24px;\n  height: 24px; }\n\n.mdc-tree-title:hover {\n  background-color: #cbebfc; }\n\n.mdc-tree-title.selected {\n  background-color: #bae7ff; }\n\n.tree-item,\n.arrow {\n  transition: all .4s ease; }\n\n.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner::after {\n  position: absolute;\n  display: table;\n  border: 2px solid #fff;\n  border-top: 0;\n  border-left: 0;\n  -webkit-transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  -ms-transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  transform: rotate(45deg) scale(1) translate(-50%, -50%);\n  opacity: 1;\n  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;\n  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;\n  content: ' '; }\n\n.mdc-tree-checkbox-inner::after {\n  position: absolute;\n  top: 50%;\n  left: 21%;\n  display: table;\n  width: 5.71428571px;\n  height: 9.14285714px;\n  border: 2px solid #fff;\n  border-top: 0;\n  border-left: 0;\n  -webkit-transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  -ms-transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  transform: rotate(45deg) scale(0) translate(-50%, -50%);\n  opacity: 0;\n  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;\n  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;\n  content: ' '; }\n\n.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner {\n  background-color: #2170b8;\n  border-color: #2170b8; }\n\n.mdc-tree-checkbox-inner {\n  position: relative;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 16px;\n  height: 16px;\n  background-color: #fff;\n  border: 1px solid #d9d9d9;\n  border-radius: 2px;\n  border-collapse: separate;\n  -webkit-transition: all .3s;\n  transition: all .3s; }\n\n.mdc-tree-checkbox {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  color: rgba(0, 0, 0, 0.65);\n  font-size: 14px;\n  font-variant: tabular-nums;\n  line-height: 1.5;\n  list-style: none;\n  -webkit-font-feature-settings: 'tnum';\n  font-feature-settings: 'tnum';\n  position: relative;\n  top: -0.09em;\n  display: inline-block;\n  line-height: 1;\n  white-space: nowrap;\n  vertical-align: middle;\n  outline: none;\n  cursor: pointer;\n  margin: 0 4px; }\n\n.mdc-tree-checkbox-disabled .mdc-tree-checkbox-inner {\n  background-color: #f5f5f5;\n  border-color: #d9d9d9 !important;\n  cursor: not-allowed; }\n\n.mdc-tree-checkbox-disabled.mdc-tree-checkbox-checked .mdc-tree-checkbox-inner::after {\n  border-color: rgba(0, 0, 0, 0.25);\n  -webkit-animation-name: none;\n  animation-name: none; }\n\n.mdc-tree-checkbox-indeterminate .mdc-tree-checkbox-inner::after {\n  top: 50%;\n  left: 50%;\n  width: 8px;\n  height: 8px;\n  background-color: #2170b8;\n  border: 0;\n  -webkit-transform: translate(-50%, -50%) scale(1);\n  -ms-transform: translate(-50%, -50%) scale(1);\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n  content: ' '; }\n", ""]);
 
 // exports
 
@@ -207,32 +207,29 @@ function toComment(sourceMap) {
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),
@@ -245,7 +242,7 @@ exports.theme = theme;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tree/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tree/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -288,27 +285,59 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/tree/index.scss");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var Tree = /** @class */ (function (_super) {
     __extends(Tree, _super);
     function Tree() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._preSelected = null;
-        _this.toggle = function (id, open) {
-            _this.fire('toggle', { id: id, open: open });
+        _this.toggle = function (id, open, node) {
+            node.close = open;
+            _this.fire('toggle', { node: node, id: id, open: open });
+            _this.update(true);
         };
         _this._check = function (node, state) {
             if (node.disabled)
                 return;
-            _this.fire('check', { id: node.id, checked: !node.checked, state: state });
+            if (!node.children) {
+                node.checked = !node.checked;
+            }
+            else {
+                _this.checkAll(node, state !== 'checked');
+            }
+            _this.update(true);
+            _this.fire('check', { node: node, id: node.id, checked: !node.checked, state: state });
         };
-        _this.onNodeClick = function (id) {
-            _this.fire('nodeClick', { id: id, pre: _this._preSelected });
+        _this.onNodeClick = function (node) {
+            var pre = _this.getNodeById(_this._preSelected, _this.props.node);
+            if (pre) {
+                pre.selected = false;
+            }
+            node.selected = true;
+            _this.update(true);
+            _this.fire('nodeclick', { node: node, id: node.id, pre: _this._preSelected });
         };
         return _this;
     }
-    Tree.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
+    Tree.prototype.checkAll = function (node, checked) {
+        var _this = this;
+        node.children && node.children.forEach(function (child) {
+            child.checked = checked;
+            _this.checkAll(child, checked);
+        });
+    };
+    Tree.prototype.getNodeById = function (id, node) {
+        if (node.id === id)
+            return node;
+        if (node.children) {
+            for (var i = 0, len = node.children.length; i < len; i++) {
+                var child = node.children[i];
+                var target = this.getNodeById(id, child);
+                if (target) {
+                    return target;
+                }
+            }
+        }
     };
     Tree.prototype.renderNode = function (node) {
         var _this = this;
@@ -323,7 +352,7 @@ var Tree = /** @class */ (function (_super) {
             omi_1.h("li", { class: omi_1.classNames('tree-item', {
                     'close': node.close
                 }) },
-                node.children && node.children.length > 0 && omi_1.h("svg", { onClick: function (_) { return _this.toggle(node.id, !node.close); }, viewBox: "0 0 1024 1024", class: "arrow", "data-icon": "caret-down", width: "1em", height: "1em", fill: "currentColor", "aria-hidden": "true", focusable: "false" },
+                node.children && node.children.length > 0 && omi_1.h("svg", { onClick: function (_) { return _this.toggle(node.id, !node.close, node); }, viewBox: "0 0 1024 1024", class: "arrow", "data-icon": "caret-down", width: "1em", height: "1em", fill: "currentColor", "aria-hidden": "true", focusable: "false" },
                     omi_1.h("path", { d: "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" })),
                 this.props.checkbox && omi_1.h("span", { onClick: function (_) { return _this._check(node, state); }, class: omi_1.classNames('mdc-tree-checkbox', {
                         'mdc-tree-checkbox-disabled': node.disabled,
@@ -331,7 +360,7 @@ var Tree = /** @class */ (function (_super) {
                         'mdc-tree-checkbox-indeterminate': (node.children && node.children.length > 0) ? state === 'indeterminate' : false
                     }) },
                     omi_1.h("span", { class: "mdc-tree-checkbox-inner" })),
-                omi_1.h("span", { onClick: function (_) { return _this.onNodeClick(node.id); }, class: omi_1.classNames('mdc-tree-title', {
+                omi_1.h("span", { onClick: function (_) { return _this.onNodeClick(node); }, class: omi_1.classNames('mdc-tree-title', {
                         'selected': node.selected
                     }) },
                     node.icon && omi_1.h("i", { class: 'material-icons' }, node.icon),
@@ -383,7 +412,7 @@ var Tree = /** @class */ (function (_super) {
     Tree.prototype.render = function (props) {
         return this.renderNode(props.node);
     };
-    Tree.css = theme_ts_1.theme() + css;
+    Tree.css = css;
     Tree.propTypes = {
         checkbox: Boolean,
         node: Object

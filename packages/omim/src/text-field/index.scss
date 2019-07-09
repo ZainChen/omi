@@ -1,9 +1,18 @@
 @import "../theme";
 @import "@material/textfield/mdc-text-field";
 
+:host {
+  display: inline-block;
+}
+
 .icon{
   cursor: default;
   pointer-events: none;
+}
+
+.material-icons.icon-event{
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .mdc-text-field--with-leading-icon .icon{

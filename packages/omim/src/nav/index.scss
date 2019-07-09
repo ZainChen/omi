@@ -1,5 +1,9 @@
 @import "../theme";
 
+:host {
+  display: block;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -45,7 +49,6 @@ ul {
 }
 
 .m-nav{
-	border: 1px solid #ccc;
 	width: 256px;
 	border-radius: 4px;
 }

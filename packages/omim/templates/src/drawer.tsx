@@ -1,6 +1,6 @@
 import * as css from './_drawer.css'
 import { define, WeElement, h, extractClass } from 'omi'
-import '@omim/core/nav'
+import 'omim/nav'
 
 const hash = location.hash || '#/dashboard'
 
@@ -53,6 +53,13 @@ define('my-drawer', class extends WeElement {
 		icon: 'people',
 		selected: hash === '#/about',
 		hash: '/about'
+	},
+	{
+		title: 'Editor',
+		id: 3,
+		icon: 'edit',
+		selected: hash === '#/editor',
+		hash: '/editor'
 	},
 	{
 		title: 'Page Templates',

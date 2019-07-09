@@ -11,7 +11,7 @@ define('my-app', class extends WeElement {
 
   static css = css + `
   m-list{
-    margin-top: 30px; 
+    margin-top: 30px;
     display:block;
   }`
 
@@ -261,7 +261,6 @@ define('my-app', class extends WeElement {
         onItemClick={this.onItemClick}
       ></m-list>
 
-
       <m-list
         radio
         css={`ul{
@@ -282,6 +281,59 @@ define('my-app', class extends WeElement {
         {
           text: 'Line item3',
           icon: 'data_usage'
+        }]}
+
+        onItemClick={this.onItemClick}
+      ></m-list>
+
+
+      <m-list
+        checkbox
+        checkboxLeft
+        css={`ul{
+        border: 1px solid rgba(0,0,0,.1);
+      }`}
+        width={300}
+        height={150}
+        items={[{
+          text: 'Line item1'
+        },
+        { divider: true },
+        {
+          text: 'Line item2'
+        },
+        { divider: true },
+        {
+          text: 'Line item3',
+          checked: true
+        },
+        { divider: true },
+        {
+          text: 'Line item4'
+        }]}
+
+        onItemClick={this.onItemClick}
+      ></m-list>
+
+      <m-list
+        radio
+        radioLeft
+        css={`ul{
+        border: 1px solid rgba(0,0,0,.1);
+      }`}
+        width={300}
+        height={100}
+        items={[{
+          text: 'Line item1',
+          checked: true,
+        },
+        { divider: true },
+        {
+          text: 'Line item2'
+        },
+        { divider: true },
+        {
+          text: 'Line item3'
         }]}
 
         onItemClick={this.onItemClick}

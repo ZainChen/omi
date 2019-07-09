@@ -1,5 +1,5 @@
 /**
- * omi v6.4.1  http://omijs.org
+ * omi v6.6.8  http://omijs.org
  * Omi === Preact + Scoped CSS + Store System + Native Support in 3kb javascript.
  * By dntzhang https://github.com/dntzhang
  * Github: https://github.com/Tencent/omi
@@ -385,23 +385,22 @@
       isSvgMode = parent != null && parent.ownerSVGElement !== undefined;
 
       // hydration is indicated by the existing element to be diffed not having a prop cache
-      hydrating = dom != null && !('__omiattr_' in dom);
+      hydrating = dom != null && !('prevProps' in dom);
     }
     if (isArray(vnode)) {
-      ret = [];
-      var parentNode = null;
-      if (isArray(dom)) {
-        var domLength = dom.length;
-        var maxLength = Math.max(vnode.length, domLength);
-        parentNode = dom[0].parentNode;
-        for (var i = 0; i < maxLength; i++) {
-          var ele = idiff(dom[i], vnode[i], context, mountAll, componentRoot);
-          ret.push(ele);
-          if (parentNode && i > domLength - 1) {
-            parentNode.appendChild(ele);
-          }
+      if (parent) {
+        var styles = parent.querySelectorAll('style');
+        styles.forEach(function (s) {
+          parent.removeChild(s);
+        });
+        innerDiffNode(parent, vnode);
+
+        for (var i = styles.length - 1; i >= 0; i--) {
+          parent.firstChild ? parent.insertBefore(styles[i], parent.firstChild) : parent.appendChild(style[i]);
         }
       } else {
+
+        ret = [];
         vnode.forEach(function (item, index) {
           var ele = idiff(index === 0 ? dom : null, item, context, mountAll, componentRoot);
           ret.push(ele);
@@ -461,7 +460,7 @@
         }
       }
 
-      out['__omiattr_'] = true;
+      out['prevProps'] = true;
 
       return out;
     }
@@ -498,11 +497,11 @@
     }
 
     var fc = out.firstChild,
-        props = out['__omiattr_'],
+        props = out['prevProps'],
         vchildren = vnode.children;
 
     if (props == null) {
-      props = out['__omiattr_'] = {};
+      props = out['prevProps'] = {};
       for (var a = out.attributes, i = a.length; i--;) {
         props[a[i].name] = a[i].value;
       }
@@ -522,7 +521,7 @@
       }
 
     // Apply attributes/props from VNode to the DOM Element:
-    diffAttributes(out, vnode.attributes, props, vnode.children);
+    diffAttributes(out, vnode.attributes, props);
     if (out.props) {
       out.props.children = vnode.children;
     }
@@ -558,7 +557,7 @@
     if (len !== 0) {
       for (var i = 0; i < len; i++) {
         var _child = originalChildren[i],
-            props = _child['__omiattr_'],
+            props = _child['prevProps'],
             key = vlen && props ? _child._component ? _child._component.__key : props.key : null;
         if (key != null) {
           keyedLen++;
@@ -632,15 +631,15 @@
   function recollectNodeTree(node, unmountOnly) {
     // If the node's VNode had a ref function, invoke it with null here.
     // (this is part of the React spec, and smart for unsetting references)
-    if (node['__omiattr_'] != null && node['__omiattr_'].ref) {
-      if (typeof node['__omiattr_'].ref === 'function') {
-        node['__omiattr_'].ref(null);
-      } else if (node['__omiattr_'].ref.current) {
-        node['__omiattr_'].ref.current = null;
+    if (node['prevProps'] != null && node['prevProps'].ref) {
+      if (typeof node['prevProps'].ref === 'function') {
+        node['prevProps'].ref(null);
+      } else if (node['prevProps'].ref.current) {
+        node['prevProps'].ref.current = null;
       }
     }
 
-    if (unmountOnly === false || node['__omiattr_'] == null) {
+    if (unmountOnly === false || node['prevProps'] == null) {
       removeNode(node);
     }
 
@@ -665,7 +664,7 @@
    *	@param {Object} attrs		The desired end-state key-value attribute pairs
    *	@param {Object} old			Current/previous attributes (from previous VNode or element's prop cache)
    */
-  function diffAttributes(dom, attrs, old, children) {
+  function diffAttributes(dom, attrs, old) {
     var name;
     var update = false;
     var isWeElement = dom.update;
@@ -690,13 +689,6 @@
         if (name === 'style') {
           setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
         }
-        if (dom.receiveProps) {
-          try {
-            old[name] = JSON.parse(JSON.stringify(attrs[name]));
-          } catch (e) {
-            console.warn('When using receiveProps, you cannot pass prop of cyclic dependencies down.');
-          }
-        }
         dom.props[npn(name)] = attrs[name];
         update = true;
       } else if (name !== 'children' && name !== 'innerHTML' && (!(name in old) || attrs[name] !== (name === 'value' || name === 'checked' ? dom[name] : old[name]))) {
@@ -709,8 +701,9 @@
     }
 
     if (isWeElement && dom.parentNode) {
-      if (update || children.length > 0 || dom.store && !dom.store.data) {
-        if (dom.receiveProps(dom.props, dom.data, oldClone) !== false) {
+      //__hasChildren is not accuracy when it was empty at first, so add dom.children.length > 0 condition
+      if (update || dom.__hasChildren || dom.children.length > 0 || dom.store && !dom.store.data) {
+        if (dom.receiveProps(dom.props, oldClone) !== false) {
           dom.update();
         }
       }
@@ -1331,9 +1324,18 @@
       this.install();
       this.afterInstall();
 
-      var shadowRoot = this.attachShadow({
-        mode: 'open'
-      });
+      var shadowRoot;
+      if (!this.shadowRoot) {
+        shadowRoot = this.attachShadow({
+          mode: 'open'
+        });
+      } else {
+        shadowRoot = this.shadowRoot;
+        var fc;
+        while (fc = shadowRoot.firstChild) {
+          shadowRoot.removeChild(fc);
+        }
+      }
 
       if (this.constructor.css) {
         shadowRoot.appendChild(cssToDom(this.constructor.css));
@@ -1348,7 +1350,10 @@
         this.observed();
       }
 
-      this._host = diff(null, this.render(this.props, this.data, this.store), {}, false, null, false);
+      var rendered = this.render(this.props, this.data, this.store);
+      this.__hasChildren = Object.prototype.toString.call(rendered) === '[object Array]' && rendered.length > 0;
+
+      this.rootNode = diff(null, rendered, {}, false, null, false);
       this.rendered();
 
       if (this.props.css) {
@@ -1357,12 +1362,12 @@
         shadowRoot.appendChild(this._customStyleElement);
       }
 
-      if (isArray(this._host)) {
-        this._host.forEach(function (item) {
+      if (isArray(this.rootNode)) {
+        this.rootNode.forEach(function (item) {
           shadowRoot.appendChild(item);
         });
       } else {
-        shadowRoot.appendChild(this._host);
+        shadowRoot.appendChild(this.rootNode);
       }
       this.installed();
       this._isInstalled = true;
@@ -1381,7 +1386,7 @@
       }
     };
 
-    WeElement.prototype.update = function update() {
+    WeElement.prototype.update = function update(ignoreAttrs) {
       this._willUpdate = true;
       this.beforeUpdate();
       this.beforeRender();
@@ -1390,15 +1395,20 @@
         this._customStyleContent = this.props.css;
         this._customStyleElement.textContent = this._customStyleContent;
       }
-      this.attrsToProps();
-      this._host = diff(this._host, this.render(this.props, this.data, this.store), null, null, this.shadowRoot);
+      this.attrsToProps(ignoreAttrs);
+
+      var rendered = this.render(this.props, this.data, this.store);
+      this.__hasChildren = this.__hasChildren || Object.prototype.toString.call(rendered) === '[object Array]' && rendered.length > 0;
+
+      this.rootNode = diff(this.rootNode, rendered, null, null, this.shadowRoot);
       this._willUpdate = false;
       this.updated();
     };
 
     WeElement.prototype.removeAttribute = function removeAttribute(key) {
       _HTMLElement.prototype.removeAttribute.call(this, key);
-      this.update();
+      //Avoid executing removeAttribute methods before connectedCallback
+      this._isInstalled && this.update();
     };
 
     WeElement.prototype.setAttribute = function setAttribute(key, val) {
@@ -1407,7 +1417,8 @@
       } else {
         _HTMLElement.prototype.setAttribute.call(this, key, val);
       }
-      this.update();
+      //Avoid executing setAttribute methods before connectedCallback
+      this._isInstalled && this.update();
     };
 
     WeElement.prototype.pureRemoveAttribute = function pureRemoveAttribute(key) {
@@ -1418,9 +1429,9 @@
       _HTMLElement.prototype.setAttribute.call(this, key, val);
     };
 
-    WeElement.prototype.attrsToProps = function attrsToProps() {
+    WeElement.prototype.attrsToProps = function attrsToProps(ignoreAttrs) {
       var ele = this;
-      if (ele.normalizedNodeName) return;
+      if (ele.normalizedNodeName || ignoreAttrs) return;
       ele.props['css'] = ele.getAttribute('css');
       var attrs = this.constructor.propTypes;
       if (!attrs) return;
@@ -1436,7 +1447,11 @@
               ele.props[key] = Number(val);
               break;
             case Boolean:
-              ele.props[key] = true;
+              if (val === 'false' || val === '0') {
+                ele.props[key] = false;
+              } else {
+                ele.props[key] = true;
+              }
               break;
             case Array:
             case Object:
@@ -1454,7 +1469,7 @@
     };
 
     WeElement.prototype.fire = function fire(name, data) {
-      this.dispatchEvent(new CustomEvent(name.toLowerCase(), { detail: data }));
+      this.dispatchEvent(new CustomEvent(name.replace(/-/g, '').toLowerCase(), { detail: data }));
     };
 
     WeElement.prototype.beforeInstall = function beforeInstall() {};
@@ -1789,7 +1804,7 @@
 
   options.root.Omi = omi;
   options.root.omi = omi;
-  options.root.Omi.version = '6.4.1';
+  options.root.Omi.version = '6.6.8';
 
   if (typeof module != 'undefined') module.exports = omi;else self.Omi = omi;
 }());

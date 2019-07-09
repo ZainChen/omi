@@ -1,4 +1,5 @@
 import { WeElement } from 'omi';
+import '../theme.ts';
 interface Props {
     checkbox?: boolean;
     node: object;
@@ -6,16 +7,17 @@ interface Props {
 interface Data {
 }
 export default class Tree extends WeElement<Props, Data> {
-    static css: string;
-    static resetTheme(): void;
+    static css: any;
     static propTypes: {
         checkbox: BooleanConstructor;
         node: ObjectConstructor;
     };
     _preSelected: any;
-    toggle: (id: any, open: any) => void;
+    toggle: (id: any, open: any, node: any) => void;
     _check: (node: any, state: any) => void;
-    onNodeClick: (id: any) => void;
+    checkAll(node: any, checked: any): void;
+    onNodeClick: (node: any) => void;
+    getNodeById(id: any, node: any): any;
     renderNode(node: any): JSX.Element;
     _isChecked(node: any, obj: any, tag: any): "checked" | "indeterminate" | "unchecked";
     _getChildCount(node: any): number;

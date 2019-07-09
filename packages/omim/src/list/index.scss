@@ -3,6 +3,10 @@
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/radio/mdc-radio";
 
+:host {
+  display: block;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -17,4 +21,14 @@
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+
+.mdc-list--crl {
+	.mdc-radio, .mdc-checkbox{
+		margin-left: unset;
+	}
+}
+
+.mdc-list {
+	overflow: auto;
 }

@@ -53,9 +53,7 @@ declare namespace Omi {
 		key?: Key | null;
 	}
 
-	type RenderableProps<P, RefType = any> = Readonly<
-		P & Attributes & { children?: ComponentChildren; ref?: Ref<RefType> }
-	>;
+	type RenderableProps<P, RefType = any> = P & Attributes & { children?: ComponentChildren; ref?: Ref<RefType> };
 
 	interface WeElement<P, D> extends HTMLElement {
 		install?(): void;
@@ -65,7 +63,7 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
+		receiveProps?(props: RenderableProps<P>, oldProps:RenderableProps<P>): any;
 		attrsToProps(): void;
 		setAttribute(name: string, value: any): void;
 	}
@@ -78,7 +76,7 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
+		receiveProps?(props: RenderableProps<P>, oldProps:RenderableProps<P>): any;
 		attrsToProps(): void;
 		setAttribute(name: string, value: any): void;
 	}
@@ -91,7 +89,7 @@ declare namespace Omi {
 		afterUpdate?(): void;
 		updated?(): void;
 		beforeRender?(): void;
-		receiveProps?(props: RenderableProps<P>, data: D, oldProps:RenderableProps<P>): any;
+		receiveProps?(props: RenderableProps<P>, oldProps:RenderableProps<P>): any;
 		attrsToProps(): void;
 		setAttribute(name: string, value: any): void;
 	}
@@ -109,12 +107,13 @@ declare namespace Omi {
 
 		props: RenderableProps<P>;
 		data?: D;
-		host?: HTMLElement;
+		prevProps: RenderableProps<P>;
+		rootNode?: HTMLElement;
 		normalizedNodeName?: string;
 		elementId: number;
-	
-		update?(): void;
-		fire?(name: string, data?: object): void;
+
+		update?(ignoreAttrs?:boolean): void;
+		fire?(name: string, data?: any): void;
 		css?(): string;
 		// Abstract methods don't infer argument types
 		// https://github.com/Microsoft/TypeScript/issues/14887
@@ -139,11 +138,11 @@ declare namespace Omi {
 
 		props: RenderableProps<P>;
 		data: D;
-		host: HTMLElement;
+		prevProps: RenderableProps<P>;
+		rootNode?: HTMLElement;
 
-		update(): void;
-		fire(name: string, data?: object): void;
-
+		update(ignoreAttrs?:boolean): void;
+		fire(name: string, data?: any): void;
 		// Abstract methods don't infer argument types
 		// https://github.com/Microsoft/TypeScript/issues/14887
 		abstract render(props: RenderableProps<P>, data: D): void;
@@ -162,12 +161,13 @@ declare namespace Omi {
 
 		props: RenderableProps<P>;
 		data?: D;
-		host?: HTMLElement;
+		prevProps: RenderableProps<P>;
+		rootNode?: HTMLElement;
 		normalizedNodeName?: string;
 		elementId: number;
-	
-		update?(): void;
-		fire?(name: string, data?: object): void;
+
+		update?(ignoreAttrs?:boolean): void;
+		fire?(name: string, data?: any): void;
 		css?(): string;
 		// Abstract methods don't infer argument types
 		// https://github.com/Microsoft/TypeScript/issues/14887
@@ -185,7 +185,7 @@ declare namespace Omi {
 		...children: ComponentChildren[]
 	): VNode<any>;
 
-	function render(vnode: ComponentChild, parent: string | Element | Document | ShadowRoot | DocumentFragment, store?: object): void;
+	function render(vnode: ComponentChild, parent: string | Element | Document | ShadowRoot | DocumentFragment, store?: object): any;
 
 	function define(name: string, ctor: WeElementConstructor): void;
 	function defineElement(name: string, ctor: WeElementConstructor): void;
@@ -202,7 +202,7 @@ declare namespace Omi {
 		vnode?: (vnode: VNode<any>) => void;
 		event?: (event: Event) => Event;
 	};
-	
+
 	var elements: object
 }
 
@@ -226,7 +226,7 @@ declare global {
 
 		interface ElementClass extends Omi.Component<any, any> {
 		}
-		
+
 		interface ElementAttributesProperty {
 			props: any;
 		}

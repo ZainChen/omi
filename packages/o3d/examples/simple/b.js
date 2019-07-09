@@ -1,6 +1,7 @@
 (function () {
 	'use strict';
 
+	/* eslint-disable */
 	/**
 	 * @author alteredq / http://alteredqualia.com/
 	 * @author mrdoob / http://mrdoob.com/
@@ -132,12 +133,7 @@
 
 	};
 
-	/**
-	 * @author mikael emtinger / http://gomo.se/
-	 * @author alteredq / http://alteredqualia.com/
-	 * @author WestLangley / http://github.com/WestLangley
-	 * @author bhouston / http://clara.io
-	 */
+	/* eslint-disable */
 
 	function Quaternion(x, y, z, w) {
 
@@ -716,6 +712,8 @@
 
 	});
 
+	/* eslint-disable */
+
 	/**
 	 * @author mrdoob / http://mrdoob.com/
 	 * @author kile / http://kile.stravaganza.org/
@@ -984,6 +982,22 @@
 			this.z = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
 			this.w = w;
 			return this;
+		},
+
+		applyMatrix4Out: function applyMatrix4Out(m, out) {
+
+			var x = this.x,
+			    y = this.y,
+			    z = this.z;
+			var e = m.elements;
+
+			var w = 1 / (e[3] * x + e[7] * y + e[11] * z + e[15]);
+
+			out.x = (e[0] * x + e[4] * y + e[8] * z + e[12]) * w;
+			out.y = (e[1] * x + e[5] * y + e[9] * z + e[13]) * w;
+			out.z = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
+			out.w = w;
+			return out;
 		},
 
 		applyQuaternion: function applyQuaternion(q) {
@@ -1375,9 +1389,55 @@
 			this.z = attribute.getZ(index);
 
 			return this;
+		},
+		//by dntzhang https://www.cnblogs.com/iamzhanglei/archive/2012/06/11/2544304.html
+		rotateXSelf: function rotateXSelf(p, theta) {
+			var v = this.clone().sub(p);
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			this.y = p.y + R[0][0] * v.y + R[0][1] * v.z;
+			this.z = p.z + R[1][0] * v.y + R[1][1] * v.z;
+		},
+		rotateYSelf: function rotateYSelf(p, theta) {
+			var v = this.clone().sub(p);
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			this.x = p.x + R[0][0] * v.x + R[0][1] * v.z;
+			this.z = p.z + R[1][0] * v.x + R[1][1] * v.z;
+		},
+		rotateZSelf: function rotateZSelf(p, theta) {
+			var v = this.clone().sub(p);
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			this.x = p.x + R[0][0] * v.x + R[0][1] * v.y;
+			this.y = p.y + R[1][0] * v.x + R[1][1] * v.y;
+		},
+
+		rotateY: function rotateY(p, theta, out) {
+			var v = { x: this.x - p.x, y: this.y - p.y, z: this.z - p.z };
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			out.x = p.x + R[0][0] * v.x + R[0][1] * v.z;
+			out.z = p.z + R[1][0] * v.x + R[1][1] * v.z;
+		},
+		rotateX: function rotateX(p, theta, out) {
+			var v = { x: this.x - p.x, y: this.y - p.y, z: this.z - p.z };
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			out.y = p.y + R[0][0] * v.y + R[0][1] * v.z;
+			out.z = p.z + R[1][0] * v.y + R[1][1] * v.z;
+		},
+		rotateZ: function rotateZ(p, theta, out) {
+			var v = { x: this.x - p.x, y: this.y - p.y, z: this.z - p.z };
+			theta *= Math.PI / 180;
+			var R = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+			out.x = p.x + R[0][0] * v.x + R[0][1] * v.y;
+			out.y = p.y + R[1][0] * v.x + R[1][1] * v.y;
 		}
 
 	});
+
+	/* eslint-disable */
 
 	/**
 	 * @author mrdoob / http://mrdoob.com/
@@ -1391,6 +1451,8 @@
 	 * @author bhouston / http://clara.io
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
+
+	var DEG_TO_RAD = 0.017453292519943295;
 
 	function Matrix4() {
 
@@ -2331,41 +2393,143 @@
 			array[offset + 15] = te[15];
 
 			return array;
+		},
+
+		multiplyMatrices_: function multiplyMatrices_(a, be) {
+
+			var ae = a.elements;
+			var te = this.elements;
+			var a11 = ae[0],
+			    a12 = ae[4],
+			    a13 = ae[8],
+			    a14 = ae[12];
+			var a21 = ae[1],
+			    a22 = ae[5],
+			    a23 = ae[9],
+			    a24 = ae[13];
+			var a31 = ae[2],
+			    a32 = ae[6],
+			    a33 = ae[10],
+			    a34 = ae[14];
+			var a41 = ae[3],
+			    a42 = ae[7],
+			    a43 = ae[11],
+			    a44 = ae[15];
+
+			var b11 = be[0],
+			    b12 = be[1],
+			    b13 = be[2],
+			    b14 = be[3];
+			var b21 = be[4],
+			    b22 = be[5],
+			    b23 = be[6],
+			    b24 = be[7];
+			var b31 = be[8],
+			    b32 = be[9],
+			    b33 = be[10],
+			    b34 = be[11];
+			var b41 = be[12],
+			    b42 = be[13],
+			    b43 = be[14],
+			    b44 = be[15];
+
+			te[0] = a11 * b11 + a12 * b21 + a13 * b31 + a14 * b41;
+			te[4] = a11 * b12 + a12 * b22 + a13 * b32 + a14 * b42;
+			te[8] = a11 * b13 + a12 * b23 + a13 * b33 + a14 * b43;
+			te[12] = a11 * b14 + a12 * b24 + a13 * b34 + a14 * b44;
+
+			te[1] = a21 * b11 + a22 * b21 + a23 * b31 + a24 * b41;
+			te[5] = a21 * b12 + a22 * b22 + a23 * b32 + a24 * b42;
+			te[9] = a21 * b13 + a22 * b23 + a23 * b33 + a24 * b43;
+			te[13] = a21 * b14 + a22 * b24 + a23 * b34 + a24 * b44;
+
+			te[2] = a31 * b11 + a32 * b21 + a33 * b31 + a34 * b41;
+			te[6] = a31 * b12 + a32 * b22 + a33 * b32 + a34 * b42;
+			te[10] = a31 * b13 + a32 * b23 + a33 * b33 + a34 * b43;
+			te[14] = a31 * b14 + a32 * b24 + a33 * b34 + a34 * b44;
+
+			te[3] = a41 * b11 + a42 * b21 + a43 * b31 + a44 * b41;
+			te[7] = a41 * b12 + a42 * b22 + a43 * b32 + a44 * b42;
+			te[11] = a41 * b13 + a42 * b23 + a43 * b33 + a44 * b43;
+			te[15] = a41 * b14 + a42 * b24 + a43 * b34 + a44 * b44;
+
+			return this;
+		},
+
+		_arrayWrap: function _arrayWrap(arr) {
+			return window.Float32Array ? new Float32Array(arr) : arr;
+		},
+		appendTransform: function appendTransform(x, y, z, scaleX, scaleY, scaleZ, rotateX, rotateY, rotateZ, skewX, skewY, originX, originY, originZ) {
+
+			var rx = rotateX * DEG_TO_RAD;
+			var cosx = Math.cos(rx);
+			var sinx = Math.sin(rx);
+			var ry = rotateY * DEG_TO_RAD;
+			var cosy = Math.cos(ry);
+			var siny = Math.sin(ry);
+			var rz = rotateZ * DEG_TO_RAD;
+			var cosz = Math.cos(rz * -1);
+			var sinz = Math.sin(rz * -1);
+
+			this.multiplyMatrices_(this, this._arrayWrap([1, 0, 0, x, 0, cosx, sinx, y, 0, -sinx, cosx, z, 0, 0, 0, 1]));
+
+			this.multiplyMatrices_(this, this._arrayWrap([cosy, 0, siny, 0, 0, 1, 0, 0, -siny, 0, cosy, 0, 0, 0, 0, 1]));
+
+			this.multiplyMatrices_(this, this._arrayWrap([cosz * scaleX, sinz * scaleY, 0, 0, -sinz * scaleX, cosz * scaleY, 0, 0, 0, 0, 1 * scaleZ, 0, 0, 0, 0, 1]));
+
+			if (skewX || skewY) {
+				this.multiplyMatrices_(this, this._arrayWrap([this._rounded(Math.cos(skewX * DEG_TO_RAD)), this._rounded(Math.sin(skewX * DEG_TO_RAD)), 0, 0, -1 * this._rounded(Math.sin(skewY * DEG_TO_RAD)), this._rounded(Math.cos(skewY * DEG_TO_RAD)), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]));
+			}
+
+			if (originX || originY || originZ) {
+				this.elements[12] -= originX * this.elements[0] + originY * this.elements[4] + originZ * this.elements[8];
+				this.elements[13] -= originX * this.elements[1] + originY * this.elements[5] + originZ * this.elements[9];
+				this.elements[14] -= originX * this.elements[2] + originY * this.elements[6] + originZ * this.elements[10];
+			}
+
+			return this;
 		}
 
 	});
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Group = function () {
-	  function Group() {
-	    _classCallCheck(this, Group);
+	var Object3d = function () {
+	  function Object3d() {
+	    _classCallCheck(this, Object3d);
 
-	    this.children = [];
+	    this.alpha = 1;
+	    this.scaleX = 1;
+	    this.scaleY = 1;
+	    this.scaleZ = 1;
+	    this.visible = true;
+	    this.skewX = 0;
+	    this.skewY = 0;
+	    this.skewZ = 0;
+	    this.originX = 0;
+	    this.originY = 0;
+	    this.originZ = 0;
+	    this.rotateX = 0;
+	    this.rotateY = 0;
+	    this.rotateZ = 0;
+	    this.x = 0;
+	    this.y = 0;
+	    this.z = 0;
+
+	    this._matrix = new Matrix4();
+
+	    this._groupMatrix = new Matrix4();
+
+	    this.renderList = [];
 	  }
 
-	  Group.prototype.add = function add(child) {
-	    this.children.push(child);
+	  Object3d.prototype.isVisible = function isVisible() {
+	    return this.visible && this.alpha > 0 && this.scaleX !== 0 && this.scaleY !== 0 && this.scaleZ !== 0;
 	  };
 
-	  Group.prototype.render = function render(ctx) {
-	    var list = this.children.slice();
-	    for (var i = 0, l = list.length; i < l; i++) {
-	      var child = list[i];
-	      if (!child.isVisible()) {
-	        continue;
-	      }
+	  Object3d.prototype.updateContext = function updateContext() {};
 
-	      // draw the child:
-	      ctx.save();
-	      child.updateContext(ctx);
-	      child.render(ctx);
-	      ctx.restore();
-	    }
-	    return true;
-	  };
-
-	  return Group;
+	  return Object3d;
 	}();
 
 	function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2374,13 +2538,66 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var Group = function (_Object3d) {
+	  _inherits(Group, _Object3d);
+
+	  function Group() {
+	    _classCallCheck$1(this, Group);
+
+	    var _this = _possibleConstructorReturn(this, _Object3d.call(this));
+
+	    _this.children = [];
+	    return _this;
+	  }
+
+	  Group.prototype.add = function add(child) {
+	    for (var i = 0, len = arguments.length; i < len; i++) {
+	      this.children.push(arguments[i]);
+	    }
+	  };
+
+	  Group.prototype.update = function update(pv, groupMatrix) {
+	    var list = this.children.slice();
+	    this.renderList.length = 0;
+	    for (var i = 0, l = list.length; i < l; i++) {
+	      var child = list[i];
+	      if (!child.isVisible()) {
+	        continue;
+	      }
+
+	      this._matrix.identity().appendTransform(this.x, this.y, this.z, this.scaleX, this.scaleY, this.scaleZ, this.rotateX, this.rotateY, this.rotateZ, this.skewX, this.skewY, this.skewZ, this.originX, this.originY, this.originZ);
+
+	      if (groupMatrix) {
+	        this._groupMatrix.multiplyMatrices(this._matrix, groupMatrix);
+	      } else {
+	        this._groupMatrix = this._matrix;
+	      }
+
+	      // draw the child:
+	      // ctx.save()
+	      // child.updateContext(ctx)
+	      this.renderList = this.renderList.concat(child.update(pv, this._groupMatrix));
+	      //ctx.restore()
+	    }
+	    return this.renderList;
+	  };
+
+	  return Group;
+	}(Object3d);
+
+	function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var Stage = function (_Group) {
-	  _inherits(Stage, _Group);
+	  _inherits$1(Stage, _Group);
 
 	  function Stage(option) {
-	    _classCallCheck$1(this, Stage);
+	    _classCallCheck$2(this, Stage);
 
-	    var _this = _possibleConstructorReturn(this, _Group.call(this));
+	    var _this = _possibleConstructorReturn$1(this, _Group.call(this));
 
 	    _this.renderTo = typeof option.renderTo === 'string' ? document.querySelector(option.renderTo) : option.renderTo;
 	    _this.canvas = document.createElement('canvas');
@@ -2388,87 +2605,231 @@
 	    _this.canvas.height = option.height;
 	    _this.ctx = _this.canvas.getContext('2d');
 
+	    _this.width = option.width;
+	    _this.height = option.height;
+	    _this.renderTo.appendChild(_this.canvas);
 	    _this.camera = option.camera;
+
+	    _this.ctx.translate(_this.width / 2, _this.height / 2);
+	    _this.ctx.scale(1, -1);
+
+	    _this.scale = option.scale || 1000;
+	    _this.pv = new Matrix4();
+	    _this.pv.multiplyMatrices(_this.camera.p_matrix, _this.camera.v_matrix);
+	    _this.camera.stage = _this;
 	    return _this;
 	  }
 
 	  Stage.prototype.update = function update() {
 	    var _this2 = this;
 
+	    this.ctx.clearRect(-this.width / 2, -this.height / 2, this.width, this.height);
+	    this.renderList.length = 0;
 	    this.children.forEach(function (child) {
-	      child.render(_this2.ctx, _this2.camera);
+	      _this2.renderList = _this2.renderList.concat(child.update(_this2.pv));
+	    });
+
+	    this.renderList.sort(function (a, b) {
+	      return a.o3d.order(a) - b.o3d.order(b);
+	    });
+
+	    this.draw(this.ctx, this.scale);
+	  };
+
+	  Stage.prototype.draw = function draw(ctx, scale) {
+	    this.renderList.forEach(function (obj) {
+	      obj.o3d.draw(ctx, scale, obj);
 	    });
 	  };
 
 	  return Stage;
 	}(Group);
 
-	function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Cube = function () {
-	  function Cube(position, length, width, height) {
-	    _classCallCheck$2(this, Cube);
+	function _possibleConstructorReturn$2(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	    this.position = position;
-	    this.length = length;
-	    this.width = width;
-	    this.height = height;
+	function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	    this.rotation = {
-	      x: 0,
-	      y: 0,
-	      z: 0
-	      //w 0.001694915254237288 10
-	      //w 0.0018181818181818182 50
-	      //w0.002               100
-	      //w0.0033333333333333335  300
-	      //w 0.01  500
-	    };this.testP = new Vector3(100, 100, 500);
+	var Cube = function (_Object3d) {
+	  _inherits$2(Cube, _Object3d);
 
-	    this.pv = new Matrix4();
+	  function Cube(length, width, height, options) {
+	    _classCallCheck$3(this, Cube);
+
+	    var _this = _possibleConstructorReturn$2(this, _Object3d.call(this));
+
+	    options = options || {};
+	    _this.center = options.center || new Vector3(_this.x, _this.y, _this.z);
+	    _this.length = length;
+	    _this.width = width;
+	    _this.height = height;
+
+	    var hl = _this.length / 2;
+	    var hw = _this.width / 2;
+	    var hh = _this.height / 2;
+	    _this.p0 = _this.center.clone().sub({ x: hl, y: hh, z: hw });
+	    _this.p1 = _this.center.clone().sub({ x: hl - _this.length, y: hh, z: hw });
+	    _this.p2 = _this.center.clone().sub({ x: hl - _this.length, y: hh - _this.height, z: hw });
+	    _this.p3 = _this.center.clone().sub({ x: hl, y: hh - _this.height, z: hw });
+
+	    _this.p4 = _this.center.clone().sub({ x: hl, y: hh, z: hw - _this.width });
+
+	    _this.p5 = _this.center.clone().sub({ x: hl - _this.length, y: hh, z: hw - _this.width });
+	    _this.p6 = _this.center.clone().sub({ x: hl - _this.length, y: hh - _this.height, z: hw - _this.width });
+	    _this.p7 = _this.center.clone().sub({ x: hl, y: hh - _this.height, z: hw - _this.width });
+
+	    _this.hh = hh;
+	    _this.hl = hl;
+	    _this.hw = hw;
+	    _this.basePoints = [_this.p0.clone(), _this.p1.clone(), _this.p2.clone(), _this.p3.clone(), _this.p4.clone(), _this.p5.clone(), _this.p6.clone(), _this.p7.clone()];
+
+	    _this.points = [_this.p0, _this.p1, _this.p2, _this.p3, _this.p4, _this.p5, _this.p6, _this.p7];
+
+	    var ps = _this.points;
+	    _this.colors = options.colors || ['red', 'green', 'blue', 'yellow', '#ccc', '#467fdd'];
+	    _this.faces = [[ps[0], ps[1], ps[2], ps[3], _this.colors[0]], [ps[4], ps[5], ps[6], ps[7], _this.colors[1]], [ps[4], ps[5], ps[1], ps[0], _this.colors[2]], [ps[3], ps[2], ps[6], ps[7], _this.colors[3]], [ps[3], ps[0], ps[4], ps[7], _this.colors[4]], [ps[2], ps[1], ps[5], ps[6], _this.colors[5]]];
+
+	    _this.faces.forEach(function (face) {
+	      face.o3d = _this;
+	    });
+	    return _this;
 	  }
 
-	  Cube.prototype.render = function render(ctx, camera) {
-	    this.pv.multiplyMatrices(camera.p_matrix, camera.v_matrix);
+	  Cube.prototype.transform = function transform(pv, groupMatrix) {
+	    // const yTopOrigin = {
+	    //   x: this.center.x,
+	    //   y: this.center.y - this.hh,
+	    //   z: this.center.z
+	    // }
+	    // const yBottomOrigin = {
+	    //   x: this.center.x,
+	    //   y: this.center.y + this.hh,
+	    //   z: this.center.z
+	    // }
+
+	    // for (let i = 0; i < 8; i++) {
+	    //   this['p' + i].copy(this.basePoints[i])
+	    // }
+
+	    // this.basePoints[0].rotateY(yTopOrigin, this.rotate.y, this.p0)
+	    // this.basePoints[1].rotateY(yTopOrigin, this.rotate.y, this.p1)
+	    // this.basePoints[4].rotateY(yTopOrigin, this.rotate.y, this.p4)
+	    // this.basePoints[5].rotateY(yTopOrigin, this.rotate.y, this.p5)
+
+	    // this.basePoints[2].rotateY(yBottomOrigin, this.rotate.y, this.p2)
+	    // this.basePoints[3].rotateY(yBottomOrigin, this.rotate.y, this.p3)
+	    // this.basePoints[6].rotateY(yBottomOrigin, this.rotate.y, this.p6)
+	    // this.basePoints[7].rotateY(yBottomOrigin, this.rotate.y, this.p7)
+
+
+	    this._matrix.identity().appendTransform(this.x, this.y, this.z, this.scaleX, this.scaleY, this.scaleZ, this.rotateX, this.rotateY, this.rotateZ, this.skewX, this.skewY, this.skewZ, this.originX, this.originY, this.originZ);
+
+	    if (groupMatrix) {
+	      this._groupMatrix.multiplyMatrices(this._matrix, groupMatrix);
+	    } else {
+	      this._groupMatrix = this._matrix;
+	    }
+
+	    for (var i = 0; i < 8; i++) {
+	      this.basePoints[i].applyMatrix4Out(this._groupMatrix, this['p' + i]);
+	    }
+
 	    //p*v*m
 	    //face z-sort !!! w-sort !!
 	    //render
-	    this.testP.applyMatrix4(this.pv);
+	    for (var _i = 0; _i < 8; _i++) {
+	      this['p' + _i].applyMatrix4(pv);
+	    }
+	  };
 
-	    console.log(this.testP.w);
+	  Cube.prototype.update = function update(pv, groupMatrix) {
+	    this.transform(pv, groupMatrix);
+	    return this.faces;
+	  };
+
+	  Cube.prototype.draw = function draw(ctx, scale, face) {
+	    var p1 = face[0];
+	    var p2 = face[1];
+	    var p3 = face[2];
+	    var p4 = face[3];
+	    ctx.beginPath();
+	    ctx.moveTo(p1.x * scale, p1.y * scale);
+	    ctx.fillStyle = face[4];
+	    ctx.lineTo(p2.x * scale, p2.y * scale);
+	    ctx.lineTo(p3.x * scale, p3.y * scale);
+	    ctx.lineTo(p4.x * scale, p4.y * scale);
+	    ctx.closePath();
+	    ctx.fill();
+	  };
+
+	  Cube.prototype.order = function order(face) {
+	    return face[0].w + face[1].w + face[2].w + face[3].w;
+	  };
+
+	  Cube.prototype.stroke = function stroke(ctx, scale) {
+	    var ps = this.points;
+	    ctx.beginPath();
+	    ctx.moveTo(ps[0].x * scale, ps[0].y * scale);
+
+	    ctx.lineTo(ps[1].x * scale, ps[1].y * scale);
+	    ctx.lineTo(ps[2].x * scale, ps[2].y * scale);
+	    ctx.lineTo(ps[3].x * scale, ps[3].y * scale);
+	    ctx.lineTo(ps[0].x * scale, ps[0].y * scale);
+	    ctx.lineTo(ps[4].x * scale, ps[4].y * scale);
+	    ctx.lineTo(ps[5].x * scale, ps[5].y * scale);
+	    ctx.lineTo(ps[6].x * scale, ps[6].y * scale);
+	    ctx.lineTo(ps[7].x * scale, ps[7].y * scale);
+	    ctx.lineTo(ps[4].x * scale, ps[4].y * scale);
+
+	    ctx.moveTo(ps[5].x * scale, ps[5].y * scale);
+	    ctx.lineTo(ps[1].x * scale, ps[1].y * scale);
+
+	    ctx.moveTo(ps[6].x * scale, ps[6].y * scale);
+	    ctx.lineTo(ps[2].x * scale, ps[2].y * scale);
+
+	    ctx.moveTo(ps[7].x * scale, ps[7].y * scale);
+	    ctx.lineTo(ps[3].x * scale, ps[3].y * scale);
+	    ctx.stroke();
 	  };
 
 	  return Cube;
-	}();
+	}(Object3d);
 
-	function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Camera = function () {
 	  function Camera(option) {
-	    _classCallCheck$3(this, Camera);
+	    _classCallCheck$4(this, Camera);
 
 	    //http://blog.csdn.net/lyx2007825/article/details/8792475
 	    //http://www.cnblogs.com/yiyezhai/archive/2012/09/12/2677902.html
 	    this._createProp('x', option.x, this._update);
 	    this._createProp('y', option.y, this._update);
 	    this._createProp('z', option.z, this._update);
+	    //target x y z
+	    this._createProp('tx', option.tx, this._update);
+	    this._createProp('ty', option.ty, this._update);
+	    this._createProp('tz', option.tz, this._update);
 
 	    //(vertical field of view(FOV))
 	    this.fov = option.fov || 75;
 	    this.ratio = option.ratio || 1920 / 1080;
 	    this.front = option.front || 1;
 	    this.back = option.back || 10000;
-	    this.target = [0, 0, 0];
 	    this._update();
 	  }
 
 	  Camera.prototype._update = function _update() {
 	    //http://webglfactory.blogspot.com/2011/06/how-to-create-view-matrix.html
 	    //http://4.bp.blogspot.com/_ltmZpULxXtI/TSn3hwEQuZI/AAAAAAAAAes/H93UF8OT1sE/s1600/gimballock_camera.png
-	    this.v_matrix = Matrix4.lookAt([], [this.x, this.y, this.z], this.target, [0, 1, 0]);
+	    this.v_matrix = Matrix4.lookAt([], [this.x, this.y, this.z], [this.tx, this.ty, this.tz], [0, 1, 0]);
 	    this.p_matrix = Matrix4.getProjection(this.fov, this.ratio, this.front, this.back);
 	    this.un_p_matrix = new Matrix4().getInverse(this.p_matrix);
 	    this.un_v_matrix = new Matrix4().getInverse(this.v_matrix);
+	    if (this.stage) {
+	      this.stage.pv.multiplyMatrices(this.p_matrix, this.v_matrix);
+	    }
 	  };
 
 	  Camera.prototype.lookAt = function lookAt(target) {
@@ -2507,42 +2868,46 @@
 	  return Camera;
 	}();
 
+	var camera = new Camera({
+	  x: 0,
+	  y: 0,
+	  z: 1000,
+	  tx: 0,
+	  ty: 0,
+	  tz: 0,
+	  fov: 60,
+	  ratio: 600 / 600,
+	  front: 1,
+	  back: 1000
+	});
+
 	var stage = new Stage({
-	  camera: new Camera({
-	    x: 0,
-	    y: 0,
-	    z: 600,
-	    rotateX: 0,
-	    rotateY: 0,
-	    fov: 60,
-	    ratio: 600 / 600,
-	    front: 1,
-	    back: 1000
-	  }),
+	  camera: camera,
 	  renderTo: '#root',
 	  width: 600,
 	  height: 400,
 	  renderer: 'canvas'
 	});
 
-	var cube = new Cube({
-	  x: 0,
-	  y: 0,
-	  z: 0
-	}, 100, 100, 100);
+	var cube = new Cube(100, 100, 100, {
+	  center: new Vector3(0, 0, 0)
+	});
 
+	cube.rotateY = 30;
 	stage.add(cube);
 
 	stage.update();
 
-	//animate();
+	animate();
 
-	// function animate() {
-	//   requestAnimationFrame(animate);
-	//   cube.rotation.x += 0.01;
-	//   cube.rotation.y += 0.02;
-	//   stage.update()
-	// }
+	function animate() {
+	  requestAnimationFrame(animate);
+	  // cube.rotateY += 1
+	  // cube.rotateX += 1
+	  // cube.rotateZ += 1
+	  camera.y += 1;
+	  stage.update();
+	}
 
 }());
 //# sourceMappingURL=b.js.map

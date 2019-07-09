@@ -1,9 +1,9 @@
-import { tag, WeElement, h } from 'omi'
+import { tag, WeElement, h, extractClass } from 'omi'
 import * as css from './index.scss'
 import '../icon-button'
 
 //@ts-ignore
-import { theme } from '../theme.ts'
+import '../theme.ts'
 
 interface Props {
   width?: string,
@@ -12,7 +12,9 @@ interface Props {
   subTitle?: string,
   content: string,
   buttons?: object,
-  icons?: object
+  icons?: object,
+  topTitle?: boolean,
+  overImg?: boolean
 }
 
 interface Data {
@@ -21,11 +23,7 @@ interface Data {
 
 @tag('m-card')
 export default class Card extends WeElement<Props, Data>{
-  static css = theme() + css
-
-  static resetTheme() {
-    this.css = theme() + css
-  }
+  static css = css
 
   static propTypes = {
     width: String,
@@ -34,7 +32,9 @@ export default class Card extends WeElement<Props, Data>{
     subTitle: String,
     content: String,
     buttons: Object,
-    icons: Object
+    icons: Object,
+    topTitle: Boolean,
+    overImg: Boolean
   }
 
   btnClick = (evt, index) => {
@@ -47,14 +47,25 @@ export default class Card extends WeElement<Props, Data>{
 
   render(props) {
     return (
-      <div class="mdc-card" style={`width:${props.width || '640px;'}`}>
+      <div {...extractClass(props, 'mdc-card', {
+        'over-img': props.overImg,
+        'top-title': props.topTitle
+      })} style={`width:${props.width || '640px;'}`}>
+        {props.topTitle && <div class="mdc-card__primary">
+          <h2 class="mdc-typography mdc-typography--headline6">{props.title}</h2>
+          {props.subTitle && <h3 class="mdc-typography mdc-typography--subtitle2">{props.subTitle}</h3>}
+        </div>}
         <div class="mdc-card__primary-action  mdc-ripple-upgraded" tabindex="0">
           {props.img && <div class="mdc-card__media mdc-card__media--16-9" style={`background-image: url(${props.img});`}>
+            {props.overImg && !props.topTitle && <div class="mdc-card__primary">
+              <h2 class="mdc-typography mdc-typography--headline6">{props.title}</h2>
+              {props.subTitle && <h3 class="mdc-typography mdc-typography--subtitle2">{props.subTitle}</h3>}
+            </div>}
           </div>}
-          <div class="mdc-card__primary">
+          {!props.overImg && !props.topTitle && <div class="mdc-card__primary">
             <h2 class="mdc-typography mdc-typography--headline6">{props.title}</h2>
             {props.subTitle && <h3 class="mdc-typography mdc-typography--subtitle2">{props.subTitle}</h3>}
-          </div>
+          </div>}
           <div class="mdc-card__secondary mdc-typography mdc-typography--body2">
             {props.content}
           </div>

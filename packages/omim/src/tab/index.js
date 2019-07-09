@@ -106,7 +106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCComponent", function() { return MDCComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
 /**
  * @license
@@ -362,9 +362,9 @@ function matches(element, selector) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js":
 /*!****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js ***!
   \****************************************************************************/
 /*! exports provided: MDCRipple */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -372,11 +372,11 @@ function matches(element, selector) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return MDCRipple; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
 /* harmony import */ var _material_dom_ponyfill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/dom/ponyfill */ "./node_modules/_@material_dom@1.1.0@@material/dom/ponyfill.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js");
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -491,9 +491,9 @@ var MDCRipple = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js":
 /*!****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js ***!
   \****************************************************************************/
 /*! exports provided: cssClasses, strings, numbers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -554,9 +554,9 @@ var numbers = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js":
 /*!*****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js ***!
   \*****************************************************************************/
 /*! exports provided: MDCRippleFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -564,10 +564,10 @@ var numbers = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return MDCRippleFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js");
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -1032,9 +1032,9 @@ var MDCRippleFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js":
 /*!***********************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js ***!
   \***********************************************************************/
 /*! exports provided: supportsCssVariables, applyPassive, getNormalizedEventCoords */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1148,9 +1148,9 @@ function getNormalizedEventCoords(evt, pageOffset, clientRect) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/component.js":
+/***/ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/component.js":
 /*!******************************************************************************!*\
-  !*** ./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/component.js ***!
+  !*** ./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/component.js ***!
   \******************************************************************************/
 /*! exports provided: MDCTabBar */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1158,12 +1158,12 @@ function getNormalizedEventCoords(evt, pageOffset, clientRect) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabBar", function() { return MDCTabBar; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
-/* harmony import */ var _material_tab_scroller_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/tab-scroller/component */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/component.js");
-/* harmony import */ var _material_tab_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material/tab/component */ "./node_modules/_@material_tab@2.2.0@@material/tab/component.js");
-/* harmony import */ var _material_tab_foundation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material/tab/foundation */ "./node_modules/_@material_tab@2.2.0@@material/tab/foundation.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/foundation.js");
+/* harmony import */ var _material_tab_scroller_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/tab-scroller/component */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/component.js");
+/* harmony import */ var _material_tab_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material/tab/component */ "./node_modules/_@material_tab@2.3.0@@material/tab/component.js");
+/* harmony import */ var _material_tab_foundation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material/tab/foundation */ "./node_modules/_@material_tab@2.3.0@@material/tab/foundation.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/foundation.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -1337,9 +1337,9 @@ var MDCTabBar = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/constants.js":
+/***/ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/constants.js":
 /*!******************************************************************************!*\
-  !*** ./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/constants.js ***!
+  !*** ./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/constants.js ***!
   \******************************************************************************/
 /*! exports provided: numbers, strings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1395,9 +1395,9 @@ var numbers = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/foundation.js":
+/***/ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/foundation.js":
 /*!*******************************************************************************!*\
-  !*** ./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/foundation.js ***!
+  !*** ./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/foundation.js ***!
   \*******************************************************************************/
 /*! exports provided: MDCTabBarFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1405,9 +1405,9 @@ var numbers = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabBarFoundation", function() { return MDCTabBarFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/constants.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -1780,20 +1780,25 @@ var MDCTabBarFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/index.js":
+/***/ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/index.js":
 /*!**************************************************************************!*\
-  !*** ./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/index.js ***!
+  !*** ./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/index.js ***!
   \**************************************************************************/
-/*! exports provided: MDCTabBar, MDCTabBarFoundation */
+/*! exports provided: MDCTabBar, numbers, strings, MDCTabBarFoundation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/component.js");
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/component.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCTabBar", function() { return _component__WEBPACK_IMPORTED_MODULE_0__["MDCTabBar"]; });
 
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/foundation.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCTabBarFoundation", function() { return _foundation__WEBPACK_IMPORTED_MODULE_1__["MDCTabBarFoundation"]; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/constants.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "numbers", function() { return _constants__WEBPACK_IMPORTED_MODULE_1__["numbers"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "strings", function() { return _constants__WEBPACK_IMPORTED_MODULE_1__["strings"]; });
+
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/foundation.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCTabBarFoundation", function() { return _foundation__WEBPACK_IMPORTED_MODULE_2__["MDCTabBarFoundation"]; });
 
 /**
  * @license
@@ -1819,13 +1824,14 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/component.js":
+/***/ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/component.js":
 /*!******************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/component.js ***!
+  !*** ./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/component.js ***!
   \******************************************************************************************/
 /*! exports provided: MDCTabIndicator */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1833,11 +1839,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabIndicator", function() { return MDCTabIndicator; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
-/* harmony import */ var _fading_foundation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fading-foundation */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/fading-foundation.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/foundation.js");
-/* harmony import */ var _sliding_foundation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sliding-foundation */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/sliding-foundation.js");
+/* harmony import */ var _fading_foundation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fading-foundation */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/fading-foundation.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/foundation.js");
+/* harmony import */ var _sliding_foundation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sliding-foundation */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/sliding-foundation.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -1910,9 +1916,9 @@ var MDCTabIndicator = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/constants.js":
+/***/ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/constants.js":
 /*!******************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/constants.js ***!
+  !*** ./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/constants.js ***!
   \******************************************************************************************/
 /*! exports provided: cssClasses, strings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1956,9 +1962,9 @@ var strings = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/fading-foundation.js":
+/***/ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/fading-foundation.js":
 /*!**************************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/fading-foundation.js ***!
+  !*** ./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/fading-foundation.js ***!
   \**************************************************************************************************/
 /*! exports provided: MDCFadingTabIndicatorFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1966,8 +1972,8 @@ var strings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCFadingTabIndicatorFoundation", function() { return MDCFadingTabIndicatorFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/foundation.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/foundation.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2013,9 +2019,9 @@ var MDCFadingTabIndicatorFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/foundation.js":
+/***/ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/foundation.js":
 /*!*******************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/foundation.js ***!
+  !*** ./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/foundation.js ***!
   \*******************************************************************************************/
 /*! exports provided: MDCTabIndicatorFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2023,9 +2029,9 @@ var MDCFadingTabIndicatorFoundation = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabIndicatorFoundation", function() { return MDCTabIndicatorFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/constants.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2096,9 +2102,9 @@ var MDCTabIndicatorFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/sliding-foundation.js":
+/***/ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/sliding-foundation.js":
 /*!***************************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/sliding-foundation.js ***!
+  !*** ./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/sliding-foundation.js ***!
   \***************************************************************************************************/
 /*! exports provided: MDCSlidingTabIndicatorFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2106,8 +2112,8 @@ var MDCTabIndicatorFoundation = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCSlidingTabIndicatorFoundation", function() { return MDCSlidingTabIndicatorFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/foundation.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/foundation.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2171,9 +2177,9 @@ var MDCSlidingTabIndicatorFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/component.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/component.js":
 /*!****************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/component.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/component.js ***!
   \****************************************************************************************/
 /*! exports provided: MDCTabScroller */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2181,11 +2187,11 @@ var MDCSlidingTabIndicatorFoundation = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabScroller", function() { return MDCTabScroller; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
 /* harmony import */ var _material_dom_ponyfill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/dom/ponyfill */ "./node_modules/_@material_dom@1.1.0@@material/dom/ponyfill.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/foundation.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/util.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/foundation.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/util.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2302,9 +2308,9 @@ var MDCTabScroller = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/constants.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/constants.js":
 /*!****************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/constants.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/constants.js ***!
   \****************************************************************************************/
 /*! exports provided: cssClasses, strings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2349,9 +2355,9 @@ var strings = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/foundation.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/foundation.js":
 /*!*****************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/foundation.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/foundation.js ***!
   \*****************************************************************************************/
 /*! exports provided: MDCTabScrollerFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2359,12 +2365,12 @@ var strings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabScrollerFoundation", function() { return MDCTabScrollerFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/constants.js");
-/* harmony import */ var _rtl_default_scroller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./rtl-default-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-default-scroller.js");
-/* harmony import */ var _rtl_negative_scroller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rtl-negative-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-negative-scroller.js");
-/* harmony import */ var _rtl_reverse_scroller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./rtl-reverse-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-reverse-scroller.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/constants.js");
+/* harmony import */ var _rtl_default_scroller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./rtl-default-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-default-scroller.js");
+/* harmony import */ var _rtl_negative_scroller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rtl-negative-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-negative-scroller.js");
+/* harmony import */ var _rtl_reverse_scroller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./rtl-reverse-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-reverse-scroller.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2703,9 +2709,9 @@ var MDCTabScrollerFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-default-scroller.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-default-scroller.js":
 /*!***************************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-default-scroller.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-default-scroller.js ***!
   \***************************************************************************************************/
 /*! exports provided: MDCTabScrollerRTLDefault, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2713,8 +2719,8 @@ var MDCTabScrollerFoundation = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabScrollerRTLDefault", function() { return MDCTabScrollerRTLDefault; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
-/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-scroller.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
+/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-scroller.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2791,9 +2797,9 @@ var MDCTabScrollerRTLDefault = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-negative-scroller.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-negative-scroller.js":
 /*!****************************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-negative-scroller.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-negative-scroller.js ***!
   \****************************************************************************************************/
 /*! exports provided: MDCTabScrollerRTLNegative, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2801,8 +2807,8 @@ var MDCTabScrollerRTLDefault = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabScrollerRTLNegative", function() { return MDCTabScrollerRTLNegative; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
-/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-scroller.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
+/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-scroller.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2876,9 +2882,9 @@ var MDCTabScrollerRTLNegative = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-reverse-scroller.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-reverse-scroller.js":
 /*!***************************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-reverse-scroller.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-reverse-scroller.js ***!
   \***************************************************************************************************/
 /*! exports provided: MDCTabScrollerRTLReverse, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2886,8 +2892,8 @@ var MDCTabScrollerRTLNegative = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabScrollerRTLReverse", function() { return MDCTabScrollerRTLReverse; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
-/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-scroller.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
+/* harmony import */ var _rtl_scroller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rtl-scroller */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-scroller.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -2962,9 +2968,9 @@ var MDCTabScrollerRTLReverse = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-scroller.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-scroller.js":
 /*!*******************************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/rtl-scroller.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/rtl-scroller.js ***!
   \*******************************************************************************************/
 /*! exports provided: MDCTabScrollerRTL, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3007,9 +3013,9 @@ var MDCTabScrollerRTL = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/util.js":
+/***/ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/util.js":
 /*!***********************************************************************************!*\
-  !*** ./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/util.js ***!
+  !*** ./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/util.js ***!
   \***********************************************************************************/
 /*! exports provided: computeHorizontalScrollbarHeight */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3017,7 +3023,7 @@ var MDCTabScrollerRTL = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "computeHorizontalScrollbarHeight", function() { return computeHorizontalScrollbarHeight; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-scroller@2.2.0@@material/tab-scroller/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab-scroller@2.3.0@@material/tab-scroller/constants.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -3068,9 +3074,9 @@ function computeHorizontalScrollbarHeight(documentObj, shouldCacheResult) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab@2.2.0@@material/tab/component.js":
+/***/ "./node_modules/_@material_tab@2.3.0@@material/tab/component.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/_@material_tab@2.2.0@@material/tab/component.js ***!
+  !*** ./node_modules/_@material_tab@2.3.0@@material/tab/component.js ***!
   \**********************************************************************/
 /*! exports provided: MDCTab */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3078,12 +3084,12 @@ function computeHorizontalScrollbarHeight(documentObj, shouldCacheResult) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTab", function() { return MDCTab; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
-/* harmony import */ var _material_ripple_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/ripple/component */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js");
-/* harmony import */ var _material_ripple_foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material/ripple/foundation */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js");
-/* harmony import */ var _material_tab_indicator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material/tab-indicator/component */ "./node_modules/_@material_tab-indicator@2.1.0@@material/tab-indicator/component.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab@2.2.0@@material/tab/foundation.js");
+/* harmony import */ var _material_ripple_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/ripple/component */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js");
+/* harmony import */ var _material_ripple_foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material/ripple/foundation */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js");
+/* harmony import */ var _material_tab_indicator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material/tab-indicator/component */ "./node_modules/_@material_tab-indicator@2.3.0@@material/tab-indicator/component.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_tab@2.3.0@@material/tab/foundation.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -3215,9 +3221,9 @@ var MDCTab = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab@2.2.0@@material/tab/constants.js":
+/***/ "./node_modules/_@material_tab@2.3.0@@material/tab/constants.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/_@material_tab@2.2.0@@material/tab/constants.js ***!
+  !*** ./node_modules/_@material_tab@2.3.0@@material/tab/constants.js ***!
   \**********************************************************************/
 /*! exports provided: cssClasses, strings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3264,9 +3270,9 @@ var strings = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_tab@2.2.0@@material/tab/foundation.js":
+/***/ "./node_modules/_@material_tab@2.3.0@@material/tab/foundation.js":
 /*!***********************************************************************!*\
-  !*** ./node_modules/_@material_tab@2.2.0@@material/tab/foundation.js ***!
+  !*** ./node_modules/_@material_tab@2.3.0@@material/tab/foundation.js ***!
   \***********************************************************************/
 /*! exports provided: MDCTabFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3274,9 +3280,9 @@ var strings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTabFoundation", function() { return MDCTabFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab@2.2.0@@material/tab/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_tab@2.3.0@@material/tab/constants.js");
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -3408,10 +3414,10 @@ var MDCTabFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tab/index.scss":
-/*!**********************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/tab/index.scss ***!
-  \**********************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tab/index.scss":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/tab/index.scss ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3420,7 +3426,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, "/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-bar {\n  width: 100%; }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-scroller {\n  overflow-y: hidden; }\n\n.mdc-tab-scroller__test {\n  position: absolute;\n  top: -9999px;\n  width: 100px;\n  height: 100px;\n  overflow-x: scroll; }\n\n.mdc-tab-scroller__scroll-area {\n  -webkit-overflow-scrolling: touch;\n  display: flex;\n  overflow-x: hidden; }\n\n.mdc-tab-scroller__scroll-area::-webkit-scrollbar,\n.mdc-tab-scroller__test::-webkit-scrollbar {\n  display: none; }\n\n.mdc-tab-scroller__scroll-area--scroll {\n  overflow-x: scroll; }\n\n.mdc-tab-scroller__scroll-content {\n  position: relative;\n  display: flex;\n  flex: 1 0 auto;\n  transform: none;\n  will-change: transform; }\n\n.mdc-tab-scroller--align-start .mdc-tab-scroller__scroll-content {\n  justify-content: flex-start; }\n\n.mdc-tab-scroller--align-end .mdc-tab-scroller__scroll-content {\n  justify-content: flex-end; }\n\n.mdc-tab-scroller--align-center .mdc-tab-scroller__scroll-content {\n  justify-content: center; }\n\n.mdc-tab-scroller--animating .mdc-tab-scroller__scroll-area {\n  -webkit-overflow-scrolling: auto; }\n\n.mdc-tab-scroller--animating .mdc-tab-scroller__scroll-content {\n  transition: 250ms transform cubic-bezier(0.4, 0, 0.2, 1); }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-indicator {\n  display: flex;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1; }\n  .mdc-tab-indicator .mdc-tab-indicator__content--underline {\n    border-color: #6200ee;\n    /* @alternate */\n    border-color: var(--mdc-theme-primary, #6200ee); }\n  .mdc-tab-indicator .mdc-tab-indicator__content--underline {\n    border-top-width: 2px; }\n  .mdc-tab-indicator .mdc-tab-indicator__content--icon {\n    color: #018786;\n    /* @alternate */\n    color: var(--mdc-theme-secondary, #018786); }\n  .mdc-tab-indicator .mdc-tab-indicator__content--icon {\n    height: 34px;\n    font-size: 34px; }\n\n.mdc-tab-indicator__content {\n  transform-origin: left;\n  opacity: 0; }\n\n.mdc-tab-indicator__content--underline {\n  align-self: flex-end;\n  box-sizing: border-box;\n  width: 100%;\n  border-top-style: solid; }\n\n.mdc-tab-indicator__content--icon {\n  align-self: center;\n  margin: 0 auto; }\n\n.mdc-tab-indicator--active .mdc-tab-indicator__content {\n  opacity: 1; }\n\n.mdc-tab-indicator .mdc-tab-indicator__content {\n  transition: 250ms transform cubic-bezier(0.4, 0, 0.2, 1); }\n\n.mdc-tab-indicator--no-transition .mdc-tab-indicator__content {\n  transition: none; }\n\n.mdc-tab-indicator--fade .mdc-tab-indicator__content {\n  transition: 150ms opacity linear; }\n\n.mdc-tab-indicator--active.mdc-tab-indicator--fade .mdc-tab-indicator__content {\n  transition-delay: 100ms; }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab {\n  position: relative;\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 2.25rem;\n  font-weight: 500;\n  letter-spacing: 0.08929em;\n  text-decoration: none;\n  text-transform: uppercase;\n  padding-right: 24px;\n  padding-left: 24px;\n  display: flex;\n  flex: 1 0 auto;\n  justify-content: center;\n  box-sizing: border-box;\n  height: 48px;\n  margin: 0;\n  padding-top: 0;\n  padding-bottom: 0;\n  border: none;\n  outline: none;\n  background: none;\n  text-align: center;\n  white-space: nowrap;\n  cursor: pointer;\n  -webkit-appearance: none;\n  z-index: 1; }\n  .mdc-tab .mdc-tab__text-label {\n    color: rgba(0, 0, 0, 0.6); }\n  .mdc-tab .mdc-tab__icon {\n    color: rgba(0, 0, 0, 0.54);\n    fill: currentColor; }\n  .mdc-tab::-moz-focus-inner {\n    padding: 0;\n    border: 0; }\n\n.mdc-tab--min-width {\n  flex: 0 1 auto; }\n\n.mdc-tab__ripple {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-tab__ripple::before {\n    transition: opacity 15ms linear, background-color 15ms linear;\n    z-index: 1; }\n  .mdc-tab__ripple.mdc-ripple-upgraded::before {\n    transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-tab__ripple.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    transform: scale(0);\n    transform-origin: center center; }\n  .mdc-tab__ripple.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-tab__ripple.mdc-ripple-upgraded--foreground-activation::after {\n    animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards; }\n  .mdc-tab__ripple.mdc-ripple-upgraded--foreground-deactivation::after {\n    animation: mdc-ripple-fg-opacity-out 150ms;\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-tab__ripple.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    background-color: #6200ee; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #6200ee); } }\n  .mdc-tab__ripple:hover::before {\n    opacity: 0.04; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded):focus::before, .mdc-tab__ripple.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-tab__ripple.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.12; }\n\n.mdc-tab__content {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: inherit;\n  pointer-events: none; }\n\n.mdc-tab__text-label,\n.mdc-tab__icon {\n  transition: 150ms color linear;\n  z-index: 2; }\n\n.mdc-tab__text-label {\n  display: inline-block;\n  line-height: 1; }\n\n.mdc-tab__icon {\n  width: 24px;\n  height: 24px;\n  font-size: 24px; }\n\n.mdc-tab--stacked {\n  height: 72px; }\n\n.mdc-tab--stacked .mdc-tab__content {\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between; }\n\n.mdc-tab--stacked .mdc-tab__icon {\n  padding-top: 12px; }\n\n.mdc-tab--stacked .mdc-tab__text-label {\n  padding-bottom: 16px; }\n\n.mdc-tab--active .mdc-tab__text-label {\n  color: #6200ee;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #6200ee); }\n\n.mdc-tab--active .mdc-tab__icon {\n  color: #6200ee;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #6200ee);\n  fill: currentColor; }\n\n.mdc-tab--active .mdc-tab__text-label,\n.mdc-tab--active .mdc-tab__icon {\n  transition-delay: 100ms; }\n\n.mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label {\n  /* @noflip */\n  padding-left: 8px;\n  /* @noflip */\n  padding-right: 0; }\n  [dir=\"rtl\"] .mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label, .mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label[dir=\"rtl\"] {\n    /* @noflip */\n    padding-left: 0;\n    /* @noflip */\n    padding-right: 8px; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased; }\n", ""]);
+exports.push([module.i, "/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-bar {\n  width: 100%; }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-scroller {\n  overflow-y: hidden; }\n\n.mdc-tab-scroller__test {\n  position: absolute;\n  top: -9999px;\n  width: 100px;\n  height: 100px;\n  overflow-x: scroll; }\n\n.mdc-tab-scroller__scroll-area {\n  -webkit-overflow-scrolling: touch;\n  display: flex;\n  overflow-x: hidden; }\n\n.mdc-tab-scroller__scroll-area::-webkit-scrollbar,\n.mdc-tab-scroller__test::-webkit-scrollbar {\n  display: none; }\n\n.mdc-tab-scroller__scroll-area--scroll {\n  overflow-x: scroll; }\n\n.mdc-tab-scroller__scroll-content {\n  position: relative;\n  display: flex;\n  flex: 1 0 auto;\n  transform: none;\n  will-change: transform; }\n\n.mdc-tab-scroller--align-start .mdc-tab-scroller__scroll-content {\n  justify-content: flex-start; }\n\n.mdc-tab-scroller--align-end .mdc-tab-scroller__scroll-content {\n  justify-content: flex-end; }\n\n.mdc-tab-scroller--align-center .mdc-tab-scroller__scroll-content {\n  justify-content: center; }\n\n.mdc-tab-scroller--animating .mdc-tab-scroller__scroll-area {\n  -webkit-overflow-scrolling: auto; }\n\n.mdc-tab-scroller--animating .mdc-tab-scroller__scroll-content {\n  transition: 250ms transform cubic-bezier(0.4, 0, 0.2, 1); }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab-indicator {\n  display: flex;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1; }\n  .mdc-tab-indicator .mdc-tab-indicator__content--underline {\n    border-color: #0072d9;\n    /* @alternate */\n    border-color: var(--mdc-theme-primary, #0072d9); }\n  .mdc-tab-indicator .mdc-tab-indicator__content--underline {\n    border-top-width: 2px; }\n  .mdc-tab-indicator .mdc-tab-indicator__content--icon {\n    color: #2170b8;\n    /* @alternate */\n    color: var(--mdc-theme-secondary, #2170b8); }\n  .mdc-tab-indicator .mdc-tab-indicator__content--icon {\n    height: 34px;\n    font-size: 34px; }\n\n.mdc-tab-indicator__content {\n  transform-origin: left;\n  opacity: 0; }\n\n.mdc-tab-indicator__content--underline {\n  align-self: flex-end;\n  box-sizing: border-box;\n  width: 100%;\n  border-top-style: solid; }\n\n.mdc-tab-indicator__content--icon {\n  align-self: center;\n  margin: 0 auto; }\n\n.mdc-tab-indicator--active .mdc-tab-indicator__content {\n  opacity: 1; }\n\n.mdc-tab-indicator .mdc-tab-indicator__content {\n  transition: 250ms transform cubic-bezier(0.4, 0, 0.2, 1); }\n\n.mdc-tab-indicator--no-transition .mdc-tab-indicator__content {\n  transition: none; }\n\n.mdc-tab-indicator--fade .mdc-tab-indicator__content {\n  transition: 150ms opacity linear; }\n\n.mdc-tab-indicator--active.mdc-tab-indicator--fade .mdc-tab-indicator__content {\n  transition-delay: 100ms; }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n/**\n * @license\n * Copyright 2018 Google Inc.\n *\n * Permission is hereby granted, free of charge, to any person obtaining a copy\n * of this software and associated documentation files (the \"Software\"), to deal\n * in the Software without restriction, including without limitation the rights\n * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n * copies of the Software, and to permit persons to whom the Software is\n * furnished to do so, subject to the following conditions:\n *\n * The above copyright notice and this permission notice shall be included in\n * all copies or substantial portions of the Software.\n *\n * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n * THE SOFTWARE.\n */\n.mdc-tab {\n  position: relative;\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 2.25rem;\n  font-weight: 500;\n  letter-spacing: 0.08929em;\n  text-decoration: none;\n  text-transform: uppercase;\n  padding-right: 24px;\n  padding-left: 24px;\n  display: flex;\n  flex: 1 0 auto;\n  justify-content: center;\n  box-sizing: border-box;\n  height: 48px;\n  margin: 0;\n  padding-top: 0;\n  padding-bottom: 0;\n  border: none;\n  outline: none;\n  background: none;\n  text-align: center;\n  white-space: nowrap;\n  cursor: pointer;\n  -webkit-appearance: none;\n  z-index: 1; }\n  .mdc-tab .mdc-tab__text-label {\n    color: rgba(0, 0, 0, 0.6); }\n  .mdc-tab .mdc-tab__icon {\n    color: rgba(0, 0, 0, 0.54);\n    fill: currentColor; }\n  .mdc-tab::-moz-focus-inner {\n    padding: 0;\n    border: 0; }\n\n.mdc-tab--min-width {\n  flex: 0 1 auto; }\n\n.mdc-tab__ripple {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-tab__ripple::before {\n    transition: opacity 15ms linear, background-color 15ms linear;\n    z-index: 1; }\n  .mdc-tab__ripple.mdc-ripple-upgraded::before {\n    transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-tab__ripple.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    transform: scale(0);\n    transform-origin: center center; }\n  .mdc-tab__ripple.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-tab__ripple.mdc-ripple-upgraded--foreground-activation::after {\n    animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards; }\n  .mdc-tab__ripple.mdc-ripple-upgraded--foreground-deactivation::after {\n    animation: mdc-ripple-fg-opacity-out 150ms;\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-tab__ripple.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n    background-color: #0072d9; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-tab__ripple::before, .mdc-tab__ripple::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #0072d9); } }\n  .mdc-tab__ripple:hover::before {\n    opacity: 0.04; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded):focus::before, .mdc-tab__ripple.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-tab__ripple:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-tab__ripple.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.12; }\n\n.mdc-tab__content {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: inherit;\n  pointer-events: none; }\n\n.mdc-tab__text-label,\n.mdc-tab__icon {\n  transition: 150ms color linear;\n  z-index: 2; }\n\n.mdc-tab__text-label {\n  display: inline-block;\n  line-height: 1; }\n\n.mdc-tab__icon {\n  width: 24px;\n  height: 24px;\n  font-size: 24px; }\n\n.mdc-tab--stacked {\n  height: 72px; }\n\n.mdc-tab--stacked .mdc-tab__content {\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between; }\n\n.mdc-tab--stacked .mdc-tab__icon {\n  padding-top: 12px; }\n\n.mdc-tab--stacked .mdc-tab__text-label {\n  padding-bottom: 16px; }\n\n.mdc-tab--active .mdc-tab__text-label {\n  color: #0072d9;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #0072d9); }\n\n.mdc-tab--active .mdc-tab__icon {\n  color: #0072d9;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #0072d9);\n  fill: currentColor; }\n\n.mdc-tab--active .mdc-tab__text-label,\n.mdc-tab--active .mdc-tab__icon {\n  transition-delay: 100ms; }\n\n.mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label {\n  /* @noflip */\n  padding-left: 8px;\n  /* @noflip */\n  padding-right: 0; }\n  [dir=\"rtl\"] .mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label, .mdc-tab:not(.mdc-tab--stacked) .mdc-tab__icon + .mdc-tab__text-label[dir=\"rtl\"] {\n    /* @noflip */\n    padding-left: 0;\n    /* @noflip */\n    padding-right: 8px; }\n\n:host {\n  display: block; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased; }\n", ""]);
 
 // exports
 
@@ -3514,11 +3520,11 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js":
-/*!******************************************************!*\
-  !*** ./node_modules/_tslib@1.9.3@tslib/tslib.es6.js ***!
-  \******************************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/***/ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/_tslib@1.10.0@tslib/tslib.es6.js ***!
+  \*******************************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3535,6 +3541,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -3587,8 +3594,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -3681,6 +3690,14 @@ function __spread() {
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -3841,16 +3858,16 @@ function __importDefault(mod) {
         /******/ return __webpack_require__(__webpack_require__.s = "./src/icon/index.tsx");
         /******/ 
     })({
-        /***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss": 
-        /*!***********************************************************************************************************************************************!*\
-          !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/icon/index.scss ***!
-          \***********************************************************************************************************************************************/
+        /***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss": 
+        /*!***********************************************************************************************************************************************************************************************************!*\
+          !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/icon/index.scss ***!
+          \***********************************************************************************************************************************************************************************************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
             exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js */ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js")(false);
             // imports
             // module
-            exports.push([module.i, ".m-icon {\n  text-align: center;\n  display: inline-block; }\n\n.m-icon svg {\n  display: inline-block;\n  vertical-align: top; }\n\n.rotate {\n  display: inline-block;\n  -webkit-animation: rotate 1s infinite linear;\n  animation: rotate 1s infinite linear; }\n\ni div {\n  font-style: normal; }\n\n@-webkit-keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n@keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n", ""]);
+            exports.push([module.i, ":host {\n  display: inline-block; }\n\n.m-icon {\n  text-align: center;\n  display: inline-block; }\n\n.m-icon svg {\n  display: inline-block;\n  vertical-align: top; }\n\n.rotate {\n  display: inline-block;\n  -webkit-animation: rotate 1s infinite linear;\n  animation: rotate 1s infinite linear; }\n\ni div {\n  font-style: normal; }\n\n@-webkit-keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n@keyframes rotate {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n", ""]);
             // exports
             /***/ 
         }),
@@ -3938,7 +3955,7 @@ function __importDefault(mod) {
           \*****************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss");
+            var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss");
             if (typeof result === "string") {
                 module.exports = result;
             }
@@ -3995,15 +4012,12 @@ function __importDefault(mod) {
             var omi_1 = __webpack_require__(/*! omi */ "omi");
             var css = __webpack_require__(/*! ./index.scss */ "./src/icon/index.scss");
             //@ts-ignore
-            var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+            __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
             var Icon = /** @class */ (function (_super) {
                 __extends(Icon, _super);
                 function Icon() {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
-                Icon.resetTheme = function () {
-                    this.css = theme_ts_1.theme() + css;
-                };
                 Icon.prototype.render = function (props) {
                     return (omi_1.h("i", __assign({}, omi_1.extractClass(props, 'm-icon')), omi_1.h("svg", { viewBox: '0 0 ' + props.view + ' ' + props.view, class: omi_1.classNames({ rotate: props.rotate }), width: props.scale + 'em', height: props.scale + 'em', fill: props.color, "aria-hidden": "true" }, props.paths ? (props.paths.map(function (item) {
                         var attrs = { d: item.path, fill: props.color || 'black' };
@@ -4012,7 +4026,7 @@ function __importDefault(mod) {
                         return omi_1.h("path", __assign({}, attrs));
                     })) : omi_1.h("path", { d: props.path })), props.children && (omi_1.h("div", { style: "color:" + (props.color || 'black') + ";" }, props.children[0]))));
                 };
-                Icon.css = theme_ts_1.theme() + css;
+                Icon.css = css;
                 Icon.defaultProps = {
                     view: 1024,
                     scale: 2
@@ -4038,30 +4052,28 @@ function __importDefault(mod) {
           !*** ./src/theme.ts ***!
           \**********************/
         /*! no static exports found */
-        /***/ (function (module, exports, __webpack_require__) {
-            "use strict";
-            Object.defineProperty(exports, "__esModule", { value: true });
-            if (typeof window === 'object') {
-                window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-                window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-                window.OmimThemeError = window.OmimThemeError || '#f5222d';
-                window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-                window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-                window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-                window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-                window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-                window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-                window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-                window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-                window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-                window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-            }
+        /***/ (function (module, exports) {
+            theme();
+            document.addEventListener('DOMContentLoaded', function () {
+                theme();
+            });
             function theme() {
-                if (typeof window === 'object') {
-                    return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+                if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+                    document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+                    document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+                    document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+                    document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+                    document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+                    document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+                    document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+                    document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+                    document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
                 }
             }
-            exports.theme = theme;
             /***/ 
         }),
         /***/ "omi": 
@@ -4089,7 +4101,7 @@ function __importDefault(mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tab/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/tab/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -4142,11 +4154,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/tab/index.scss");
-var tab_bar_1 = __webpack_require__(/*! @material/tab-bar */ "./node_modules/_@material_tab-bar@2.2.0@@material/tab-bar/index.js");
+var tab_bar_1 = __webpack_require__(/*! @material/tab-bar */ "./node_modules/_@material_tab-bar@2.3.0@@material/tab-bar/index.js");
 __webpack_require__(/*! ../icon */ "./src/icon/index.js");
 var dom_ready_1 = __webpack_require__(/*! ../util/dom-ready */ "./src/util/dom-ready.js");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 // @ts-ignore
 var util_ts_1 = __webpack_require__(/*! ../util.ts */ "./src/util.ts");
 var Tab = /** @class */ (function (_super) {
@@ -4159,9 +4171,6 @@ var Tab = /** @class */ (function (_super) {
         };
         return _this;
     }
-    Tab.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
-    };
     Tab.prototype.installed = function () {
         var _this = this;
         dom_ready_1.domReady(function () {
@@ -4176,7 +4185,7 @@ var Tab = /** @class */ (function (_super) {
         });
     };
     Tab.prototype.uninstall = function () {
-        this.data.tabBar.destory();
+        this.data.tabBar.destroy();
     };
     Tab.prototype.activateTab = function (value) {
         // @ts-ignore
@@ -4219,7 +4228,7 @@ var Tab = /** @class */ (function (_super) {
                 omi_1.h("div", { class: "mdc-tab-scroller__scroll-area" },
                     omi_1.h("div", { class: "mdc-tab-scroller__scroll-content" }, children && children.map(function (vnode) { return _this.renderButton(vnode, defaultActive); }))))));
     };
-    Tab.css = theme_ts_1.theme() + css;
+    Tab.css = css;
     Tab.propTypes = {
         defaultActive: String,
         width: String,
@@ -4242,32 +4251,29 @@ exports.default = Tab;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),

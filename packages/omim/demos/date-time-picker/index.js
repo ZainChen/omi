@@ -1,23 +1,29 @@
-import Picker from '../../src/date-time-picker/index.tsx'
+import '../../src/date-time-picker/index.tsx'
 
 import { render, WeElement, define, h } from 'omi'
 
 
-var dialog = new Picker({
-  type: 'date'
-});
-var toggleButton = document.getElementById('btn')
-toggleButton.addEventListener('click', function() {
-  dialog.toggle();
-});
 
 define('my-app', class extends WeElement {
 
-  
+  onOk = (evt) => {
+    console.log(evt.detail)
+  }
+
+  onClick = () => {
+    this.show = !this.show
+    this.update()
+  }
+
+  show = true
+
   render(props, data) {
-    return(
+    return (
       <div>
-       
+        <button onClick={this.onClick}></button>
+        {/* <m-date-time-picker onOk={this.onOk} type="time" show={this.show}></m-date-time-picker> */}
+
+        <m-date-time-picker onOk={this.onOk} type="date" show={this.show} past="20180101" future="20200101" lan="zh-cn" ></m-date-time-picker>
       </div>
     )
   }

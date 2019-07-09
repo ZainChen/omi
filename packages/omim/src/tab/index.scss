@@ -1,7 +1,12 @@
+@import "../theme";
 @import "@material/tab-bar/mdc-tab-bar";
 @import "@material/tab-scroller/mdc-tab-scroller";
 @import "@material/tab-indicator/mdc-tab-indicator";
 @import "@material/tab/mdc-tab";
+
+:host {
+  display: block;
+}
 
 .material-icons {
   font-family: 'Material Icons';

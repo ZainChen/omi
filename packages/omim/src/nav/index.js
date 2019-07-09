@@ -108,7 +108,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, ".material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 40px;\n  height: 40px;\n  max-width: 24px;\n  overflow: hidden; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\nli {\n  list-style: none;\n  margin: 0;\n  padding: 0px;\n  white-space: nowrap; }\n\nul {\n  margin: 0;\n  padding: 0;\n  width: 100%; }\n\n.m-nav {\n  border: 1px solid #ccc;\n  width: 256px;\n  border-radius: 4px; }\n\n.children {\n  transition: all .4s ease;\n  overflow: hidden; }\n\n.tree-item {\n  vertical-align: top;\n  position: relative; }\n\n.arrow {\n  vertical-align: top;\n  cursor: pointer;\n  height: 40px;\n  line-height: 40px;\n  position: absolute;\n  right: 10px;\n  top: 0px; }\n\n.close > .mdc-tree-title > .arrow {\n  transform: rotate(180deg); }\n\n.mdc-tree-title:hover {\n  background-color: rgba(24, 144, 255, 0.001); }\n\n.mdc-tree-title {\n  padding: 0 10px;\n  cursor: pointer;\n  height: 40px;\n  line-height: 40px;\n  display: block; }\n\n.text {\n  display: inline-block;\n  line-height: 40px;\n  height: 40px; }\n\n.mdc-tree-title:hover {\n  background-color: #cbebfc; }\n\n.mdc-tree-title.selected {\n  background-color: rgba(24, 144, 255, 0.05);\n  color: #0052d9; }\n\n.tree-item,\n.arrow {\n  transition: all .4s ease; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 40px;\n  height: 40px;\n  max-width: 24px;\n  overflow: hidden; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\nli {\n  list-style: none;\n  margin: 0;\n  padding: 0px;\n  white-space: nowrap; }\n\nul {\n  margin: 0;\n  padding: 0;\n  width: 100%; }\n\n.m-nav {\n  width: 256px;\n  border-radius: 4px; }\n\n.children {\n  transition: all .4s ease;\n  overflow: hidden; }\n\n.tree-item {\n  vertical-align: top;\n  position: relative; }\n\n.arrow {\n  vertical-align: top;\n  cursor: pointer;\n  height: 40px;\n  line-height: 40px;\n  position: absolute;\n  right: 10px;\n  top: 0px; }\n\n.close > .mdc-tree-title > .arrow {\n  transform: rotate(180deg); }\n\n.mdc-tree-title:hover {\n  background-color: rgba(33, 112, 184, 0.001); }\n\n.mdc-tree-title {\n  padding: 0 10px;\n  cursor: pointer;\n  height: 40px;\n  line-height: 40px;\n  display: block; }\n\n.text {\n  display: inline-block;\n  line-height: 40px;\n  height: 40px; }\n\n.mdc-tree-title:hover {\n  background-color: #cbebfc; }\n\n.mdc-tree-title.selected {\n  background-color: rgba(33, 112, 184, 0.05);\n  color: #0072d9; }\n\n.tree-item,\n.arrow {\n  transition: all .4s ease; }\n", ""]);
 
 // exports
 
@@ -253,23 +253,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/nav/index.scss");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var Nav = /** @class */ (function (_super) {
     __extends(Nav, _super);
     function Nav() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._preSelected = null;
-        _this.toggle = function (evt, id, open) {
+        _this.toggle = function (evt, node) {
             evt.stopPropagation();
-            _this.fire('toggle', { id: id, open: open });
+            node.close = !node.close;
+            _this.update(true);
+            _this.fire('toggle', { node: node });
         };
-        _this.onNodeClick = function (id) {
-            _this.fire('nodeClick', { id: id, pre: _this._preSelected });
+        _this.onNodeClick = function (node) {
+            var pre = _this.getNodeById(_this._preSelected, _this.props.nodes);
+            pre && (pre.selected = false);
+            node.selected = true;
+            _this.update(true);
+            _this.fire('nodeClick', { node: node, pre: pre });
         };
         return _this;
     }
-    Nav.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
+    Nav.prototype.getNodeById = function (id, nodes) {
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            var child = nodes[i];
+            var target = this._getNodeById(id, child);
+            if (target) {
+                return target;
+            }
+        }
+    };
+    Nav.prototype._getNodeById = function (id, node) {
+        if (node.id === id)
+            return node;
+        if (node.children) {
+            for (var i = 0, len = node.children.length; i < len; i++) {
+                var child = node.children[i];
+                var target = this._getNodeById(id, child);
+                if (target) {
+                    return target;
+                }
+            }
+        }
     };
     Nav.prototype.renderNode = function (node, level) {
         var _this = this;
@@ -281,12 +306,12 @@ var Nav = /** @class */ (function (_super) {
             omi_1.h("li", { class: omi_1.classNames('tree-item', {
                     'close': node.close
                 }) },
-                omi_1.h("span", { onClick: function (_) { return _this.onNodeClick(node.id); }, style: "padding-left: " + (level * 24 + 10) + "px;", class: omi_1.classNames('mdc-tree-title', {
+                omi_1.h("span", { onClick: function (_) { return _this.onNodeClick(node); }, style: "padding-left: " + (level * 24 + 10) + "px;", class: omi_1.classNames('mdc-tree-title', {
                         'selected': node.selected
                     }) },
                     node.icon && omi_1.h("i", { class: 'material-icons' }, node.icon),
                     omi_1.h("span", { class: 'text' }, node.title),
-                    node.children && node.children.length > 0 && omi_1.h("svg", { onClick: function (_) { return _this.toggle(_, node.id, !node.close); }, viewBox: "0 0 1024 1024", class: "arrow", "data-icon": "caret-down", width: "1em", height: "1em", fill: "currentColor", "aria-hidden": "true", focusable: "false" },
+                    node.children && node.children.length > 0 && omi_1.h("svg", { onClick: function (_) { return _this.toggle(_, node); }, viewBox: "0 0 1024 1024", class: "arrow", "data-icon": "caret-down", width: "1em", height: "1em", fill: "currentColor", "aria-hidden": "true", focusable: "false" },
                         omi_1.h("path", { d: "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" }))),
                 omi_1.h("div", { class: 'children', style: "height: " + (node.close ? 0 : (node.children ? (this._getChildCount(node)) * 40 : 0)) + "px;" },
                     " ",
@@ -307,7 +332,7 @@ var Nav = /** @class */ (function (_super) {
         var _this = this;
         return omi_1.h("div", { class: 'm-nav' }, props.nodes.map(function (node) { return _this.renderNode(node, 0); }));
     };
-    Nav.css = theme_ts_1.theme() + css;
+    Nav.css = css;
     Nav.propTypes = {
         nodes: Object
     };
@@ -326,32 +351,29 @@ exports.default = Nav;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),

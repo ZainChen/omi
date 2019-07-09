@@ -4,14 +4,66 @@ Curated collection of useful Omi snippets that you can understand in 30 seconds 
 
 ## Overview of the Readme
 
+- [Cache Event Handlers](#cache-event-handlers)
 - [Share css between parent and child nodes](#share-css-between-parent-and-child-nodes)
 - [Cross component communication](#cross-component-communication)
 - [Implement tree view](#implement-tree-view)
 - [@font-face doesn't work in Shadow DOM](#font-face-doesnt-work-in-shadow-dom)
 - [CSS3 transform not working with custom element](#css3-transform-not-working-with-custom-element)
 - [Rendering checkbox in the loop](#rendering-checkbox-in-the-loop)
-- [Rendering checkbox in the loop](#rendering-checkbox-in-the-loop)
 - [Can not call class as a function](#can-not-call-class-as-a-function)
+
+## Cache Event Handlers
+
+```jsx
+import { define, render, WeElement } from 'omi'
+
+define('my-element', class extends WeElement {
+  onClick = () => {
+    this.fire('change')
+  }
+
+  render() {
+    console.log('render')
+    return (
+      <div onClick={this.onClick}>Hello, World! </div>
+    )
+  }
+})
+
+
+define('my-component', class extends WeElement {
+
+  onClick = () => {
+    this.update()
+  }
+
+  list = [{
+    id: 24,
+    name: 'dnt',
+    age: 18
+  }, {
+    id: 100,
+    name: 'omi',
+    age: 1
+  }]
+
+  changeHandler = event => console.log(event.target.dataset)
+
+  render(props) {
+    return (
+      <div>
+        <button onClick={this.onClick}>update</button>
+        {this.list.map((item, index) =>
+          <my-element data-id={item.id} data-index={index} onChange={this.changeHandler}></my-element>)
+        }
+      </div>
+    )
+  }
+})
+
+render(<my-component />, 'body')
+```
 
 ## Share css between parent and child nodes
 
@@ -21,6 +73,9 @@ import { define, WeElement, render, getHost } from 'omi'
 define('my-ele', class extends WeElement {
   install() {
     this.css = getHost(this).css
+
+    //or when css of parent is static prop
+    //this.css = getHost(this).constructor.css
   }
 
   render(props) {

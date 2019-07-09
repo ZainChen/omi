@@ -96,10 +96,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/breadcrumb/index.scss":
-/*!*****************************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/breadcrumb/index.scss ***!
-  \*****************************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/breadcrumb/index.scss":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/breadcrumb/index.scss ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108,7 +108,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, "ol {\n  list-style-type: decimal;\n  font-size: 14px;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none;\n  display: inline-block;\n  color: rgba(0, 0, 0, 0.45);\n  vertical-align: middle; }\n\n.breadcrumb-li a {\n  color: rgba(0, 0, 0, 0.45); }\n\na {\n  text-decoration: none;\n  display: inline-block;\n  vertical-align: middle;\n  line-height: 20px;\n  height: 20px; }\n\n.split {\n  margin: 0 8px; }\n\n.current {\n  color: rgba(0, 0, 0, 0.7);\n  vertical-align: middle;\n  line-height: 20px;\n  height: 20px; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 20px;\n  height: 20px;\n  max-width: 24px;\n  overflow: hidden; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\nol {\n  list-style-type: decimal;\n  font-size: 14px;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none;\n  display: inline-block;\n  color: rgba(0, 0, 0, 0.45);\n  vertical-align: middle; }\n\n.breadcrumb-li a {\n  color: rgba(0, 0, 0, 0.45); }\n\na {\n  text-decoration: none;\n  display: inline-block;\n  vertical-align: middle;\n  line-height: 20px;\n  height: 20px; }\n\n.split {\n  margin: 0 8px; }\n\n.current {\n  color: rgba(0, 0, 0, 0.7);\n  vertical-align: middle;\n  line-height: 20px;\n  height: 20px; }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 18px;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  vertical-align: top;\n  margin-right: 3px;\n  display: inline-block;\n  line-height: 20px;\n  height: 20px;\n  max-width: 24px;\n  overflow: hidden; }\n", ""]);
 
 // exports
 
@@ -210,7 +210,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/breadcrumb/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/breadcrumb/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -264,15 +264,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/breadcrumb/index.scss");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var Breadcrumb = /** @class */ (function (_super) {
     __extends(Breadcrumb, _super);
     function Breadcrumb() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Breadcrumb.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
-    };
     Breadcrumb.prototype.render = function (props) {
         var items = [];
         props.items.forEach(function (item, index) {
@@ -290,7 +287,7 @@ var Breadcrumb = /** @class */ (function (_super) {
         return (omi_1.h("nav", __assign({}, omi_1.extractClass(props, 'm-breadcrumb')),
             omi_1.h("ol", { class: "breadcrumb-ol" }, items)));
     };
-    Breadcrumb.css = theme_ts_1.theme() + css;
+    Breadcrumb.css = css;
     Breadcrumb.defaultProps = {
         split: '/'
     };
@@ -313,32 +310,29 @@ exports.default = Breadcrumb;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),

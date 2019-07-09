@@ -1,6 +1,6 @@
 # Omim
 
-[Omi](https://github.com/Tencent/omi) 打造的 Material Design 框架无关标准组件，任意框架都可以使用。
+[Omi](https://github.com/Tencent/omi) 打造的跨框架、跨主题组件库。任意框架使用、主题自由定制。
 
 ![](https://tencent.github.io/omi/packages/omim/assets/pv4.jpeg?a=1)
 
@@ -11,6 +11,12 @@
 * 同时支持 JSX 和 原生 HTML 标签的使用方式 
 * 每个组件可以单独使用
 * 超级容易更换主题颜色、字体和圆角
+* 扩展了 HTML 能力，你可以通过字符串 `'0'` 或者字符串 `'false'` 传递 false 给元素
+
+## 跨框架
+
+* [Using Omim in React](https://tencent.github.io/omi/packages/omim/test-react/build/index.html) & [Source Code](https://github.com/Tencent/omi/blob/master/packages/omim/test-react/src/HookTest.js)
+* [Using Omim in Vue](https://tencent.github.io/omi/packages/omim/test-vue/dist/index.html) & [Source Code](https://github.com/Tencent/omi/blob/master/packages/omim/test-vue/app.vue)
 
 ## 使用指南
 
@@ -18,7 +24,7 @@
 
 ```html
 <script src="https://unpkg.com/omi"></script>
-<script src="https://unpkg.com/@omim/core@latest/button/index.js"></script>
+<script src="https://unpkg.com/omim@latest/button/index.js"></script>
 
 <m-button>I am button</m-button>
 ```
@@ -26,13 +32,13 @@
 ### 通过 npm
 
 ``` bash
-npm install @omim/core
+npm install omim
 ```
 
 Then:
 
 ```js
-import '@omim/core/button'
+import 'omim/button'
 ```
 
 然后在任意框架中使用，比如 Omi, React, Vue or Angular:
@@ -55,31 +61,122 @@ button.addEventListener('click', function () {
 //document.body.innerHTML = '<m-button>I am button</m-button>'
 ```
 
-## 更改主题颜色
+## 更改主题
 
 ```js
-window.OmimThemePrimary =  'red'
-window.OmimThemeSecondary =  'blue'
-window.OmimThemeError =  'yellow'
-
-import '@omim/core/button'
+document.body.style.setProperty('--mdc-theme-primary', 'red')
+document.body.style.setProperty('--mdc-theme-secondary', 'blue')
+document.body.style.setProperty('--mdc-theme-error', 'yellow')
 ```
 
-或者
+所有配置如下:
+
+```css
+--mdc-theme-primary: #0072d9;
+--mdc-theme-secondary: #2170b8;
+--mdc-theme-error: #f5222d;
+--mdc-theme-surface: #ffffff;
+--mdc-theme-on-primary: #ffffff;
+--mdc-theme-on-secondary: #ffffff;
+--mdc-theme-on-error: #ffffff;
+--mdc-theme-on-surface: #000000;
+--mdc-theme-background: #ffffff;
+--mdc-shape-small-component-radius: 4px;
+--mdc-shape-medium-component-radius: 4px;
+--mdc-shape-large-component-radius: 0px;
+--mdc-typography--font-family: Roboto, sans-serif;
+```
+
+## HTML 扩展 
+
+当默认值为 true，需要传递 false 给 element 的时候，以前是历史难题，Omi 完美解决了这一点，你可以通过字符串 `'0'` 或者 字符串 `'false'` 来设置。
+
+```js
+define('my-element', class extends WeElement {
+  static defaultProps = {
+    show: true
+  }
+
+ static propTypes = {
+    show: Boolean
+  }
+
+  render(props) {
+    ...
+    ...
+  }
+})
+```
+
+Use:
 
 ```html
-<m-button>I am button</m-button>
-
-<script src="https://unpkg.com/omi"></script>
-<script>
-  window.OmimThemePrimary =  'red'
-  window.OmimThemeSecondary =  'blue'
-  window.OmimThemeError =  'yellow'
-</script>
-<script src="https://unpkg.com/@omim/core@latest/button/index.js"></script>
+<my-element show="false"></my-element>
 ```
 
-[→ 点击查看更多配置](https://github.com/Tencent/omi/blob/master/packages/omim/src/theme.ts)
+or
+
+```html
+<my-element show="0"></my-element>
+```
+
+## React 中使用 omim
+
+```jsx
+/** @jsx nativeEvents */
+import nativeEvents from 'jsx-native-events'
+import { useState } from 'react'
+import 'omim/icon-button'
+
+export default function SomeComponent(props) {
+    const [result, setSwitch] = useState(false)
+
+    return (
+      <div>
+        <p>The switch is {result ? 'on' : 'off'}</p>
+        <m-icon-button color="red" icons="['favorite', 'favorite_border']" onEventChange={e => setSwitch(e.detail.isOn)}>
+        </m-icon-button>
+      </div>
+    )
+}
+```
+
+非常感谢 calebdwilliams 的 [jsx-native-events](https://github.com/calebdwilliams/jsx-native-events#readme)。
+
+## Vue 中使用 omim
+
+```html
+<script>
+import 'omim/icon-button'
+
+export default {
+  name: 'HelloWorld',
+  data: function() {
+    return {
+      result: false
+    }
+  },
+  methods: {
+    myEvent: function(evt) {
+      this.result = evt.detail.isOn
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="component">
+    <p>The switch is {{result? 'on' : 'off'}}</p>
+    <m-icon-button color="red" icons="['favorite', 'favorite_border']" @change="myEvent"></m-icon-button>
+  </div>
+</template>
+```
+
+> 要在 react 和 vue 中正常显示 icon，需要在 HTML 中引入下面的 CSS:
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+```
 
 ## 贡献
 

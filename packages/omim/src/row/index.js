@@ -96,10 +96,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/index.scss":
-/*!**********************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/row/index.scss ***!
-  \**********************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/index.scss":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/row/index.scss ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108,17 +108,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, ".col {\n  position: relative;\n  display: block;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.block {\n  display: block; }\n\n.block > div {\n  float: left; }\n\n.col1 {\n  width: 4.16666667%; }\n\n.col2 {\n  width: 8.33333333%; }\n\n.col3 {\n  width: 12.5%; }\n\n.col4 {\n  width: 16.66666667%; }\n\n.col5 {\n  width: 20.83333333%; }\n\n.col6 {\n  width: 25%; }\n\n.col7 {\n  width: 29.16666667%; }\n\n.col8 {\n  width: 33.33333333%; }\n\n.col9 {\n  width: 37.5%; }\n\n.col10 {\n  width: 41.66666667%; }\n\n.col11 {\n  width: 45.83333333%; }\n\n.col12 {\n  width: 50%; }\n\n.col13 {\n  width: 54.16666667%; }\n\n.col14 {\n  width: 58.33333333%; }\n\n.col15 {\n  width: 62.5%; }\n\n.col16 {\n  width: 66.66666667%; }\n\n.col17 {\n  width: 70.83333333%; }\n\n.col18 {\n  width: 75%; }\n\n.col19 {\n  width: 79.16666667%; }\n\n.col20 {\n  width: 83.33333333%; }\n\n.col21 {\n  width: 87.5%; }\n\n.col22 {\n  width: 91.66666667%; }\n\n.col23 {\n  width: 95.83333333%; }\n\n.col24 {\n  width: 100%; }\n\n.offset1 {\n  margin-left: 4.16666667%; }\n\n.offset2 {\n  margin-left: 8.33333333%; }\n\n.offset3 {\n  margin-left: 12.5%; }\n\n.offset4 {\n  margin-left: 16.66666667%; }\n\n.offset5 {\n  margin-left: 20.83333333%; }\n\n.offset6 {\n  margin-left: 25%; }\n\n.offset7 {\n  margin-left: 29.16666667%; }\n\n.offset8 {\n  margin-left: 33.33333333%; }\n\n.offset9 {\n  margin-left: 37.5%; }\n\n.offset10 {\n  margin-left: 41.66666667%; }\n\n.offset11 {\n  margin-left: 45.83333333%; }\n\n.offset12 {\n  margin-left: 50%; }\n\n.offset13 {\n  margin-left: 54.16666667%; }\n\n.offset14 {\n  margin-left: 58.33333333%; }\n\n.offset15 {\n  margin-left: 62.5%; }\n\n.offset16 {\n  margin-left: 66.66666667%; }\n\n.offset17 {\n  margin-left: 70.83333333%; }\n\n.offset18 {\n  margin-left: 75%; }\n\n.offset19 {\n  margin-left: 79.16666667%; }\n\n.offset20 {\n  margin-left: 83.33333333%; }\n\n.offset21 {\n  margin-left: 87.5%; }\n\n.offset22 {\n  margin-left: 91.66666667%; }\n\n.offset23 {\n  margin-left: 95.83333333%; }\n\n.offset24 {\n  margin-left: 100%; }\n\n.pull1 {\n  right: 4.16666667%; }\n\n.pull2 {\n  right: 8.33333333%; }\n\n.pull3 {\n  right: 12.5%; }\n\n.pull4 {\n  right: 16.66666667%; }\n\n.pull5 {\n  right: 20.83333333%; }\n\n.pull6 {\n  right: 25%; }\n\n.pull7 {\n  right: 29.16666667%; }\n\n.pull8 {\n  right: 33.33333333%; }\n\n.pull9 {\n  right: 37.5%; }\n\n.pull10 {\n  right: 41.66666667%; }\n\n.pull11 {\n  right: 45.83333333%; }\n\n.pull12 {\n  right: 50%; }\n\n.pull13 {\n  right: 54.16666667%; }\n\n.pull14 {\n  right: 58.33333333%; }\n\n.pull15 {\n  right: 62.5%; }\n\n.pull16 {\n  right: 66.66666667%; }\n\n.pull17 {\n  right: 70.83333333%; }\n\n.pull18 {\n  right: 75%; }\n\n.pull19 {\n  right: 79.16666667%; }\n\n.pull20 {\n  right: 83.33333333%; }\n\n.pull21 {\n  right: 87.5%; }\n\n.pull22 {\n  right: 91.66666667%; }\n\n.pull23 {\n  right: 95.83333333%; }\n\n.pull24 {\n  right: 100%; }\n\n.push1 {\n  left: 4.16666667%; }\n\n.push2 {\n  left: 8.33333333%; }\n\n.push3 {\n  left: 12.5%; }\n\n.push4 {\n  left: 16.66666667%; }\n\n.push5 {\n  left: 20.83333333%; }\n\n.push6 {\n  left: 25%; }\n\n.push7 {\n  left: 29.16666667%; }\n\n.push8 {\n  left: 33.33333333%; }\n\n.push9 {\n  left: 37.5%; }\n\n.push10 {\n  left: 41.66666667%; }\n\n.push11 {\n  left: 45.83333333%; }\n\n.push12 {\n  left: 50%; }\n\n.push13 {\n  left: 54.16666667%; }\n\n.push14 {\n  left: 58.33333333%; }\n\n.push15 {\n  left: 62.5%; }\n\n.push16 {\n  left: 66.66666667%; }\n\n.push17 {\n  left: 70.83333333%; }\n\n.push18 {\n  left: 75%; }\n\n.push19 {\n  left: 79.16666667%; }\n\n.push20 {\n  left: 83.33333333%; }\n\n.push21 {\n  left: 87.5%; }\n\n.push22 {\n  left: 91.66666667%; }\n\n.push23 {\n  left: 95.83333333%; }\n\n.push24 {\n  left: 100%; }\n\n.flex {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n  -ms-flex-flow: row wrap;\n  flex-flow: row wrap; }\n\n.flex-start {\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n  -ms-flex-pack: start;\n  justify-content: flex-start; }\n\n.flex-center {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n  -ms-flex-pack: center;\n  justify-content: center; }\n\n.flex-end {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n  -ms-flex-pack: end;\n  justify-content: flex-end; }\n\n.flex-space-between {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n  -ms-flex-pack: justify;\n  justify-content: space-between; }\n\n.flex-space-around {\n  -webkit-justify-content: space-around;\n  -ms-flex-pack: distribute;\n  justify-content: space-around; }\n\n.flex-top {\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n  -ms-flex-align: start;\n  align-items: flex-start; }\n\n.flex-middle {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.flex-bottom {\n  -webkit-box-align: end;\n  -webkit-align-items: flex-end;\n  -ms-flex-align: end;\n  align-items: flex-end; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\n.col {\n  position: relative;\n  display: block;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.block {\n  display: block; }\n\n.block > div {\n  float: left; }\n\n.col1 {\n  width: 4.16666667%; }\n\n.col2 {\n  width: 8.33333333%; }\n\n.col3 {\n  width: 12.5%; }\n\n.col4 {\n  width: 16.66666667%; }\n\n.col5 {\n  width: 20.83333333%; }\n\n.col6 {\n  width: 25%; }\n\n.col7 {\n  width: 29.16666667%; }\n\n.col8 {\n  width: 33.33333333%; }\n\n.col9 {\n  width: 37.5%; }\n\n.col10 {\n  width: 41.66666667%; }\n\n.col11 {\n  width: 45.83333333%; }\n\n.col12 {\n  width: 50%; }\n\n.col13 {\n  width: 54.16666667%; }\n\n.col14 {\n  width: 58.33333333%; }\n\n.col15 {\n  width: 62.5%; }\n\n.col16 {\n  width: 66.66666667%; }\n\n.col17 {\n  width: 70.83333333%; }\n\n.col18 {\n  width: 75%; }\n\n.col19 {\n  width: 79.16666667%; }\n\n.col20 {\n  width: 83.33333333%; }\n\n.col21 {\n  width: 87.5%; }\n\n.col22 {\n  width: 91.66666667%; }\n\n.col23 {\n  width: 95.83333333%; }\n\n.col24 {\n  width: 100%; }\n\n.offset1 {\n  margin-left: 4.16666667%; }\n\n.offset2 {\n  margin-left: 8.33333333%; }\n\n.offset3 {\n  margin-left: 12.5%; }\n\n.offset4 {\n  margin-left: 16.66666667%; }\n\n.offset5 {\n  margin-left: 20.83333333%; }\n\n.offset6 {\n  margin-left: 25%; }\n\n.offset7 {\n  margin-left: 29.16666667%; }\n\n.offset8 {\n  margin-left: 33.33333333%; }\n\n.offset9 {\n  margin-left: 37.5%; }\n\n.offset10 {\n  margin-left: 41.66666667%; }\n\n.offset11 {\n  margin-left: 45.83333333%; }\n\n.offset12 {\n  margin-left: 50%; }\n\n.offset13 {\n  margin-left: 54.16666667%; }\n\n.offset14 {\n  margin-left: 58.33333333%; }\n\n.offset15 {\n  margin-left: 62.5%; }\n\n.offset16 {\n  margin-left: 66.66666667%; }\n\n.offset17 {\n  margin-left: 70.83333333%; }\n\n.offset18 {\n  margin-left: 75%; }\n\n.offset19 {\n  margin-left: 79.16666667%; }\n\n.offset20 {\n  margin-left: 83.33333333%; }\n\n.offset21 {\n  margin-left: 87.5%; }\n\n.offset22 {\n  margin-left: 91.66666667%; }\n\n.offset23 {\n  margin-left: 95.83333333%; }\n\n.offset24 {\n  margin-left: 100%; }\n\n.pull1 {\n  right: 4.16666667%; }\n\n.pull2 {\n  right: 8.33333333%; }\n\n.pull3 {\n  right: 12.5%; }\n\n.pull4 {\n  right: 16.66666667%; }\n\n.pull5 {\n  right: 20.83333333%; }\n\n.pull6 {\n  right: 25%; }\n\n.pull7 {\n  right: 29.16666667%; }\n\n.pull8 {\n  right: 33.33333333%; }\n\n.pull9 {\n  right: 37.5%; }\n\n.pull10 {\n  right: 41.66666667%; }\n\n.pull11 {\n  right: 45.83333333%; }\n\n.pull12 {\n  right: 50%; }\n\n.pull13 {\n  right: 54.16666667%; }\n\n.pull14 {\n  right: 58.33333333%; }\n\n.pull15 {\n  right: 62.5%; }\n\n.pull16 {\n  right: 66.66666667%; }\n\n.pull17 {\n  right: 70.83333333%; }\n\n.pull18 {\n  right: 75%; }\n\n.pull19 {\n  right: 79.16666667%; }\n\n.pull20 {\n  right: 83.33333333%; }\n\n.pull21 {\n  right: 87.5%; }\n\n.pull22 {\n  right: 91.66666667%; }\n\n.pull23 {\n  right: 95.83333333%; }\n\n.pull24 {\n  right: 100%; }\n\n.push1 {\n  left: 4.16666667%; }\n\n.push2 {\n  left: 8.33333333%; }\n\n.push3 {\n  left: 12.5%; }\n\n.push4 {\n  left: 16.66666667%; }\n\n.push5 {\n  left: 20.83333333%; }\n\n.push6 {\n  left: 25%; }\n\n.push7 {\n  left: 29.16666667%; }\n\n.push8 {\n  left: 33.33333333%; }\n\n.push9 {\n  left: 37.5%; }\n\n.push10 {\n  left: 41.66666667%; }\n\n.push11 {\n  left: 45.83333333%; }\n\n.push12 {\n  left: 50%; }\n\n.push13 {\n  left: 54.16666667%; }\n\n.push14 {\n  left: 58.33333333%; }\n\n.push15 {\n  left: 62.5%; }\n\n.push16 {\n  left: 66.66666667%; }\n\n.push17 {\n  left: 70.83333333%; }\n\n.push18 {\n  left: 75%; }\n\n.push19 {\n  left: 79.16666667%; }\n\n.push20 {\n  left: 83.33333333%; }\n\n.push21 {\n  left: 87.5%; }\n\n.push22 {\n  left: 91.66666667%; }\n\n.push23 {\n  left: 95.83333333%; }\n\n.push24 {\n  left: 100%; }\n\n.flex {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n  -ms-flex-flow: row wrap;\n  flex-flow: row wrap; }\n\n.flex-start {\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n  -ms-flex-pack: start;\n  justify-content: flex-start; }\n\n.flex-center {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n  -ms-flex-pack: center;\n  justify-content: center; }\n\n.flex-end {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n  -ms-flex-pack: end;\n  justify-content: flex-end; }\n\n.flex-space-between {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n  -ms-flex-pack: justify;\n  justify-content: space-between; }\n\n.flex-space-around {\n  -webkit-justify-content: space-around;\n  -ms-flex-pack: distribute;\n  justify-content: space-around; }\n\n.flex-top {\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n  -ms-flex-align: start;\n  align-items: flex-start; }\n\n.flex-middle {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.flex-bottom {\n  -webkit-box-align: end;\n  -webkit-align-items: flex-end;\n  -ms-flex-align: end;\n  align-items: flex-end; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/responsive.scss":
-/*!***************************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/row/responsive.scss ***!
-  \***************************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/responsive.scss":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/row/responsive.scss ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -229,7 +229,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -286,15 +286,12 @@ var rs = __webpack_require__(/*! ./responsive.scss */ "./src/row/responsive.scss
 var element_children_1 = __webpack_require__(/*! ../util/element-children */ "./src/util/element-children.js");
 var dom_ready_1 = __webpack_require__(/*! ../util/dom-ready */ "./src/util/dom-ready.js");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var Row = /** @class */ (function (_super) {
     __extends(Row, _super);
     function Row() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Row.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css + rs;
-    };
     Row.prototype.installed = function () {
         var _this = this;
         dom_ready_1.domReady(function () {
@@ -333,7 +330,7 @@ var Row = /** @class */ (function (_super) {
                 omi_1.h("slot", { name: index }));
         })));
     };
-    Row.css = theme_ts_1.theme() + css + rs;
+    Row.css = css + rs;
     Row.propTypes = {
         cols: Object,
         gutter: Number,
@@ -359,7 +356,7 @@ exports.default = Row;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./responsive.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/responsive.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./responsive.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/row/responsive.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -375,32 +372,29 @@ exports.default = Row;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),

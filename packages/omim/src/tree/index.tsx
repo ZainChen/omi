@@ -1,7 +1,7 @@
 import { tag, WeElement, h, extractClass, classNames } from 'omi'
 import * as css from './index.scss'
 //@ts-ignore
-import { theme } from '../theme.ts'
+import '../theme.ts'
 
 interface Props {
   checkbox?: boolean,
@@ -15,12 +15,8 @@ interface Data {
 
 @tag('m-tree')
 export default class Tree extends WeElement<Props, Data>{
-  static css = theme() + css
+  static css = css
 
-  static resetTheme() {
-    this.css = theme() + css
-  }
-  
   static propTypes = {
     checkbox: Boolean,
     node: Object
@@ -28,17 +24,52 @@ export default class Tree extends WeElement<Props, Data>{
 
   _preSelected = null
 
-  toggle = (id, open) => {
-    this.fire('toggle', { id, open })
+  toggle = (id, open, node) => {
+    node.close = open
+    this.fire('toggle', { node, id, open })
+    this.update(true)
   }
 
   _check = (node, state) => {
     if (node.disabled) return
-    this.fire('check', { id: node.id, checked: !node.checked, state: state })
+
+    if (!node.children) {
+      node.checked = !node.checked
+    } else {
+      this.checkAll(node, state !== 'checked')
+    }
+    this.update(true)
+    this.fire('check', { node, id: node.id, checked: !node.checked, state: state })
   }
 
-  onNodeClick = (id) => {
-    this.fire('nodeClick', { id, pre: this._preSelected })
+  checkAll(node, checked) {
+    node.children && node.children.forEach(child => {
+      child.checked = checked
+      this.checkAll(child, checked)
+    })
+  }
+
+  onNodeClick = (node) => {
+    const pre = this.getNodeById(this._preSelected, this.props.node)
+    if (pre) {
+      pre.selected = false
+    }
+    node.selected = true
+    this.update(true)
+    this.fire('nodeclick', { node, id: node.id, pre: this._preSelected })
+  }
+
+  getNodeById(id, node) {
+    if (node.id === id) return node
+    if (node.children) {
+      for (let i = 0, len = node.children.length; i < len; i++) {
+        let child = node.children[i]
+        let target = this.getNodeById(id, child)
+        if (target) {
+          return target
+        }
+      }
+    }
   }
 
   renderNode(node) {
@@ -53,7 +84,7 @@ export default class Tree extends WeElement<Props, Data>{
       <li class={classNames('tree-item', {
         'close': node.close
       })}>
-        {node.children && node.children.length > 0 && <svg onClick={_ => this.toggle(node.id, !node.close)} viewBox="0 0 1024 1024"
+        {node.children && node.children.length > 0 && <svg onClick={_ => this.toggle(node.id, !node.close, node)} viewBox="0 0 1024 1024"
           class="arrow" data-icon="caret-down" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false">
           <path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path>
         </svg>}
@@ -62,7 +93,7 @@ export default class Tree extends WeElement<Props, Data>{
           'mdc-tree-checkbox-checked': (node.children && node.children.length > 0) ? state === 'checked' : node.checked,
           'mdc-tree-checkbox-indeterminate': (node.children && node.children.length > 0) ? state === 'indeterminate' : false
         })}><span class="mdc-tree-checkbox-inner"></span></span>}
-        <span onClick={_ => this.onNodeClick(node.id)} class={classNames('mdc-tree-title', {
+        <span onClick={_ => this.onNodeClick(node)} class={classNames('mdc-tree-title', {
           'selected': node.selected
         })}>{node.icon && <i class='material-icons'>{node.icon}</i>}<span class='text'>{node.title}</span></span>
 

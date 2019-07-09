@@ -41,9 +41,18 @@ export default class WeElement extends HTMLElement {
     this.install()
     this.afterInstall()
 
-    const shadowRoot = this.attachShadow({
-			mode: 'open'
-		})
+    let shadowRoot
+    if (!this.shadowRoot) {
+      shadowRoot = this.attachShadow({
+        mode: 'open'
+      })
+    } else {
+      shadowRoot = this.shadowRoot
+      let fc
+      while ((fc = shadowRoot.firstChild)) {
+        shadowRoot.removeChild(fc)
+      }
+    }
 
     if (this.constructor.css) {
       shadowRoot.appendChild(cssToDom(this.constructor.css))
@@ -58,9 +67,12 @@ export default class WeElement extends HTMLElement {
       this.observed()
     }
 
-    this._host = diff(
+    const rendered = this.render(this.props, this.data, this.store)
+    this.__hasChildren = Object.prototype.toString.call(rendered) ==='[object Array]' && rendered.length > 0
+
+    this.rootNode = diff(
       null,
-      this.render(this.props, this.data, this.store),
+      rendered,
       {},
       false,
       null,
@@ -74,12 +86,12 @@ export default class WeElement extends HTMLElement {
       shadowRoot.appendChild(this._customStyleElement)
     }
 
-    if (isArray(this._host)) {
-      this._host.forEach(function (item) {
+    if (isArray(this.rootNode)) {
+      this.rootNode.forEach(function (item) {
         shadowRoot.appendChild(item)
       })
     } else {
-      shadowRoot.appendChild(this._host)
+      shadowRoot.appendChild(this.rootNode)
     }
     this.installed()
     this._isInstalled = true
@@ -98,7 +110,7 @@ export default class WeElement extends HTMLElement {
     }
   }
 
-  update() {
+  update(ignoreAttrs) {
     this._willUpdate = true
     this.beforeUpdate()
     this.beforeRender()
@@ -107,10 +119,14 @@ export default class WeElement extends HTMLElement {
       this._customStyleContent = this.props.css
       this._customStyleElement.textContent = this._customStyleContent
     }
-    this.attrsToProps()
-    this._host = diff(
-      this._host,
-      this.render(this.props, this.data, this.store),
+    this.attrsToProps(ignoreAttrs)
+
+    const rendered = this.render(this.props, this.data, this.store)
+    this.__hasChildren = this.__hasChildren || (Object.prototype.toString.call(rendered) ==='[object Array]' && rendered.length > 0)
+
+    this.rootNode = diff(
+      this.rootNode,
+      rendered,
       null,
       null,
       this.shadowRoot
@@ -121,7 +137,8 @@ export default class WeElement extends HTMLElement {
 
   removeAttribute(key) {
     super.removeAttribute(key)
-    this.update()
+    //Avoid executing removeAttribute methods before connectedCallback
+    this._isInstalled && this.update()
   }
 
   setAttribute(key, val) {
@@ -130,7 +147,8 @@ export default class WeElement extends HTMLElement {
     } else {
       super.setAttribute(key, val)
     }
-    this.update()
+    //Avoid executing setAttribute methods before connectedCallback
+    this._isInstalled && this.update()
   }
 
   pureRemoveAttribute(key) {
@@ -139,11 +157,11 @@ export default class WeElement extends HTMLElement {
 
   pureSetAttribute(key, val) {
     super.setAttribute(key, val)
-  }
+	}
 
-  attrsToProps() {
+  attrsToProps(ignoreAttrs) {
     const ele = this
-    if (ele.normalizedNodeName) return
+    if (ele.normalizedNodeName || ignoreAttrs) return
     ele.props['css'] = ele.getAttribute('css')
     const attrs = this.constructor.propTypes
     if(!attrs) return
@@ -159,7 +177,11 @@ export default class WeElement extends HTMLElement {
             ele.props[key] = Number(val)
             break
           case Boolean:
-            ele.props[key] = true
+            if (val === 'false' || val === '0') {
+              ele.props[key] = false
+            } else {
+              ele.props[key] = true
+            }
 						break
 					case Array:
           case Object:
@@ -181,7 +203,7 @@ export default class WeElement extends HTMLElement {
   }
 
   fire(name, data) {
-    this.dispatchEvent(new CustomEvent(name.toLowerCase(), { detail: data }))
+    this.dispatchEvent(new CustomEvent(name.replace(/-/g, '').toLowerCase(), { detail: data }))
   }
 
   beforeInstall() { }

@@ -4,6 +4,39 @@
 
 ## 使用
 
+```js
+import dialog from 'omim/dialog'
+
+dialog.confirm({
+  confirmText: '确认',
+  cancelText: '取消',
+  msg: '确认删除?',
+  confirm: function () {
+    
+  }
+})
+
+dialog.alert({
+  confirmText: '确认',
+  msg: '成功了！',
+  confirm: function () {
+
+  }
+})
+
+dialog.prompt({
+  confirmText: '确认',
+  cancelText: '取消',
+  title:'用户信息输入',
+  subtitle:'输入你的用户名',
+  confirm: function (val) {
+    console.log(val)
+  }
+})
+```
+
+或者：
+
 ```html
 <m-dialog cancel-button="{text: 'Cancel'}" confirm-button="{text: 'Discard'}">
   <p class="m-dialog-alert-p">Discard draft?</p>

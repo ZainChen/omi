@@ -231,7 +231,7 @@
                 </a>
             </div>
             <p class="credits">
-                v<span class="version">6.4</span> © <span class="date">2019</span> Tencent
+                v<span class="version">6.6</span> © <span class="date">2019</span> Tencent
             </p>
         </div>
   </div>
@@ -240,9 +240,7 @@
 import { render, WeElement, define } from 'omi'
 
 define('my-counter', class extends WeElement {
-  data = {
-    count: 1
-  }
+  count = 1
 
   static css = `
     span{
@@ -250,12 +248,12 @@ define('my-counter', class extends WeElement {
     }`
 
   sub = () => {
-    this.data.count--
+    this.count--
     this.update()
   }
 
   add = () => {
-    this.data.count++
+    this.count++
     this.update()
   }
 
@@ -263,7 +261,7 @@ define('my-counter', class extends WeElement {
     return (
       &lt;div&gt;
         &lt;button onClick={this.sub}>-&lt;/button&gt;
-        &lt;span>{this.data.count}&lt;/span&gt;
+        &lt;span>{this.count}&lt;/span&gt;
         &lt;button onClick={this.add}>+&lt;/button&gt;
       &lt;/div&gt;
     )
@@ -288,9 +286,9 @@ function detectMobile() {
 
 document.getElementById('ctBtn').onclick = function () {
     if (detectMobile()) {
-        location.href = 'https://github.com/Tencent/omi/blob/master/packages/omim/README.md'
+        location.href = 'https://tencent.github.io/omi/packages/omim/docs/build/index.html'
     }else{
-        location.href = 'https://github.com/Tencent/omi/tree/master/packages/omim'
+        location.href = 'https://tencent.github.io/omi/packages/omim/docs/build/index.html'
     }
 }
 

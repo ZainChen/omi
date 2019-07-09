@@ -55,7 +55,7 @@ JSX:
 | icon-right | boolean | -- | 图标在右侧 |
 | counter | boolean | -- | 记录输入字符个数，配合 min-length, max-length 一起使用 |
 | path | string | -- | 图标 path |
-| paths | string | -- | 多图标 path |
+| paths | object | -- | 多图标 path |
 | label | string | -- | 默认标签 |
 | required | boolean | -- | 检测输入框是否为空 |
 | pattern | string | -- | 输入值限制及检测 |
@@ -68,3 +68,8 @@ JSX:
 | cols | number | -- |  多行输入框宽度，数值表示n个字符宽度 |
 | value | string | -- | 默认输入值 |
 | disabled | boolean | -- | 输入框失效 |
+| icon-event | boolean | -- | icon是否有绑定事件，鼠标形状会变成小手 |
+
+### Events
+
+* iconclick - 点击 icon 触发

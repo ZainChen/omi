@@ -4,7 +4,6 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
-
   <style>
 		/* fallback */
 		@font-face {
@@ -12,22 +11,6 @@
 			font-style: normal;
 			font-weight: 400;
 			src: url(./md.woff2) format('woff2');
-		}
-
-		.material-icons {
-			font-family: 'Material Icons';
-			font-weight: normal;
-			font-style: normal;
-			font-size: 24px;
-			line-height: 1;
-			letter-spacing: normal;
-			text-transform: none;
-			display: inline-block;
-			white-space: nowrap;
-			word-wrap: normal;
-			direction: ltr;
-			-webkit-font-feature-settings: 'liga';
-			-webkit-font-smoothing: antialiased;
 		}
 
     ::-webkit-scrollbar-track {
@@ -51,12 +34,15 @@
       padding: 0;
     }
 
+    .m-dialog-alert-p {
+      margin: 0;
+    }
+
   </style>
   <script src="./libs/omi.dev.js"></script>
-  <script src="../js/button.js"></script>
   <script src="../js/dialog.js"></script>
-  <script src="../js/radio.js"></script>
-
+  <script src="../js/list.js"></script>
+  <script src="../js/text-field.js"></script>
 </head>
 
 <body style="background-color:#eee;">
@@ -67,6 +53,7 @@
     const dialogSimple = document.getElementById("m-dialog-simple");
     const dialogConfirmation = document.getElementById("m-dialog-confirmation");
     const dialogScrollable = document.getElementById("m-dialog-scrollable");
+    const dialogForm = document.getElementById("m-dialog-form");
     const thowText = document.getElementById("show-text");
 
     //Alert
@@ -112,37 +99,18 @@
       dialogSimple.removeAttribute("show");
       thowText.innerHTML = "Declined... Maybe next time?";
     })
-    const liSmple0 = dialogSimple.shadowRoot.querySelector('#li-simple-0');
-    const liSmple1 = dialogSimple.shadowRoot.querySelector('#li-simple-1');
-    const liSmple2 = dialogSimple.shadowRoot.querySelector('#li-simple-2');
-    // console.log(liSmple0);
-    // console.log(liSmple1);
-    // console.log(liSmple2);
-    liSmple0.addEventListener('click', (e) => {
-      // console.log(e)
-      liSmple0.setAttribute('tabindex', '0');
-      liSmple1.setAttribute('tabindex', '-1');
-      liSmple2.setAttribute('tabindex', '-1');
+    //m-list-simple
+    const listSimple = document.getElementById('m-list-simple');
+    listSimple.addEventListener('itemclick', (e) => {
+      console.log(e.detail);
+      switch(e.detail.index) {
+        case 0: listSimple.setAttribute('items', "[{text: 'user1@example.com', icon: 'person', selected: true},{text: 'user2@example.com', icon: 'person'},{text: 'Add account', icon: 'add'}]"); break;
+        case 1: listSimple.setAttribute('items', "[{text: 'user1@example.com', icon: 'person'},{text: 'user2@example.com', icon: 'person', selected: true},{text: 'Add account', icon: 'add'}]"); break;
+        case 2: listSimple.setAttribute('items', "[{text: 'user1@example.com', icon: 'person'},{text: 'user2@example.com', icon: 'person'},{text: 'Add account', icon: 'add', selected: true}]"); break;
+      }
       dialogSimple.removeAttribute("show");
-      thowText.innerHTML = "Declined... Maybe next time?";
     })
-    liSmple1.addEventListener('click', (e) => {
-      // console.log(e)
-      liSmple0.setAttribute('tabindex', '-1');
-      liSmple1.setAttribute('tabindex', '0');
-      liSmple2.setAttribute('tabindex', '-1');
-      dialogSimple.removeAttribute("show");
-      thowText.innerHTML = "Declined... Maybe next time?";
-    })
-    liSmple2.addEventListener('click', (e) => {
-      // console.log(e)
-      liSmple0.setAttribute('tabindex', '-1');
-      liSmple1.setAttribute('tabindex', '-1');
-      liSmple2.setAttribute('tabindex', '0');
-      dialogSimple.removeAttribute("show");
-      thowText.innerHTML = "Declined... Maybe next time?";
-    })
-
+    
     //Confirmation
     dialogConfirmation.addEventListener('opening', (e) => {
       console.log(e.detail.type)
@@ -168,29 +136,18 @@
       dialogConfirmation.removeAttribute("show");
       thowText.innerHTML = "Accepted, thanks!";
     })
-    //li-confirmation-0
-    const liConfirmation0 = document.querySelector('#li-confirmation-0');
-    const liConfirmation1 = document.querySelector('#li-confirmation-1');
-    const liConfirmation2 = document.querySelector('#li-confirmation-2');
-    liConfirmation0.addEventListener('click', (e) => {
-      liConfirmation0.setAttribute('tabindex', '0');
-      liConfirmation1.setAttribute('tabindex', '-1');
-      liConfirmation2.setAttribute('tabindex', '-1');
-      thowText.innerHTML = "Declined... Maybe next time?";
-    })
-    liConfirmation1.addEventListener('click', (e) => {
-      liConfirmation0.setAttribute('tabindex', '-1');
-      liConfirmation1.setAttribute('tabindex', '0');
-      liConfirmation2.setAttribute('tabindex', '-1');
-      thowText.innerHTML = "Declined... Maybe next time?";
-    })
-    liConfirmation2.addEventListener('click', (e) => {
-      liConfirmation0.setAttribute('tabindex', '-1');
-      liConfirmation1.setAttribute('tabindex', '-1');
-      liConfirmation2.setAttribute('tabindex', '0');
-      thowText.innerHTML = "Declined... Maybe next time?";
+    //m-list-confirmation
+    const listConfirmation = document.getElementById('m-list-confirmation');
+    listConfirmation.addEventListener('itemclick', (e) => {
+      console.log(e.detail);
+      switch(e.detail.index) {
+        case 0: listConfirmation.setAttribute('items', "[{text: 'I Love Omim, We too', icon: 'wifi', checked: true, selected: true},{text: 'Hot Cross Buns', icon: 'bluetooth'},{text: 'None', icon: 'data_usage'}]"); break;
+        case 1: listConfirmation.setAttribute('items', "[{text: 'I Love Omim, We too', icon: 'wifi'},{text: 'Hot Cross Buns', icon: 'bluetooth', checked: true, selected: true},{text: 'None', icon: 'data_usage'}]"); break;
+        case 2: listConfirmation.setAttribute('items', "[{text: 'I Love Omim, We too', icon: 'wifi'},{text: 'Hot Cross Buns', icon: 'bluetooth'},{text: 'None', icon: 'data_usage', checked: true, selected: true}]"); break;
+      }
     })
 
+    //Scrollable
     dialogScrollable.addEventListener('scrim', () => {
       dialogScrollable.removeAttribute("show");
       thowText.innerHTML = "Declined... Maybe next time?";
@@ -204,7 +161,20 @@
       thowText.innerHTML = "Accepted, thanks!";
     })
 
-
+     
+    dialogForm.addEventListener('scrim', () => {
+      dialogForm.removeAttribute("show");
+      thowText.innerHTML = "Declined... Maybe next time?";
+    })
+    dialogForm.addEventListener('cancel', () => {
+      dialogForm.removeAttribute("show");
+      thowText.innerHTML = "Declined... Maybe next time?";
+    })
+    dialogForm.addEventListener('confirm', () => {
+      dialogForm.removeAttribute("show");
+      thowText.innerHTML = document.querySelector('#myText').mdc.value;
+    })
+    
     function onShowAlert() {
       dialogAlert.setAttribute("show", true);
       thowText.innerHTML = "open alert!";
@@ -221,6 +191,11 @@
       dialogScrollable.setAttribute("show", true);
       thowText.innerHTML = "open scrollable!";
     }
+    function onShowForm() {
+      dialogForm.setAttribute("show", true);
+      thowText.innerHTML = "open form!";
+    }
+    
   </script>
 </body>
 

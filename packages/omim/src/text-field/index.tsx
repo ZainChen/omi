@@ -1,12 +1,12 @@
 
 import * as css from './index.scss'
-import { WeElement, tag, h, extractClass } from 'omi'
+import { WeElement, tag, h, extractClass, classNames } from 'omi'
 import { MDCTextField } from '@material/textfield/index'
 import '../icon'
 //import { MDCRipple } from '@material/ripple/index'
 
 //@ts-ignore
-import { theme } from '../theme.ts'
+import '../theme.ts'
 
 interface Props {
 	type: 'date' | 'time' | 'color' | 'datetime-local',
@@ -21,7 +21,7 @@ interface Props {
   counter: boolean,
 
   path: string,
-  paths: string,
+  paths: object,
   //Multi-line Text Field (Textarea) with Character Counter  (textarea+counter)
 
   label: string,
@@ -65,6 +65,8 @@ function extract(from, props):any {
 
 @tag('m-text-field')
 export default class TextField extends WeElement<Props, Data>{
+  static css = css
+
   static defaultProps = {
 		showHelper: true,
 		type: 'text'
@@ -81,7 +83,7 @@ export default class TextField extends WeElement<Props, Data>{
     counter: Boolean,
 
     path: String,
-    paths: String,
+    paths: Object,
 
     //Multi-line Text Field (Textarea) with Character Counter  (textarea+counter)
 
@@ -110,13 +112,9 @@ export default class TextField extends WeElement<Props, Data>{
 		trailingIconContent: String,
 
 		leftIcon: String,
-		rightIcon: String
-  }
-
-  static css = theme() + css
-
-  static resetTheme() {
-    this.css = theme() + css
+    rightIcon: String,
+    
+    iconEvent: Boolean
   }
 
   mdc: MDCTextField
@@ -140,6 +138,11 @@ export default class TextField extends WeElement<Props, Data>{
 
   refIt = (e) => { this.root = e }
 
+  iconClick = () => {
+    //this.mdc.focus()
+    this.fire('iconclick')
+  }
+
   render(props) {
     const cls = extractClass(props, 'mdc-text-field', {
       'mdc-text-field--outlined': props.outlined,
@@ -155,12 +158,16 @@ export default class TextField extends WeElement<Props, Data>{
     if(props.fullWidth && !props.outlined){
       inputProps.placeholder = props.label
       props.label = null
+      //直接修改 props 需要注意同步 this['__omiattr_']，不然下次和this['__omiattr_']的值进行 diff 结果相同导致不更新
+      this['__omiattr_'] && (this['__omiattr_'].label = null)
     }
-
+   
     const vd = [
       <div ref={this.refIt} {...cls}>
-				{(props.path || props.paths) && !props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
-				{props.leftIcon && <i class="material-icons mdc-text-field__icon">{props.leftIcon}</i>}
+				{(props.path || props.paths) && !props.iconRight && <m-icon onClick={this.iconClick} class={classNames('icon', {'icon-event': props.iconEvent})} {...extract(props, ['path', 'paths'])}></m-icon>}
+				{props.leftIcon && <i onClick={this.iconClick} class={classNames("material-icons mdc-text-field__icon",{
+          'icon-event': props.iconEvent
+        })}>{props.leftIcon}</i>}
         {props.counter && props.textarea && <div class="mdc-text-field-character-counter"></div>}
         {
           props.textarea ?
@@ -178,8 +185,10 @@ export default class TextField extends WeElement<Props, Data>{
             </div> :
             (props.label === undefined || !props.noLabel && <label class="mdc-floating-label" for="my-text-field">{props.label}</label>)
         }
-				{(props.path || props.paths) && props.iconRight && <m-icon class='icon' {...extract(props, ['path', 'paths'])}></m-icon>}
-				{props.rightIcon && <i class="material-icons mdc-text-field__icon">{props.rightIcon}</i>}
+				{(props.path || props.paths) && props.iconRight && <m-icon onClick={this.iconClick} class={classNames('icon', {'icon-event': props.iconEvent})} {...extract(props, ['path', 'paths'])}></m-icon>}
+				{props.rightIcon && <i onClick={this.iconClick} class={classNames("material-icons mdc-text-field__icon",{
+          'icon-event': props.iconEvent
+        })}>{props.rightIcon}</i>}
         {!props.outlined && <div class="mdc-line-ripple"></div>}
       </div>
     ]

@@ -1,14 +1,12 @@
-import { tag, WeElement, h, extractClass } from 'omi'
+import { tag, WeElement, h, extractClass, classNames } from 'omi'
 import * as css from './index.scss'
-import {MDCTopAppBar} from '@material/top-app-bar';
-import '../icon'
-import '../icon-button'
+import {MDCTopAppBar} from '@material/top-app-bar'
 
-// @ts-ignore
-import { htmlToVdom } from '../util.ts'
+import { elementChildren } from '../util/element-children'
+import { domReady } from '../util/dom-ready'
 
 //@ts-ignore
-import { theme } from '../theme.ts'
+import '../theme.ts'
 
 interface Props {
   heading?: string,
@@ -18,12 +16,11 @@ interface Props {
   dense?: boolean,
   fixed?: boolean,
   adjust?: boolean,
-  navigation?: object,
-  navigationElement?: object,
+  bottom: boolean,
+  navigations?: object,
   actionItems?: object,
-  actionElements?: object,
   scrollTarget?: EventTarget,
-  scrollTargetDrawer?: boolean
+  scrollTargetId?: string
 }
 
 interface Data {
@@ -32,12 +29,8 @@ interface Data {
 
 @tag('m-top-app-bar')
 export default class topAppBar extends WeElement<Props, Data>{
-  static css = theme() + css
+  static css = css
 
-  static resetTheme() {
-    this.css = theme() + css
-  }
-  
   static propTypes = {
     heading: String,
     short: Boolean,
@@ -46,139 +39,120 @@ export default class topAppBar extends WeElement<Props, Data>{
     dense: Boolean,
     fixed: Boolean,
     adjust: Boolean,
-    navigation: Object,
-    navigationElement: Object,
+    bottom: Boolean,
+    navigations: Object,
     actionItems: Object,
-    actionElements: Object,
     scrollTarget: EventTarget,
-    scrollTargetDrawer: Boolean
-  }
-
-  static defaultProps = {
-
+    scrollTargetId: String
   }
 
   topAppBar: MDCTopAppBar
+  tagNum = new Object()
+  other = false
+
+  beforeUpdate() {
+    this._setChildrenAttribute()
+  }
 
   updated() {
-    // Update after initializing the component
-    // Get the target scrollbar of 'm-top-app-bar' and trigger the animation based on this scrollbar
-    // 获取 'm-top-app-bar' 的目标滚动条，根据此滚动条触发动画
-    if(this.props.scrollTargetDrawer) {  //script设置m-drawer组件的scrollTarget(m-drawer的frame属性为true时使用,临时解决方案)
-      const target = document.querySelector('m-drawer').shadowRoot.querySelector('#m-drawer-content')
-      target && this.topAppBar.setScrollTarget(target)
-    } else {
-      this.props.scrollTarget && this.topAppBar.setScrollTarget(this.props.scrollTarget)
+    this.topAppBar.destroy()
+    this.topAppBar = new MDCTopAppBar(this.shadowRoot.querySelector('.mdc-top-app-bar'))
+
+    // Get the target scrollbar of 'm-top-app-bar' and trigger the animation based on this scrollbar (JSX use) (获取 'm-top-app-bar' 的目标滚动条，根据此滚动条触发动画)
+    if(this.props.scrollTarget) {  //(JSX 使用)
+      this.topAppBar.setScrollTarget(this.props.scrollTarget)
+    } else { // (原生 js 使用)
+      if(this.props.scrollTargetId) {
+        const findTarge = document.querySelector('#' + this.props.scrollTargetId)
+        findTarge ? this.topAppBar.setScrollTarget(findTarge) : this.topAppBar.setScrollTarget(window)
+      } else {
+        this.topAppBar.setScrollTarget(window)
+      }
     }
   }
 
   installed() {
     this.topAppBar = new MDCTopAppBar(this.shadowRoot.querySelector('.mdc-top-app-bar'))
 
-    this.topAppBar.listen('MDCTopAppBar:nav', (evt: any) => {
-      this.fire('nav')
-    });
-
-    //script设置m-drawer组件的scrollTarget(m-drawer的frame属性为true时使用)
-    if(this.props.scrollTargetDrawer) {
-      const target = document.querySelector('m-drawer').shadowRoot.querySelector('#m-drawer-content')
-      target && this.topAppBar.setScrollTarget(target)
-    }
+    domReady(() => {
+      this._setChildrenAttribute()
+      this.update()
+    })
   }
 
-  isArray(value){
-    if (typeof Array.isArray === "function") {
-      return Array.isArray(value)
-    } else {
-      return Object.prototype.toString.call(value) === "[object Array]"
-    }
+  _setChildrenAttribute() {
+    this.tagNum = new Object()
+    this.other = false
+    const children = elementChildren(this)
+    children.forEach((child) => {
+      if(child.tagName === 'NAVIGATION' || child.tagName === 'ACTIONITEM') {
+        if(typeof this.tagNum[child.tagName] === 'undefined') {
+          this.tagNum[child.tagName] = new Array()
+        }
+        const tagLength = this.tagNum[child.tagName].length
+        child.setAttribute('slot', child.tagName + tagLength + '')
+        this.tagNum[child.tagName].push(tagLength)
+      } else {
+        child.setAttribute('slot', 'OTHER')
+        this.other = true
+      }
+    })
   }
 
-  onNavigation = (evt: Event) => {
-    this.fire('navigation')
-    evt && evt.stopPropagation()
+  onNavigation = (evt: any) => {
+    evt && this.fire('navigation', {nav: 'navigation', index: this._findPathAccessKey(evt)})
   }
 
   onAction = (evt: any) => {
-    if(evt) {
-      this.fire('action' + evt.toElement.accessKey)
-      evt.stopPropagation()
-    }
+    evt && this.fire('action', {act: 'action', index: this._findPathAccessKey(evt)})
   }
 
+  _findPathAccessKey(evt) {
+    for(let i = 0; i < evt.path.length; i++)
+      if((evt.path[i].tagName === 'SLOT' || evt.path[i].tagName === 'OMIM') && evt.path[i].accessKey)
+        return evt.path[i].accessKey
+    return -1
+  }
+  
   render(props) {
-    return [
-      <header {...extractClass(props, 'mdc-top-app-bar', {
-        'mdc-top-app-bar--fixed': props.fixed,
-        'mdc-top-app-bar--dense': props.dense,
-        'mdc-top-app-bar--short': props.short || props.shortCollapsed,
-        'mdc-top-app-bar--short-collapsed': props.shortCollapsed,
-        'mdc-top-app-bar--prominent': props.prominent
-      })}>
-        <div class='mdc-top-app-bar__row'>
-          {(props.navigation || props.heading) &&
-          <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-start'>
-            {/* Support for custom elements, development completed (支持自定义元素，开发完成) */}
-            {props.navigationElement ?
-            <div class='mdc-top-app-bar__navigation-icon' onClick={this.onNavigation}>
-              {typeof props.navigationElement === 'string' ? htmlToVdom(props.navigationElement) : props.navigationElement}
-            </div> :
-            props.navigation &&
-            (typeof props.navigation === 'string' ?
-            <m-icon-button class='mdc-top-app-bar__navigation-icon' icon={props.navigation} onClick={this.onNavigation}></m-icon-button> :
-            this.isArray(props.navigation) ?
-            <m-icon-button class='mdc-top-app-bar__navigation-icon' icons={props.navigation} onClick={this.onNavigation}></m-icon-button> :
-            (props.navigation.mIconButton ?
-            <m-icon-button class='mdc-top-app-bar__navigation-icon' {...props.navigation.mIconButton} onClick={this.onNavigation}>
-              {(props.children && props.children[0] && props.children[1]) && props.children}
-            </m-icon-button> :
-            props.navigation.mIcon ?
-            <button class='mdc-top-app-bar__navigation-icon' onClick={this.onNavigation}>
-              {(props.navigation.mIcon.path || props.navigation.mIcon.paths) ?
-              <m-icon {...props.navigation.mIcon}></m-icon> : props.navigation.text}
-            </button> :
-            <button class='mdc-top-app-bar__navigation-icon' onClick={this.onNavigation}>
-              {props.navigation.text}
-            </button>))}
-            {props.heading && <span class='mdc-top-app-bar__title'>{props.heading}</span>}
-          </section>}
-          {(props.actionItems || props.actionElements) &&
-          <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-end'>
-            {/* Support for custom elements, development completed (支持自定义元素，开发完成) */}
-            {props.actionElements ?
-            props.actionElements.map((item, index) => {
-              return <div accessKey={index.toString()} class='mdc-top-app-bar__action-item' onClick={this.onAction}>
-                {typeof item === 'string' ? htmlToVdom(item) : item}
-              </div>
-            }) :
-            props.actionItems &&
-            (typeof props.actionItems === 'string' ?
-            <m-icon-button accessKey='0' class='mdc-top-app-bar__action-item' icon={props.actionItems} onClick={this.onAction}></m-icon-button> :
-            props.actionItems.map((item, index) => {
-              return typeof item === 'string' ?
-              <m-icon-button accessKey={index.toString()} class='mdc-top-app-bar__action-item' icon={item} onClick={this.onAction}></m-icon-button> :
-              this.isArray(item) ?
-              <m-icon-button accessKey={index.toString()} class='mdc-top-app-bar__action-item' icons={item} onClick={this.onAction}></m-icon-button> :
-              item.mIconButton ?
-              <m-icon-button accessKey={index.toString()} class='mdc-top-app-bar__action-item' {...item.mIconButton} onClick={this.onAction}></m-icon-button> :
-              item.mIcon ?
-              <button accessKey={index.toString()} class='mdc-top-app-bar__action-item' onClick={this.onAction}>
-                {(item.mIcon.path || item.mIcon.paths) ? <m-icon accessKey={index.toString()} {...item.mIcon}></m-icon> : item.text}
-              </button> :
-              <button accessKey={index.toString()} class='mdc-top-app-bar__action-item' onClick={this.onAction}>
-                {item.text}
-              </button>
-            }))}
-          </section>}
-        </div>
-      </header>,
-      (props.adjust &&
-      <div {...extractClass(props,
+    let node = [<header {...extractClass(props, 'mdc-top-app-bar', {
+      'mdc-top-app-bar--fixed': props.fixed || props.bottom,
+      'mdc-top-app-bar--dense': props.dense,
+      'mdc-top-app-bar--short': props.short || props.shortCollapsed,
+      'mdc-top-app-bar--short-collapsed': props.shortCollapsed,
+      'mdc-top-app-bar--prominent': props.prominent,
+      'm-top-app-bar-bottom': props.bottom
+    })}>
+      <div class='mdc-top-app-bar__row'>
+        {(props.navigations || this.tagNum['NAVIGATION'] || props.heading) &&
+        <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-start'>
+          {props.navigations ? props.navigations.map((item, index) => {
+            return <omim accessKey={index + ''} class={classNames('mdc-top-app-bar__navigation-icon', {'material-icons': !item.text})} onClick={this.onNavigation}>{typeof item.text === 'string' ? item.text : item}</omim>
+          }) : (this.tagNum['NAVIGATION'] && this.tagNum['NAVIGATION'].map((_, index) => {
+            return <slot accessKey={index + ''} class='mdc-top-app-bar__navigation-icon' name={'NAVIGATION' + index} onClick={this.onNavigation}></slot>
+          }))}
+          {props.heading && <span class='mdc-top-app-bar__title'>{props.heading}</span>}
+        </section>}
+        {(props.actionItems || this.tagNum['ACTIONITEM']) &&
+        <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-end'>
+          {props.actionItems ?
+          props.actionItems.map((item, index) => {
+            return <omim accessKey={index + ''} class={classNames('mdc-top-app-bar__action-item', {'material-icons': !item.text})} onClick={this.onAction}>{typeof item.text === 'string' ? item.text : item}</omim>
+          }) : (this.tagNum['ACTIONITEM'] && this.tagNum['ACTIONITEM'].map((_, index) => {
+            return <slot accessKey={index + ''} class='mdc-top-app-bar__action-item' name={'ACTIONITEM' + index} onClick={this.onAction}></slot>
+          }))}
+        </section>}
+        {this.other === true && <slot name='OTHER'></slot>}
+      </div>
+    </header>]
+    if(props.adjust) {
+      node.push(<div {...extractClass(props,
         (props.short || props.shortCollapsed) ? 'mdc-top-app-bar--short-fixed-adjust' :
         (props.dense && props.prominent) ? 'mdc-top-app-bar--dense-prominent-fixed-adjust' :
         props.dense ? 'mdc-top-app-bar--dense-fixed-adjust' :
         props.prominent ? 'mdc-top-app-bar--prominent-fixed-adjust' : 'mdc-top-app-bar--fixed-adjust'
       )}></div>)
-    ]
+    }
+    return node
   }
 }

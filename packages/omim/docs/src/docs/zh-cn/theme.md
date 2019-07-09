@@ -4,37 +4,42 @@
 
 ## 使用
 
-### 更改主题颜色
-
 ```js
-window.OmimThemePrimary =  'red'
-window.OmimThemeSecondary =  'blue'
-window.OmimThemeError =  'yellow'
-
-import '@omim/core/button'
+document.body.style.setProperty('--mdc-theme-primary', 'red')
+document.body.style.setProperty('--mdc-theme-secondary', 'blue')
+document.body.style.setProperty('--mdc-theme-error', 'yellow')
 ```
 
-或者
+所有配置:
+
+```css
+--mdc-theme-primary: #0072d9;
+--mdc-theme-secondary: #2170b8;
+--mdc-theme-error: #f5222d;
+--mdc-theme-surface: #ffffff;
+--mdc-theme-on-primary: #ffffff;
+--mdc-theme-on-secondary: #ffffff;
+--mdc-theme-on-error: #ffffff;
+--mdc-theme-on-surface: #000000;
+--mdc-theme-background: #ffffff;
+--mdc-shape-small-component-radius: 4px;
+--mdc-shape-medium-component-radius: 4px;
+--mdc-shape-large-component-radius: 0px;
+--mdc-typography--font-family: Roboto, sans-serif;
+```
+
+## REPL 的实现代码
 
 ```html
-<m-button>I am button</m-button>
+<m-color-picker id='picker' save="0" default="ecb89a" preview="0" button='0' clear='0' width="300px">
+</m-color-picker>
 
-<script src="https://unpkg.com/omi"></script>
 <script>
-  window.OmimThemePrimary =  'red'
-  window.OmimThemeSecondary =  'blue'
-  window.OmimThemeError =  'yellow'
+  document.body.style.setProperty('--mdc-theme-primary', '#ecb89a')
+
+  var picker = document.querySelector('#picker')
+  picker.addEventListener('change', function (evt) {
+    document.body.style.setProperty('--mdc-theme-primary', evt.detail.color)
+  })
 </script>
-<script src="https://unpkg.com/@omim/core@latest/button/index.js"></script>
 ```
-
-### 运行时更改主题
-
-```js
-window.OmimThemePrimary = '#ecb89a'
-window.OmimThemeSecondary =  'blue'
-MButton.resetTheme()
-MSwitch.resetTheme()
-```
-
-[→ 点击查看更多配置](https://github.com/Tencent/omi/blob/master/packages/omim/src/theme.ts)

@@ -12,13 +12,13 @@ English | [简体中文](./README.CN.md)
 | **Project**                         | **Description**                           |
 | ------------------------------- | ----------------------------------- |
 | [omi-docs](https://tencent.github.io/omi/site/docs/index.html)| Omi official documents |
-| [omim![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png)](https://github.com/Tencent/omi/tree/master/packages/omim)| Cross-Frameworks components, powered by Material Design and Omi.([DOCS & REPL](https://tencent.github.io/omi/packages/omim/docs/build/index.html) && [JOIN US!](https://github.com/Tencent/omi/tree/master/packages/omim#contribution))|
+| [omim![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png)](https://github.com/Tencent/omi/tree/master/packages/omim)| Cross **frameworks** and **themes** components.([DOCS & REPL](https://tencent.github.io/omi/packages/omim/docs/build/index.html) && [JOIN US!](https://github.com/Tencent/omi/tree/master/packages/omim#contribution))|
 | [omio![](https://raw.githubusercontent.com/dntzhang/cax/master/asset/hot.png) ](https://github.com/Tencent/omi/tree/master/packages/omio)| Omi for old browsers with same api(IE8+)|
 | [omis](https://github.com/Tencent/omi/tree/master/packages/omis)| Server-side rendering(support omio only)|
 | [omi-router](https://github.com/Tencent/omi/tree/master/packages/omi-router) |Omi official router in 1KB js|
 | [omi-cli](https://github.com/Tencent/omi/tree/master/packages/omi-cli)| Project scaffolding. [→ Base Templates](https://github.com/Tencent/omi/tree/master/packages/omi-cli/template) and [→ Other Templates](https://github.com/omijs) |
 | [omi-devtools](https://github.com/f/omi-devtools)| Browser DevTools extension |
-| [omiu](https://tencent.github.io/omi/packages/omiu/examples/build/index.html)| Omi official UI|
+| [omiu](https://tencent.github.io/omi/packages/omiu/examples/build/index.html)| Simple Omi UI |
 | [omil](https://github.com/Wscats/omil)|Webpack loader for Omi.js components|
 | [omi-snippets](https://github.com/Wscats/omi-snippets) |A beautify VSCode extension for .omi or .eno file, [Install now!](https://marketplace.visualstudio.com/items?itemName=Wscats.omi-snippets)|
 
@@ -54,6 +54,7 @@ English | [简体中文](./README.CN.md)
 | [omi-native](https://github.com/Tencent/omi/tree/master/packages/omi-native)|Render web components to native|
 |[omi-i18n](https://github.com/i18next/omi-i18n)| Internationalization solution for omi.js using i18next ecosystem |
 | [omi-page](https://github.com/Tencent/omi/tree/master/packages/omi-page) |Tiny client-side router by [page](https://github.com/visionmedia/page.js)|
+| [omie](https://github.com/Wscats/omi-electron) |Build cross platform desktop apps with Omi.js and Electron.js|
 
 ## Why Omi?
 
@@ -64,9 +65,7 @@ English | [简体中文](./README.CN.md)
 - Supports TypeScript
 - Reactive data-binding
 - Having Cross-frameworks UI components - [omim](https://tencent.github.io/omi/packages/omim/docs/build/index.html)
-- Having official UI components - [omiu](https://tencent.github.io/omi/packages/omiu/examples/build/index.html)
 - Excellent compatibility(IE8+) with [omio](https://github.com/Tencent/omi/tree/master/packages/omio)
-- Supporting both grammars of omi and react with [reomi](https://github.com/Tencent/omi/tree/master/packages/reomi)
 - Real [MVVM](https://github.com/Tencent/omi/blob/master/tutorial/omi-mvvm.md) with [mappingjs](https://github.com/Tencent/omi/tree/master/packages/mappingjs) strong support
 - Enhanced CSS, [rpx unit support](https://github.com/Tencent/omi/releases/tag/v4.0.26) base on **750** screen width
 - Compliance with browser trend and API design
@@ -90,6 +89,9 @@ Omi uses Shadow DOM based style isolation and semantic structure.
 
 | **Title Name**  | **Other language** | **Related**|
 | ----------------------------------------- | ------------------ |-----------------|
+|[Web Components in a Nutshell](https://levelup.gitconnected.com/web-components-in-a-nutshell-1e114aa971b9)|||
+|[Using Web Components with React in 2019](https://www.grapecity.com/blogs/using-web-components-with-react-2019)|||
+|[Using Web Components in React](https://coryrylan.com/blog/using-web-components-in-react)|||
 |[Styling We Components Using A Shared Style Sheet](https://www.smashingmagazine.com/2016/12/styling-web-components-using-a-shared-style-sheet/)|
 |[Developer Tools support for Web Components in Firefox 63](https://blog.nightly.mozilla.org/2018/09/06/developer-tools-support-for-web-components-in-firefox-63/)||
 |[Develop W3C Web Components with WebAssembly](https://medium.com/coinmonks/develop-w3c-web-components-with-webassembly-d65938284255)||
@@ -256,9 +258,10 @@ You can also use `my-counter` tag directly in HTML：
 You can also quickly build omi projects using modern JS code:
 
 ```js
-import { render, WeElement, define } from 'omi'
+import { tag, WeElement, render } from 'omi'
 
-define('my-counter', class extends WeElement {
+@tag('my-counter')
+class MyCounter extends WeElement {
   data = {
     count: 1
   }
@@ -287,7 +290,7 @@ define('my-counter', class extends WeElement {
       </div>
     )
   }
-})
+}
 
 render(<my-counter />, 'body')
 ```
@@ -350,16 +353,6 @@ Add or remove the alias config in package.json to switch omi and omio：
 ```js
 "alias": {
   "omi": "omio"
-}
-```
-
-Using reomi:
-
-```js
-"alias": {
-  "omi": "reomi",
-  "react": "reomi",
-  "react-dom": "reomi"
 }
 ```
     
@@ -623,7 +616,7 @@ export default class oButton extends WeElement<ButtonProps, {}> {
 | `beforeUpdate`   | before update                           |
 | `updated`    | after update                             |
 | `beforeRender`   | before `render()`                           |
-| `receiveProps`   | parent element re-render will trigger it      |
+| `receiveProps`   | parent element re-render will trigger it, `return false` will prevent update action|
 
 ## Debugging
 

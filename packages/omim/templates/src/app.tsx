@@ -1,7 +1,7 @@
 import logo from './logo.svg'
 import * as css from './_app.css'
 import { define, WeElement, h } from 'omi'
-import '@omim/core/button'
+import 'omim/button'
 import 'omi-router'
 import './dashboard'
 import './about'
@@ -30,6 +30,14 @@ define('my-app', class extends WeElement {
       this.update()
     })
 
+     //@ts-ignore
+     route('/editor', () => {
+      import('./editor').then(_=>{
+        this.mainTag = 'my-editor'
+        this.update()
+      })
+    })
+
   }
   onDrawerClosed = () => {
 
@@ -46,7 +54,7 @@ define('my-app', class extends WeElement {
     //@ts-ignore
     this.update()
   }
-
+  
   onDemoStart = () => {
     toggleFullScreen()
   }

@@ -4,7 +4,7 @@ import { MDCRipple } from '@material/ripple'
 import { MDCChipSet, MDCChip } from '@material/chips'
 import '../icon'
 //@ts-ignore
-import { theme } from '../theme.ts'
+import '../theme.ts'
 
 interface Props {
   chips: [{
@@ -31,13 +31,9 @@ interface Data {
 }
 
 @tag('m-chips')
-export default class chipSet extends WeElement<Props, Data>{
-  static css = theme() + css
+export default class Chips extends WeElement<Props, Data>{
+  static css = css
 
-  static resetTheme() {
-    this.css = theme() + css
-  }
-  
   static defaultProps = {
     ripple: true
   }

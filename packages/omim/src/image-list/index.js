@@ -96,29 +96,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/image-list/index.scss":
-/*!*****************************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/image-list/index.scss ***!
-  \*****************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/image-list/index.scss":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/resolve-url-loader!./node_modules/sass-loader/lib/loader.js??ref--4-3!./src/image-list/index.scss ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js */ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, ".mdc-image-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 0 auto;\n  padding: 0; }\n\n.mdc-image-list__item,\n.mdc-image-list__image-aspect-container {\n  position: relative;\n  box-sizing: border-box; }\n\n.mdc-image-list__item {\n  list-style-type: none; }\n\n.mdc-image-list__image {\n  width: 100%; }\n\n.mdc-image-list__image-aspect-container .mdc-image-list__image {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover; }\n\n.mdc-image-list__image-aspect-container {\n  padding-bottom: calc(100% / 1); }\n\n.mdc-image-list__image {\n  border-radius: 0; }\n\n.mdc-image-list--with-text-protection .mdc-image-list__supporting {\n  border-radius: 0 0 0 0; }\n\n.mdc-image-list__supporting {\n  color: rgba(0, 0, 0, 0.87);\n  /* @alternate */\n  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87));\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  box-sizing: border-box;\n  padding: 8px 0;\n  line-height: 24px; }\n\n.mdc-image-list__label {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 1rem;\n  line-height: 1.75rem;\n  font-weight: 400;\n  letter-spacing: 0.00937em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden; }\n\n.mdc-image-list--with-text-protection .mdc-image-list__supporting {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 48px;\n  padding: 0 16px;\n  background: rgba(0, 0, 0, 0.6);\n  color: #fff; }\n\n.mdc-image-list--masonry {\n  display: block; }\n  .mdc-image-list--masonry .mdc-image-list__item {\n    break-inside: avoid-column; }\n  .mdc-image-list--masonry .mdc-image-list__image {\n    display: block;\n    height: auto; }\n", ""]);
+exports.push([module.i, ".mdc-image-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 0 auto;\n  padding: 0; }\n\n.mdc-image-list__item,\n.mdc-image-list__image-aspect-container {\n  position: relative;\n  box-sizing: border-box; }\n\n.mdc-image-list__item {\n  list-style-type: none; }\n\n.mdc-image-list__image {\n  width: 100%; }\n\n.mdc-image-list__image-aspect-container .mdc-image-list__image {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover; }\n\n.mdc-image-list__image-aspect-container {\n  padding-bottom: calc(100% / 1); }\n\n.mdc-image-list__image {\n  border-radius: 0; }\n\n.mdc-image-list--with-text-protection .mdc-image-list__supporting {\n  border-radius: 0 0 0 0; }\n\n.mdc-image-list__supporting {\n  color: rgba(0, 0, 0, 0.87);\n  /* @alternate */\n  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87));\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  box-sizing: border-box;\n  padding: 8px 0;\n  line-height: 24px; }\n\n.mdc-image-list__label {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 1rem;\n  line-height: 1.75rem;\n  font-weight: 400;\n  letter-spacing: 0.00937em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden; }\n\n.mdc-image-list--with-text-protection .mdc-image-list__supporting {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 48px;\n  padding: 0 16px;\n  background: rgba(0, 0, 0, 0.6);\n  color: #fff; }\n\n.mdc-image-list--masonry {\n  display: block; }\n  .mdc-image-list--masonry .mdc-image-list__item {\n    break-inside: avoid-column; }\n  .mdc-image-list--masonry .mdc-image-list__image {\n    display: block;\n    height: auto; }\n\n:host {\n  display: block; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -210,7 +210,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/image-list/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/resolve-url-loader!../../node_modules/sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/lib/loader.js?!./src/image-list/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -264,15 +264,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/image-list/index.scss");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
 var ImageList = /** @class */ (function (_super) {
     __extends(ImageList, _super);
     function ImageList() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ImageList.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
-    };
     ImageList.prototype.render = function (props) {
         return (omi_1.h("ul", __assign({}, omi_1.extractClass(props, 'mdc-image-list', {
             'mdc-image-list--masonry': props.masonry
@@ -284,14 +281,14 @@ var ImageList = /** @class */ (function (_super) {
             omi_1.h("div", { class: "mdc-image-list__supporting" },
                 omi_1.h("span", { class: "mdc-image-list__label" }, item.label))); })));
     };
-    ImageList.css = theme_ts_1.theme() + css;
+    ImageList.css = css;
     ImageList.defaultProps = {};
     ImageList.propTypes = {
         masonry: Boolean,
         list: Object
     };
     ImageList = __decorate([
-        omi_1.tag('image-list')
+        omi_1.tag('m-image-list')
     ], ImageList);
     return ImageList;
 }(omi_1.WeElement));
@@ -305,32 +302,29 @@ exports.default = ImageList;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),

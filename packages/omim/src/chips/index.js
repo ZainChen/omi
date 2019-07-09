@@ -106,7 +106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCComponent", function() { return MDCComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
 /**
  * @license
@@ -362,9 +362,9 @@ function matches(element, selector) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js":
 /*!****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js ***!
   \****************************************************************************/
 /*! exports provided: MDCRipple */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -372,11 +372,11 @@ function matches(element, selector) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return MDCRipple; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/component */ "./node_modules/_@material_base@1.0.0@@material/base/component.js");
 /* harmony import */ var _material_dom_ponyfill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/dom/ponyfill */ "./node_modules/_@material_dom@1.1.0@@material/dom/ponyfill.js");
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js");
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js");
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -491,9 +491,9 @@ var MDCRipple = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js":
 /*!****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js ***!
   \****************************************************************************/
 /*! exports provided: cssClasses, strings, numbers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -554,9 +554,9 @@ var numbers = {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js":
 /*!*****************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js ***!
   \*****************************************************************************/
 /*! exports provided: MDCRippleFoundation, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -564,10 +564,10 @@ var numbers = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return MDCRippleFoundation; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js");
 /* harmony import */ var _material_base_foundation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/base/foundation */ "./node_modules/_@material_base@1.0.0@@material/base/foundation.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/constants.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js");
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -1032,22 +1032,29 @@ var MDCRippleFoundation = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/index.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/index.js":
 /*!************************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/index.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/index.js ***!
   \************************************************************************/
-/*! exports provided: util, MDCRipple, MDCRippleFoundation */
+/*! exports provided: util, MDCRipple, cssClasses, strings, numbers, MDCRippleFoundation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return _util__WEBPACK_IMPORTED_MODULE_0__; });
-/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/component.js");
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/component.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return _component__WEBPACK_IMPORTED_MODULE_1__["MDCRipple"]; });
 
-/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/foundation.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return _foundation__WEBPACK_IMPORTED_MODULE_2__["MDCRippleFoundation"]; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/constants.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cssClasses", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["cssClasses"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "strings", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["strings"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "numbers", function() { return _constants__WEBPACK_IMPORTED_MODULE_2__["numbers"]; });
+
+/* harmony import */ var _foundation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/foundation.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return _foundation__WEBPACK_IMPORTED_MODULE_3__["MDCRippleFoundation"]; });
 
 /**
  * @license
@@ -1075,13 +1082,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js":
+/***/ "./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js":
 /*!***********************************************************************!*\
-  !*** ./node_modules/_@material_ripple@2.1.1@@material/ripple/util.js ***!
+  !*** ./node_modules/_@material_ripple@2.3.0@@material/ripple/util.js ***!
   \***********************************************************************/
 /*! exports provided: supportsCssVariables, applyPassive, getNormalizedEventCoords */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1195,10 +1203,10 @@ function getNormalizedEventCoords(evt, pageOffset, clientRect) {
 
 /***/ }),
 
-/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/chips/index.scss":
-/*!************************************************************************************************************************************************!*\
-  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/chips/index.scss ***!
-  \************************************************************************************************************************************************/
+/***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/chips/index.scss":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/chips/index.scss ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1207,7 +1215,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loade
 
 
 // module
-exports.push([module.i, ".mdc-chip__icon--leading {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mdc-chip__icon--trailing {\n  color: rgba(0, 0, 0, 0.54); }\n  .mdc-chip__icon--trailing:hover {\n    color: rgba(0, 0, 0, 0.62); }\n  .mdc-chip__icon--trailing:focus {\n    color: rgba(0, 0, 0, 0.87); }\n\n.mdc-chip__icon.mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden) {\n  width: 20px;\n  height: 20px;\n  font-size: 20px; }\n\n.mdc-chip__icon.mdc-chip__icon--trailing {\n  width: 18px;\n  height: 18px;\n  font-size: 18px; }\n\n.mdc-chip__icon--trailing {\n  margin: 0 -4px 0 4px; }\n\n.mdc-chip {\n  border-radius: 16px;\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.87);\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n  font-weight: 400;\n  letter-spacing: 0.01786em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  height: 32px;\n  display: inline-flex;\n  position: relative;\n  align-items: center;\n  box-sizing: border-box;\n  padding: 7px 12px;\n  outline: none;\n  cursor: pointer;\n  overflow: hidden; }\n  .mdc-chip:hover {\n    color: rgba(0, 0, 0, 0.87); }\n  .mdc-chip.mdc-chip--selected .mdc-chip__checkmark,\n  .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden) {\n    /* @noflip */\n    margin-left: -4px;\n    /* @noflip */\n    margin-right: 4px;\n    margin-top: -4px;\n    margin-bottom: -4px; }\n    [dir=\"rtl\"] .mdc-chip.mdc-chip--selected .mdc-chip__checkmark, .mdc-chip.mdc-chip--selected .mdc-chip__checkmark[dir=\"rtl\"], [dir=\"rtl\"]\n    .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden),\n    .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden)[dir=\"rtl\"] {\n      /* @noflip */\n      margin-left: 4px;\n      /* @noflip */\n      margin-right: -4px; }\n  .mdc-chip:hover {\n    color: #000000;\n    /* @alternate */\n    color: var(--mdc-theme-on-surface, #000000); }\n\n.mdc-chip--exit {\n  transition: opacity 75ms cubic-bezier(0.4, 0, 0.2, 1), width 150ms cubic-bezier(0, 0, 0.2, 1), padding 100ms linear, margin 100ms linear;\n  opacity: 0; }\n\n.mdc-chip__text {\n  white-space: nowrap; }\n\n.mdc-chip__icon {\n  border-radius: 50%;\n  outline: none;\n  vertical-align: middle; }\n\n.mdc-chip__checkmark {\n  height: 20px; }\n\n.mdc-chip__checkmark-path {\n  transition: stroke-dashoffset 150ms 50ms cubic-bezier(0.4, 0, 0.6, 1);\n  stroke-width: 2px;\n  stroke-dashoffset: 29.78334;\n  stroke-dasharray: 29.78334; }\n\n.mdc-chip--selected .mdc-chip__checkmark-path {\n  stroke-dashoffset: 0; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected {\n  color: #0052d9;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #0052d9); }\n  .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__icon--leading {\n    color: rgba(0, 82, 217, 0.54); }\n  .mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover {\n    color: #0052d9;\n    /* @alternate */\n    color: var(--mdc-theme-primary, #0052d9); }\n\n.mdc-chip-set--choice .mdc-chip .mdc-chip__checkmark-path {\n  stroke: #0052d9;\n  /* @alternate */\n  stroke: var(--mdc-theme-primary, #0052d9); }\n\n.mdc-chip-set--choice .mdc-chip--selected {\n  background-color: #ffffff;\n  /* @alternate */\n  background-color: var(--mdc-theme-surface, #ffffff); }\n\n.mdc-chip__checkmark-svg {\n  width: 0;\n  height: 20px;\n  transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1); }\n\n.mdc-chip--selected .mdc-chip__checkmark-svg {\n  width: 20px; }\n\n.mdc-chip-set--filter .mdc-chip__icon--leading {\n  transition: opacity 75ms linear;\n  transition-delay: -50ms;\n  opacity: 1; }\n  .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark {\n    transition: opacity 75ms linear;\n    transition-delay: 80ms;\n    opacity: 0; }\n    .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark .mdc-chip__checkmark-svg {\n      transition: width 0ms; }\n\n.mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading {\n  opacity: 0; }\n  .mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading + .mdc-chip__checkmark {\n    width: 0;\n    opacity: 1; }\n\n.mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading {\n  width: 0;\n  opacity: 0; }\n  .mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading + .mdc-chip__checkmark {\n    width: 20px; }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-chip {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n  .mdc-chip::before, .mdc-chip::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-chip::before {\n    transition: opacity 15ms linear, background-color 15ms linear;\n    z-index: 1; }\n  .mdc-chip.mdc-ripple-upgraded::before {\n    transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-chip.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    transform: scale(0);\n    transform-origin: center center; }\n  .mdc-chip.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-chip.mdc-ripple-upgraded--foreground-activation::after {\n    animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards; }\n  .mdc-chip.mdc-ripple-upgraded--foreground-deactivation::after {\n    animation: mdc-ripple-fg-opacity-out 150ms;\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-chip::before, .mdc-chip::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-chip.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-chip::before, .mdc-chip::after {\n    background-color: rgba(0, 0, 0, 0.87); }\n  .mdc-chip:hover::before {\n    opacity: 0.04; }\n  .mdc-chip:not(.mdc-ripple-upgraded):focus::before, .mdc-chip.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-chip:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-chip:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-chip.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.12; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before {\n  opacity: 0.08; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::after {\n  background-color: #0052d9; }\n  @supports not (-ms-ime-align: auto) {\n    .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::after {\n      /* @alternate */\n      background-color: var(--mdc-theme-primary, #0052d9); } }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover::before {\n  opacity: 0.12; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded):focus::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected.mdc-ripple-upgraded--background-focused::before {\n  transition-duration: 75ms;\n  opacity: 0.2; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded)::after {\n  transition: opacity 150ms linear; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded):active::after {\n  transition-duration: 75ms;\n  opacity: 0.2; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected.mdc-ripple-upgraded {\n  --mdc-ripple-fg-opacity: 0.2; }\n\n@keyframes mdc-chip-entry {\n  from {\n    transform: scale(0.8);\n    opacity: .4; }\n  to {\n    transform: scale(1);\n    opacity: 1; } }\n\n.mdc-chip-set {\n  padding: 4px;\n  display: flex;\n  flex-wrap: wrap;\n  box-sizing: border-box; }\n  .mdc-chip-set .mdc-chip {\n    margin: 4px; }\n\n.mdc-chip-set--input .mdc-chip {\n  animation: mdc-chip-entry 100ms cubic-bezier(0, 0, 0.2, 1); }\n\n.mdc-chip {\n  -moz-user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n", ""]);
+exports.push([module.i, ".mdc-chip__icon--leading {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mdc-chip__icon--trailing {\n  color: rgba(0, 0, 0, 0.54); }\n  .mdc-chip__icon--trailing:hover {\n    color: rgba(0, 0, 0, 0.62); }\n  .mdc-chip__icon--trailing:focus {\n    color: rgba(0, 0, 0, 0.87); }\n\n.mdc-chip__icon.mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden) {\n  width: 20px;\n  height: 20px;\n  font-size: 20px; }\n\n.mdc-chip__icon.mdc-chip__icon--trailing {\n  width: 18px;\n  height: 18px;\n  font-size: 18px; }\n\n.mdc-chip__icon--trailing {\n  margin: 0 -4px 0 4px; }\n\n.mdc-chip {\n  border-radius: 16px;\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.87);\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n  font-weight: 400;\n  letter-spacing: 0.01786em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  height: 32px;\n  display: inline-flex;\n  position: relative;\n  align-items: center;\n  box-sizing: border-box;\n  padding: 7px 12px;\n  outline: none;\n  cursor: pointer;\n  overflow: hidden; }\n  .mdc-chip:hover {\n    color: rgba(0, 0, 0, 0.87); }\n  .mdc-chip.mdc-chip--selected .mdc-chip__checkmark,\n  .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden) {\n    /* @noflip */\n    margin-left: -4px;\n    /* @noflip */\n    margin-right: 4px;\n    margin-top: -4px;\n    margin-bottom: -4px; }\n    [dir=\"rtl\"] .mdc-chip.mdc-chip--selected .mdc-chip__checkmark, .mdc-chip.mdc-chip--selected .mdc-chip__checkmark[dir=\"rtl\"], [dir=\"rtl\"]\n    .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden),\n    .mdc-chip .mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden)[dir=\"rtl\"] {\n      /* @noflip */\n      margin-left: 4px;\n      /* @noflip */\n      margin-right: -4px; }\n  .mdc-chip:hover {\n    color: #000000;\n    /* @alternate */\n    color: var(--mdc-theme-on-surface, #000000); }\n\n.mdc-chip--exit {\n  transition: opacity 75ms cubic-bezier(0.4, 0, 0.2, 1), width 150ms cubic-bezier(0, 0, 0.2, 1), padding 100ms linear, margin 100ms linear;\n  opacity: 0; }\n\n.mdc-chip__text {\n  white-space: nowrap; }\n\n.mdc-chip__icon {\n  border-radius: 50%;\n  outline: none;\n  vertical-align: middle; }\n\n.mdc-chip__checkmark {\n  height: 20px; }\n\n.mdc-chip__checkmark-path {\n  transition: stroke-dashoffset 150ms 50ms cubic-bezier(0.4, 0, 0.6, 1);\n  stroke-width: 2px;\n  stroke-dashoffset: 29.78334;\n  stroke-dasharray: 29.78334; }\n\n.mdc-chip--selected .mdc-chip__checkmark-path {\n  stroke-dashoffset: 0; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected {\n  color: #0072d9;\n  /* @alternate */\n  color: var(--mdc-theme-primary, #0072d9); }\n  .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__icon--leading {\n    color: rgba(0, 114, 217, 0.54); }\n  .mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover {\n    color: #0072d9;\n    /* @alternate */\n    color: var(--mdc-theme-primary, #0072d9); }\n\n.mdc-chip-set--choice .mdc-chip .mdc-chip__checkmark-path {\n  stroke: #0072d9;\n  /* @alternate */\n  stroke: var(--mdc-theme-primary, #0072d9); }\n\n.mdc-chip-set--choice .mdc-chip--selected {\n  background-color: #ffffff;\n  /* @alternate */\n  background-color: var(--mdc-theme-surface, #ffffff); }\n\n.mdc-chip__checkmark-svg {\n  width: 0;\n  height: 20px;\n  transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1); }\n\n.mdc-chip--selected .mdc-chip__checkmark-svg {\n  width: 20px; }\n\n.mdc-chip-set--filter .mdc-chip__icon--leading {\n  transition: opacity 75ms linear;\n  transition-delay: -50ms;\n  opacity: 1; }\n  .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark {\n    transition: opacity 75ms linear;\n    transition-delay: 80ms;\n    opacity: 0; }\n    .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark .mdc-chip__checkmark-svg {\n      transition: width 0ms; }\n\n.mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading {\n  opacity: 0; }\n  .mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading + .mdc-chip__checkmark {\n    width: 0;\n    opacity: 1; }\n\n.mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading {\n  width: 0;\n  opacity: 0; }\n  .mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading + .mdc-chip__checkmark {\n    width: 20px; }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-chip {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n  .mdc-chip::before, .mdc-chip::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-chip::before {\n    transition: opacity 15ms linear, background-color 15ms linear;\n    z-index: 1; }\n  .mdc-chip.mdc-ripple-upgraded::before {\n    transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-chip.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    transform: scale(0);\n    transform-origin: center center; }\n  .mdc-chip.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-chip.mdc-ripple-upgraded--foreground-activation::after {\n    animation: mdc-ripple-fg-radius-in 225ms forwards, mdc-ripple-fg-opacity-in 75ms forwards; }\n  .mdc-chip.mdc-ripple-upgraded--foreground-deactivation::after {\n    animation: mdc-ripple-fg-opacity-out 150ms;\n    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-chip::before, .mdc-chip::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-chip.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-chip::before, .mdc-chip::after {\n    background-color: rgba(0, 0, 0, 0.87); }\n  .mdc-chip:hover::before {\n    opacity: 0.04; }\n  .mdc-chip:not(.mdc-ripple-upgraded):focus::before, .mdc-chip.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-chip:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-chip:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-chip.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.12; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before {\n  opacity: 0.08; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::after {\n  background-color: #0072d9; }\n  @supports not (-ms-ime-align: auto) {\n    .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected::after {\n      /* @alternate */\n      background-color: var(--mdc-theme-primary, #0072d9); } }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover::before {\n  opacity: 0.12; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded):focus::before, .mdc-chip-set--choice .mdc-chip.mdc-chip--selected.mdc-ripple-upgraded--background-focused::before {\n  transition-duration: 75ms;\n  opacity: 0.2; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded)::after {\n  transition: opacity 150ms linear; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected:not(.mdc-ripple-upgraded):active::after {\n  transition-duration: 75ms;\n  opacity: 0.2; }\n\n.mdc-chip-set--choice .mdc-chip.mdc-chip--selected.mdc-ripple-upgraded {\n  --mdc-ripple-fg-opacity: 0.2; }\n\n@keyframes mdc-chip-entry {\n  from {\n    transform: scale(0.8);\n    opacity: .4; }\n  to {\n    transform: scale(1);\n    opacity: 1; } }\n\n.mdc-chip-set {\n  padding: 4px;\n  display: flex;\n  flex-wrap: wrap;\n  box-sizing: border-box; }\n  .mdc-chip-set .mdc-chip {\n    margin: 4px; }\n\n.mdc-chip-set--input .mdc-chip {\n  animation: mdc-chip-entry 100ms cubic-bezier(0, 0, 0.2, 1); }\n\n.mdc-chip {\n  -moz-user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n:host {\n  display: inline-block; }\n", ""]);
 
 // exports
 
@@ -1301,11 +1309,11 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ "./node_modules/_tslib@1.9.3@tslib/tslib.es6.js":
-/*!******************************************************!*\
-  !*** ./node_modules/_tslib@1.9.3@tslib/tslib.es6.js ***!
-  \******************************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/***/ "./node_modules/_tslib@1.10.0@tslib/tslib.es6.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/_tslib@1.10.0@tslib/tslib.es6.js ***!
+  \*******************************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1322,6 +1330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -1374,8 +1383,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -1469,6 +1480,14 @@ function __spread() {
     return ar;
 }
 
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
 }
@@ -1527,7 +1546,7 @@ function __importDefault(mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/chips/index.scss");
+        var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/chips/index.scss");
 
         if (typeof result === "string") {
             module.exports = result;
@@ -1580,13 +1599,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var omi_1 = __webpack_require__(/*! omi */ "omi");
 var css = __webpack_require__(/*! ./index.scss */ "./src/chips/index.scss");
-var ripple_1 = __webpack_require__(/*! @material/ripple */ "./node_modules/_@material_ripple@2.1.1@@material/ripple/index.js");
+var ripple_1 = __webpack_require__(/*! @material/ripple */ "./node_modules/_@material_ripple@2.3.0@@material/ripple/index.js");
 __webpack_require__(/*! ../icon */ "./src/icon/index.js");
 //@ts-ignore
-var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
-var chipSet = /** @class */ (function (_super) {
-    __extends(chipSet, _super);
-    function chipSet() {
+__webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+var Chips = /** @class */ (function (_super) {
+    __extends(Chips, _super);
+    function Chips() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.trailingClickHandle = function (index) {
             _this.fire('trailingIconInteraction', index);
@@ -1596,17 +1615,14 @@ var chipSet = /** @class */ (function (_super) {
         };
         return _this;
     }
-    chipSet.resetTheme = function () {
-        this.css = theme_ts_1.theme() + css;
-    };
-    chipSet.prototype.installed = function () {
+    Chips.prototype.installed = function () {
         if (this.props.ripple) {
             this.shadowRoot.querySelectorAll('.mdc-chip').forEach(function (item) {
                 new ripple_1.MDCRipple(item);
             });
         }
     };
-    chipSet.prototype.render = function (props) {
+    Chips.prototype.render = function (props) {
         var _this = this;
         return (omi_1.h("div", __assign({}, omi_1.extractClass(props, 'mdc-chip-set', {
             'mdc-chip-set--input': props.input,
@@ -1628,23 +1644,23 @@ var chipSet = /** @class */ (function (_super) {
                     (item.trailing.icon && typeof item.trailing.icon === 'string') && item.trailing.icon));
         })));
     };
-    chipSet.css = theme_ts_1.theme() + css;
-    chipSet.defaultProps = {
+    Chips.css = css;
+    Chips.defaultProps = {
         ripple: true
     };
-    chipSet.propTypes = {
+    Chips.propTypes = {
         ripple: Boolean,
         chips: Object,
         input: Boolean,
         choice: Boolean,
         filter: Boolean
     };
-    chipSet = __decorate([
+    Chips = __decorate([
         omi_1.tag('m-chips')
-    ], chipSet);
-    return chipSet;
+    ], Chips);
+    return Chips;
 }(omi_1.WeElement));
-exports.default = chipSet;
+exports.default = Chips;
 
 
 /***/ }),
@@ -1758,10 +1774,10 @@ exports.default = chipSet;
         /******/ return __webpack_require__(__webpack_require__.s = "./src/icon/index.tsx");
         /******/ 
     })({
-        /***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss": 
-        /*!***********************************************************************************************************************************************!*\
-          !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./src/icon/index.scss ***!
-          \***********************************************************************************************************************************************/
+        /***/ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss": 
+        /*!***********************************************************************************************************************************************************************************************************!*\
+          !*** ./node_modules/_css-loader@1.0.1@css-loader!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./src/icon/index.scss ***!
+          \***********************************************************************************************************************************************************************************************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
             exports = module.exports = __webpack_require__(/*! ../../node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js */ "./node_modules/_css-loader@1.0.1@css-loader/lib/css-base.js")(false);
@@ -1855,7 +1871,7 @@ exports.default = chipSet;
           \*****************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-2!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss");
+            var result = __webpack_require__(/*! !../../node_modules/_css-loader@1.0.1@css-loader!../../node_modules/_resolve-url-loader@3.1.0@resolve-url-loader!../../node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js??ref--4-3!./index.scss */ "./node_modules/_css-loader@1.0.1@css-loader/index.js!./node_modules/_resolve-url-loader@3.1.0@resolve-url-loader/index.js!./node_modules/_sass-loader@7.1.0@sass-loader/lib/loader.js?!./src/icon/index.scss");
             if (typeof result === "string") {
                 module.exports = result;
             }
@@ -1912,15 +1928,12 @@ exports.default = chipSet;
             var omi_1 = __webpack_require__(/*! omi */ "omi");
             var css = __webpack_require__(/*! ./index.scss */ "./src/icon/index.scss");
             //@ts-ignore
-            var theme_ts_1 = __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
+            __webpack_require__(/*! ../theme.ts */ "./src/theme.ts");
             var Icon = /** @class */ (function (_super) {
                 __extends(Icon, _super);
                 function Icon() {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
-                Icon.resetTheme = function () {
-                    this.css = theme_ts_1.theme() + css;
-                };
                 Icon.prototype.render = function (props) {
                     return (omi_1.h("i", __assign({}, omi_1.extractClass(props, 'm-icon')), omi_1.h("svg", { viewBox: '0 0 ' + props.view + ' ' + props.view, class: omi_1.classNames({ rotate: props.rotate }), width: props.scale + 'em', height: props.scale + 'em', fill: props.color, "aria-hidden": "true" }, props.paths ? (props.paths.map(function (item) {
                         var attrs = { d: item.path, fill: props.color || 'black' };
@@ -1929,7 +1942,7 @@ exports.default = chipSet;
                         return omi_1.h("path", __assign({}, attrs));
                     })) : omi_1.h("path", { d: props.path })), props.children && (omi_1.h("div", { style: "color:" + (props.color || 'black') + ";" }, props.children[0]))));
                 };
-                Icon.css = theme_ts_1.theme() + css;
+                Icon.css = css;
                 Icon.defaultProps = {
                     view: 1024,
                     scale: 2
@@ -1955,30 +1968,28 @@ exports.default = chipSet;
           !*** ./src/theme.ts ***!
           \**********************/
         /*! no static exports found */
-        /***/ (function (module, exports, __webpack_require__) {
-            "use strict";
-            Object.defineProperty(exports, "__esModule", { value: true });
-            if (typeof window === 'object') {
-                window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-                window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-                window.OmimThemeError = window.OmimThemeError || '#f5222d';
-                window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-                window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-                window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-                window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-                window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-                window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-                window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-                window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-                window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-                window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-            }
+        /***/ (function (module, exports) {
+            theme();
+            document.addEventListener('DOMContentLoaded', function () {
+                theme();
+            });
             function theme() {
-                if (typeof window === 'object') {
-                    return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+                if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+                    document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+                    document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+                    document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+                    document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+                    document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+                    document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+                    document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+                    document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+                    document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+                    document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
                 }
             }
-            exports.theme = theme;
             /***/ 
         }),
         /***/ "omi": 
@@ -2003,32 +2014,29 @@ exports.default = chipSet;
   !*** ./src/theme.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof window === 'object') {
-    window.OmimThemePrimary = window.OmimThemePrimary || '#0052d9';
-    window.OmimThemeSecondary = window.OmimThemeSecondary || '#1890ff';
-    window.OmimThemeError = window.OmimThemeError || '#f5222d';
-    window.OmimThemeSurface = window.OmimThemeSurface || '#ffffff';
-    window.OmimThemeOnPrimary = window.OmimThemeOnPrimary || '#ffffff';
-    window.OmimThemeOnSecondary = window.OmimThemeOnSecondary || '#ffffff';
-    window.OmimThemeOnError = window.OmimThemeOnError || '#ffffff';
-    window.OmimThemeOnSurface = window.OmimThemeOnSurface || '#000000';
-    window.OmimThemeBackground = window.OmimThemeBackground || '#ffffff';
-    window.OmimShapeSmallComponentRadius = window.OmimShapeSmallComponentRadius || '4px';
-    window.OmimShapeMediumComponentRadius = window.OmimShapeMediumComponentRadius || '4px';
-    window.OmimShapeLargeComponentRadius = window.OmimShapeLargeComponentRadius || '0px';
-    window.OmimTypographyFontFamily = window.OmimTypographyFontFamily || 'Roboto, sans-serif;';
-}
+theme();
+document.addEventListener('DOMContentLoaded', function () {
+    theme();
+});
 function theme() {
-    if (typeof window === 'object') {
-        return "* {\n  --mdc-theme-primary: " + window.OmimThemePrimary + ";\n  --mdc-theme-secondary: " + window.OmimThemeSecondary + ";\n  --mdc-theme-error: " + window.OmimThemeError + ";\n  --mdc-theme-surface: " + window.OmimThemeSurface + ";\n\n  --mdc-theme-on-primary: " + window.OmimThemeOnPrimary + ";\n  --mdc-theme-on-secondary: " + window.OmimThemeOnSecondary + ";\n  --mdc-theme-on-error: " + window.OmimThemeOnError + ";\n  --mdc-theme-on-surface: " + window.OmimThemeOnSurface + ";\n  --mdc-theme-background: " + window.OmimThemeBackground + ";\n\n  --mdc-shape-small-component-radius: " + window.OmimShapeSmallComponentRadius + ";\n  --mdc-shape-medium-component-radius: " + window.OmimShapeMediumComponentRadius + ";\n  --mdc-shape-large-component-radius: " + window.OmimShapeLargeComponentRadius + ";\n  --mdc-typography--font-family: " + window.OmimTypographyFontFamily + ";\n}";
+    if (document.body && !document.body.style.getPropertyValue('--mdc-theme-primary')) {
+        document.body.style.setProperty('--mdc-theme-primary', '#0072d9');
+        document.body.style.setProperty('--mdc-theme-secondary', '#2170b8');
+        document.body.style.setProperty('--mdc-theme-error', '#f5222d');
+        document.body.style.setProperty('--mdc-theme-surface', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-primary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-secondary', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-error', '#ffffff');
+        document.body.style.setProperty('--mdc-theme-on-surface', '#000000');
+        document.body.style.setProperty('--mdc-theme-background', '#ffffff');
+        document.body.style.setProperty('--mdc-shape-small-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-medium-component-radius', '4px');
+        document.body.style.setProperty('--mdc-shape-large-component-radius', '0px');
+        document.body.style.setProperty('--mdc-typography--font-family', 'Roboto, sans-serif');
     }
 }
-exports.theme = theme;
 
 
 /***/ }),
